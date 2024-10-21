@@ -6,15 +6,14 @@ const NavbarMenuRight = () => {
   const pathname = usePathname();
 
   const NavbarMenuRightItems = [
-    { name: 'Ardie', path: '/Onderwerpen/ardie' },
-    { name: 'Coaching', path: '/Onderwerpen/Coaching' },
-    { name: 'Presenteren', path: '/Onderwerpen/Presenteren' },
-    { name: 'Supervisie', path: '/Onderwerpen/Supervisie' },
+    { name: 'ARDIE', path: '/Onderwerpen/ardie' },
+    { name: 'COACHING', path: '/Onderwerpen/Coaching' },
+    { name: 'PRESENTEREN', path: '/Onderwerpen/Presenteren' },
+    { name: 'SUPERVISIE', path: '/Onderwerpen/Supervisie' },
   ];
 
   return (
-    <div className="p-2 mr-4
-     ">
+    <div className="p-2 mr-14 mt-6">
       <ul className="flex flex-col">
         {NavbarMenuRightItems.map((item) => (
           <li key={item.name} className="">

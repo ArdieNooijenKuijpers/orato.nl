@@ -7,7 +7,12 @@ const Navbar = () => {
     <div>
         <nav className="fixed top-0 left-0 w-full z-50 flex justify-between">
             <NavbarLogoLeft />
-            <NavbarMenuRight />
+            <div>
+                             
+                <NavbarMenuRight />
+            
+            </div>
+
         </nav>
     </div>
   )
