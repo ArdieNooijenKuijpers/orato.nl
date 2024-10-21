@@ -8,9 +8,9 @@ const NavbarLogoLeft = () => {
       <Link href="/">
         <Image src="/orato bloem.png" alt="Orato" width={50} height={50} priority/>
       </Link>
-      <div className="text-xl ml-2">
+      <div className="text-xl ">
         <Link href="/" className='text-xl ml-2 hover:text-blue-500  transition-colors duration-200'>
-          Orato
+          ORATO
         </Link>
       </div>
     </nav>
