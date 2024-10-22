@@ -1,10 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Noto_Serif_Display } from "next/font/google";
+import { Noto_Serif_Display , Tangerine } from "next/font/google";
 import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
 import VideoMain from "./components/mainpage/videoMain";
+import LineAtBottom from "./components/mainpage/lineAtBottom";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
+
 
 export default function Home() {
   return (
@@ -107,6 +109,7 @@ export default function Home() {
           </div>
         </main>
         <RotatingImageWithDate /> {/* The speed is controlled in the tailwind config and the steps */}
+        <LineAtBottom />
         <VideoMain />
       </div>
 
