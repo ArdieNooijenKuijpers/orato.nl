@@ -5,7 +5,7 @@ const NavbarLogoLeft = () => {
   return (
     <nav className="flex items-center ml-6">
       <Link href="/">
-        <div className="group flex items-center">
+        <div className="group flex items-center cursor-small">
           {/* Logo with spin animation on hover */}
           <div className="relative">
             <Image

@@ -34,7 +34,7 @@ export default function Home() {
                 <div
                   className={`${noto_Serif_Display.className}
               text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-              ml-0 sm:ml-4 md:ml-4 lg:ml-8
+              ml-0 sm:ml-4 md:ml-4 lg:ml-8 cursor-invert
             `}
                 >
                   WELKOM BIJ
@@ -73,7 +73,7 @@ export default function Home() {
                 className="
             text-7xl sm:text-8xl md:text-9xl lg:text-10xl
             font-bold
-            -ml-4 sm:-ml-8 md:-ml-16 lg:-ml-24
+            -ml-4 sm:-ml-8 md:-ml-16 lg:-ml-24 cursor-invert
           "
               >
                 ORATO
@@ -82,7 +82,7 @@ export default function Home() {
               {/* VOOR JOU */}
               <div
                 className={`${noto_Serif_Display.className}            
-            text-5xl sm:text-6xl md:text-7xl lg:text-8xl       
+            text-5xl sm:text-6xl md:text-7xl lg:text-8xl cursor-invert      
           `}
                 // text-6xl sm:text-7xl md:text-8xl lg:text-9xl
               >
@@ -115,6 +115,7 @@ export default function Home() {
 
       <footer className="bg-gray-800 text-white p-4 text-center min-h-screen">
         <p>&copy; 2024 Orato. All rights reserved.</p>
+        
       </footer>
     </>
   );
