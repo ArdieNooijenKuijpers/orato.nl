@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       animation: {
-        'spin-tick': 'spin 60s steps(60) infinite', // Added the spin-tick animation here
+        'spin-tick': 'spin 30s steps(30)  infinite', // Added the spin-tick animation here
       },
     },
   },
