@@ -74,6 +74,8 @@ export function CustomCursor() {
           stiffness: 1000,
           damping: 30,
           mass: 1,
+          ease: 'easeInOut',
+          duration: 5,
         }}
       />
     </>

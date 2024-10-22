@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
 
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <CustomCursor />
       </body>

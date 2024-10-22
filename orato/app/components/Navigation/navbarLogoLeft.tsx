@@ -19,7 +19,7 @@ const NavbarLogoLeft = () => {
           </div>
 
           {/* ORATO text with underline animation on hover */}
-          <div className="text-xl ml-2 font-bold relative inline-block  ">
+          <div className="text-xl ml-2 font-bold relative  inline-block">
             ORATO
             {/* Underline effect like in NavbarMenuRight */}
             <span className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-black transition-transform duration-300 group-hover:scale-x-100" />

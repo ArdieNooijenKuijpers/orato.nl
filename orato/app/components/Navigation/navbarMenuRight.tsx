@@ -14,7 +14,7 @@ const NavbarMenuRight = () => {
 
   return (
     <div className="p-2 mr-14 mt-6 cursor-small">
-      <ul className="flex flex-col space-y-0 z-50">
+      <ul className="flex flex-col space-y-0 ">
         {NavbarMenuRightItems.map((item) => (
           <li key={item.name}>
             <Link

@@ -4,6 +4,7 @@ import { Noto_Serif_Display , Tangerine } from "next/font/google";
 import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
 import VideoMain from "./components/mainpage/videoMain";
 import LineAtBottom from "./components/mainpage/lineAtBottom";
+import Navbar from "./components/Navigation/navbar";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
+      <Navbar />
 
       {/* Page layout */}
       <div className="flex flex-col min-h-screen static">

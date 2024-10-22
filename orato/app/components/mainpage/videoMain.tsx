@@ -8,6 +8,8 @@ const VideoMain = () => {
         playsInline
         preload="auto"
         className="
+                cursor-invert
+                cursor-big
                 absolute 
                 bottom-0 
                 right-14 
@@ -17,7 +19,7 @@ const VideoMain = () => {
                 h-[300px] 
                 rounded-full 
                 object-cover 
-                z-10 
+
                 md:w-[215px] 
                 md:h-[300px] 
                 md:right-14
