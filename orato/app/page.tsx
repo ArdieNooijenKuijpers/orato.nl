@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Noto_Serif_Display } from "next/font/google";
+import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function Home() {
       </Head>
 
       {/* Page layout */}
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen static">
         {/* Main content */}
         <main className="flex-grow flex items-center justify-center p-4">
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start text-center md:text-left">
@@ -104,7 +105,8 @@ export default function Home() {
             </div>
           </div>
         </main>
-        {/* Footer */}
+        <RotatingImageWithDate />
+
       </div>
 
       <footer className="bg-gray-800 text-white p-4 text-center min-h-screen">

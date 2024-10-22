@@ -9,7 +9,7 @@ const NavbarLogoLeft = () => {
           {/* Logo with spin animation on hover */}
           <div className="relative">
             <Image
-              src="/orato bloem.png"
+              src="/Homepage/orato bloem.png"
               alt="Orato"
               width={50}
               height={50}
