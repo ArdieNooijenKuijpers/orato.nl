@@ -42,7 +42,7 @@ export default function Home() {
               absolute
               bottom-0
               right-0
-              transform translate-y-32 translate-x-20 
+              transform translate-y-32 translate-x-20 md:translate-y-28 md:translate-x-32 lg:translate-y-32 lg:translate-x-20
               text-sm sm:text-xs md:text-sm lg:text-base
               font-light
               mt-2 md:mt-4
@@ -53,7 +53,7 @@ export default function Home() {
 
             "
                 >
-                  <span className="hover:text-white hover:bg-black">
+                  <span >
                     HET JUISTE ADRES VOOR
                   </span>
                   <br /> <span className="font-semibold ">COACHING</span> <br />
