@@ -34,7 +34,7 @@ export default function Home() {
                 <div
                   className={`${noto_Serif_Display.className}
               text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-              ml-0 sm:ml-4 md:ml-4 lg:ml-8 cursor-invert
+              ml-0 sm:ml-4 md:ml-4 lg:ml-8 cursor-invert cursor-big
             `}
                 >
                   WELKOM BIJ
@@ -73,7 +73,7 @@ export default function Home() {
                 className="
             text-7xl sm:text-8xl md:text-9xl lg:text-10xl
             font-bold
-            -ml-4 sm:-ml-8 md:-ml-16 lg:-ml-24 cursor-invert
+            -ml-4 sm:-ml-8 md:-ml-16 lg:-ml-24 cursor-invert cursor-big
           "
               >
                 ORATO
@@ -82,7 +82,7 @@ export default function Home() {
               {/* VOOR JOU */}
               <div
                 className={`${noto_Serif_Display.className}            
-            text-5xl sm:text-6xl md:text-7xl lg:text-8xl cursor-invert      
+            text-5xl sm:text-6xl md:text-7xl lg:text-8xl cursor-invert cursor-big     
           `}
                 // text-6xl sm:text-7xl md:text-8xl lg:text-9xl
               >
