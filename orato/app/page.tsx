@@ -113,7 +113,7 @@ export default function Home() {
         <LineAtBottom />
         <VideoMain />
       </div>
-      <div className="bg-gray-800  min-h-screen">
+      <div className="bg-orato-dark  min-h-screen">
         <Example />
       </div>
 
