@@ -5,10 +5,13 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { motion, useTransform, useScroll } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { Tangerine } from "next/font/google";
+const tangerine = Tangerine({ subsets: ["latin"], weight: "400" });
 
 const Example = () => {
   return (
     <div>
+
       <HorizontalScrollCarousel />
     </div>
   );
@@ -42,8 +45,11 @@ const Card = ({ card }: { card: CardType }) => {
         key={card.id}
         className={`group relative h-[100vh] w-[80vw] flex flex-col items-center justify-start overflow-hidden ${card.bg}`}
       >
+                    <span className={`${tangerine.className} ${card.hidden} text-4xl text-white mt-4 `}>
+      &lsquo;Even stil staan . . . om verder te komen!&rsquo;
+    </span>
         {/* Image container */}
-        <div className="w-full mt-36">
+        <div className="w-full mt-32">
           <Image
             src={card.url}
             alt={card.title}
@@ -75,6 +81,9 @@ const Card = ({ card }: { card: CardType }) => {
 
           </div>
         </div>
+        <span className={`${tangerine.className} ${card.hidden} text-4xl text-white mt-20 `}>
+      &lsquo;Even stil staan . . . om verder te komen!&rsquo;
+    </span>
       </div>
     );
   };
@@ -95,6 +104,8 @@ type CardType = {
   extra?: string;
   size?: string;
   firstLetter?: string;
+    hidden?: string;
+    hidden2?: string;
 };
 
 const cards: CardType[] = [
@@ -107,6 +118,8 @@ const cards: CardType[] = [
     color: "#1d99d6",
     extra: "text-white",
     size: "text-9xl",
+    hidden: "block",
+    hidden2: "hidden",
   },
   {
     url: "/Homepage/supervisie-small.jpg",
@@ -118,6 +131,8 @@ const cards: CardType[] = [
     border: "rounded-full",
     extra: "text-black",
     size: "text-9xl",
+    hidden: "hidden",
+    hidden2: "hidden",
   },
   {
     url: "/Homepage/Onderwerpen/Presenteren.jpg",
@@ -129,6 +144,9 @@ const cards: CardType[] = [
     color: "#77b829",
     extra: "text-white",
     size: "text-8xl",
+    hidden: "hidden",
+    hidden2: "block",
+
 
   },
 ];
