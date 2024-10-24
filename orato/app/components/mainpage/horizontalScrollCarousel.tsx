@@ -1,4 +1,7 @@
 "use client";
+import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { motion, useTransform, useScroll } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
@@ -37,32 +40,45 @@ const Card = ({ card }: { card: CardType }) => {
     return (
       <div
         key={card.id}
-        className={`group relative h-[100vh] w-[80vw] overflow-hidden ${card.bg}`}
-      >   
+        className={`group relative h-[100vh] w-[80vw] flex flex-col items-center justify-start overflow-hidden ${card.bg}`}
+      >
         {/* Image container */}
-        <div className="absolute top-36 left-0 w-full h-auto">
+        <div className="w-full mt-36">
           <Image
             src={card.url}
             alt={card.title}
-            layout="responsive"
+             layout="responsive"
+            //fill={false}
             width={100} // Full width
             height={56.25} // Aspect ratio (16:9 in this case)
-            objectFit="cover"
-            className="cursor-invert"
+
+            className={`${card.border}`}
           />
         </div>
   
-        {/* Title, description, and button */}
-        <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent">
-          <h1 className="text-3xl font-bold text-white">{card.title}</h1>
-          <p className="text-lg text-white">{card.description}</p>
-          <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-            Learn More
-          </button>
+        {/* Text container */}
+        <div className="w-full flex flex-col items-center mt-4">
+          <div className="w-3/4 text-left">
+            <h1 className={`${card.size} font-bold ${card.extra} cursor-invert cursor-big mt-6`}>{card.title}</h1>
+            <p className={`text-lg ${card.extra} my-8 `}> {card.description}</p>
+
+            <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="button"
+                normalGradient= {`${card.color}`}
+                hoverGradient="#ee7901"
+                className=   {  `${card.bg} flex items-center space-x-1 cursor-small mx-1 ${card.extra} `}
+            >
+
+                <span>Meer info</span>
+            </HoverBorderGradient>
+
+          </div>
         </div>
       </div>
     );
   };
+  
   
 
 export default Example;
@@ -74,26 +90,45 @@ type CardType = {
   id: number;
   bg: string;
   bgcorner?: string;
+  color?: string;
+  border?: string;
+  extra?: string;
+  size?: string;
+  firstLetter?: string;
 };
 
 const cards: CardType[] = [
   {
-    url: "/Homepage/supervisie-small.jpg",
-    title: "Title 1",
-    description: "Description 1",
+    url: "/Homepage/Onderwerpen/Coaching.jpg",
+    title: "Coaching",
+    description: "Voor mensen die zich in de context van hun werk, persoonlijk willen ontwikkelen. Aan de slag met weten wat je wilt, jezelf zijn en daarnaar handelen met gewenst resultaat.",
     id: 1,
-    bg: "bg-orato-dark",
+    bg: "bg-orato-dark ",
+    color: "#1d99d6",
+    extra: "text-white",
+    size: "text-9xl",
   },
   {
     url: "/Homepage/supervisie-small.jpg",
-    title: "Title 2",
+    title: "Supervisie",
+    description: "Omdat je als ervaren coach professioneel en persoonlijk wilt blijven leren.",
     id: 2,
     bg: "bg-orato-light",
+    color: "#5c5ba5",
+    border: "rounded-full",
+    extra: "text-black",
+    size: "text-9xl",
   },
   {
-    url: "/Homepage/supervisie-small.jpg",
-    title: "Title 3",
+    url: "/Homepage/Onderwerpen/Presenteren.jpg",
+    firstLetter: "P",
+    title: "Presenteren",
+    description: "Jezelf laten zien en horen zoals dat past bij jou en je functie. Persoonlijke uitstraling en effectieve communicatie op z’n best.",
     id: 3,
     bg: "bg-orato-dark",
+    color: "#77b829",
+    extra: "text-white",
+    size: "text-8xl",
+
   },
 ];

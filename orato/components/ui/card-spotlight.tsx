@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 export const CardSpotlight = ({
   children,
-  radius = 350,
-  color = "#262626",
+  radius = 100,
+  color = "#141414",
   className,
   ...props
 }: {
@@ -35,7 +35,7 @@ export const CardSpotlight = ({
   return (
     <div
       className={cn(
-        "group/spotlight p-10 rounded-md relative border border-neutral-800 bg-black dark:border-neutral-800",
+        "group/spotlight p-10 rounded-md relative border   ",
         className
       )}
       onMouseMove={handleMouseMove}
@@ -51,7 +51,7 @@ export const CardSpotlight = ({
             radial-gradient(
               ${radius}px circle at ${mouseX}px ${mouseY}px,
               white,
-              transparent 80%
+              transparent 40%
             )
           `,
         }}

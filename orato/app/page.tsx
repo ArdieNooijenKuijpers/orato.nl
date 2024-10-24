@@ -5,6 +5,7 @@ import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
 import VideoMain from "./components/mainpage/videoMain";
 import LineAtBottom from "./components/mainpage/lineAtBottom";
 import Example from "./components/mainpage/horizontalScrollCarousel";
+import Navbar from "./components/Navigation/navbar";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -23,8 +24,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
 
+
       {/* Page layout */}
-      <div className="flex flex-col min-h-screen static">
+      <div className="flex flex-col min-h-screen static bg-orato-light">
         {/* Main content */}
         <main className="flex-grow flex items-center justify-center p-4">
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start text-center md:text-left">

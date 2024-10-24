@@ -19,11 +19,13 @@ const NavbarMenuRight = () => {
           <li key={item.name}>
             <Link
               href={item.path}
-              className={`relative inline-block text-lg font-medium text-gray-800 transition-all 
-                hover:text-black 
+              className={`relative inline-block text-lg font-medium transition-all 
+                hover:text-white 
                 before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:origin-left before:scale-x-0 
-                before:bg-black before:transition-transform before:duration-300 
+                before:bg-white before:transition-transform before:duration-300 
                 hover:before:scale-x-100 
+                
+
                 ${pathname === item.path ? 'before:scale-x-100 text-black' : ''}`}
             >
               {item.name}
