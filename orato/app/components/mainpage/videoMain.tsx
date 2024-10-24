@@ -8,6 +8,7 @@ const VideoMain = () => {
         playsInline
         preload="auto"
         className="
+                z-10
                 cursor-invert
                 cursor-big
                 absolute 

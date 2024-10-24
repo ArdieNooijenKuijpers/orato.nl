@@ -4,7 +4,7 @@ import { Noto_Serif_Display , Tangerine } from "next/font/google";
 import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
 import VideoMain from "./components/mainpage/videoMain";
 import LineAtBottom from "./components/mainpage/lineAtBottom";
-import Navbar from "./components/Navigation/navbar";
+import Example from "./components/mainpage/horizontalScrollCarousel";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -22,7 +22,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-      <Navbar />
 
       {/* Page layout */}
       <div className="flex flex-col min-h-screen static">
@@ -114,8 +113,11 @@ export default function Home() {
         <LineAtBottom />
         <VideoMain />
       </div>
+      <div className="bg-gray-800  min-h-screen">
+        <Example />
+      </div>
 
-      <footer className="bg-gray-800 text-white p-4 text-center min-h-screen">
+      <footer className="text-white p-4 text-center min-h-screen">
         <p>&copy; 2024 Orato. All rights reserved.</p>
         
       </footer>
