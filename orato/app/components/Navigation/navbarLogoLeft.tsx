@@ -5,9 +5,9 @@ const NavbarLogoLeft = () => {
   return (
     <div className="flex items-center ml-6  ">
       <Link href="/">
-        <div className="group flex items-center cursor-small">
+        <div className=" flex items-center cursor-small">
           {/* Logo with spin animation on hover */}
-          <div className="">
+          <div className="appearance-none	">
             <Image
               src="/Homepage/orato bloem.png"
               alt="Orato"

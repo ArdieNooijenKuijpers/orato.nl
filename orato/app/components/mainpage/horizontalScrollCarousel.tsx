@@ -40,57 +40,55 @@ const HorizontalScrollCarousel = () => {
 };
 
 const Card = ({ card }: { card: CardType }) => {
-    return (
-      <div
-        key={card.id}
-        className={`group relative h-[100vh] w-[80vw] flex flex-col items-center justify-start overflow-hidden ${card.bg}`}
-      >
-                    <span className={`${tangerine.className} ${card.hidden} text-4xl text-white mt-4 `}>
-      &lsquo;Even stil staan . . . om verder te komen!&rsquo;
-    </span>
-        {/* Image container */}
-        <div className="w-full mt-32">
-          <Image
-            src={card.url}
-            alt={card.title}
-             layout="responsive"
-            //fill={false}
-            width={100} // Full width
-            height={56.25} // Aspect ratio (16:9 in this case)
+  return (
+    <div
+      key={card.id}
+      className={`group relative h-[100vh] w-[80vw] flex flex-col items-center justify-start overflow-hidden ${card.bg}`}
+    >
+      <span className={`${tangerine.className} ${card.hidden} text-4xl text-white mt-4`}>
+        ‘Even stil staan . . . om verder te komen!’
+      </span>
 
-            className={`${card.border}`}
-          />
-        </div>
-  
-        {/* Text container */}
-        <div className="w-full flex flex-col items-center mt-4">
-          <div className="w-3/4 text-left">
-            <h1 className={`${card.size} font-bold ${card.extra} cursor-invert cursor-big mt-6`}>{card.title}</h1>
-            <p className={`text-lg ${card.extra} my-8 `}> {card.description}</p>
-
-            <HoverBorderGradient
-                containerClassName="rounded-full"
-                as="button"
-                normalGradient= {`${card.color}`}
-                hoverGradient="#ee7901"
-                className=   {  `${card.bg} flex items-center space-x-1 cursor-small mx-1 ${card.extra} `}
-            >
-
-                <span>Meer info</span>
-            </HoverBorderGradient>
-
-          </div>
-        </div>
-        <span className={`${tangerine.className} ${card.hidden} text-4xl text-white mt-20 `}>
-      &lsquo;Even stil staan . . . om verder te komen!&rsquo;
-    </span>
+      {/* Image container with max width and centered */}
+      <div className="w-full mt-12 md:mt-32 aspect-video relative md:max-w-4xl 2xl:max-w-7xl max-w-6xl max-h-80 2xl:max-h-full mx-auto">
+        <Image
+          src={card.url}
+          alt={card.title}
+          fill
+          style={{ objectFit: 'cover' }}
+          className={`${card.border}`}
+        />
       </div>
-    );
-  };
-  
-  
+
+      {/* Text container with responsive widths */}
+      <div className="w-full flex flex-col items-center  mt-4">
+        <div className="w-11/12 md:w-3/4 2xl:w-full10/12  text-left">
+          <h1 className={`${card.size} font-bold ${card.extra} cursor-invert cursor-big mt-6`}>
+            {card.title}
+          </h1>
+          <p className={`text-lg ${card.extra} my-8`}>{card.description}</p>
+
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            normalGradient={`${card.color}`}
+            hoverGradient="#ee7901"
+            className={`${card.bg} flex items-center space-x-1 cursor-small mx-1 ${card.extra}`}
+          >
+            <span>Meer info</span>
+          </HoverBorderGradient>
+        </div>
+      </div>
+
+      <div className={`${tangerine.className} ${card.hidden2} h-full text-xl text-white relative bottom-`}>
+        ‘Even stil staan . . . om verder te komen!’
+      </div>
+    </div>
+  );
+};
 
 export default Example;
+
 
 type CardType = {
   url: string;
@@ -117,12 +115,12 @@ const cards: CardType[] = [
     bg: "bg-orato-dark ",
     color: "#1d99d6",
     extra: "text-white",
-    size: "text-9xl",
-    hidden: "block",
-    hidden2: "hidden",
+    size: "text-5xl md:text-8xl xl:text-9xl",
+    hidden: "visible",
+    hidden2: "invisible",
   },
   {
-    url: "/Homepage/supervisie-small.jpg",
+    url: "/Homepage/Onderwerpen/test.jpg",
     title: "Supervisie",
     description: "Omdat je als ervaren coach professioneel en persoonlijk wilt blijven leren.",
     id: 2,
@@ -130,8 +128,8 @@ const cards: CardType[] = [
     color: "#5c5ba5",
     border: "rounded-full",
     extra: "text-black",
-    size: "text-9xl",
-    hidden: "hidden",
+    size: "text-5xl md:text-8xl xl:text-9xl",
+    hidden: "invisible",
     hidden2: "hidden",
   },
   {
@@ -143,9 +141,9 @@ const cards: CardType[] = [
     bg: "bg-orato-dark",
     color: "#77b829",
     extra: "text-white",
-    size: "text-8xl",
-    hidden: "hidden",
-    hidden2: "block",
+    size: "text-4xl md:text-8xl xl:text-9xl",
+    hidden: "invisible",
+    hidden2: "visible",
 
 
   },
