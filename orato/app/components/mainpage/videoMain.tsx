@@ -32,7 +32,7 @@ const VideoMain = () => {
                 lg:h-[500px]
               "
       >
-        <source src="/Homepage/temp-vid-2.mp4" type="video/mp4" />
+        <source src="/Homepage/temp-vid-3.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* Scroll Indicator */}
