@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Sphere } from "@react-three/drei";
+import { Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "../../utils/utils";
 import { Group } from "three";
 
@@ -12,10 +12,19 @@ const ParticleRing = () => {
         camera={{
           position: [10, -7.5, -5],
         }}
-        style={{ height: "60vh", justifyContent: "center", width: "100vw" }}
+        style={{ height: "80vh", justifyContent: "center" }}
         className="bg-grey-900"
+        onCreated={({ gl, camera }) => {
+          gl.domElement.style.pointerEvents = "none";
+          window.addEventListener("mousemove", (event) => {
+            const { clientX, clientY } = event;
+            const aspectRatio = window.innerWidth / window.innerHeight;
+            camera.position.x = -(clientX / window.innerWidth - 0.5) * aspectRatio * 25;
+            camera.position.y = (clientY / window.innerHeight - 0.5) * 10;
+            camera.lookAt(0, 0, 0);
+          });
+        }}
       >
-        <OrbitControls enablePan={false} enableZoom={false} maxDistance={20} minDistance={10} />
         <directionalLight />
         <pointLight position={[-30, 0, -30]} power={10.0} />
         <PointCircle />
@@ -24,11 +33,6 @@ const ParticleRing = () => {
       <h1 className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-slate-200 font-medium text-2xl md:text-5xl pointer-events-none">
         A New Perspective
       </h1>
-      <h1 className="absolute top-[80%] left-[80%] -translate-x-[50%] -translate-y-[50%] text-slate-200 font-small text-md md:text-2xl pointer-events-none">
-      &gt; Click & Sleep &lt;
-        
-      </h1>
-      <div className=""></div>
     </div>
   );
 };
@@ -45,19 +49,17 @@ const PointCircle = () => {
   return (
     <group ref={ref}>
       {pointsInner.map((point) => (
-        <Point key={point.idx} position={point.position} color={point.color} />
+        <Point key={point.idx} position={point.position as [number, number, number]} color={point.color} />
       ))}
       {pointsOuter.map((point) => (
-        <Point key={point.idx} position={point.position} color={point.color} />
+        <Point key={point.idx} position={point.position as [number, number, number]} color={point.color} />
       ))}
     </group>
   );
 };
 
-const Point = ({ position, color }: { position: number[]; color: string }) => {
+const Point = ({ position, color }: { position: [number, number, number]; color: string }) => {
   return (
-    // @ts-expect-error - Passing a num array as opposed to a Vector3 is acceptable
-    // and the referenced method in the documentation
     <Sphere position={position} args={[0.1, 10, 10]}>
       <meshStandardMaterial
         emissive={color}

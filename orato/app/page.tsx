@@ -6,6 +6,8 @@ import VideoMain from "./components/mainpage/videoMain";
 import LineAtBottom from "./components/mainpage/lineAtBottom";
 import Example from "./components/mainpage/horizontalScrollCarousel";
 import Navbar from "./components/Navigation/navbar";
+import ParticleRing from "./components/mainpage/ParticleRing";
+import ParticleRing2 from "./components/mainpage/ParticleRing2";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -117,6 +119,13 @@ export default function Home() {
       </div>
       <div className="bg-orato-dark  min-h-screen">
         <Example />
+      </div>
+
+      <div className="bg-orato-dark min-h-screen flex items-center justify-center ">
+
+        <div className="  cursor-small   ">
+          <ParticleRing />
+        </div>
       </div>
 
       <footer className="text-white p-4 text-center min-h-screen">
