@@ -79,7 +79,7 @@ const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }
         // For smaller orbs, fade in the text.
         // Also apply an inverse scale when hovered to counteract the parent's scale.
         <motion.span
-          className="absolute text-white font-bold text-sm pointer-events-none"
+          className="absolute text-white font-bold text-xs pointer-events-none"
           animate={{
             opacity: isHovered ? 1 : 0,
             // When hovered, apply inverse scale to keep the text size constant.
