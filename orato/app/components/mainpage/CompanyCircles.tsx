@@ -2,17 +2,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { companies } from '../mainpage/Data/Companies';
-import { div } from 'framer-motion/client';
 
 // Tailwind sizing classes for each company size.
 const sizeMap: Record<'K' | 'M' | 'G' | 'GG', string> = {
-  K: 'w-4 h-4',   // e.g., 16px
-  M: 'w-6 h-6',   // e.g., 24px
-  G: 'w-10 h-10', // e.g., 40px
-  GG: 'w-24 h-24' // e.g., 96px
+  K: 'w-4 h-4',   // 16px
+  M: 'w-6 h-6',   // 24px
+  G: 'w-10 h-10', // 40px
+  GG: 'w-24 h-24' // 96px
 };
 
-// Pixel sizes corresponding to the Tailwind sizes (assuming default Tailwind scale)
+// Pixel sizes corresponding to the Tailwind sizes.
 const pixelSizeMap: Record<'K' | 'M' | 'G' | 'GG', number> = {
   K: 16,
   M: 24,
@@ -26,8 +25,77 @@ interface Position {
   radius: number;
 }
 
+// A helper to compute the scaling variants based on company size.
+const getOrbVariants = (size: 'K' | 'M' | 'G' | 'GG') => {
+  // For GG orbs, we don't scale on hover.
+  if (size === 'GG') {
+    return {
+      initial: { scale: 1 },
+      hover: { scale: 1 },
+    };
+  }
+  // For smaller orbs, scale so the final diameter equals that of a GG orb.
+  return {
+    initial: { scale: 1 },
+    hover: { scale: pixelSizeMap['GG'] / pixelSizeMap[size] },
+  };
+};
+
+interface CompanyOrbProps {
+  company: { name: string; size: 'K' | 'M' | 'G' | 'GG' };
+  position: Position;
+  dimensions: { width: number; height: number };
+}
+
+const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }) => {
+  // Local state to control the text animation.
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Compute parent's scale factor if this is a smaller orb.
+  // For non-GG orbs, parent's hover scale factor is:
+  const parentScaleFactor =
+    company.size !== 'GG' ? pixelSizeMap['GG'] / pixelSizeMap[company.size] : 1;
+
+  return (
+    <motion.div
+      className={`absolute rounded-full bg-orato-dark flex justify-center items-center text-center transition-colors duration-300 cursor-invert overflow-visible ${sizeMap[company.size]}`}
+      style={{
+        top: `${(position.y / dimensions.height) * 100}%`,
+        left: `${(position.x / dimensions.width) * 100}%`,
+      }}
+      variants={getOrbVariants(company.size)}
+      initial="initial"
+      whileHover="hover"
+      // Update local hover state.
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {company.size === 'GG' ? (
+        // GG orbs always display their text at normal scale.
+        <span className="absolute text-white font-bold text-sm pointer-events-none">
+          {company.name}
+        </span>
+      ) : (
+        // For smaller orbs, fade in the text.
+        // Also apply an inverse scale when hovered to counteract the parent's scale.
+        <motion.span
+          className="absolute text-white font-bold text-sm pointer-events-none"
+          animate={{
+            opacity: isHovered ? 1 : 0,
+            // When hovered, apply inverse scale to keep the text size constant.
+            scale: isHovered ? 1 / parentScaleFactor : 1,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          {company.name}
+        </motion.span>
+      )}
+    </motion.div>
+  );
+};
+
 const CompanyCircles: React.FC = () => {
-  // Ref to measure container dimensions for responsiveness.
+  // Ref and state to track container dimensions for responsiveness.
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
     width: 1000,
@@ -48,7 +116,7 @@ const CompanyCircles: React.FC = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Compute non-overlapping positions in the bottom half only.
+  // Compute non-overlapping positions for each orb (placed in the bottom half).
   const positions = React.useMemo(() => {
     const posArray: Position[] = [];
     const containerWidth = dimensions.width;
@@ -62,7 +130,6 @@ const CompanyCircles: React.FC = () => {
 
       while (!newPos && attempts < 100) {
         const x = Math.random() * (containerWidth - diameter);
-        // Ensure the orb is placed in the bottom half:
         const y =
           containerHeight / 2 +
           Math.random() * ((containerHeight / 2) - diameter);
@@ -88,7 +155,7 @@ const CompanyCircles: React.FC = () => {
         attempts++;
       }
 
-      // Fallback: even if overlapping, place the orb.
+      // Fallback: if no non-overlapping position is found.
       if (!newPos) {
         const x = Math.random() * (containerWidth - diameter);
         const y =
@@ -102,56 +169,21 @@ const CompanyCircles: React.FC = () => {
     return posArray;
   }, [dimensions]);
 
-  // Variants for the orb scaling and text appearance.
-  const orbVariants = {
-    initial: { scale: 1 },
-    hover: { scale: 2 },
-  };
-
-  // Now the text not only fades in, but also moves upward so it's clearly visible.
-  const textVariants = {
-    initial: { opacity: 0, y: 0 },
-    hover: { opacity: 1, y: -20 },
-  };
-
   return (
     <div
       ref={containerRef}
       className="relative min-h-screen w-full bg-orato-white overflow-hidden"
     >
-      {/* Centered text div occupying the top half */}
       <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 text-xl lg:text-2xl xl:text-4xl font-bold text-black">
         References available at your request
       </div>
       {companies.map((company, index) => (
-        <motion.div
+        <CompanyOrb
           key={index}
-          className={`absolute rounded-full bg-orato-dark flex justify-center items-center transition-colors duration-300 cursor-invert overflow-visible ${sizeMap[company.size]}`}
-          style={{
-            // Convert computed positions to percentages.
-            top: `${(positions[index]?.y / dimensions.height) * 100}%`,
-            left: `${(positions[index]?.x / dimensions.width) * 100}%`,
-          }}
-          variants={orbVariants}
-          initial="initial"
-          whileHover="hover"
-        >
-          {company.size === 'GG' ? (
-            // For "GG" orbs, the company name is always visible.
-            <span className="absolute text-white font-bold text-sm pointer-events-none">
-              {company.name}
-            </span>
-          ) : (
-            // For other orbs, animate the text on hover.
-            <motion.span
-              className="absolute text-white font-bold text-sm pointer-events-none"
-              variants={textVariants}
-              initial="initial"
-            >
-              {company.name}
-            </motion.span>
-          )}
-        </motion.div>
+          company={company}
+          position={positions[index]}
+          dimensions={dimensions}
+        />
       ))}
     </div>
   );
