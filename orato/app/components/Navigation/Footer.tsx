@@ -111,7 +111,7 @@ const FooterComp = () => {
                     LinkedIn
                   </Link>
                 </p>
-                <div className="mt-2 relative w-20 h-20 md:w-[120px] md:h-[120px]">
+                <div className="mt-2 relative w-[120px] h-[120px] md:w-[120px] md:h-[120px]">
                   <Image
                     src="/Homepage/QR-codes/Orato-linkedin.jpg"
                     alt="Orato LinkedIn QR Code"
@@ -132,7 +132,7 @@ const FooterComp = () => {
                 </div>
                 <div className="mt-4 text-sm">
                   <p className="font-bold">Scan voor mijn contact gegevens</p>
-                  <div className="mt-4 relative w-24 h-24 md:w-[150px] md:h-[150px]">
+                  <div className="mt-4 relative w-[150px] h-[150px] md:w-[150px] md:h-[150px]">
                     <Image
                       src="/Homepage/QR-codes/Orato-contactgegevens.jpg"
                       alt="Orato Contactgegevens QR Code"

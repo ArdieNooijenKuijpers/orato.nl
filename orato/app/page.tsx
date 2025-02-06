@@ -9,6 +9,7 @@ import Navbar from "./components/Navigation/navbar";
 import ParticleRing from "./components/mainpage/ParticleRing";
 import ParticleRing2 from "./components/mainpage/ParticleRing2";
 import FooterComp from "./components/Navigation/Footer";
+import CompanyCircles from "./components/mainpage/CompanyCircles";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -130,7 +131,7 @@ export default function Home() {
 
       </div>
       <div className="  min-h-screen bg-orato-light   ">
-          <p>hello</p>
+          <CompanyCircles />
       </div>
 
       <FooterComp />
