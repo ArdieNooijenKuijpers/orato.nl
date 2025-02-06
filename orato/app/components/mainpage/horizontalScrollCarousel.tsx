@@ -6,36 +6,50 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { Tangerine } from "next/font/google";
+
 const tangerine = Tangerine({ subsets: ["latin"], weight: "400" });
 
 const Example = () => {
   return (
     <div>
-
-      <HorizontalScrollCarousel />
+      {/* Horizontal scroll layout for desktop */}
+      <div className="hidden md:block">
+        <HorizontalScrollCarousel />
+      </div>
+      {/* Vertical scroll layout for mobile */}
+      <div className="block md:hidden">
+        <VerticalScrollCarousel />
+      </div>
     </div>
   );
 };
 
 const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
+  const { scrollYProgress } = useScroll({ target: targetRef });
   const x = useTransform(scrollYProgress, [0, 1], ["3%", "-63%"]);
 
   return (
-    //here i change the height of the section to 300vh or bigger for the length of the scroll
-    <section ref={targetRef} className="relative h-[300vh]  bg-rgb">
+    <section ref={targetRef} className="relative h-[300vh] bg-rgb">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex ">
-          {cards.map((card) => {
-            return <Card card={card} key={card.id} />;
-          })}
+        <motion.div style={{ x }} className="flex">
+          {cards.map((card) => (
+            <Card card={card} key={card.id} />
+          ))}
         </motion.div>
       </div>
     </section>
+  );
+};
+
+const VerticalScrollCarousel = () => {
+  // Adding items-center centers the cards horizontally
+  return (
+    <div className="flex flex-col items-center">
+      {cards.map((card) => (
+        <Card card={card} key={card.id} />
+      ))}
+    </div>
   );
 };
 
@@ -43,44 +57,54 @@ const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
-      className={`group relative h-[100vh] w-[80vw] flex flex-col items-center justify-start overflow-hidden ${card.bg}`}
+      className={`group relative h-screen w-[80vw] flex flex-col justify-between items-center overflow-hidden ${card.bg} px-4 py-6`}
     >
-      <span className={`${tangerine.className} ${card.hidden} text-4xl text-white mt-4`}>
+      {/* Top text element */}
+      <span
+        className={`${tangerine.className} ${card.hidden} text-3xl md:text-4xl lg:text-5xl text-white`}
+      >
         ‘Even stil staan . . . om verder te komen!’
       </span>
 
-      {/* Image container with max width and centered */}
-      <div className="w-full mt-12 md:mt-32 aspect-video relative md:max-w-4xl 2xl:max-w-7xl max-w-6xl max-h-80 2xl:max-h-full mx-auto">
+      {/* Image container with fixed responsive height */}
+      <div className="relative w-full mx-auto mt-4 h-48 md:h-60 lg:h-80 xl:h-96">
         <Image
           src={card.url}
           alt={card.title}
           fill
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: "cover" }}
           className={`${card.border}`}
         />
       </div>
 
-      {/* Text container with responsive widths */}
-      <div className="w-full flex flex-col items-center  mt-4">
-        <div className="w-11/12 md:w-3/4 2xl:w-full10/12  text-left">
-          <h1 className={`${card.size} font-bold ${card.extra} cursor-invert cursor-big mt-6`}>
+      {/* Text and button container */}
+      <div className="w-full flex flex-col items-center mt-4">
+        <div className="w-11/12 md:w-3/4 2xl:w-10/12 text-left">
+          <h1
+            className={`${
+              card.size ? card.size : "text-3xl md:text-4xl lg:text-5xl "
+            } font-bold ${card.extra} mt-4`}
+          >
             {card.title}
           </h1>
-          <p className={`text-lg ${card.extra} my-8`}>{card.description}</p>
+          <p className={`text-base md:text-lg ${card.extra} my-4`}>
+            {card.description}
+          </p>
 
           <HoverBorderGradient
             containerClassName="rounded-full"
             as="button"
             normalGradient={`${card.color}`}
             hoverGradient="#ee7901"
-            className={`${card.bg} flex items-center space-x-1 cursor-small mx-1 ${card.extra}`}
+            className={`${card.bg} flex items-center space-x-1 cursor-pointer cursor-small ${card.extra}`}
           >
             <span>Meer info</span>
           </HoverBorderGradient>
         </div>
       </div>
 
-      <div className={`${tangerine.className} ${card.hidden2} h-full text-xl text-white relative bottom-`}>
+      {/* Bottom text element */}
+      <div className={`${tangerine.className} ${card.hidden2} text-xl text-white`}>
         ‘Even stil staan . . . om verder te komen!’
       </div>
     </div>
@@ -88,7 +112,6 @@ const Card = ({ card }: { card: CardType }) => {
 };
 
 export default Example;
-
 
 type CardType = {
   url: string;
@@ -102,33 +125,35 @@ type CardType = {
   extra?: string;
   size?: string;
   firstLetter?: string;
-    hidden?: string;
-    hidden2?: string;
+  hidden?: string;
+  hidden2?: string;
 };
 
 const cards: CardType[] = [
   {
     url: "/Homepage/Onderwerpen/Coaching.jpg",
     title: "Coaching",
-    description: "Voor mensen die zich in de context van hun werk, persoonlijk willen ontwikkelen. Aan de slag met weten wat je wilt, jezelf zijn en daarnaar handelen met gewenst resultaat.",
+    description:
+      "Voor mensen die zich in de context van hun werk, persoonlijk willen ontwikkelen. Aan de slag met weten wat je wilt, jezelf zijn en daarnaar handelen met gewenst resultaat.",
     id: 1,
-    bg: "bg-orato-dark ",
+    bg: "bg-orato-dark",
     color: "#1d99d6",
     extra: "text-white",
-    size: "text-5xl md:text-8xl xl:text-9xl",
+    size: "text-5xl md:text-8xl xl:text-9xl cursor-invert cursor-big",
     hidden: "visible",
     hidden2: "invisible",
   },
   {
     url: "/Homepage/Onderwerpen/test.jpg",
     title: "Supervisie",
-    description: "Omdat je als ervaren coach professioneel en persoonlijk wilt blijven leren.",
+    description:
+      "Omdat je als ervaren coach professioneel en persoonlijk wilt blijven leren.",
     id: 2,
     bg: "bg-orato-light",
     color: "#5c5ba5",
     border: "rounded-full",
     extra: "text-black",
-    size: "text-5xl md:text-8xl xl:text-9xl",
+    size: "text-5xl md:text-8xl xl:text-9xl cursor-invert cursor-big",
     hidden: "invisible",
     hidden2: "hidden",
   },
@@ -136,15 +161,14 @@ const cards: CardType[] = [
     url: "/Homepage/Onderwerpen/Presenteren.jpg",
     firstLetter: "P",
     title: "Presenteren",
-    description: "Jezelf laten zien en horen zoals dat past bij jou en je functie. Persoonlijke uitstraling en effectieve communicatie op z’n best.",
+    description:
+      "Jezelf laten zien en horen zoals dat past bij jou en je functie. Persoonlijke uitstraling en effectieve communicatie op z’n best.",
     id: 3,
     bg: "bg-orato-dark",
     color: "#77b829",
     extra: "text-white",
-    size: "text-4xl md:text-8xl xl:text-9xl",
+    size: "text-4xl md:text-8xl xl:text-9xl cursor-invert cursor-big",
     hidden: "invisible",
     hidden2: "visible",
-
-
   },
 ];

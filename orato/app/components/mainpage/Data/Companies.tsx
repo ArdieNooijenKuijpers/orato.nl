@@ -65,5 +65,7 @@ interface Company {
     { name: "RevolutionPT", size: "M" },
     { name: "NVD", size: "K" },
     { name: "Commanderij College", size: "K" },
+
+
   ];
   

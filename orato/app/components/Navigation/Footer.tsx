@@ -30,7 +30,8 @@ const FooterComp = () => {
     "NOBCO.jfif",
     "OCN.jfif",
     "OratoWhite.jfif",
-    "RP.jfif"
+    "RP.jfif",
+    "SC.tif", //TODO ADD A JPEG OR OTHER VARIANT
   ];
 
   return (
@@ -79,7 +80,7 @@ const FooterComp = () => {
                   <Link href="tel:+31402842901" className="hover:underline cursor-small">
                     +31 40 284 29 01
                   </Link>
-                  <span className="text-blue-400 mx-2">•</span>
+                  <span className="text-blue-400 mx-2 ">•</span>
                   <Link href="tel:+31651088688" className="hover:underline cursor-small">
                     +31 6 5108 8688
                   </Link>
@@ -87,7 +88,7 @@ const FooterComp = () => {
                 <p>
                   <Link
                     href="mailto:ardie@orato.info"
-                    className="text-green-400 hover:underline cursor-small"
+                    className="text-orato-blue hover:underline cursor-small"
                   >
                     ardie@orato.info
                   </Link>
@@ -154,7 +155,7 @@ const FooterComp = () => {
               {/* Marquee for company logos */}
               <div className="flex animate-marquee">
                 {bedrijfImages.concat(bedrijfImages).map((image, index) => (
-                  <div key={index} className="mx-4 flex-shrink-0 relative w-[80px] h-[80px] md:w-[100px] md:h-[100px]">
+                  <div key={index} className="mx-2 flex-shrink-0 relative w-[80px] h-[80px] md:w-[100px] md:h-[100px]">
                     <Image
                       src={`/Homepage/bedrijven/${encodeURIComponent(image)}`}
                       alt={image}

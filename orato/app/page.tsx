@@ -122,6 +122,9 @@ export default function Home() {
       <div className="bg-orato-dark  min-h-screen">
         <Example />
       </div>
+      {/* <div className="  min-h-screen bg-orato-light   ">
+        <p>TEST</p>
+      </div> */}
 
       <div className="bg-orato-dark min-h-screen flex items-center justify-center ">
 

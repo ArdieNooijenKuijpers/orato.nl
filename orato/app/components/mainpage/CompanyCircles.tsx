@@ -5,17 +5,17 @@ import { companies } from '../mainpage/Data/Companies';
 
 // Tailwind sizing classes for each company size.
 const sizeMap: Record<'K' | 'M' | 'G' | 'GG', string> = {
-  K: 'w-4 h-4',   // 16px
-  M: 'w-6 h-6',   // 24px
-  G: 'w-10 h-10', // 40px
+  K: 'w-6 h-6',   // 16px
+  M: 'w-10 h-10',   // 24px
+  G: 'w-16 h-16', // 40px
   GG: 'w-28 h-28' // 96px
 };
 
 // Pixel sizes corresponding to the Tailwind sizes.
 const pixelSizeMap: Record<'K' | 'M' | 'G' | 'GG', number> = {
-  K: 16,
-  M: 24,
-  G: 40,
+  K: 24,
+  M: 40,
+  G: 64,
   GG: 112,
 };
 
@@ -58,7 +58,7 @@ const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }
 
   return (
     <motion.div
-      className={`absolute rounded-full bg-orato-dark  flex justify-center items-center text-center transition-colors duration-300 cursor-invert overflow-visible ${sizeMap[company.size]}`}
+      className={`absolute rounded-full bg-orato-dark   flex justify-center items-center text-center transition-colors duration-300 cursor-invert overflow-visible ${sizeMap[company.size]}`}
       style={{
         top: `${(position.y / dimensions.height) * 100}%`,
         left: `${(position.x / dimensions.width) * 100}%`,

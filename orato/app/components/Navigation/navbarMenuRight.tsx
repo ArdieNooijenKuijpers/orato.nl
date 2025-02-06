@@ -7,8 +7,8 @@ const NavbarMenuRight = () => {
 
   const NavbarMenuRightItems = [
     { name: 'COACHING', path: '/Onderwerpen/Coaching' },
-    { name: 'PRESENTEREN', path: '/Onderwerpen/Presenteren' },
     { name: 'SUPERVISIE', path: '/Onderwerpen/Supervisie' },
+    { name: 'PRESENTEREN', path: '/Onderwerpen/Presenteren' },
     { name: 'ARDIE', path: '/Onderwerpen/ardie' },
   ];
 
