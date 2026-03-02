@@ -30,8 +30,8 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["3%", "-63%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-rgb">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+    <section ref={targetRef} className="relative h-[300vh] bg-rgb cursor-scroll">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden cursor-scroll">
         <motion.div style={{ x }} className="flex">
           {cards.map((card) => (
             <Card card={card} key={card.id} />
@@ -79,7 +79,7 @@ const Card = ({ card }: { card: CardType }) => {
 
       {/* Text and button container */}
       <div className="w-full flex flex-col items-center mt-4">
-        <div className="w-11/12 md:w-3/4 2xl:w-10/12 text-left">
+        <div className="w-11/12 md:w-3/4 2xl:w-10/12 text-left ">
           <h1
             className={`${
               card.size ? card.size : "text-3xl md:text-4xl lg:text-5xl "
