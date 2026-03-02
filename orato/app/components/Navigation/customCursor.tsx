@@ -1,19 +1,25 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import useMousePosition from '@/app/utils/useMousePosition';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 // Added the mouse following feature use cursor-invert and cursor-small to get the results
 
 export function CustomCursor() {
-  const { x, y } = useMousePosition();
   const [isHoveringSmall, setIsHoveringSmall] = useState(false);
   const [isInverting, setIsInverting] = useState(false);
   const [isHoveringBig, setIsHoveringBig] = useState(false);
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const x = useSpring(rawX, { stiffness: 900, damping: 40, mass: 0.2 });
+  const y = useSpring(rawY, { stiffness: 900, damping: 40, mass: 0.2 });
 //to so if the mouse is hovering over the cursor
   useEffect(() => {
-    const handleMouseOver = (e: { target: any }) => {
-      const target = e.target;
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target instanceof Element ? e.target : null;
+
+      if (!target) {
+        return;
+      }
 
       if (target.closest(".cursor-small")) {
         setIsHoveringSmall(true);
@@ -27,8 +33,12 @@ export function CustomCursor() {
       }
     };
 //to see if the mouse is not hovering over the cursor
-    const handleMouseOut = (e: { target: any }) => {
-      const target = e.target;
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target instanceof Element ? e.target : null;
+
+      if (!target) {
+        return;
+      }
 
       if (target.closest(".cursor-small")) {
         setIsHoveringSmall(false);
@@ -51,32 +61,36 @@ export function CustomCursor() {
     };
   }, []);
 
+  useEffect(() => {
+    const offset = isHoveringSmall ? 8 : isHoveringBig ? 50 : 20;
+    const handlePointerMove = (e: PointerEvent) => {
+      rawX.set(e.clientX - offset);
+      rawY.set(e.clientY - offset);
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    return () => window.removeEventListener('pointermove', handlePointerMove);
+  }, [isHoveringSmall, isHoveringBig, rawX, rawY]);
+
   return (
     <>
       {/* Orb that follows the mouse */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-50 rounded-full"
         style={{
+          x,
+          y,
             // this is the css for the cursor so it changes when i hover over the text
           mixBlendMode: isInverting ? 'difference' : 'normal',
         }}
         animate={{
-          x: x !== null ? x - (isHoveringSmall ? 8 : isHoveringBig ? 50 : 20) : 0,
-          y: y !== null ? y - (isHoveringSmall ? 8 : isHoveringBig ? 50 : 20) : 0,
           //here i set the sizes of the cursor
           width: isHoveringSmall ? 8 : isHoveringBig ? 100 : 40,
           height: isHoveringSmall ? 8 : isHoveringBig ? 100 : 40,
           backgroundColor: isInverting ? '#ffffff' : '#f97316', // white or orange-500
         }}
         //here you can play with the settings of the ball and how responsive it is
-        transition={{
-          type: 'spring',
-          stiffness: 1000,
-          damping: 30,
-          mass: 1,
-          ease: 'easeInOut',
-          duration: 5,
-        }}
+        transition={{ type: 'spring', stiffness: 450, damping: 35 }}
       />
     </>
   );

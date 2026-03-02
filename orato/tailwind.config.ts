@@ -35,6 +35,7 @@ const config = {
         'orato-purple': '#5c5ba5',
         'orato-dark': '#141414',
         'orato-light': '#f0f0f0',
+        'orato-red': '#da391f',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
