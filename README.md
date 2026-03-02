@@ -10,7 +10,10 @@
 Official website project for **orato.nl**.
 
 Beste bezoeker,
-Deze website is tot stand gekomen in samenwerking met Art Nooijen. Dank voor je interesse. Ik wil je vragen respect te tonen voor de content van 'de [LICENSE](LICENSE)' en wens je veel leefplezier. Hartelijke groet, Ardie
+
+Deze website is tot stand gekomen in samenwerking met Art Nooijen. Dank voor je interesse. Ik wil je vragen respect te tonen voor de content van 'de [LICENSE](LICENSE)' en wens je veel leefplezier. 
+
+Hartelijke groet, Ardie
 
 ## Developer
 
