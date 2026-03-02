@@ -132,7 +132,7 @@ export function CustomCursor() {
                 </textPath>
               </text>
             </svg>
-            <div className="z-10 flex flex-col items-center">
+            {/* <div className="z-10 flex flex-col items-center">
               <span className="text-[11px] font-medium leading-none">Scroll</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +148,7 @@ export function CustomCursor() {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
         )}
       </motion.div>
