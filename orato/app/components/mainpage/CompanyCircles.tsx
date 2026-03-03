@@ -233,7 +233,7 @@ const CompanyCircles: React.FC = () => {
               className="absolute left-1/2 top-1/2"
               animate={{
                 x: ["-120%", "-35%", "-8%", "-8%", "-120%"],
-                y: ["-30%", "50%", "10%", "8%", "-30%"],
+                y: ["-40%", "100%", "38%", "40%", "-40%"],
               }}
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", times: [0, 0.3, 0.45, 0.72, 1] }}
             >
