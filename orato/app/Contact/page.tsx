@@ -69,7 +69,7 @@ const ContactPage = () => {
                 <p>
                   <a
                     className="underline underline-offset-4 hover:text-orato-orange"
-                    href="https://www.linkedin.com"
+                    href="https://nl.linkedin.com/in/ardienooijenkuijpers"
                     target="_blank"
                     rel="noreferrer"
                   >

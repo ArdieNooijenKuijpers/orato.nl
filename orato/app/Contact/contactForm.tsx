@@ -23,36 +23,59 @@ const initialState: FormState = {
   captcha: "",
 };
 
+type FieldErrors = Partial<Record<keyof FormState, string>>;
+
 const ContactForm = () => {
   const [formData, setFormData] = useState<FormState>(initialState);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const captchaQuestion = useMemo(() => ({ left: 4, right: 3 }), []);
   const captchaResult = captchaQuestion.left + captchaQuestion.right;
 
-  const isCaptchaValid = Number(formData.captcha) === captchaResult;
-  const isNaamValid = formData.naam.trim().length > 1;
-  const isEmailValid = /^\S+@\S+\.\S+$/.test(formData.email);
+  const errors: FieldErrors = useMemo(
+    () => ({
+      naam: formData.naam.trim().length > 1 ? "" : "Vul je naam in.",
+      email: /^\S+@\S+\.\S+$/.test(formData.email) ? "" : "Vul een geldig e-mailadres in.",
+      captcha: Number(formData.captcha) === captchaResult ? "" : "CAPTCHA is niet correct.",
+    }),
+    [captchaResult, formData.captcha, formData.email, formData.naam],
+  );
 
-  const canSubmit = isNaamValid && isEmailValid && isCaptchaValid;
+  const hasErrors = Boolean(errors.naam || errors.email || errors.captcha);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitted(true);
+    setTouched((prev) => ({ ...prev, naam: true, email: true, captcha: true }));
+    setShowSuccess(false);
 
-    if (!canSubmit) {
+    if (hasErrors) {
       return;
     }
 
     setFormData(initialState);
+    setTouched({});
+    setShowSuccess(true);
   };
 
   const updateField = (key: keyof FormState, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
+    if (showSuccess) {
+      setShowSuccess(false);
+    }
+  };
+
+  const onFieldBlur = (key: keyof FormState) => {
+    setTouched((prev) => ({ ...prev, [key]: true }));
+  };
+
+  const showError = (key: keyof FormState) => {
+    const message = errors[key];
+    return touched[key] && message ? message : "";
   };
 
   return (
-    <div className="rounded-3xl border border-orato-dark/15 bg-white p-6 shadow-[0_20px_80px_-30px_rgba(20,20,20,0.35)] md:p-8">
+    <div className="relative rounded-3xl border border-orato-dark/15 bg-white p-6 shadow-[0_20px_80px_-30px_rgba(20,20,20,0.35)] md:p-8">
       <div className="mb-8 space-y-3">
         <h2 className={`${notoSerifDisplay.className} text-3xl text-orato-dark md:text-4xl`}>
           Contactformulier
@@ -76,8 +99,12 @@ const ContactForm = () => {
               placeholder="Jouw naam"
               value={formData.naam}
               onChange={(e) => updateField("naam", e.target.value)}
+              onBlur={() => onFieldBlur("naam")}
+              aria-invalid={Boolean(showError("naam"))}
+              error={Boolean(showError("naam"))}
               required
             />
+            <ErrorTooltip message={showError("naam")} />
           </LabelInputContainer>
 
           <LabelInputContainer>
@@ -91,8 +118,12 @@ const ContactForm = () => {
               placeholder="naam@voorbeeld.nl"
               value={formData.email}
               onChange={(e) => updateField("email", e.target.value)}
+              onBlur={() => onFieldBlur("email")}
+              aria-invalid={Boolean(showError("email"))}
+              error={Boolean(showError("email"))}
               required
             />
+            <ErrorTooltip message={showError("email")} />
           </LabelInputContainer>
         </div>
 
@@ -153,8 +184,12 @@ const ContactForm = () => {
             placeholder="Antwoord"
             value={formData.captcha}
             onChange={(e) => updateField("captcha", e.target.value)}
+            onBlur={() => onFieldBlur("captcha")}
+            aria-invalid={Boolean(showError("captcha"))}
+            error={Boolean(showError("captcha"))}
             required
           />
+          <ErrorTooltip message={showError("captcha")} />
         </LabelInputContainer>
 
         <button
@@ -169,19 +204,13 @@ const ContactForm = () => {
           Je krijgt automatisch een bevestiging van je bericht per e-mail. Ik
           gebruik je gegevens alleen om je e-mail te beantwoorden.
         </p>
-
-        {isSubmitted && !canSubmit && (
-          <p className="text-sm font-medium text-orato-red">
-            Vul naam, e-mailadres en CAPTCHA correct in.
-          </p>
-        )}
-
-        {isSubmitted && canSubmit && (
-          <p className="text-sm font-medium text-orato-green">
-            Dank je wel! Je bericht is klaar om verzonden te worden.
-          </p>
-        )}
       </form>
+
+      {showSuccess && (
+        <p className="pointer-events-none absolute right-8 top-8 rounded-lg bg-orato-green px-3 py-2 text-xs font-medium text-white shadow-lg">
+          Dank je wel! Je bericht is klaar om verzonden te worden.
+        </p>
+      )}
     </div>
   );
 };
@@ -191,15 +220,33 @@ const LabelInputContainer = ({
 }: {
   children: ReactNode;
 }) => {
-  return <div className="flex w-full flex-col gap-2">{children}</div>;
+  return <div className="relative flex w-full flex-col gap-2">{children}</div>;
 };
 
-const Input = ({ className = "", ...props }: InputHTMLAttributes<HTMLInputElement>) => {
+const Input = ({
+  className = "",
+  error = false,
+  ...props
+}: InputHTMLAttributes<HTMLInputElement> & { error?: boolean }) => {
   return (
     <input
-      className={`h-11 w-full rounded-xl border border-orato-dark/20 bg-orato-light/30 px-4 text-sm text-orato-dark outline-none transition focus:border-orato-orange focus:ring-2 focus:ring-orato-orange/20 ${className}`}
+      className={`h-11 w-full rounded-xl border bg-orato-light/30 px-4 text-sm text-orato-dark outline-none transition focus:border-orato-orange focus:ring-2 focus:ring-orato-orange/20 ${
+        error ? "border-orato-red/80 ring-1 ring-orato-red/20" : "border-orato-dark/20"
+      } ${className}`}
       {...props}
     />
+  );
+};
+
+const ErrorTooltip = ({ message }: { message?: string }) => {
+  if (!message) {
+    return null;
+  }
+
+  return (
+    <span className="pointer-events-none absolute -top-2 left-3 z-20 -translate-y-full rounded-md bg-orato-red px-2 py-1 text-xs font-medium text-white shadow-md">
+      {message}
+    </span>
   );
 };
 
