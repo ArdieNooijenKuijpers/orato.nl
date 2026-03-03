@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Serif_Display, Montserrat } from "next/font/google";
 import { CustomCursor } from "./components/Navigation/customCursor";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 import "./globals.css";
@@ -27,10 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-
         {children}
         <Navbar />
-
         <CustomCursor />
         <SpeedInsights />
       </body>
