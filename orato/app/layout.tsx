@@ -30,7 +30,7 @@ export default function RootLayout({
         {children}
         <Navbar />
         <CustomCursor />
-        <SpeedInsights />
+        {process.env.NODE_ENV === "production" ? <SpeedInsights /> : null}
       </body>
     </html>
   );

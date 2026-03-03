@@ -1,4 +1,4 @@
-import Head from "next/head";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Noto_Serif_Display , Tangerine } from "next/font/google";
 import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
@@ -13,21 +13,14 @@ import CompanyCircles from "./components/mainpage/CompanyCircles";
 import LandingIntro from "./components/mainpage/LandingIntro";
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
+export const metadata: Metadata = {
+  title: "Orato - Home",
+  description: "Orato Coaching, Presenting and Supervision",
+};
 
 export default function Home() {
   return (
     <>
-      {/* Metadata section */}
-      <Head>
-        <title>Orato - Home</title>
-        <meta
-          name="description"
-          content="Orato Coaching, Presenting and Supervision"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
-
       <LandingIntro />
 
       {/* Page layout */}
