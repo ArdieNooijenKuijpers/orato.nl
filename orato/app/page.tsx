@@ -11,7 +11,6 @@ import ParticleRing2 from "./components/mainpage/ParticleRing2";
 import FooterComp from "./components/Navigation/Footer";
 import CompanyCircles from "./components/mainpage/CompanyCircles";
 import LandingIntro from "./components/mainpage/LandingIntro";
-
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
 

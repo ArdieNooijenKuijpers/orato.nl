@@ -4,8 +4,10 @@ import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 
 const INTRO_STORAGE_KEY = "orato-home-intro-session-v1";
 const INTRO_COOKIE_NAME = "orato_home_intro_session_v1";
-const INTRO_VIDEO_SRC =
-  "/Homepage/LandingAnimation/Video%20ardie%20DEF%20zonder%20fade%20PLAATSEN%20Start%20HOMEPAGE.mp4";
+type VideoSource = {
+  src: string;
+  type: "video/webm" | "video/mp4";
+};
 
 // Timing constants for the intro animation and outro transition
 const OUTRO_MASK_MS = 700;
@@ -16,7 +18,7 @@ const OUTRO_EASING = "cubic-bezier(0.22, 0.61, 0.36, 1)";
 const MASK_START_SIZE = "2400vmax";
 const MASK_END_SIZE = "44vmin";
 
-export default function LandingIntroClient() {
+export default function LandingIntroClient({ sources }: { sources: VideoSource[] }) {
   const [showIntro, setShowIntro] = useState(true);
   const [isOutro, setIsOutro] = useState(false);
   const [animateOutro, setAnimateOutro] = useState(false);
@@ -72,7 +74,7 @@ export default function LandingIntroClient() {
     finishIntro();
   }, [finishIntro, isOutro]);
 
-  if (!showIntro) {
+  if (!showIntro || sources.length === 0) {
     return null;
   }
 
@@ -97,11 +99,14 @@ export default function LandingIntroClient() {
         muted
         playsInline
         preload="auto"
+        fetchPriority="high"
         className="h-full w-full object-cover"
         style={outroStyle}
         onEnded={startOutro}
       >
-        <source src={INTRO_VIDEO_SRC} type="video/mp4" />
+        {sources.map((source) => (
+          <source key={`${source.type}-${source.src}`} src={source.src} type={source.type} />
+        ))}
       </video>
 
       <button
