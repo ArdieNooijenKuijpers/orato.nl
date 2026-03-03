@@ -7,7 +7,8 @@ import Image from "next/image";
 const FooterComp = () => {
   const pathname = usePathname();
   const qrSize = 120;
-  const partnerLogoSize = 84;
+  const partnerLogoCardWidth = 150;
+  const partnerLogoCardHeight = 92;
 
   const footerMenuItems = [
     { name: 'COACHING', path: '/Onderwerpen/Coaching' },
@@ -29,18 +30,18 @@ const FooterComp = () => {
     "MCC.jfif",
     "NOBCO.jfif",
     "OCN.jfif",
-    "OratoWhite.jfif",
+    "Oratowhite.jfif",
     "RP.jfif",
-    "SC.tif", //TODO ADD A JPEG OR OTHER VARIANT
   ];
+  const marqueeImages = bedrijfImages.filter((image) => !image.toLowerCase().endsWith(".tif"));
 
   return (
     <div
-      className="relative h-auto md:h-[55vh]"
+      className="relative h-auto md:h-[60vh]"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="relative h-auto md:h-[calc(100vh+55vh)] top-0 md:-top-[100vh]">
-        <footer className="h-auto md:h-[55vh] relative md:sticky md:top-[calc(100vh-55vh)] border-t border-white/10 bg-orato-dark text-white">
+      <div className="relative h-auto md:h-[calc(100vh+60vh)] top-0 md:-top-[100vh]">
+        <footer className="h-auto md:h-[60vh] relative md:sticky md:top-[calc(100vh-60vh)] border-t border-white/10 bg-orato-dark text-white">
           <div className="mx-auto max-w-7xl px-4 py-4 md:flex md:h-full md:items-end md:px-6 md:py-3 lg:px-8">
             <div className="w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -143,21 +144,60 @@ const FooterComp = () => {
 
           <div className="mt-8 border-t border-white/10 pt-6">
             <p className="text-center text-xs text-white/70 md:text-sm">
-              Website Art Nooijen 2025 | Fotografie Grafidi | Film Martijn Welles | Copyright Ardie Nooijen-Kuijpers
+              Website by{" "}
+              <Link
+                href="https://nl.linkedin.com/in/art-nooijen-2752952a5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/5 px-2.5 py-1 text-white transition-all duration-300 hover:border-orato-orange hover:bg-orato-orange/15 hover:text-orato-orange cursor-small"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-3.5 w-3.5"
+                  aria-hidden="true"
+                >
+                  <path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38a1.56 1.56 0 0 1 0 3.12ZM5.5 9.75h2.9V18H5.5V9.75Zm4.7 0h2.78v1.13h.04c.39-.73 1.34-1.5 2.76-1.5 2.95 0 3.49 1.94 3.49 4.46V18h-2.9v-3.69c0-.88-.02-2.01-1.23-2.01-1.23 0-1.42.96-1.42 1.95V18h-2.9V9.75Z" />
+                </svg>
+                Art Nooijen
+              </Link>{" "}
+              2025
+              {" | "}
+              <Link
+                href="https://github.com/ArtNooijen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/5 px-2.5 py-1 text-white transition-all duration-300 hover:border-orato-orange hover:bg-orato-orange/15 hover:text-orato-orange cursor-small"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-3.5 w-3.5"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2A10 10 0 0 0 8.84 21.5c.5.08.68-.21.68-.47v-1.66c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.46-1.11-1.46-.9-.61.07-.6.07-.6 1 .07 1.53 1.02 1.53 1.02.88 1.5 2.31 1.07 2.88.82.09-.63.35-1.07.63-1.31-2.22-.25-4.56-1.1-4.56-4.92 0-1.09.39-1.97 1.02-2.67-.1-.25-.44-1.27.1-2.64 0 0 .83-.27 2.73 1.02A9.6 9.6 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.29 2.73-1.02 2.73-1.02.54 1.37.2 2.39.1 2.64.64.7 1.02 1.58 1.02 2.67 0 3.83-2.35 4.66-4.58 4.91.36.31.68.91.68 1.84v2.72c0 .26.18.56.69.47A10 10 0 0 0 12 2Z" />
+                </svg>
+                ArtNooijen
+              </Link>
+              {" | Fotografie Grafidi | Film Martijn Welles | Copyright Ardie Nooijen-Kuijpers"}
             </p>
-            <div className="mt-5 w-full overflow-hidden">
-              <div className="flex animate-marquee">
-                {bedrijfImages.concat(bedrijfImages).map((image, index) => (
+            <div className="relative mt-5 w-full overflow-hidden py-1">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-orato-dark to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-orato-dark to-transparent" />
+              <div className="flex w-max animate-marquee gap-4">
+                {marqueeImages.concat(marqueeImages).map((image, index) => (
                   <div
                     key={index}
-                    className="relative mx-2 flex-shrink-0"
-                    style={{ width: partnerLogoSize, height: partnerLogoSize }}
+                    className="relative flex-shrink-0 rounded-xl border border-white/15 bg-white/95 p-3 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.8)]"
+                    style={{ width: partnerLogoCardWidth, height: partnerLogoCardHeight }}
                   >
                     <Image
                       src={`/Homepage/bedrijven/${encodeURIComponent(image)}`}
                       alt={image}
                       fill
-                      sizes={`${partnerLogoSize}px`}
+                      sizes={`${partnerLogoCardWidth}px`}
                       className="object-contain"
                     />
                   </div>
@@ -179,7 +219,7 @@ const FooterComp = () => {
           }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 34s linear infinite;
         }
       `}</style>
     </div>
