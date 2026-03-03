@@ -16,8 +16,8 @@ const NavbarMenuRight = () => {
   const currentPath = normalizePath(pathname);
 
   return (
-    <div className="p-2 mr-14 mt-6 cursor-small">
-      <ul className="flex flex-col space-y-0">
+    <div className="cursor-small">
+      <ul className="flex flex-col space-y-0 sm:space-y-0">
         {NavbarMenuRightItems.map((item) => {
           const isActive = currentPath === normalizePath(item.path);
 
@@ -26,7 +26,7 @@ const NavbarMenuRight = () => {
               <Link
                 href={item.path}
                 aria-current={isActive ? 'page' : undefined}
-                className={`relative inline-block text-lg transition-all
+                className={`relative inline-block text-sm sm:text-lg transition-all
                   before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:origin-left before:bg-white before:transition-transform before:duration-300
                   hover:before:scale-x-100
                   ${
