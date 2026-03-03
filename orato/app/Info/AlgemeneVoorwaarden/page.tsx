@@ -1,6 +1,12 @@
+import FooterComp from "../../components/Navigation/Footer";
+
 const AlgemeneVoorwaardenPage = () => {
-    return (
+  return (
+    <>
       <div>AlgemeneVoorwaardenPage</div>
-    )
-  }
-  export default AlgemeneVoorwaardenPage
+      <FooterComp />
+    </>
+  );
+};
+
+export default AlgemeneVoorwaardenPage;

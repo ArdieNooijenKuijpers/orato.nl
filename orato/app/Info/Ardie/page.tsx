@@ -1,5 +1,6 @@
 import { Timeline } from "@/components/ui/timeline";
 import { Noto_Serif_Display } from "next/font/google";
+import FooterComp from "../../components/Navigation/Footer";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -232,6 +233,8 @@ const ArdiePage = () => {
           </div>
         </div>
       </div>
+
+      <FooterComp />
     </>
   );
 };

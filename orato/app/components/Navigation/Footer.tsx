@@ -1,5 +1,4 @@
 'use client';
-// Footer.tsx
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,19 +6,20 @@ import Image from "next/image";
 
 const FooterComp = () => {
   const pathname = usePathname();
+  const qrSize = 120;
+  const partnerLogoSize = 84;
 
   const footerMenuItems = [
     { name: 'COACHING', path: '/Onderwerpen/Coaching' },
     { name: 'SUPERVISIE', path: '/Onderwerpen/Supervisie' },
     { name: 'PRESENTEREN', path: '/Onderwerpen/Presenteren' },
     { name: 'ARDIE', path: '/Info/Ardie' },
-    { name: 'CONTACT', path: '/contact' },
+    { name: 'CONTACT', path: '/Contact' },
     { name: 'INSCHRIJFFORMULIER', path: '/inschrijfformulier' },
     { name: 'ALGEMENE VOORWAARDEN', path: '/Info/AlgemeneVoorwaarden' },
     { name: 'PRIVACYVERKLARING', path: '/Info/PrivacyVerklaring' },
   ];
 
-  // Define the company logo file names. Adjust the file names and paths as needed.
   const bedrijfImages = [
     "AVC.jfif",
     "CRKBO.jfif",
@@ -35,69 +35,58 @@ const FooterComp = () => {
   ];
 
   return (
-    // On mobile: auto height; on md+: fixed vh height (80vh)
-    <div 
-      className="relative h-auto md:h-[80vh]"
+    <div
+      className="relative h-auto md:h-[55vh]"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      {/* The inner container uses auto height on mobile and fixed vh on md+ */}
-      <div className="relative h-auto md:h-[calc(100vh+80vh)] top-0 md:-top-[100vh]">
-        {/* Footer container: relative on mobile (scrolls normally) and sticky on md+ */}
-        <div className="h-auto md:h-[80vh] relative md:sticky md:top-[calc(100vh-80vh)] bg-orato-dark text-white">
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Column 1: Logo & Navigation */}
-              <div>
-                <nav>
-                  <h2 className="font-bold mb-2">Menu</h2>
-                  <ul className="space-y-1">
-                    {footerMenuItems.map((item) => (
-                      <li key={item.name}>
-                        <Link
-                          href={item.path}
-                          className={`relative inline-block text-lg font-medium transition-all 
-                            hover:text-white 
-                            before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:origin-left before:scale-x-0 
-                            before:bg-white before:transition-transform before:duration-300 
-                            hover:before:scale-x-100 cursor-small
-                            ${pathname === item.path ? 'before:scale-x-100 text-black' : ''}`}
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
+      <div className="relative h-auto md:h-[calc(100vh+55vh)] top-0 md:-top-[100vh]">
+        <footer className="h-auto md:h-[55vh] relative md:sticky md:top-[calc(100vh-55vh)] border-t border-white/10 bg-orato-dark text-white">
+          <div className="mx-auto max-w-7xl px-4 py-4 md:flex md:h-full md:items-end md:px-6 md:py-3 lg:px-8">
+            <div className="w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+            <nav>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Menu</h2>
+              <ul className="space-y-2">
+                {footerMenuItems.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.path}
+                      className={`inline-block text-sm md:text-base transition-colors hover:text-orato-orange cursor-small ${
+                        pathname === item.path ? "font-semibold text-orato-orange" : "text-white/90"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-              {/* Column 2: Contact Information */}
-              <div>
-                <h2 className="font-bold mb-2">Contact</h2>
-                <p>Drs. Ardie Nooijen-Kuijpers</p>
+            <div>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Contact</h2>
+              <div className="space-y-1 text-sm text-white/90">
+                <p className="font-semibold text-white">Drs. Ardie Nooijen-Kuijpers</p>
                 <p>Rutger van den Broeckelaan 3</p>
                 <p>5671 EB Nuenen</p>
                 <p>
-                  <Link href="tel:+31402842901" className="hover:underline cursor-small">
+                  <Link href="tel:+31402842901" className="hover:text-orato-orange cursor-small">
                     +31 40 284 29 01
                   </Link>
-                  <span className="text-blue-400 mx-2 ">•</span>
-                  <Link href="tel:+31651088688" className="hover:underline cursor-small">
+                  <span className="mx-2 text-white/50">•</span>
+                  <Link href="tel:+31651088688" className="hover:text-orato-orange cursor-small">
                     +31 6 5108 8688
                   </Link>
                 </p>
                 <p>
-                  <Link
-                    href="mailto:ardie@orato.info"
-                    className="text-orato-blue hover:underline cursor-small"
-                  >
+                  <Link href="mailto:ardie@orato.info" className="hover:text-orato-orange cursor-small">
                     ardie@orato.info
                   </Link>
-                  <span className="mx-2">•</span>
+                  <span className="mx-2 text-white/50">•</span>
                   <Link
-                    href="https://orato.info"
+                    href="https://orato.nl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline cursor-small"
+                    className="hover:text-orato-orange cursor-small"
                   >
                     orato.nl
                   </Link>
@@ -107,62 +96,68 @@ const FooterComp = () => {
                     href="https://www.linkedin.com/in/ardienooijenkuijpers/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline cursor-small"
+                    className="hover:text-orato-orange cursor-small"
                   >
                     LinkedIn
                   </Link>
                 </p>
-                <div className="mt-2 relative w-[120px] h-[120px] md:w-[120px] md:h-[120px]">
-                  <Image
-                    src="/Homepage/QR-codes/Orato-linkedin.jpg"
-                    alt="Orato LinkedIn QR Code"
-                    fill
-                    sizes="120px"
-                    className="object-contain transition-transform duration-500 group-hover:rotate-12"
-                  />
-                </div>
               </div>
-
-              {/* Column 3: Company Details & Additional Info */}
-              <div>
-                <h2 className="font-bold mb-2">Bedrijfsgegevens</h2>
-                <p>KvK: 160 65 919</p>
-                <p>BTW: NL001890491B36</p>
-                <p>IBAN: NL40 RABO 01774.110.74</p>
-                <div className="mt-4">
-                  {/* Additional company details can be added here */}
-                </div>
-                <div className="mt-4 text-sm">
-                  <p className="font-bold">Scan voor mijn contact gegevens</p>
-                  <div className="mt-4 relative w-[150px] h-[150px] md:w-[150px] md:h-[150px]">
-                    <Image
-                      src="/Homepage/QR-codes/Orato-contactgegevens.jpg"
-                      alt="Orato Contactgegevens QR Code"
-                      fill
-                      sizes="150px"
-                      className="object-contain transition-transform duration-500 group-hover:rotate-12"
-                    />
-                  </div>
-                </div>
+              <div
+                className="mt-4 relative rounded-md border border-white/10 bg-white p-1"
+                style={{ width: qrSize, height: qrSize }}
+              >
+                <Image
+                  src="/Homepage/QR-codes/Orato-linkedin.jpg"
+                  alt="Orato LinkedIn QR Code"
+                  fill
+                  sizes={`${qrSize}px`}
+                  className="object-contain"
+                />
               </div>
             </div>
 
-            {/* Infinite scrolling logos (marquee) */}
-            <div className="mt-8 w-full overflow-hidden">
-              {/* Centered credits text */}
-              <div className="text-center mb-4">
-                Website Art Nooijen 2025 | Fotografie Grafidi | Film Martijn Welles | Copyright Ardie Nooijen-Kuijpers
+            <div>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Bedrijfsgegevens</h2>
+              <div className="space-y-1 text-sm text-white/90">
+                <p>KvK: 160 65 919</p>
+                <p>BTW: NL001890491B36</p>
+                <p>IBAN: NL40 RABO 01774.110.74</p>
               </div>
+              <div className="mt-4 text-sm">
+                <p className="font-semibold text-white">Scan voor contactgegevens</p>
+                <div
+                  className="mt-3 relative rounded-md border border-white/10 bg-white p-1"
+                  style={{ width: qrSize, height: qrSize }}
+                >
+                  <Image
+                    src="/Homepage/QR-codes/Orato-contactgegevens.jpg"
+                    alt="Orato Contactgegevens QR Code"
+                    fill
+                    sizes={`${qrSize}px`}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-              {/* Marquee for company logos */}
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <p className="text-center text-xs text-white/70 md:text-sm">
+              Website Art Nooijen 2025 | Fotografie Grafidi | Film Martijn Welles | Copyright Ardie Nooijen-Kuijpers
+            </p>
+            <div className="mt-5 w-full overflow-hidden">
               <div className="flex animate-marquee">
                 {bedrijfImages.concat(bedrijfImages).map((image, index) => (
-                  <div key={index} className="mx-2 flex-shrink-0 relative w-[80px] h-[80px] md:w-[100px] md:h-[100px]">
+                  <div
+                    key={index}
+                    className="relative mx-2 flex-shrink-0"
+                    style={{ width: partnerLogoSize, height: partnerLogoSize }}
+                  >
                     <Image
                       src={`/Homepage/bedrijven/${encodeURIComponent(image)}`}
                       alt={image}
                       fill
-                      sizes="(max-width: 767px) 80px, 100px"
+                      sizes={`${partnerLogoSize}px`}
                       className="object-contain"
                     />
                   </div>
@@ -170,10 +165,10 @@ const FooterComp = () => {
               </div>
             </div>
           </div>
-        </div>
+            </div>
+          </div>
+        </footer>
       </div>
-
-      {/* Inline CSS for the marquee animation */}
       <style jsx>{`
         @keyframes marquee {
           0% {

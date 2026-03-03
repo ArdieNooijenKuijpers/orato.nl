@@ -1,6 +1,12 @@
+import FooterComp from "../../components/Navigation/Footer";
+
 const PrivacyVerklaringPage = () => {
-    return (
+  return (
+    <>
       <div>PrivacyVerklaringPage</div>
-    )
-  }
-  export default PrivacyVerklaringPage
+      <FooterComp />
+    </>
+  );
+};
+
+export default PrivacyVerklaringPage;
