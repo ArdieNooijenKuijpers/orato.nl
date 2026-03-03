@@ -17,7 +17,7 @@ const ContactPage = () => {
           <section className="order-1 cursor-small overflow-hidden rounded-3xl bg-orato-dark text-white shadow-[0_20px_80px_-30px_rgba(20,20,20,0.8)] lg:order-2">
             <div className="relative h-full min-h-[420px] w-full md:min-h-[540px] lg:min-h-[640px]">
               <Image
-                src="/Contact/foto ardie deur contact 1.png"
+                src="/Contact/foto ardie deur contact 2.png"
                 alt="Ardie bij de deuropening"
                 fill
                 className="object-cover object-center"

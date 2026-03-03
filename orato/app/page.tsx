@@ -10,6 +10,7 @@ import ParticleRing from "./components/mainpage/ParticleRing";
 import ParticleRing2 from "./components/mainpage/ParticleRing2";
 import FooterComp from "./components/Navigation/Footer";
 import CompanyCircles from "./components/mainpage/CompanyCircles";
+import LandingIntro from "./components/mainpage/LandingIntro";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -27,6 +28,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
+
+      <LandingIntro />
 
       {/* Page layout */}
       <div className="flex flex-col min-h-screen static bg-orato-light">
