@@ -58,7 +58,7 @@ const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }
 
   return (
     <motion.div
-      className={`absolute rounded-full bg-orato-dark   flex justify-center items-center text-center transition-colors duration-300 cursor-invert overflow-visible ${sizeMap[company.size]}`}
+      className={`absolute rounded-full bg-orato-dark   flex justify-center items-center text-center transition-colors duration-300 cursor-invert cursor-small overflow-visible ${sizeMap[company.size]}`}
       style={{
         top: `${(position.y / dimensions.height) * 100}%`,
         left: `${(position.x / dimensions.width) * 100}%`,
