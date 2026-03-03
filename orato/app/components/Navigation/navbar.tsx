@@ -5,15 +5,18 @@ import NavbarMenuRight from "./navbarMenuRight"
 const Navbar = () => {
   return (
     <div>
-        {/* here change the text-white and add mix-blend-difference but then underline and image is not visible */}
-        <div className="fixed top-0 left-0 w-full z-10  flex justify-between mix-blend-difference text-white  ">
-            <NavbarLogoLeft />
-            <div>
-         
-                <NavbarMenuRight />
-            
+        <div className="fixed top-0 left-0 w-full z-10 flex justify-between pointer-events-none">
+            <div className="pointer-events-auto">
+                <NavbarLogoLeft showText={false} />
             </div>
-
+        </div>
+        <div className="fixed top-0 left-0 w-full z-20 flex justify-between mix-blend-difference text-white pointer-events-none">
+            <div className="pointer-events-auto">
+                <NavbarLogoLeft showLogo={false} />
+            </div>
+            <div className="pointer-events-auto">
+                <NavbarMenuRight />
+            </div>
         </div>
     </div>
   )
