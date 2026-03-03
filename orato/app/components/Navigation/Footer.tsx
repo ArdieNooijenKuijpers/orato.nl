@@ -32,6 +32,7 @@ const FooterComp = () => {
     "OCN.jfif",
     "Oratowhite.jfif",
     "RP.jfif",
+    "SC.png",
   ];
   const marqueeImages = bedrijfImages.filter((image) => !image.toLowerCase().endsWith(".tif"));
 
@@ -63,7 +64,7 @@ const FooterComp = () => {
               </ul>
             </nav>
 
-            <div>
+            <div className="flex h-full flex-col">
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Contact</h2>
               <div className="space-y-1 text-sm text-white/90">
                 <p className="font-semibold text-white">Drs. Ardie Nooijen-Kuijpers</p>
@@ -97,14 +98,25 @@ const FooterComp = () => {
                     href="https://www.linkedin.com/in/ardienooijenkuijpers/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-orato-orange cursor-small"
+                    className="inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/5 px-2.5 py-1 text-xs font-semibold text-white transition-all duration-300 hover:border-orato-orange hover:bg-orato-orange/15 hover:text-orato-orange cursor-small"
                   >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="h-3.5 w-3.5"
+                      aria-hidden="true"
+                    >
+                      <path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38a1.56 1.56 0 0 1 0 3.12ZM5.5 9.75h2.9V18H5.5V9.75Zm4.7 0h2.78v1.13h.04c.39-.73 1.34-1.5 2.76-1.5 2.95 0 3.49 1.94 3.49 4.46V18h-2.9v-3.69c0-.88-.02-2.01-1.23-2.01-1.23 0-1.42.96-1.42 1.95V18h-2.9V9.75Z" />
+                    </svg>
                     LinkedIn
                   </Link>
                 </p>
               </div>
+              <div className="mt-auto pt-4 text-sm">
+                <p className="font-semibold text-white">Scan LinkedIn</p>
               <div
-                className="mt-4 relative rounded-md border border-white/10 bg-white p-1"
+                className="mt-3 relative rounded-md border border-white/10 bg-white p-1"
                 style={{ width: qrSize, height: qrSize }}
               >
                 <Image
@@ -115,16 +127,17 @@ const FooterComp = () => {
                   className="object-contain"
                 />
               </div>
+              </div>
             </div>
 
-            <div>
+            <div className="flex h-full flex-col">
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Bedrijfsgegevens</h2>
               <div className="space-y-1 text-sm text-white/90">
                 <p>KvK: 160 65 919</p>
                 <p>BTW: NL001890491B36</p>
                 <p>IBAN: NL40 RABO 01774.110.74</p>
               </div>
-              <div className="mt-4 text-sm">
+              <div className="mt-auto pt-4 text-sm">
                 <p className="font-semibold text-white">Scan voor contactgegevens</p>
                 <div
                   className="mt-3 relative rounded-md border border-white/10 bg-white p-1"
@@ -190,7 +203,7 @@ const FooterComp = () => {
                 {marqueeImages.concat(marqueeImages).map((image, index) => (
                   <div
                     key={index}
-                    className="relative flex-shrink-0 rounded-xl border border-white/15 bg-white/95 p-3 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.8)]"
+                    className="relative flex-shrink-0 rounded-xl border border-white/15 bg-white p-3 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.8)]"
                     style={{ width: partnerLogoCardWidth, height: partnerLogoCardHeight }}
                   >
                     <Image
