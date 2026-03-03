@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
+import { CSSProperties, SyntheticEvent, useCallback, useEffect, useRef, useState } from "react";
 
 const INTRO_STORAGE_KEY = "orato-home-intro-session-v1";
 type VideoSource = {
@@ -10,12 +10,13 @@ type VideoSource = {
 
 // Timing constants for the intro animation and outro transition
 const OUTRO_MASK_MS = 700;
-const OUTRO_FADE_MS = 1000;
-const OUTRO_FADE_DELAY_MS = 1100;
+const OUTRO_FADE_MS = 700;
+const OUTRO_FADE_DELAY_MS = 800; 
 const OUTRO_MS = OUTRO_FADE_DELAY_MS + OUTRO_FADE_MS;
 const OUTRO_EASING = "cubic-bezier(0.22, 0.61, 0.36, 1)";
 const MASK_START_SIZE = "2400vmax";
 const MASK_END_SIZE = "44vmin";
+const OUTRO_START_BEFORE_END_MS = 800;
 
 export default function LandingIntroClient({ sources }: { sources: VideoSource[] }) {
   const [showIntro, setShowIntro] = useState(true);
@@ -72,6 +73,25 @@ export default function LandingIntroClient({ sources }: { sources: VideoSource[]
     finishIntro();
   }, [finishIntro, isOutro]);
 
+  const maybeStartOutroBeforeEnd = useCallback(
+    (event: SyntheticEvent<HTMLVideoElement>) => {
+      if (isOutro) {
+        return;
+      }
+
+      const video = event.currentTarget;
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return;
+      }
+
+      const msRemaining = (video.duration - video.currentTime) * 1000;
+      if (msRemaining <= OUTRO_START_BEFORE_END_MS) {
+        startOutro();
+      }
+    },
+    [isOutro, startOutro],
+  );
+
   if (!showIntro || sources.length === 0) {
     return null;
   }
@@ -99,6 +119,7 @@ export default function LandingIntroClient({ sources }: { sources: VideoSource[]
         preload="auto"
         className="h-full w-full object-cover"
         style={outroStyle}
+        onTimeUpdate={maybeStartOutroBeforeEnd}
         onEnded={startOutro}
       >
         {sources.map((source) => (
