@@ -3,7 +3,6 @@
 import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 
 const INTRO_STORAGE_KEY = "orato-home-intro-session-v1";
-const INTRO_COOKIE_NAME = "orato_home_intro_session_v1";
 type VideoSource = {
   src: string;
   type: "video/webm" | "video/mp4";
@@ -33,7 +32,6 @@ export default function LandingIntroClient({ sources }: { sources: VideoSource[]
 
     doneTimeoutRef.current = window.setTimeout(() => {
       sessionStorage.setItem(INTRO_STORAGE_KEY, "1");
-      document.cookie = `${INTRO_COOKIE_NAME}=1; path=/; SameSite=Lax`;
       setShowIntro(false);
     }, OUTRO_MS);
   }, []);

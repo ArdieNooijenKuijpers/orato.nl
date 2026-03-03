@@ -1,10 +1,8 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { cookies } from "next/headers";
 import { preload } from "react-dom";
 import LandingIntroClient from "./LandingIntroClient";
 
-const INTRO_COOKIE_NAME = "orato_home_intro_session_v1";
 const INTRO_VIDEO_WEBM = "/Homepage/LandingAnimation/landing-intro.webm";
 const INTRO_VIDEO_MP4 = "/Homepage/LandingAnimation/landing-intro.mp4";
 const INTRO_VIDEO_LEGACY_MP4 =
@@ -22,12 +20,6 @@ const publicFileExists = (publicPath: string) =>
   );
 
 export default function LandingIntro() {
-  const hasSeenIntro = cookies().get(INTRO_COOKIE_NAME)?.value === "1";
-
-  if (hasSeenIntro) {
-    return null;
-  }
-
   const sources = videoSourceCandidates.filter((source) => publicFileExists(source.src));
 
   for (const source of sources) {
