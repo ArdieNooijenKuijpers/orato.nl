@@ -99,7 +99,6 @@ export default function LandingIntroClient({ sources }: { sources: VideoSource[]
         muted
         playsInline
         preload="auto"
-        fetchPriority="high"
         className="h-full w-full object-cover"
         style={outroStyle}
         onEnded={startOutro}
