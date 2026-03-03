@@ -4,6 +4,7 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { motion, useTransform, useScroll } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { Tangerine } from "next/font/google";
 
@@ -57,11 +58,11 @@ const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
-      className={`group relative h-screen w-[80vw] flex flex-col justify-between items-center overflow-hidden ${card.bg} px-4 py-6`}
+      className={`group relative h-screen w-[80vw] flex flex-col items-center overflow-hidden ${card.bg} px-4 pb-6 pt-16 md:pt-24`}
     >
       {/* Top text element */}
       <span
-        className={`${tangerine.className} ${card.hidden} text-3xl md:text-4xl lg:text-5xl text-white`}
+        className={`${tangerine.className} ${card.hidden} min-h-[2.5rem] text-3xl md:min-h-[3rem] md:text-4xl lg:min-h-[3.5rem] lg:text-5xl text-white`}
       >
         ‘Even stil staan . . . om verder te komen!’
       </span>
@@ -94,18 +95,20 @@ const Card = ({ card }: { card: CardType }) => {
 
           <HoverBorderGradient
             containerClassName="rounded-full"
-            as="button"
+            as="div"
             normalGradient={`${card.color}`}
             hoverGradient="#ee7901"
             className={`${card.bg} flex items-center space-x-1 cursor-pointer cursor-small ${card.extra}`}
           >
-            <span>Meer info</span>
+            <Link href={card.href} className="inline-block px-2 py-1">
+              <span>Meer info</span>
+            </Link>
           </HoverBorderGradient>
         </div>
       </div>
 
       {/* Bottom text element */}
-      <div className={`${tangerine.className} ${card.hidden2} text-xl text-white`}>
+      <div className={`${tangerine.className} ${card.hidden2} mt-auto pt-4 text-xl text-white`}>
         ‘Even stil staan . . . om verder te komen!’
       </div>
     </div>
@@ -117,6 +120,7 @@ export default Example;
 type CardType = {
   url: string;
   title: string;
+  href: string;
   description?: string;
   id: number;
   bg: string;
@@ -134,6 +138,7 @@ const cards: CardType[] = [
   {
     url: "/Homepage/Onderwerpen/Coaching.jpg",
     title: "Coaching",
+    href: "/Onderwerpen/Coaching",
     description:
       "Voor mensen die zich in de context van hun werk, persoonlijk willen ontwikkelen. Aan de slag met weten wat je wilt, jezelf zijn en daarnaar handelen met gewenst resultaat.",
     id: 1,
@@ -147,6 +152,7 @@ const cards: CardType[] = [
   {
     url: "/Homepage/Onderwerpen/test.jpg",
     title: "Supervisie",
+    href: "/Onderwerpen/Supervisie",
     description:
       "Omdat je als ervaren coach professioneel en persoonlijk wilt blijven leren.",
     id: 2,
@@ -156,12 +162,13 @@ const cards: CardType[] = [
     extra: "text-black",
     size: "text-5xl md:text-8xl xl:text-9xl cursor-invert cursor-big",
     hidden: "invisible",
-    hidden2: "hidden",
+    hidden2: "invisible",
   },
   {
     url: "/Homepage/Onderwerpen/Presenteren.jpg",
     firstLetter: "P",
     title: "Presenteren",
+    href: "/Onderwerpen/Presenteren",
     description:
       "Jezelf laten zien en horen zoals dat past bij jou en je functie. Persoonlijke uitstraling en effectieve communicatie op z’n best.",
     id: 3,
