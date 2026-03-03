@@ -20,6 +20,7 @@ const ContactPage = () => {
                 src="/Contact/foto ardie deur contact 2.png"
                 alt="Ardie bij de deuropening"
                 fill
+                sizes="(max-width: 1023px) 100vw, 50vw"
                 className="object-cover object-center"
                 priority
               />

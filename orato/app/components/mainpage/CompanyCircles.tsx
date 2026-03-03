@@ -98,9 +98,10 @@ const CompanyCircles: React.FC = () => {
   // Ref and state to track container dimensions for responsiveness.
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
-    width: 1000,
-    height: 500,
+    width: 0,
+    height: 0,
   });
+  const [positions, setPositions] = useState<Position[]>([]);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -116,8 +117,11 @@ const CompanyCircles: React.FC = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Compute non-overlapping positions for each orb (placed in the bottom half).
-  const positions = React.useMemo(() => {
+  useEffect(() => {
+    if (dimensions.width <= 0 || dimensions.height <= 0) {
+      return;
+    }
+
     const posArray: Position[] = [];
     const containerWidth = dimensions.width;
     const containerHeight = dimensions.height;
@@ -166,7 +170,7 @@ const CompanyCircles: React.FC = () => {
       posArray.push(newPos);
     });
 
-    return posArray;
+    setPositions(posArray);
   }, [dimensions]);
 
   return (
@@ -177,9 +181,9 @@ const CompanyCircles: React.FC = () => {
       <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 text-xl lg:text-2xl xl:text-4xl font-bold text-black">
         References available at your request
       </div>
-      {companies.map((company, index) => (
+      {positions.length === companies.length && companies.map((company, index) => (
         <CompanyOrb
-          key={index}
+          key={company.name}
           company={company}
           position={positions[index]}
           dimensions={dimensions}

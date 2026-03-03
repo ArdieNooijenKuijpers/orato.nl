@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 // Added the mouse following feature use cursor-invert and cursor-small to get the results
 
 export function CustomCursor() {
+  const [isEnabled, setIsEnabled] = useState(false);
   const [isHoveringSmall, setIsHoveringSmall] = useState(false);
   const [isInverting, setIsInverting] = useState(false);
   const [isHoveringBig, setIsHoveringBig] = useState(false);
@@ -13,8 +14,31 @@ export function CustomCursor() {
   const rawY = useMotionValue(0);
   const x = useSpring(rawX, { stiffness: 900, damping: 40, mass: 0.2 });
   const y = useSpring(rawY, { stiffness: 900, damping: 40, mass: 0.2 });
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const updateEnabledState = () => {
+      setIsEnabled(!mobileQuery.matches && finePointerQuery.matches);
+    };
+
+    updateEnabledState();
+    mobileQuery.addEventListener("change", updateEnabledState);
+    finePointerQuery.addEventListener("change", updateEnabledState);
+
+    return () => {
+      mobileQuery.removeEventListener("change", updateEnabledState);
+      finePointerQuery.removeEventListener("change", updateEnabledState);
+    };
+  }, []);
+
 //to so if the mouse is hovering over the cursor
   useEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
+
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target instanceof Element ? e.target : null;
 
@@ -75,9 +99,13 @@ export function CustomCursor() {
       window.removeEventListener("mouseover", handleMouseOver);
       window.removeEventListener("mouseout", handleMouseOut);
     };
-  }, []);
+  }, [isEnabled]);
 
   useEffect(() => {
+    if (!isEnabled) {
+      return;
+    }
+
     const offset = isShowingScrollHint ? 48 : isHoveringSmall ? 8 : isHoveringBig ? 50 : 20;
     const handlePointerMove = (e: PointerEvent) => {
       rawX.set(e.clientX - offset);
@@ -86,7 +114,11 @@ export function CustomCursor() {
 
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
     return () => window.removeEventListener('pointermove', handlePointerMove);
-  }, [isHoveringSmall, isHoveringBig, isShowingScrollHint, rawX, rawY]);
+  }, [isEnabled, isHoveringSmall, isHoveringBig, isShowingScrollHint, rawX, rawY]);
+
+  if (!isEnabled) {
+    return null;
+  }
 
   return (
     <>

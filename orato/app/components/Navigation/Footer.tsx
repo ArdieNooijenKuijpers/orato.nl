@@ -117,6 +117,7 @@ const FooterComp = () => {
                     src="/Homepage/QR-codes/Orato-linkedin.jpg"
                     alt="Orato LinkedIn QR Code"
                     fill
+                    sizes="120px"
                     className="object-contain transition-transform duration-500 group-hover:rotate-12"
                   />
                 </div>
@@ -138,6 +139,7 @@ const FooterComp = () => {
                       src="/Homepage/QR-codes/Orato-contactgegevens.jpg"
                       alt="Orato Contactgegevens QR Code"
                       fill
+                      sizes="150px"
                       className="object-contain transition-transform duration-500 group-hover:rotate-12"
                     />
                   </div>
@@ -160,6 +162,7 @@ const FooterComp = () => {
                       src={`/Homepage/bedrijven/${encodeURIComponent(image)}`}
                       alt={image}
                       fill
+                      sizes="(max-width: 767px) 80px, 100px"
                       className="object-contain"
                     />
                   </div>

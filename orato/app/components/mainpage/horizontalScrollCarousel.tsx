@@ -72,6 +72,7 @@ const Card = ({ card }: { card: CardType }) => {
           src={card.url}
           alt={card.title}
           fill
+          sizes="(max-width: 767px) 100vw, 80vw"
           style={{ objectFit: "cover" }}
           className={`${card.border}`}
         />

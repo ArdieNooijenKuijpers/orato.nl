@@ -3,12 +3,13 @@
 import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 
 const INTRO_STORAGE_KEY = "orato-home-intro-session-v1";
-const OUTRO_MASK_MS = 700;
-const OUTRO_FADE_MS = 1000;
-const OUTRO_FADE_DELAY_MS = 1100;
+// Timing constants for the intro animation and outro transition
+const OUTRO_MASK_MS = 700; // Duration of the mask size transition during outro
+const OUTRO_FADE_MS = 1000; // Duration of the fade-out effect during outro
+const OUTRO_FADE_DELAY_MS = 1100; // Delay before starting the fade-out effect during outro (should be >= OUTRO_MASK_MS for best effect)
 const OUTRO_MS = OUTRO_FADE_DELAY_MS + OUTRO_FADE_MS;
-const OUTRO_EASING = "cubic-bezier(0.22, 0.61, 0.36, 1)";
-const MASK_START_SIZE = "2400vmax";
+const OUTRO_EASING = "cubic-bezier(0.22, 0.61, 0.36, 1)"; //
+const MASK_START_SIZE = "2400vmax"; // Initial size of the mask (very large to cover the entire screen) 
 const MASK_END_SIZE = "44vmin";
 
 export default function LandingIntro() {
