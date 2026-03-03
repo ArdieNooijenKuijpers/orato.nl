@@ -12,26 +12,34 @@ const NavbarMenuRight = () => {
     { name: 'ARDIE', path: '/Info/Ardie' },
   ];
 
-  return (
-    <div className="p-2 mr-14 mt-6 cursor-small">
-      <ul className="flex flex-col space-y-0 ">
-        {NavbarMenuRightItems.map((item) => (
-          <li key={item.name}>
-            <Link
-              href={item.path}
-              className={`relative inline-block text-lg font-medium transition-all 
-                hover:text-white 
-                before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:origin-left before:scale-x-0 
-                before:bg-white before:transition-transform before:duration-300 
-                hover:before:scale-x-100 
-                
+  const normalizePath = (path: string) => path.replace(/\/$/, '');
+  const currentPath = normalizePath(pathname);
 
-                ${pathname === item.path ? 'before:scale-x-100 text-black' : ''}`}
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
+  return (
+    <div className="cursor-small">
+      <ul className="flex flex-col space-y-0 sm:space-y-0">
+        {NavbarMenuRightItems.map((item) => {
+          const isActive = currentPath === normalizePath(item.path);
+
+          return (
+            <li key={item.name}>
+              <Link
+                href={item.path}
+                aria-current={isActive ? 'page' : undefined}
+                className={`relative inline-block text-sm sm:text-lg transition-all
+                  before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:origin-left before:bg-white before:transition-transform before:duration-300
+                  hover:before:scale-x-100
+                  ${
+                    isActive
+                      ? 'font-extrabold text-white opacity-100 before:scale-x-100 before:h-[3px]'
+                      : 'font-medium text-white before:scale-x-0 hover:text-white'
+                  }`}
+              >
+                {item.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
