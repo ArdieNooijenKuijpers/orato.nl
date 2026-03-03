@@ -97,11 +97,18 @@ const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }
 const CompanyCircles: React.FC = () => {
   // Ref and state to track container dimensions for responsiveness.
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isFirefox, setIsFirefox] = useState(false);
   const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
     width: 0,
     height: 0,
   });
   const [positions, setPositions] = useState<Position[]>([]);
+
+  useEffect(() => {
+    setIsFirefox(
+      typeof navigator !== 'undefined' && navigator.userAgent.toLowerCase().includes('firefox')
+    );
+  }, []);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -216,13 +223,22 @@ const CompanyCircles: React.FC = () => {
         <div className="pointer-events-none absolute left-[32%] top-[38%] z-20 -translate-x-1/2 -translate-y-1/2">
           <div className="relative h-36 w-72">
             <motion.div
-              className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orato-dark"
-              animate={{ scale: [1, 1, 4.2, 4.2, 1] }}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orato-dark"
+              style={{ width: 24, height: 24 }}
+              animate={
+                isFirefox
+                  ? { scale: [1, 1, 4.2, 4.2, 1] }
+                  : { width: [24, 24, 102, 102, 24], height: [24, 24, 102, 102, 24] }
+              }
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", times: [0, 0.42, 0.5, 0.72, 1] }}
             >
               <motion.span
                 className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-center leading-none text-[11px] font-bold text-white"
-                animate={{ opacity: [0, 0, 1, 1, 0], scale: [1, 1, 0.24, 0.24, 1] }}
+                animate={
+                  isFirefox
+                    ? { opacity: [0, 0, 1, 1, 0], scale: [1, 1, 0.24, 0.24, 1] }
+                    : { opacity: [0, 0, 1, 1, 0] }
+                }
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", times: [0, 0.42, 0.5, 0.72, 1] }}
               >
                 Össur
@@ -232,7 +248,7 @@ const CompanyCircles: React.FC = () => {
             <motion.div
               className="absolute left-1/2 top-1/2"
               animate={{
-                x: ["-120%", "-35%", "-8%", "-8%", "-120%"],
+                x: ["-120%", "-35%", "-8%", "-8%", "-120%"],//here i change the path of the cursor hover demo, to make it more dynamic and interesting, and to show that the orbs can be placed anywhere on the screen without breaking the animation
                 y: ["-40%", "100%", "38%", "40%", "-40%"],
               }}
               transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", times: [0, 0.3, 0.45, 0.72, 1] }}

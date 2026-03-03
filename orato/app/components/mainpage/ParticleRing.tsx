@@ -1,24 +1,41 @@
 'use client';
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { useEffect, useRef, useState } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "../../utils/utils";
 import { Group } from "three";
 
 const ParticleRing = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       <Canvas
         camera={{
           position: [10, -7.5, -5],
         }}
+        dpr={[1, 1.5]}
+        frameloop="demand"
+        gl={{ antialias: false, powerPreference: "high-performance" }}
         style={{ height: "60vh", justifyContent: "center", width: "90vw" }}
         className="bg-grey-900"
       >
         <OrbitControls enablePan={false} enableZoom={false} maxDistance={20} minDistance={10} />
         <directionalLight />
         <pointLight position={[-30, 0, -30]} power={10.0} />
-        <PointCircle />
+        <PointCircle isVisible={isVisible} />
       </Canvas>
 
       <h1 className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-slate-200 font-medium text-2xl md:text-5xl pointer-events-none">
@@ -33,14 +50,31 @@ const ParticleRing = () => {
   );
 };
 
-const PointCircle = () => {
+const PointCircle = ({ isVisible }: { isVisible: boolean }) => {
   const ref = useRef<Group | null>(null);
+  const { invalidate } = useThree();
+  const frameRef = useRef<number | null>(null);
+  const lastTickRef = useRef(0);
 
-  useFrame(({ clock }) => {
-    if (ref.current?.rotation) {
-      ref.current.rotation.z = clock.getElapsedTime() * 0.05;
-    }
-  });
+  useEffect(() => {
+    const tick = (time: number) => {
+      if (isVisible && time - lastTickRef.current >= 1000 / 30) {
+        if (ref.current?.rotation) {
+          ref.current.rotation.z = (time / 1000) * 0.05;
+        }
+        invalidate();
+        lastTickRef.current = time;
+      }
+      frameRef.current = window.requestAnimationFrame(tick);
+    };
+
+    frameRef.current = window.requestAnimationFrame(tick);
+    return () => {
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, [invalidate, isVisible]);
 
   return (
     <group ref={ref}>
