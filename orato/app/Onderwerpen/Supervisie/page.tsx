@@ -4,6 +4,7 @@
 import { Noto_Serif_Display } from "next/font/google";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import FooterComp from "../../components/Navigation/Footer";
+import InschrijfFormModal from "../../inschrijfformulier/InschrijfFormModal";
 
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -75,6 +76,13 @@ const SupervisiePage = () => {
                   <p className="text-sm text-orato-dark/70">
                     <strong>Doel:</strong> Jouw coachkwaliteiten maximaal inzetten en blinde vlekken bewust krijgen.
                   </p>
+                </div>
+                <div className="mt-6">
+                  <InschrijfFormModal
+                    triggerLabel="Direct inschrijven"
+                    title="Inschrijven voor Speaking Circle"
+                    description="Open hier direct het inschrijfformulier zonder de supervisiepagina te verlaten."
+                  />
                 </div>
               </div>
             </WobbleCard>
