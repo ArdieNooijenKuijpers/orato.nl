@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-
 export type ArdieTimelineEntry = {
   year: string;
   title: string;

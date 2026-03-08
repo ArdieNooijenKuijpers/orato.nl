@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import QuoteBadge from "../../components/ardie/QuoteBadge";
 import RedThreadTimeline, {
   type ArdieTimelineEntry,
 } from "../../components/ardie/RedThreadTimeline";
@@ -99,6 +100,15 @@ const quoteItems = [
   "Voor alles is een goed moment.",
   "Het is zoals het is, realisme werkt.",
 ];
+
+const assignRandomQuote = (seed: string, offset = 0) => {
+  const hash = Array.from(seed).reduce(
+    (total, char, index) => total + char.charCodeAt(0) * (index + 17),
+    0
+  );
+
+  return quoteItems[(hash + offset * 13) % quoteItems.length];
+};
 
 const timelineEntries: ArdieTimelineEntry[] = [
   {
@@ -425,7 +435,7 @@ const ArdiePage = () => {
               {profileSections.map((section) => (
                 <article
                   key={section.title}
-                  className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.85)] md:p-8"
+                  className="relative rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.85)] md:p-8"
                 >
                   <h2 className={`${notoSerifDisplay.className} text-3xl text-white md:text-5xl`}>
                     {section.title}
@@ -479,6 +489,9 @@ const ArdiePage = () => {
                 <p className="mt-3 text-2xl leading-9 text-white">
                   Mensen helpen zichzelf te uiten zodat ze gezien en gehoord worden, letterlijk en figuurlijk, als persoon en professional.
                 </p>
+                <div className="mt-6 flex justify-end">
+                  <QuoteBadge id="profile-motivation" quote={assignRandomQuote("motivation")} />
+                </div>
               </div>
             </div>
           </div>
@@ -499,7 +512,7 @@ const ArdiePage = () => {
               {methodCards.map((card) => (
                 <article
                   key={card.title}
-                  className={`overflow-hidden rounded-[2rem] border bg-white shadow-[0_24px_80px_-45px_rgba(20,20,20,0.25)] ${toneStyles[card.tone]}`}
+                  className={`relative overflow-hidden rounded-[2rem] border bg-white shadow-[0_24px_80px_-45px_rgba(20,20,20,0.25)] ${toneStyles[card.tone]}`}
                 >
                   {card.image ? (
                     <Image
@@ -549,6 +562,9 @@ const ArdiePage = () => {
                   </span>
                 ))}
               </div>
+              <div className="mt-6 flex justify-end">
+                <QuoteBadge id="credentials-quote" quote={assignRandomQuote("credentials", 4)} />
+              </div>
             </div>
           </div>
         </section>
@@ -591,23 +607,9 @@ const ArdiePage = () => {
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {quoteItems.map((quote, index) => (
-                <div
-                  key={quote}
-                  className={`rounded-[1.75rem] border p-5 shadow-sm ${
-                    index % 4 === 0
-                      ? "border-orato-orange/20 bg-orato-orange/10"
-                      : index % 4 === 1
-                        ? "border-orato-blue/20 bg-orato-blue/10"
-                        : index % 4 === 2
-                          ? "border-orato-red/20 bg-orato-red/10"
-                          : "border-orato-green/20 bg-orato-green/10"
-                  }`}
-                >
-                  <p className="text-sm leading-7 text-orato-dark/80">{quote}</p>
-                </div>
-              ))}
+            <div className="flex flex-wrap items-center justify-start gap-6 lg:justify-end">
+              <QuoteBadge id="motto-quote-a" quote={assignRandomQuote("motto-a", 5)} />
+              <QuoteBadge id="motto-quote-b" quote={assignRandomQuote("motto-b", 8)} />
             </div>
           </div>
         </section>
