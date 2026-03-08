@@ -12,6 +12,8 @@ export type ArdieTimelineEntry = {
     src: string;
     alt: string;
     placement?: "card" | "edge";
+    tall?: boolean;
+    wide?: boolean;
   };
   accentColor?: "red" | "orange" | "blue" | "green";
 };
@@ -20,9 +22,9 @@ type RedThreadTimelineProps = {
   entries: ArdieTimelineEntry[];
 };
 
-const DESKTOP_ROW_HEIGHT = 470;
-const MOBILE_ROW_HEIGHT = 250;
 const TOP_PADDING = 60;
+const DESKTOP_ROW_GAP = 88;
+const MOBILE_ROW_GAP = 44;
 
 const accentStyles: Record<NonNullable<ArdieTimelineEntry["accentColor"]>, string> = {
   red: "border-orato-red/35 bg-orato-red/10",
@@ -31,16 +33,60 @@ const accentStyles: Record<NonNullable<ArdieTimelineEntry["accentColor"]>, strin
   green: "border-orato-green/35 bg-orato-green/10",
 };
 
-const getDesktopPoint = (index: number) => {
+const estimateLineBlockHeight = (lines: string[], charsPerLine: number, lineHeight: number) =>
+  lines.reduce((total, line) => total + Math.max(1, Math.ceil(line.length / charsPerLine)) * lineHeight, 0);
+
+const estimateCardHeight = (entry: ArdieTimelineEntry, mobile: boolean) => {
+  const summaryHeight = entry.summary ? (mobile ? 48 : 56) : 0;
+  const detailsHeight = estimateLineBlockHeight(
+    entry.details,
+    mobile ? 42 : 72,
+    mobile ? 22 : 24
+  );
+  const imageHeight =
+    entry.image && entry.image.placement !== "edge"
+      ? entry.image.tall
+        ? mobile
+          ? 340
+          : 420
+        : entry.image.wide
+          ? mobile
+            ? 300
+            : 360
+        : mobile
+          ? 272
+          : 320
+      : 0;
+  const chromeHeight = mobile ? 176 : 206;
+
+  return chromeHeight + summaryHeight + detailsHeight + imageHeight;
+};
+
+const buildLayout = (entries: ArdieTimelineEntry[], mobile: boolean) => {
+  const gap = mobile ? MOBILE_ROW_GAP : DESKTOP_ROW_GAP;
+  let currentTop = TOP_PADDING;
+
+  return entries.map((entry) => {
+    const height = Math.max(mobile ? 260 : 390, estimateCardHeight(entry, mobile));
+    const top = currentTop;
+    currentTop += height + gap;
+
+    return {
+      top,
+      height,
+      centerY: top + height / 2,
+    };
+  });
+};
+
+const getDesktopPoint = (index: number, y: number) => {
   const x = 50 + Math.sin((index + 1) * 1.05) * 24;
-  const y = TOP_PADDING + index * DESKTOP_ROW_HEIGHT + DESKTOP_ROW_HEIGHT / 2;
 
   return { x, y };
 };
 
-const getMobilePoint = (index: number) => {
+const getMobilePoint = (index: number, y: number) => {
   const x = 50 + Math.sin((index + 1) * 0.95) * 6;
-  const y = TOP_PADDING + index * MOBILE_ROW_HEIGHT + MOBILE_ROW_HEIGHT / 2;
 
   return { x, y };
 };
@@ -76,8 +122,12 @@ const TimelineCard = ({
 
   return (
     <motion.article
-      initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 28 }}
-      whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      initial={
+        reducedMotion
+          ? { opacity: 1 }
+          : { opacity: 0, x: align === "left" ? 36 : -36 }
+      }
+      whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
       className={`relative w-full max-w-[34rem] overflow-hidden rounded-[2rem] border border-white/12 bg-orato-light px-6 py-6 text-orato-dark shadow-[0_24px_80px_-36px_rgba(0,0,0,0.65)] ${
@@ -103,7 +153,13 @@ const TimelineCard = ({
               alt={entry.image.alt}
               width={1200}
               height={900}
-              className="h-52 w-full object-cover"
+              className={`w-full object-cover ${
+                entry.image.tall
+                  ? "h-[22rem] md:h-[26rem]"
+                  : entry.image.wide
+                    ? "h-72 md:h-[23rem]"
+                    : "h-72 md:h-80"
+              }`}
             />
           </div>
         ) : null
@@ -115,10 +171,12 @@ const TimelineCard = ({
 export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
   const reducedMotion = useReducedMotion() ?? false;
 
-  const desktopPoints = entries.map((_, index) => getDesktopPoint(index));
-  const mobilePoints = entries.map((_, index) => getMobilePoint(index));
-  const desktopHeight = TOP_PADDING * 2 + entries.length * DESKTOP_ROW_HEIGHT;
-  const mobileHeight = TOP_PADDING * 2 + entries.length * MOBILE_ROW_HEIGHT;
+  const desktopLayout = buildLayout(entries, false);
+  const mobileLayout = buildLayout(entries, true);
+  const desktopPoints = desktopLayout.map((item, index) => getDesktopPoint(index, item.centerY));
+  const mobilePoints = mobileLayout.map((item, index) => getMobilePoint(index, item.centerY));
+  const desktopHeight = (desktopLayout.at(-1)?.top ?? TOP_PADDING) + (desktopLayout.at(-1)?.height ?? 0) + TOP_PADDING;
+  const mobileHeight = (mobileLayout.at(-1)?.top ?? TOP_PADDING) + (mobileLayout.at(-1)?.height ?? 0) + TOP_PADDING;
   const desktopPath = buildPath(desktopPoints);
   const mobilePath = buildPath(mobilePoints);
 
@@ -134,13 +192,13 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
           >
             <defs>
               <linearGradient id="red-thread-line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ee7901" stopOpacity="0.45" />
-                <stop offset="25%" stopColor="#da391f" stopOpacity="0.95" />
-                <stop offset="60%" stopColor="#da391f" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#1d99d6" stopOpacity="0.5" />
+                <stop offset="0%" stopColor="#ee7901" stopOpacity="0.82" />
+                <stop offset="18%" stopColor="#da391f" stopOpacity="0.96" />
+                <stop offset="58%" stopColor="#c92b14" stopOpacity="0.96" />
+                <stop offset="100%" stopColor="#8f1e13" stopOpacity="0.88" />
               </linearGradient>
             </defs>
-            <path d={desktopPath} stroke="rgba(255,255,255,0.08)" strokeWidth="3.2" fill="none" />
+            <path d={desktopPath} stroke="rgba(130,22,18,0.35)" strokeWidth="3.2" fill="none" />
             <motion.path
               d={desktopPath}
               stroke="url(#red-thread-line)"
@@ -151,12 +209,13 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
               whileInView={reducedMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 1, opacity: 1 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              style={{ filter: "drop-shadow(0 0 20px rgba(218,57,31,0.22))" }}
+              style={{ filter: "drop-shadow(0 0 20px rgba(218,57,31,0.28))" }}
             />
           </svg>
 
           {entries.map((entry, index) => {
             const point = desktopPoints[index];
+            const layout = desktopLayout[index];
             const align = point.x >= 50 ? "right" : "left";
 
             return (
@@ -164,8 +223,8 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                 key={`${entry.year}-${entry.title}`}
                 className="absolute left-0 grid w-full grid-cols-[1fr_5rem_1fr] items-center gap-6"
                 style={{
-                  top: TOP_PADDING + index * DESKTOP_ROW_HEIGHT,
-                  minHeight: DESKTOP_ROW_HEIGHT,
+                  top: layout.top,
+                  minHeight: layout.height,
                 }}
               >
                 <div className="relative z-10 flex items-center">
@@ -205,9 +264,15 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                       <Image
                         src={entry.image.src}
                         alt={entry.image.alt}
-                        width={360}
-                        height={460}
-                        className="h-[18rem] w-[15rem] object-cover opacity-90"
+                        width={entry.image.wide ? 760 : 620}
+                        height={entry.image.wide ? 620 : 820}
+                        className={`object-cover opacity-95 ${
+                          entry.image.wide
+                            ? "h-[25.5rem] w-[29rem]"
+                            : entry.image.tall
+                              ? "h-[31rem] w-[22rem]"
+                              : "h-[29rem] w-[25rem]"
+                        }`}
                       />
                     </div>
                   </div>
@@ -228,12 +293,12 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
           >
             <defs>
               <linearGradient id="red-thread-line-mobile" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ee7901" stopOpacity="0.45" />
-                <stop offset="45%" stopColor="#da391f" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#1d99d6" stopOpacity="0.5" />
+                <stop offset="0%" stopColor="#ee7901" stopOpacity="0.82" />
+                <stop offset="45%" stopColor="#da391f" stopOpacity="0.96" />
+                <stop offset="100%" stopColor="#8f1e13" stopOpacity="0.9" />
               </linearGradient>
             </defs>
-            <path d={mobilePath} stroke="rgba(255,255,255,0.08)" strokeWidth="2.5" fill="none" />
+            <path d={mobilePath} stroke="rgba(130,22,18,0.3)" strokeWidth="2.5" fill="none" />
             <motion.path
               d={mobilePath}
               stroke="url(#red-thread-line-mobile)"
@@ -255,8 +320,8 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
               return (
                 <motion.article
                   key={`${entry.year}-${entry.title}-mobile`}
-                  initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 22 }}
-                  whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                  initial={reducedMotion ? { opacity: 1 } : { opacity: 0, x: 28 }}
+                  whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   className="relative pl-16"
@@ -286,7 +351,9 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                           alt={entry.image.alt}
                           width={1200}
                           height={900}
-                          className="h-44 w-full object-cover"
+                          className={`w-full object-cover ${
+                            entry.image.tall ? "h-80" : entry.image.wide ? "h-72" : "h-64"
+                          }`}
                         />
                       </div>
                     ) : null}

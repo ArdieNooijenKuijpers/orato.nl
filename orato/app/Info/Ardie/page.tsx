@@ -234,6 +234,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     image: {
       src: "/Ardie/KAI DSC_1643 gekropt.jpg",
       alt: "Ardie in een open portret in de natuur.",
+      tall: true,
     },
     accentColor: "red",
   },
@@ -251,6 +252,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
       src: "/Ardie/•koen buiten cirkelERF03522_WEB.jpg",
       alt: "Ardie buiten in een coachingsetting met een deelnemer.",
       placement: "edge",
+      wide: true,
     },
     accentColor: "orange",
   },
@@ -321,6 +323,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
       src: "/Ardie/•voor boekenkast mooi ERF03356_WEB.jpg",
       alt: "Portret van Ardie voor een boekenkast.",
       placement: "edge",
+      wide: true,
     },
     accentColor: "blue",
   },
@@ -390,11 +393,11 @@ const ArdiePage = () => {
                   height={1200}
                   className="h-[28rem] w-full object-cover md:h-[38rem]"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent p-6 md:p-8">
+                {/* <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent p-6 md:p-8">
                   <p className="max-w-md text-sm leading-6 text-white/95 md:text-base">
                     Een eerste indruk van de mens achter Orato: warm, aandachtig, helder en met oog voor wat echt gezegd wil worden.
                   </p>
-                </div>
+                </div> */}
               </div>
 
               <div className="mt-5 rounded-[2rem] border border-orato-dark/10 bg-white/80 p-5 shadow-sm backdrop-blur">
@@ -458,6 +461,15 @@ const ArdiePage = () => {
                   width={1400}
                   height={1100}
                   className="h-[16rem] w-full object-cover md:h-[20rem]"
+                />
+              </div>
+              <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+                <Image
+                  src="/Ardie/•geknield flipover koenERF03509_WEB.jpg"
+                  alt="Ardie geknield bij een flipover tijdens een coachingsmoment."
+                  width={1400}
+                  height={1100}
+                  className="h-[18rem] w-full object-cover md:h-[22rem]"
                 />
               </div>
               <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
@@ -601,14 +613,14 @@ const ArdiePage = () => {
         </section>
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 shadow-[0_32px_90px_-40px_rgba(0,0,0,0.85)]">
               <Image
                 src="/Ardie/•voor boekenkast mooi ERF03356_WEB.jpg"
                 alt="Ardie voor een boekenkast in haar werkomgeving."
                 width={1400}
                 height={1800}
-                className="h-[26rem] w-full object-cover md:h-[34rem]"
+                className="h-[22rem] w-full object-cover md:h-[30rem]"
               />
             </div>
 
