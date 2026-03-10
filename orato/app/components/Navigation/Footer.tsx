@@ -96,7 +96,7 @@ const FooterComp = () => {
           style={isDesktop ? { top: stickyTop } : undefined}
         >
           <div className="mx-auto max-w-7xl px-4 py-6 md:px-6 md:py-8 lg:px-8">
-            <div className="w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
+            <div className="w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px]">
             <nav>
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Menu</h2>

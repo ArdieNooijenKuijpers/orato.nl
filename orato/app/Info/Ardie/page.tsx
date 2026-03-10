@@ -482,17 +482,7 @@ const ArdiePage = () => {
                   className="h-[18rem] w-full object-cover md:h-[22rem]"
                 />
               </div>
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
-                  Mijn persoonlijke motivatie
-                </p>
-                <p className="mt-3 text-2xl leading-9 text-white">
-                  Mensen helpen zichzelf te uiten zodat ze gezien en gehoord worden, letterlijk en figuurlijk, als persoon en professional.
-                </p>
-                <div className="mt-6 flex justify-end">
-                  <QuoteBadge id="profile-motivation" quote={assignRandomQuote("motivation")} />
-                </div>
-              </div>
+
             </div>
           </div>
         </section>
@@ -509,43 +499,67 @@ const ArdiePage = () => {
             </div>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {methodCards.map((card) => (
-                <article
-                  key={card.title}
-                  className={`relative overflow-hidden rounded-[2rem] border bg-white shadow-[0_24px_80px_-45px_rgba(20,20,20,0.25)] ${toneStyles[card.tone]}`}
-                >
-                  {card.image ? (
-                    <Image
-                      src={card.image.src}
-                      alt={card.image.alt}
-                      width={1200}
-                      height={900}
-                      className="h-52 w-full object-cover"
-                    />
-                  ) : null}
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-center text-orato-dark md:text-left">{card.title}</h3>
-                    <div className="mt-4 space-y-4 text-sm leading-7 text-orato-dark/80">
-                      {card.text.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
-                    {card.title === "Kaders & vertrouwen" ? (
-                      <p className="mt-5 text-sm leading-7 text-orato-dark/75">
-                        Lees meer in de{" "}
-                        <Link href="/Info/PrivacyVerklaring" className="font-semibold text-orato-orange underline-offset-4 hover:underline">
-                          privacyverklaring
-                        </Link>{" "}
-                        en de{" "}
-                        <Link href="/Info/AlgemeneVoorwaarden" className="font-semibold text-orato-orange underline-offset-4 hover:underline">
-                          algemene voorwaarden
-                        </Link>
-                        .
-                      </p>
+              {methodCards.map((card) => {
+                const isTrustCard = card.title === "Kaders & vertrouwen";
+
+                return (
+                  <article
+                    key={card.title}
+                    className={`relative overflow-hidden rounded-[2rem] border shadow-[0_24px_80px_-45px_rgba(20,20,20,0.25)] ${
+                      isTrustCard
+                        ? "cursor-invert border-orato-dark/90 bg-orato-dark text-white shadow-[0_28px_90px_-42px_rgba(20,20,20,0.55)]"
+                        : `bg-white ${toneStyles[card.tone]}`
+                    }`}
+                  >
+                    {card.image ? (
+                      <Image
+                        src={card.image.src}
+                        alt={card.image.alt}
+                        width={1200}
+                        height={900}
+                        className="h-52 w-full object-cover"
+                      />
                     ) : null}
-                  </div>
-                </article>
-              ))}
+                    <div className="p-6">
+                      <h3
+                        className={`text-2xl font-semibold text-center md:text-left ${
+                          isTrustCard ? "text-white" : "text-orato-dark"
+                        }`}
+                      >
+                        {card.title}
+                      </h3>
+                      <div
+                        className={`mt-4 space-y-4 text-sm leading-7 ${
+                          isTrustCard ? "text-white/78" : "text-orato-dark/80"
+                        }`}
+                      >
+                        {card.text.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                      {isTrustCard ? (
+                        <p className="mt-5 text-sm leading-7 text-white/70">
+                          Lees meer in de{" "}
+                          <Link
+                            href="/Info/PrivacyVerklaring"
+                            className="cursor-small font-semibold text-orato-orange underline decoration-white/20 underline-offset-4 transition hover:decoration-orato-orange"
+                          >
+                            privacyverklaring
+                          </Link>{" "}
+                          en de{" "}
+                          <Link
+                            href="/Info/AlgemeneVoorwaarden"
+                            className="cursor-small font-semibold text-orato-orange underline decoration-white/20 underline-offset-4 transition hover:decoration-orato-orange"
+                          >
+                            algemene voorwaarden
+                          </Link>
+                          .
+                        </p>
+                      ) : null}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
             <div className="mt-10 rounded-[2rem] border border-orato-dark/10 bg-white px-6 py-6 shadow-sm">
