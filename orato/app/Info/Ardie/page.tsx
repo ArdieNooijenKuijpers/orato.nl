@@ -455,13 +455,13 @@ const ArdiePage = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+              <div className="aspect-square overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
                 <Image
                   src="/Ardie/Iris 001.jpg"
                   alt="Ardie in een warm portret."
                   width={1400}
                   height={1600}
-                  className="h-[20rem] w-full object-cover md:h-[24rem]"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
