@@ -191,24 +191,24 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
           >
             <defs>
               <linearGradient id="red-thread-line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ee7901" stopOpacity="0.82" />
-                <stop offset="18%" stopColor="#da391f" stopOpacity="0.96" />
-                <stop offset="58%" stopColor="#c92b14" stopOpacity="0.96" />
-                <stop offset="100%" stopColor="#8f1e13" stopOpacity="0.88" />
+                <stop offset="0%" stopColor="#ff3b2a" stopOpacity="0.98" />
+                <stop offset="18%" stopColor="#ef2a18" stopOpacity="1" />
+                <stop offset="62%" stopColor="#da391f" stopOpacity="1" />
+                <stop offset="100%" stopColor="#7f1008" stopOpacity="0.98" />
               </linearGradient>
             </defs>
-            <path d={desktopPath} stroke="rgba(130,22,18,0.35)" strokeWidth="3.2" fill="none" />
+            <path d={desktopPath} stroke="rgba(176,22,12,0.58)" strokeWidth="3.4" fill="none" />
             <motion.path
               d={desktopPath}
               stroke="url(#red-thread-line)"
-              strokeWidth="4.8"
+              strokeWidth="5.2"
               strokeLinecap="round"
               fill="none"
               initial={reducedMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.4 }}
               whileInView={reducedMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 1, opacity: 1 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              style={{ filter: "drop-shadow(0 0 20px rgba(218,57,31,0.28))" }}
+              style={{ filter: "drop-shadow(0 0 28px rgba(218,57,31,0.48))" }}
             />
           </svg>
 
@@ -292,16 +292,16 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
           >
             <defs>
               <linearGradient id="red-thread-line-mobile" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ee7901" stopOpacity="0.82" />
-                <stop offset="45%" stopColor="#da391f" stopOpacity="0.96" />
-                <stop offset="100%" stopColor="#8f1e13" stopOpacity="0.9" />
+                <stop offset="0%" stopColor="#ff3b2a" stopOpacity="0.98" />
+                <stop offset="45%" stopColor="#ef2a18" stopOpacity="1" />
+                <stop offset="100%" stopColor="#7f1008" stopOpacity="0.98" />
               </linearGradient>
             </defs>
-            <path d={mobilePath} stroke="rgba(130,22,18,0.3)" strokeWidth="2.5" fill="none" />
+            <path d={mobilePath} stroke="rgba(176,22,12,0.56)" strokeWidth="2.7" fill="none" />
             <motion.path
               d={mobilePath}
               stroke="url(#red-thread-line-mobile)"
-              strokeWidth="4"
+              strokeWidth="4.4"
               strokeLinecap="round"
               fill="none"
               initial={reducedMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.4 }}
