@@ -95,6 +95,12 @@ const getMobilePoint = (index: number, y: number) => {
   return { x, y };
 };
 
+const getDesktopMarkerX = (pointX: number) => {
+  const centerSnapThreshold = 6;
+
+  return Math.abs(pointX - 50) <= centerSnapThreshold ? pointX : 50;
+};
+
 const buildPath = (points: Array<{ x: number; y: number }>) => {
   if (points.length === 0) {
     return "";
@@ -287,17 +293,18 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
             const point = desktopPoints[index];
             const layout = desktopLayout[index];
             const align = point.x >= 50 ? "right" : "left";
+            const markerX = getDesktopMarkerX(point.x);
 
             return (
               <div
                 key={`${entry.year}-${entry.title}`}
-                className="absolute left-0 grid w-full grid-cols-[1fr_5rem_1fr] items-center gap-6"
+                className="absolute left-0 grid w-full grid-cols-[minmax(0,1fr)_7rem_minmax(0,1fr)] items-center gap-6"
                 style={{
                   top: layout.top,
                   minHeight: layout.height,
                 }}
               >
-                <div className="relative z-10 flex h-full items-center">
+                <div className="relative z-10 col-start-1 flex h-full items-center">
                   {align === "left" ? (
                     <TimelineCard entry={entry} align="left" reducedMotion={reducedMotion} />
                   ) : entry.image ? (
@@ -305,7 +312,13 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                   ) : null}
                 </div>
 
-                <div className="relative z-20 flex h-full items-center justify-center">
+                <div
+                  className="pointer-events-none absolute inset-y-0 z-20"
+                  style={{
+                    left: `${markerX}%`,
+                    transform: "translateX(-50%)",
+                  }}
+                >
                   <div className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
                     <motion.div
                       ref={(element) => {
@@ -354,13 +367,13 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                       ) : null}
                       <span className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
                     </motion.div>
-                    <span className="mt-4 whitespace-nowrap text-center text-xs font-semibold uppercase tracking-[0.16em] text-white/65">
+                    <span className="mt-4 min-w-[5rem] whitespace-nowrap text-center text-xs font-semibold uppercase tracking-[0.16em] text-white/65">
                       {entry.year}
                     </span>
                   </div>
                 </div>
 
-                <div className="relative z-10 flex h-full items-center">
+                <div className="relative z-10 col-start-3 flex h-full items-center">
                   {align === "right" ? (
                     <TimelineCard entry={entry} align="right" reducedMotion={reducedMotion} />
                   ) : entry.image ? (
