@@ -262,13 +262,13 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
           >
             <defs>
               <linearGradient id="red-thread-line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ff3b2a" stopOpacity="0.98" />
-                <stop offset="18%" stopColor="#ef2a18" stopOpacity="1" />
-                <stop offset="62%" stopColor="#da391f" stopOpacity="1" />
-                <stop offset="100%" stopColor="#7f1008" stopOpacity="0.98" />
+                <stop offset="0%" stopColor="#ff5a45" stopOpacity="1" />
+                <stop offset="18%" stopColor="#ff4128" stopOpacity="1" />
+                <stop offset="62%" stopColor="#eb4a2d" stopOpacity="1" />
+                <stop offset="100%" stopColor="#a3170d" stopOpacity="1" />
               </linearGradient>
             </defs>
-            <path d={desktopPath} stroke="rgba(176,22,12,0.58)" strokeWidth="3.4" fill="none" />
+            <path d={desktopPath} stroke="rgba(205,36,20,0.74)" strokeWidth="3.4" fill="none" />
             <motion.path
               d={desktopPath}
               stroke="url(#red-thread-line)"
@@ -279,7 +279,7 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
               whileInView={reducedMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 1, opacity: 1 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              style={{ filter: "drop-shadow(0 0 28px rgba(218,57,31,0.48))" }}
+              style={{ filter: "drop-shadow(0 0 32px rgba(255,72,45,0.62))" }}
             />
           </svg>
 
@@ -385,12 +385,12 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
           >
             <defs>
               <linearGradient id="red-thread-line-mobile" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ff3b2a" stopOpacity="0.98" />
-                <stop offset="45%" stopColor="#ef2a18" stopOpacity="1" />
-                <stop offset="100%" stopColor="#7f1008" stopOpacity="0.98" />
+                <stop offset="0%" stopColor="#ff5a45" stopOpacity="1" />
+                <stop offset="45%" stopColor="#ff4128" stopOpacity="1" />
+                <stop offset="100%" stopColor="#a3170d" stopOpacity="1" />
               </linearGradient>
             </defs>
-            <path d={mobilePath} stroke="rgba(176,22,12,0.56)" strokeWidth="2.7" fill="none" />
+            <path d={mobilePath} stroke="rgba(205,36,20,0.7)" strokeWidth="2.7" fill="none" />
             <motion.path
               d={mobilePath}
               stroke="url(#red-thread-line-mobile)"
@@ -401,6 +401,7 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
               whileInView={reducedMotion ? { pathLength: 1, opacity: 1 } : { pathLength: 1, opacity: 1 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 1.2, ease: "easeInOut" }}
+              style={{ filter: "drop-shadow(0 0 24px rgba(255,72,45,0.56))" }}
             />
           </svg>
 
