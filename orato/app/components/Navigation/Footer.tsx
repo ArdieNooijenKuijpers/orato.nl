@@ -97,7 +97,7 @@ const FooterComp = () => {
         >
           <div className="mx-auto max-w-7xl px-4 py-6 md:px-6 md:py-8 lg:px-8">
             <div className="w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px]">
             <nav>
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Menu</h2>
               <ul className="space-y-2">
@@ -202,6 +202,28 @@ const FooterComp = () => {
                     sizes={`${qrSize}px`}
                     className="object-contain"
                   />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative hidden md:flex md:items-start md:justify-end">
+              <div className="sticky top-10">
+                <div className="relative">
+                  <div className="absolute -inset-4 rounded-full bg-orato-orange/10 blur-3xl" />
+                  <div className="relative h-[21rem] w-[14rem] overflow-hidden rounded-full border border-white/15 bg-black shadow-[0_30px_90px_-35px_rgba(0,0,0,0.9)] cursor-big cursor-invert">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      className="h-full w-full object-cover"
+                    >
+                      <source src="/Homepage/temp-vid-3.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_30%,rgba(0,0,0,0.35))]" />
+                  </div>
                 </div>
               </div>
             </div>
