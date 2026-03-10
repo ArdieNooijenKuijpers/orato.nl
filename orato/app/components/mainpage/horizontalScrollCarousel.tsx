@@ -29,6 +29,7 @@ const HorizontalScrollCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
   const x = useTransform(scrollYProgress, [0, 1], ["3%", "-63%"]);
+  const sloganOpacity = useTransform(scrollYProgress, [0, 0.94, 0.985, 1], [0, 0, 1, 1]);
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-rgb cursor-scroll">
@@ -38,6 +39,14 @@ const HorizontalScrollCarousel = () => {
             <Card card={card} key={card.id} />
           ))}
         </motion.div>
+
+        <motion.span
+          aria-hidden="true"
+          style={{ opacity: sloganOpacity }}
+          className={`${tangerine.className} pointer-events-none absolute bottom-3 left-32 hidden text-4xl text-white md:block md:left-32 lg:left-1/2 lg:-translate-x-1/2`}
+        >
+          &lsquo;Even stil staan . . . om verder te komen!&rsquo;
+        </motion.span>
       </div>
     </section>
   );
