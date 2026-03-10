@@ -271,8 +271,8 @@ const CompanyCircles: React.FC = () => {
             </motion.div>
           </div>
 
-          <div className="mt-1 rounded-full border border-black/20 bg-white/85 px-5 py-2 text-center text-sm font-semibold tracking-wide text-black shadow-md backdrop-blur-sm">
-            Hover over an orb to expand and reveal the company
+          <div className="mt-1 inline-flex items-center rounded-full bg-orato-orange px-5 py-2 text-center text-sm font-medium text-white shadow-md">
+            <span>Hover over an orb to expand and reveal the company</span>
           </div>
         </div>
 
