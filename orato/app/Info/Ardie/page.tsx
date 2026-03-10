@@ -122,7 +122,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "orange",
   },
   {
-    year: "1989",
+    year: "1986-1989",
     title: "Taal, onderzoek en ondernemerschap",
     summary: "Ik combineer wetenschappelijke verdieping met mijn eerste eigen bedrijf.",
     details: [
@@ -133,7 +133,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "blue",
   },
   {
-    year: "1992",
+    year: "1990-1992",
     title: "Praktijk, gezin en een steeds bredere horizon",
     summary: "Mijn werk verdiept zich inhoudelijk en verbreedt tegelijk in ondernemerschap en levenservaring.",
     details: [
@@ -150,7 +150,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "red",
   },
   {
-    year: "2001",
+    year: "1993-2001",
     title: "Verhuizen en opnieuw wortelen",
     summary: "Een nieuwe woonplaats vraagt om een nieuw netwerk en nieuwe professionele rollen.",
     details: [
@@ -162,7 +162,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "green",
   },
   {
-    year: "2004",
+    year: "2003-2004",
     title: "ORATO krijgt een duidelijker eigen vorm",
     summary: "Mijn bedrijf en aanbod worden scherper, zelfstandiger en creatiever.",
     details: [
@@ -187,7 +187,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "blue",
   },
   {
-    year: "2007",
+    year: "2006-2007",
     title: "Een diepgaand persoonlijk avontuur",
     summary: "Psychoanalyse wordt een belangrijke bron voor wie ik ben en hoe ik werk.",
     details: [
@@ -197,7 +197,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "red",
   },
   {
-    year: "2009",
+    year: "2008-2009",
     title: "Relaties, sales en vrouwelijk ondernemerschap",
     summary: "Mijn coaching verschuift steeds vaker naar relationele en commerciële vraagstukken.",
     details: [
@@ -209,7 +209,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "green",
   },
   {
-    year: "2012",
+    year: "2010-2012",
     title: "Kiezen voor wat al goed is",
     summary: "Ik blijf zoeken naar de beste vorm voor mijn werk en kies opnieuw bewust voor ORATO.",
     details: [
@@ -232,7 +232,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "blue",
   },
   {
-    year: "2017",
+    year: "2016-2017",
     title: "Schrijven, spreken en Relational Presence",
     summary: "Een jaar van afronding, expressie en internationale verbinding.",
     details: [

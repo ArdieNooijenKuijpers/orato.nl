@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 export type ArdieTimelineEntry = {
@@ -56,9 +57,13 @@ const estimateCardHeight = (entry: ArdieTimelineEntry, mobile: boolean) => {
           ? 272
           : 320
       : 0;
-  const chromeHeight = mobile ? 176 : 206;
+  const textHeight = (mobile ? 176 : 206) + summaryHeight + detailsHeight;
 
-  return chromeHeight + summaryHeight + detailsHeight + imageHeight;
+  if (!mobile && entry.image) {
+    return Math.max(textHeight, imageHeight);
+  }
+
+  return textHeight + imageHeight;
 };
 
 const buildLayout = (entries: ArdieTimelineEntry[], mobile: boolean) => {
@@ -124,7 +129,7 @@ const TimelineCard = ({
       initial={
         reducedMotion
           ? { opacity: 1 }
-          : { opacity: 0, x: align === "left" ? 36 : -36 }
+          : { opacity: 0, x: align === "left" ? -36 : 36 }
       }
       whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -144,31 +149,58 @@ const TimelineCard = ({
           <p key={detail}>{detail}</p>
         ))}
       </div>
-      {entry.image?.placement !== "edge" ? (
-        entry.image ? (
-          <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-orato-dark/10 bg-orato-light/60">
-            <Image
-              src={entry.image.src}
-              alt={entry.image.alt}
-              width={1200}
-              height={900}
-              className={`w-full object-cover ${
-                entry.image.tall
-                  ? "h-[22rem] md:h-[26rem]"
-                  : entry.image.wide
-                    ? "h-72 md:h-[23rem]"
-                    : "h-72 md:h-80"
-              }`}
-            />
-          </div>
-        ) : null
-      ) : null}
     </motion.article>
+  );
+};
+
+const TimelineImageCard = ({
+  entry,
+  align,
+  reducedMotion,
+}: {
+  entry: ArdieTimelineEntry;
+  align: "left" | "right";
+  reducedMotion: boolean;
+}) => {
+  if (!entry.image) {
+    return null;
+  }
+
+  return (
+    <motion.div
+      initial={
+        reducedMotion
+          ? { opacity: 1 }
+          : { opacity: 0, x: align === "left" ? -48 : 48 }
+      }
+      whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
+      className={`w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.9)] ${
+        align === "left" ? "justify-self-end" : "justify-self-start"
+      }`}
+    >
+      <Image
+        src={entry.image.src}
+        alt={entry.image.alt}
+        width={entry.image.wide ? 760 : 620}
+        height={entry.image.wide ? 620 : 820}
+        className={`object-cover opacity-95 ${
+          entry.image.wide
+            ? "h-[24rem] w-full"
+            : entry.image.tall
+              ? "h-[30rem] w-full"
+              : "h-[24rem] w-full"
+        }`}
+      />
+    </motion.div>
   );
 };
 
 export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
   const reducedMotion = useReducedMotion() ?? false;
+  const markerRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [activeMarkerIndex, setActiveMarkerIndex] = useState<number | null>(null);
 
   const desktopLayout = buildLayout(entries, false);
   const mobileLayout = buildLayout(entries, true);
@@ -178,6 +210,45 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
   const mobileHeight = (mobileLayout.at(-1)?.top ?? TOP_PADDING) + (mobileLayout.at(-1)?.height ?? 0) + TOP_PADDING;
   const desktopPath = buildPath(desktopPoints);
   const mobilePath = buildPath(mobilePoints);
+
+  useEffect(() => {
+    const updateActiveMarker = () => {
+      if (window.innerWidth < 768) {
+        setActiveMarkerIndex(null);
+        return;
+      }
+
+      const viewportCenter = window.innerHeight / 2;
+      let nearestIndex: number | null = null;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      markerRefs.current.forEach((marker, index) => {
+        if (!marker) {
+          return;
+        }
+
+        const rect = marker.getBoundingClientRect();
+        const markerCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(markerCenter - viewportCenter);
+
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      setActiveMarkerIndex(nearestDistance <= 80 ? nearestIndex : null);
+    };
+
+    updateActiveMarker();
+    window.addEventListener("scroll", updateActiveMarker, { passive: true });
+    window.addEventListener("resize", updateActiveMarker);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveMarker);
+      window.removeEventListener("resize", updateActiveMarker);
+    };
+  }, []);
 
   return (
     <>
@@ -226,56 +297,78 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                   minHeight: layout.height,
                 }}
               >
-                <div className="relative z-10 flex items-center">
-                  {align === "left" ? <TimelineCard entry={entry} align="left" reducedMotion={reducedMotion} /> : null}
+                <div className="relative z-10 flex h-full items-center">
+                  {align === "left" ? (
+                    <TimelineCard entry={entry} align="left" reducedMotion={reducedMotion} />
+                  ) : entry.image ? (
+                    <TimelineImageCard entry={entry} align="right" reducedMotion={reducedMotion} />
+                  ) : null}
                 </div>
 
                 <div className="relative z-20 flex h-full items-center justify-center">
-                  <motion.div
-                    initial={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
-                    whileInView={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.45, delay: 0.05 }}
-                    className="absolute top-1/2 h-6 w-6 -translate-y-1/2 rounded-full border border-orato-orange/40 bg-orato-orange/20 shadow-[0_0_18px_rgba(238,121,1,0.3)]"
-                    style={{ left: `calc(${point.x}% - 0.75rem)` }}
-                  >
-                    <span className="absolute inset-1 rounded-full bg-orato-red" />
-                  </motion.div>
-                  <span
-                    className="pointer-events-none absolute top-[calc(50%+1.6rem)] text-xs font-semibold uppercase tracking-[0.16em] text-white/65"
-                    style={{ left: `calc(${point.x}% - 1.1rem)` }}
-                  >
-                    {entry.year}
-                  </span>
-                </div>
-
-                <div className="relative z-10 flex items-center">
-                  {align === "right" ? <TimelineCard entry={entry} align="right" reducedMotion={reducedMotion} /> : null}
-                </div>
-
-                {entry.image?.placement === "edge" ? (
-                  <div
-                    className={`pointer-events-none absolute top-1/2 z-0 hidden -translate-y-1/2 xl:block ${
-                      align === "left" ? "right-4" : "left-4"
-                    }`}
-                  >
-                    <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.9)]">
-                      <Image
-                        src={entry.image.src}
-                        alt={entry.image.alt}
-                        width={entry.image.wide ? 760 : 620}
-                        height={entry.image.wide ? 620 : 820}
-                        className={`object-cover opacity-95 ${
-                          entry.image.wide
-                            ? "h-[25.5rem] w-[29rem]"
-                            : entry.image.tall
-                              ? "h-[31rem] w-[22rem]"
-                              : "h-[29rem] w-[25rem]"
-                        }`}
-                      />
-                    </div>
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
+                    <motion.div
+                      ref={(element) => {
+                        markerRefs.current[index] = element;
+                      }}
+                      initial={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
+                      whileInView={reducedMotion ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
+                      animate={
+                        reducedMotion
+                          ? { opacity: 1, scale: 1 }
+                          : activeMarkerIndex === index
+                            ? {
+                                opacity: 1,
+                                scale: [1, 1.12, 1],
+                                boxShadow: [
+                                  "0 0 0 rgba(255,255,255,0.16)",
+                                  "0 0 18px rgba(255,255,255,0.42)",
+                                  "0 0 0 rgba(255,255,255,0.16)",
+                                ],
+                              }
+                            : {
+                                opacity: 1,
+                                scale: 1,
+                                boxShadow: "0 0 0 rgba(255,255,255,0.18)",
+                              }
+                      }
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={
+                        activeMarkerIndex === index
+                          ? { duration: 1.1, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
+                          : { duration: 0.25, ease: "easeOut" }
+                      }
+                      className="relative flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-white/15 shadow-[0_0_14px_rgba(255,255,255,0.22)] backdrop-blur-sm"
+                    >
+                      {activeMarkerIndex === index ? (
+                        <motion.span
+                          aria-hidden="true"
+                          className="absolute -inset-1.5 rounded-full border border-white/45"
+                          animate={
+                            reducedMotion
+                              ? { opacity: 1, scale: 1 }
+                              : { opacity: [0.45, 0, 0.45], scale: [1, 1.5, 1] }
+                          }
+                          transition={{ duration: 1.1, repeat: Number.POSITIVE_INFINITY, ease: "easeOut" }}
+                        />
+                      ) : null}
+                      <span className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
+                    </motion.div>
+                    <span className="mt-4 whitespace-nowrap text-center text-xs font-semibold uppercase tracking-[0.16em] text-white/65">
+                      {entry.year}
+                    </span>
                   </div>
-                ) : null}
+                </div>
+
+                <div className="relative z-10 flex h-full items-center">
+                  {align === "right" ? (
+                    <TimelineCard entry={entry} align="right" reducedMotion={reducedMotion} />
+                  ) : entry.image ? (
+                    <div className="ml-auto">
+                      <TimelineImageCard entry={entry} align="left" reducedMotion={reducedMotion} />
+                    </div>
+                  ) : null}
+                </div>
               </div>
             );
           })}
@@ -313,7 +406,6 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
 
           <div className="relative z-10 space-y-8 py-10">
             {entries.map((entry, index) => {
-              const point = mobilePoints[index];
               const accentClass = accentStyles[entry.accentColor ?? "red"];
 
               return (
@@ -325,13 +417,6 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   className="relative pl-16"
                 >
-                  <div
-                    className="absolute top-8 h-5 w-5 rounded-full border border-orato-orange/40 bg-orato-orange/20"
-                    style={{ left: `calc(${point.x}% - 0.65rem)` }}
-                  >
-                    <span className="absolute inset-1 rounded-full bg-orato-red" />
-                  </div>
-
                   <div className="overflow-hidden rounded-[1.75rem] border border-white/12 bg-orato-light p-5 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.65)]">
                     <div className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${accentClass}`}>
                       {entry.year}
