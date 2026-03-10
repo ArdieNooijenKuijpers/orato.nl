@@ -347,7 +347,7 @@ const toneStyles: Record<string, string> = {
 
 const ArdiePage = () => {
   return (
-    <>
+    <div className="overflow-x-clip">
       <main className="bg-orato-light text-orato-dark">
         <section className="overflow-hidden bg-orato-light px-4 py-12 md:px-8 md:py-20 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -355,7 +355,7 @@ const ArdiePage = () => {
               <div className="inline-flex rounded-full border border-orato-dark/15 bg-white/60 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-orato-dark/70">
                 {heroContent.eyebrow}
               </div>
-              <h1 className={`${notoSerifDisplay.className} mt-6 max-w-3xl text-5xl leading-none text-orato-dark md:text-7xl lg:text-[6.25rem]`}>
+              <h1 className={`${notoSerifDisplay.className} mt-6 max-w-3xl text-5xl leading-none text-center text-orato-dark md:text-left md:text-7xl lg:text-[6.25rem]`}>
                 {heroContent.title}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-orato-dark/80 md:text-xl">
@@ -437,7 +437,7 @@ const ArdiePage = () => {
                   key={section.title}
                   className="relative rounded-[2rem] border border-white/10 bg-white/[0.05] p-6 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.85)] md:p-8"
                 >
-                  <h2 className={`${notoSerifDisplay.className} text-3xl text-white md:text-5xl`}>
+                  <h2 className={`${notoSerifDisplay.className} text-3xl text-center text-white md:text-left md:text-5xl`}>
                     {section.title}
                   </h2>
                   <div className="mt-5 space-y-4 text-base leading-7 text-white/78">
@@ -503,7 +503,7 @@ const ArdiePage = () => {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
                 Werkwijze & deskundigheid
               </p>
-              <h2 className={`${notoSerifDisplay.className} mt-3 text-4xl text-orato-dark md:text-6xl`}>
+              <h2 className={`${notoSerifDisplay.className} mt-3 text-4xl text-center text-orato-dark md:text-left md:text-6xl`}>
                 Diepgang zonder zweven, richting zonder hard te duwen
               </h2>
             </div>
@@ -524,7 +524,7 @@ const ArdiePage = () => {
                     />
                   ) : null}
                   <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-orato-dark">{card.title}</h3>
+                    <h3 className="text-2xl font-semibold text-center text-orato-dark md:text-left">{card.title}</h3>
                     <div className="mt-4 space-y-4 text-sm leading-7 text-orato-dark/80">
                       {card.text.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
@@ -575,7 +575,7 @@ const ArdiePage = () => {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/50">
                 Ontwikkeling als rode draad
               </p>
-              <h2 className={`${notoSerifDisplay.className} mt-3 text-4xl text-white md:text-6xl`}>
+              <h2 className={`${notoSerifDisplay.className} mt-3 text-4xl text-center text-white md:text-left md:text-6xl`}>
                 Een leven in beweging, verbeeld als een rode draad
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
@@ -596,7 +596,7 @@ const ArdiePage = () => {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
                 Bedrijfsmotto
               </p>
-              <h2 className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-orato-dark md:text-6xl`}>
+              <h2 className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-center text-orato-dark md:text-left md:text-6xl`}>
                 Even stil staan . . . om verder te komen!
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-orato-dark/78">
@@ -630,7 +630,7 @@ const ArdiePage = () => {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/50">
                 Contact
               </p>
-              <h2 className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-white md:text-6xl`}>
+              <h2 className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-center text-white md:text-left md:text-6xl`}>
                 Ik ben benieuwd naar jou en je vraag
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
@@ -657,7 +657,7 @@ const ArdiePage = () => {
       </main>
 
       <FooterComp />
-    </>
+    </div>
   );
 };
 
