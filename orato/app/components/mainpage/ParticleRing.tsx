@@ -21,7 +21,10 @@ const ParticleRing = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div
+      ref={containerRef}
+      className="relative h-[60vh] w-[90vw] md:h-screen md:w-screen"
+    >
       <Canvas
         camera={{
           position: [10, -7.5, -5],
@@ -29,8 +32,7 @@ const ParticleRing = () => {
         dpr={[1, 1.5]}
         frameloop="demand"
         gl={{ antialias: false, powerPreference: "high-performance" }}
-        style={{ height: "60vh", justifyContent: "center", width: "90vw" }}
-        className="bg-grey-900"
+        className="h-full w-full bg-grey-900"
       >
         <OrbitControls enablePan={false} enableZoom={false} maxDistance={20} minDistance={10} />
         <directionalLight />
