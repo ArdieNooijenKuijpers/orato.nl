@@ -9,6 +9,7 @@ const FooterComp = () => {
   const qrSize = 120;
   const partnerLogoCardWidth = 150;
   const partnerLogoCardHeight = 92;
+  const footerCardBackground = "#1b1b1b";
 
   const footerMenuItems = [
     { name: 'COACHING', path: '/Onderwerpen/Coaching' },
@@ -197,8 +198,14 @@ const FooterComp = () => {
               {" | Fotografie Grafidi | Film Martijn Welles | Copyright Ardie Nooijen-Kuijpers"}
             </p>
             <div className="relative mt-5 w-full overflow-hidden py-1">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-orato-dark to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-orato-dark to-transparent" />
+              <div
+                className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10"
+                style={{ background: `linear-gradient(to right, ${footerCardBackground}, transparent)` }}
+              />
+              <div
+                className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10"
+                style={{ background: `linear-gradient(to left, ${footerCardBackground}, transparent)` }}
+              />
               <div className="flex w-max animate-marquee gap-4">
                 {marqueeImages.concat(marqueeImages).map((image, index) => (
                   <div

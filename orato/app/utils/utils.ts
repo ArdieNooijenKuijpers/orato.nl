@@ -2,8 +2,8 @@ const MIN_RADIUS = 7.5;
 const MAX_RADIUS = 15;
 const DEPTH = 2;
 // here i adjust the collors for the particle ring
-const LEFT_COLOR = "1d99d6";
-const RIGHT_COLOR = "ffffff";
+const LEFT_COLOR = "ffffff";
+const RIGHT_COLOR = "1d99d6";
 const NUM_POINTS = 1500;
 
 /**

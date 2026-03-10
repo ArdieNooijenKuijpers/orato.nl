@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { companies } from '../mainpage/Data/Companies';
 
+const SHOW_CHROMATIC_ABERRATION = true;
+
 // Tailwind sizing classes for each company size.
 const sizeMap: Record<'K' | 'M' | 'G' | 'GG', string> = {
   K: 'w-6 h-6',   // 16px
@@ -70,16 +72,38 @@ const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
+      {SHOW_CHROMATIC_ABERRATION ? (
+        <>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-full"
+            style={{
+              backgroundColor: "rgba(218, 57, 31, 0.22)",
+              // set chromatic abberation here:
+              transform: "translate(-3px, -2px)",
+            }}
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-full"
+            style={{
+              backgroundColor: "rgba(29, 153, 214, 0.22)",
+              transform: "translate(3px, 2px)",
+            }}
+          />
+        </>
+      ) : null}
+      <span className="absolute inset-0 rounded-full bg-orato-dark" />
       {company.size === 'GG' ? (
         // GG orbs always display their text at normal scale.
-        <span className="absolute text-white font-bold text-sm pointer-events-none">
+        <span className="absolute z-10 text-white font-bold text-sm pointer-events-none">
           {company.name}
         </span>
       ) : (
         // For smaller orbs, fade in the text.
         // Also apply an inverse scale when hovered to counteract the parent's scale.
         <motion.span
-          className="absolute text-white font-bold text-xs pointer-events-none"
+          className="absolute z-10 text-white font-bold text-xs pointer-events-none"
           animate={{
             opacity: isHovered ? 1 : 0,
             // When hovered, apply inverse scale to keep the text size constant.
