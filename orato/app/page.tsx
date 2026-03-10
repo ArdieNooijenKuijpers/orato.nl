@@ -27,7 +27,7 @@ export default function Home() {
       {/* Page layout */}
       <div className="flex flex-col min-h-screen static bg-orato-light">
         {/* Main content */}
-        <main className="flex-grow flex items-center justify-center p-4">
+        <main className="flex-grow flex items-center justify-center overflow-x-hidden p-4">
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start text-center md:text-left">
             {/* Container for "WELKOM BIJ" and Subtext */}
             <div className="flex flex-col items-center md:items-start mt-4 md:mt-0">
@@ -146,7 +146,7 @@ export default function Home() {
         <p>TEST</p>
       </div> */}
 
-      <div className="bg-orato-dark min-h-screen flex items-center justify-center ">
+      <div className="bg-orato-dark min-h-screen flex items-center justify-center overflow-x-hidden">
 
         <div className="  cursor-small   ">
           <ParticleRing />

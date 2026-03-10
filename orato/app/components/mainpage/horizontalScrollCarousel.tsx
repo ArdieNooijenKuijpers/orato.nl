@@ -62,9 +62,10 @@ const Card = ({ card }: { card: CardType }) => {
     >
       {/* Top text element */}
       <span
+        aria-hidden="true"
         className={`${tangerine.className} ${card.hidden} min-h-[2.5rem] text-3xl md:min-h-[3rem] md:text-4xl lg:min-h-[3.5rem] lg:text-5xl text-white`}
       >
-        ‘Even stil staan . . . om verder te komen!’
+        &nbsp;
       </span>
 
       {/* Image container with fixed responsive height */}
@@ -108,8 +109,11 @@ const Card = ({ card }: { card: CardType }) => {
       </div>
 
       {/* Bottom text element */}
-      <div className={`${tangerine.className} ${card.hidden2} mt-auto pt-4 text-xl text-white`}>
-        ‘Even stil staan . . . om verder te komen!’
+      <div
+        aria-hidden="true"
+        className={`${tangerine.className} ${card.hidden2} min-h-[2.5rem] text-3xl md:min-h-[3rem] md:text-4xl lg:min-h-[3.5rem] lg:text-5xl text-white`}
+      >
+        &nbsp;
       </div>
     </div>
   );
