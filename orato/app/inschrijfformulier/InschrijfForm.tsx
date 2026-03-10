@@ -87,6 +87,10 @@ const InschrijfForm = ({
       email: /^\S+@\S+\.\S+$/.test(formData.email) ? "" : "Vul een geldig e-mailadres in.",
       telefoon: formData.telefoon.trim().length >= 10 ? "" : "Vul een telefoonnummer in.",
       facturatie: formData.facturatie ? "" : "Kies zakelijk of prive.",
+      organisatieNaam:
+        formData.facturatie !== "zakelijk" || formData.organisatieNaam.trim().length > 1
+          ? ""
+          : "Vul de organisatienaam in voor zakelijke facturatie.",
       factuurNaar: formData.factuurNaar ? "" : "Kies waar de factuur naartoe moet.",
       factuurEmail:
         formData.factuurNaar !== "email" || /^\S+@\S+\.\S+$/.test(formData.factuurEmail)
@@ -111,6 +115,7 @@ const InschrijfForm = ({
       formData.factuurPostadres,
       formData.gekozenDatum,
       formData.naam,
+      formData.organisatieNaam,
       formData.telefoon,
     ],
   );
@@ -121,6 +126,7 @@ const InschrijfForm = ({
       errors.email ||
       errors.telefoon ||
       errors.facturatie ||
+      errors.organisatieNaam ||
       errors.factuurNaar ||
       errors.factuurEmail ||
       errors.factuurPostadres ||
@@ -158,6 +164,10 @@ const InschrijfForm = ({
 
     if (formData.factuurNaar === "post") {
       requiredFields.push("factuurPostadres");
+    }
+
+    if (formData.facturatie === "zakelijk") {
+      requiredFields.push("organisatieNaam");
     }
 
     markTouched(requiredFields);
@@ -345,7 +355,7 @@ const InschrijfForm = ({
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <LabelInputContainer>
               <label className="text-sm font-medium text-orato-dark" htmlFor="organisatieNaam">
-                Naam
+                Naam {formData.facturatie === "zakelijk" ? "*" : ""}
               </label>
               <Input
                 id="organisatieNaam"
@@ -353,7 +363,12 @@ const InschrijfForm = ({
                 placeholder="Organisatienaam"
                 value={formData.organisatieNaam}
                 onChange={(event) => updateField("organisatieNaam", event.target.value)}
+                onBlur={() => onFieldBlur("organisatieNaam")}
+                aria-invalid={Boolean(showError("organisatieNaam"))}
+                error={Boolean(showError("organisatieNaam"))}
+                required={formData.facturatie === "zakelijk"}
               />
+              <ErrorText message={showError("organisatieNaam")} />
             </LabelInputContainer>
 
             <LabelInputContainer>
