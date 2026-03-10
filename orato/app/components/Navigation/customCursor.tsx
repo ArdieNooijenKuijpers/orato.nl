@@ -124,7 +124,7 @@ export function CustomCursor() {
     <>
       {/* Orb that follows the mouse */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50 rounded-full"
+        className="fixed top-0 left-0 pointer-events-none z-[500] rounded-full"
         style={{
           x,
           y,

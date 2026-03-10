@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FormEvent, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes, useMemo, useState } from "react";
 import { Noto_Serif_Display } from "next/font/google";
+import QuoteBadge from "../components/ardie/QuoteBadge";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -439,7 +440,7 @@ const InschrijfForm = ({
                 <input
                   type="checkbox"
                   name="factuurEmailZelfdeAlsPersoonlijk"
-                  className="h-4 w-4 rounded border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
+                  className="h-4 w-4 cursor-small rounded border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
                   checked={formData.factuurEmailZelfdeAlsPersoonlijk}
                   onChange={(event) => {
                     const checked = event.target.checked;
@@ -525,11 +526,17 @@ const InschrijfForm = ({
 
         <FormSection title="Afronden">
           <LabelInputContainer>
-            <label className="flex items-start gap-3 rounded-2xl border border-orato-dark/10 bg-orato-light/35 p-4 text-sm leading-relaxed text-orato-dark">
+            <label
+              className={`flex cursor-small cursor-pointer items-start gap-3 rounded-2xl border px-4 py-3 text-sm leading-relaxed transition ${
+                formData.akkoord
+                  ? "border-orato-orange bg-orato-orange/10 text-orato-dark"
+                  : "border-orato-dark/15 bg-white text-orato-dark/85 hover:border-orato-orange/60"
+              }`}
+            >
               <input
                 type="checkbox"
                 name="akkoord"
-                className="mt-1 h-4 w-4 rounded border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
+                className="mt-1 h-4 w-4 cursor-small rounded border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
                 checked={formData.akkoord}
                 onChange={(event) => updateField("akkoord", event.target.checked)}
                 onBlur={() => onFieldBlur("akkoord")}
@@ -568,19 +575,25 @@ const InschrijfForm = ({
             <ErrorText message={showError("captcha")} />
           </LabelInputContainer>
 
-          <button
-            type="submit"
-            className="group relative inline-flex w-full items-center justify-center rounded-xl bg-orato-dark px-4 py-3 text-sm font-semibold text-white transition hover:bg-orato-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
-          >
-            <span className="absolute inset-y-0 left-0 h-full w-0 rounded-xl bg-orato-orange transition-all duration-300 group-hover:w-full" />
-            <span className="relative">VERZENDEN</span>
-          </button>
+          <div className="flex items-center gap-4 overflow-visible">
+            <button
+              type="submit"
+              className="group relative inline-flex w-full cursor-small items-center justify-center rounded-xl bg-orato-dark px-4 py-3 text-sm font-semibold text-white transition hover:bg-orato-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
+            >
+              <span className="absolute inset-y-0 left-0 h-full w-0 rounded-xl bg-orato-orange transition-all duration-300 group-hover:w-full" />
+              <span className="relative">VERZENDEN</span>
+            </button>
+
+            <QuoteBadge
+              id="inschrijfformulier-form-quote"
+              quote="Yesterday is history, tomorrow is a mystery, but today is a gift. That's why it's called the present."
+              tooltipAlign="right"
+              className="shrink-0"
+            />
+          </div>
 
           <div className="space-y-2 pt-2 text-xs leading-relaxed text-orato-dark/70">
             <p>Je krijgt automatisch een bevestiging van je bericht per e-mail.</p>
-            <p className="italic">
-              &quot;Yesterday is history, tomorrow is a mystery, but today is a gift. That&apos;s why it&apos;s called the present.&quot;
-            </p>
           </div>
         </FormSection>
       </form>
@@ -617,7 +630,7 @@ const Input = ({
 }: InputHTMLAttributes<HTMLInputElement> & { error?: boolean }) => {
   return (
     <input
-      className={`h-11 w-full rounded-xl border bg-white px-4 text-sm text-orato-dark outline-none transition focus:border-orato-orange focus:ring-2 focus:ring-orato-orange/20 ${
+      className={`cursor-small h-11 w-full rounded-xl border bg-white px-4 text-sm text-orato-dark outline-none transition focus:border-orato-orange focus:ring-2 focus:ring-orato-orange/20 ${
         error ? "border-orato-red/80 ring-1 ring-orato-red/20" : "border-orato-dark/20"
       } ${className}`}
       {...props}
@@ -632,7 +645,7 @@ const TextArea = ({
 }: TextareaHTMLAttributes<HTMLTextAreaElement> & { error?: boolean }) => {
   return (
     <textarea
-      className={`w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm text-orato-dark outline-none transition focus:border-orato-orange focus:ring-2 focus:ring-orato-orange/20 ${
+      className={`cursor-small w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm text-orato-dark outline-none transition focus:border-orato-orange focus:ring-2 focus:ring-orato-orange/20 ${
         error ? "border-orato-red/80 ring-1 ring-orato-red/20" : "border-orato-dark/20"
       } ${className}`}
       {...props}
@@ -657,7 +670,7 @@ const ChoiceCard = ({
 }) => {
   return (
     <label
-      className={`flex cursor-pointer items-start gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
+      className={`flex cursor-small cursor-pointer items-start gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
         checked
           ? "border-orato-orange bg-orato-orange/10 text-orato-dark"
           : "border-orato-dark/15 bg-white text-orato-dark/85 hover:border-orato-orange/60"
@@ -670,7 +683,7 @@ const ChoiceCard = ({
         checked={checked}
         onChange={() => onChange(value)}
         onBlur={onBlur}
-        className="mt-1 h-4 w-4 border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
+        className="mt-1 h-4 w-4 cursor-small border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
       />
       <span>{label}</span>
     </label>

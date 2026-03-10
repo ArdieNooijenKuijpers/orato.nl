@@ -62,9 +62,6 @@ const InschrijfPage = () => {
                     </a>
                     .
                   </p>
-                  <p className="rounded-2xl bg-orato-light/60 p-4 italic text-orato-dark">
-                    &quot;Yesterday is history, tomorrow is a mystery, but today is a gift. That&apos;s why it&apos;s called the present.&quot;
-                  </p>
                 </div>
               </div>
 
