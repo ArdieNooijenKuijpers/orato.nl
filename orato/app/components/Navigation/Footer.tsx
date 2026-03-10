@@ -1,11 +1,15 @@
 'use client';
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 const FooterComp = () => {
   const pathname = usePathname();
+  const footerRef = useRef<HTMLElement | null>(null);
+  const [viewportHeight, setViewportHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
   const qrSize = 120;
   const partnerLogoCardWidth = 150;
   const partnerLogoCardHeight = 92;
@@ -37,14 +41,61 @@ const FooterComp = () => {
   ];
   const marqueeImages = bedrijfImages.filter((image) => !image.toLowerCase().endsWith(".tif"));
 
+  useEffect(() => {
+    const updateViewportMetrics = () => {
+      setViewportHeight(window.innerHeight);
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    updateViewportMetrics();
+    window.addEventListener("resize", updateViewportMetrics);
+
+    return () => window.removeEventListener("resize", updateViewportMetrics);
+  }, []);
+
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    const updateFooterHeight = () => {
+      setFooterHeight(footerRef.current?.offsetHeight ?? 0);
+    };
+
+    updateFooterHeight();
+
+    const observer = new ResizeObserver(updateFooterHeight);
+    observer.observe(footerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const stickyTop = isDesktop ? Math.max(viewportHeight - footerHeight, 0) : 0;
+  const revealWrapperHeight = isDesktop && viewportHeight > 0 && footerHeight > 0
+    ? viewportHeight + footerHeight
+    : undefined;
+  const clipHeight = isDesktop && footerHeight > 0 ? footerHeight : undefined;
+
   return (
     <div
-      className="relative h-auto md:h-[60vh]"
-      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+      className="relative"
+      style={
+        isDesktop && clipHeight
+          ? {
+              height: clipHeight,
+              clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
+            }
+          : undefined
+      }
     >
-      <div className="relative h-auto md:h-[calc(100vh+60vh)] top-0 md:-top-[100vh]">
-        <footer className="h-auto md:h-[60vh] relative md:sticky md:top-[calc(100vh-60vh)] border-t border-white/10 bg-orato-dark text-white">
-          <div className="mx-auto max-w-7xl px-4 py-4 md:flex md:h-full md:items-end md:px-6 md:py-3 lg:px-8">
+      <div
+        className="relative"
+        style={isDesktop && revealWrapperHeight ? { height: revealWrapperHeight, top: -viewportHeight } : undefined}
+      >
+        <footer
+          ref={footerRef}
+          className="relative border-t border-white/10 bg-orato-dark text-white md:sticky"
+          style={isDesktop ? { top: stickyTop } : undefined}
+        >
+          <div className="mx-auto max-w-7xl px-4 py-6 md:px-6 md:py-8 lg:px-8">
             <div className="w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             <nav>
