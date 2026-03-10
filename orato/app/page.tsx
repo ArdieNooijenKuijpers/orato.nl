@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Noto_Serif_Display , Tangerine } from "next/font/google";
 import RotatingImageWithDate from "./components/mainpage/rotatingImageWithDate";
 import VideoMain from "./components/mainpage/videoMain";
@@ -61,11 +62,22 @@ export default function Home() {
                   <span >
                     HET JUISTE ADRES VOOR
                   </span>
-                  <br /> <span className="font-semibold ">COACHING</span> <br />
-                  SUPERVISIE
-                  <br /> PRESENTEREN
+                  <br />{" "}
+                  <Link href="/Onderwerpen/Coaching" className="font-semibold text-inherit no-underline cursor-small">
+                    COACHING
+                  </Link>{" "}
                   <br />
-                  COMMUNICEREN
+                  <Link href="/Onderwerpen/Supervisie" className="text-inherit no-underline cursor-small">
+                    SUPERVISIE
+                  </Link>
+                  <br />{" "}
+                  <Link href="/Onderwerpen/Presenteren" className="text-inherit no-underline cursor-small">
+                    PRESENTEREN
+                  </Link>
+                  <br />
+                  <Link href="/Contact" className="text-inherit no-underline cursor-small">
+                    COMMUNICEREN
+                  </Link>
                 </div>
               </div>
               {/*old transform for long text transform translate-y-16 translate-x-44  */}
@@ -102,9 +114,23 @@ export default function Home() {
                           text-center
                         "
               >
-                HET JUISTE ADRES VOOR COACHING
+                HET JUISTE ADRES VOOR{" "}
+                <Link href="/Onderwerpen/Coaching" className="font-semibold text-inherit no-underline">
+                  COACHING
+                </Link>
                 <br />
-                SUPERVISIE, PRESENTEREN EN COMMUNICEREN.
+                <Link href="/Onderwerpen/Supervisie" className="text-inherit no-underline">
+                  SUPERVISIE
+                </Link>
+                ,{" "}
+                <Link href="/Onderwerpen/Presenteren" className="text-inherit no-underline">
+                  PRESENTEREN
+                </Link>{" "}
+                EN{" "}
+                <Link href="/Contact" className="text-inherit no-underline">
+                  COMMUNICEREN
+                </Link>
+                .
               </div>
             </div>
           </div>
