@@ -294,19 +294,19 @@ export default function CoachingPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {topicCards.map((card, index) => (
-                <Reveal
+                <article
                   key={card.title}
-                  delay={index * 0.06}
+                  className="rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]"
                 >
-                  <article className="rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <Reveal delay={index * 0.06}>
                     <h3 className="text-2xl font-semibold text-white">
                       {card.title}
                     </h3>
                     <p className="mt-4 text-sm leading-7 text-white/78">
                       {card.text}
                     </p>
-                  </article>
-                </Reveal>
+                  </Reveal>
+                </article>
               ))}
             </div>
           </div>
@@ -571,10 +571,11 @@ export default function CoachingPage() {
             </h2>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {references.map((item, index) => (
-                <Reveal key={item.name} delay={index * 0.06}>
-                  <article
-                    className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
-                  >
+                <article
+                  key={item.name}
+                  className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
+                >
+                  <Reveal delay={index * 0.06}>
                     <p className="text-base leading-8 text-white/84">
                       &ldquo;{item.quote}&rdquo;
                     </p>
@@ -582,8 +583,8 @@ export default function CoachingPage() {
                       {item.name}
                     </p>
                     <p className="mt-1 text-sm text-white/58">{item.role}</p>
-                  </article>
-                </Reveal>
+                  </Reveal>
+                </article>
               ))}
             </div>
           </div>

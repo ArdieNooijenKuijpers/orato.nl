@@ -6,6 +6,8 @@ import Image from "next/image";
 
 const FooterComp = () => {
   const pathname = usePathname();
+  const normalizePath = (path: string) => path.replace(/\/$/, "").toLowerCase();
+  const currentPath = normalizePath(pathname);
   const footerRef = useRef<HTMLElement | null>(null);
   const [viewportHeight, setViewportHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
@@ -25,6 +27,16 @@ const FooterComp = () => {
     { name: 'ALGEMENE VOORWAARDEN', path: '/Info/AlgemeneVoorwaarden' },
     { name: 'PRIVACYVERKLARING', path: '/Info/PrivacyVerklaring' },
   ];
+
+  const getActiveLinkColor = (path: string) => {
+    const normalizedPath = normalizePath(path);
+
+    if (normalizedPath === "/onderwerpen/coaching") return "text-orato-blue";
+    if (normalizedPath === "/onderwerpen/supervisie") return "text-orato-purple";
+    if (normalizedPath === "/onderwerpen/presenteren") return "text-orato-green";
+
+    return "text-orato-orange";
+  };
 
   const bedrijfImages = [
     "AVC.jfif",
@@ -105,8 +117,11 @@ const FooterComp = () => {
                   <li key={item.name}>
                     <Link
                       href={item.path}
-                      className={`inline-block text-sm md:text-base transition-colors hover:text-orato-orange cursor-small ${
-                        pathname === item.path ? "font-semibold text-orato-orange" : "text-white/90"
+                      aria-current={currentPath === normalizePath(item.path) ? "page" : undefined}
+                      className={`inline-block cursor-small text-sm transition-colors md:text-base ${
+                        currentPath === normalizePath(item.path)
+                          ? `font-semibold ${getActiveLinkColor(item.path)}`
+                          : "text-white/90 hover:text-orato-orange"
                       }`}
                     >
                       {item.name}
