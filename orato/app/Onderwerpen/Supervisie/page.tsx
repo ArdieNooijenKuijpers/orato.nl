@@ -103,13 +103,13 @@ export default function SupervisiePage() {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center md:justify-start">
                 <Link
                   href="/Contact"
-                  className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-purple"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-purple"
                 >
                   Kennismakingsgesprek
                 </Link>
                 <Link
                   href="/Info/Ardie"
-                  className="inline-flex min-h-14 items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
                 >
                   Meer over Ardie
                 </Link>
@@ -264,13 +264,13 @@ export default function SupervisiePage() {
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Link
                       href="https://associatievoorcoaching.com/"
-                      className="inline-flex items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                      className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
                     >
                       AvC
                     </Link>
                     <Link
                       href="https://associatievoorcoaching.com/transactionele-analyse/"
-                      className="inline-flex items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                      className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
                     >
                       Transactionele Analyse
                     </Link>
@@ -378,7 +378,7 @@ export default function SupervisiePage() {
                 </p>
                 <Link
                   href="/Info/Ardie"
-                  className="mt-6 inline-flex items-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-purple underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-purple"
+                  className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-purple underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-purple"
                 >
                   Naar Ardie
                 </Link>
@@ -390,14 +390,14 @@ export default function SupervisiePage() {
                   Uiteraard AVG-proof volgens{" "}
                   <Link
                     href="/Info/PrivacyVerklaring"
-                    className="font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
                   >
                     Privacyverklaring
                   </Link>{" "}
                   en{" "}
                   <Link
                     href="/Info/AlgemeneVoorwaarden"
-                    className="font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
                   >
                     Algemene voorwaarden
                   </Link>
@@ -442,7 +442,7 @@ export default function SupervisiePage() {
           <div className="mx-auto max-w-3xl">
             <Link
               href="/Contact"
-              className="group cursor-invert relative block overflow-hidden rounded-[2rem] border border-orato-purple/15 bg-gradient-to-br from-white via-white to-orato-purple/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-purple/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-purple/40"
+              className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-purple/15 bg-gradient-to-br from-white via-white to-orato-purple/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-purple/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-purple/40"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(155,95,245,0.16),transparent_38%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
@@ -479,17 +479,17 @@ export default function SupervisiePage() {
             >
               Een voorbeeld van blended supervisie.
             </h2>
-            <div className="mt-10 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="overflow-hidden rounded-[2.4rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-40px_rgba(0,0,0,0.6)]">
+            <div className="mt-10 grid gap-5">
+              <div className="overflow-hidden rounded-[2.6rem] bg-orato-light p-3 shadow-[0_30px_90px_-40px_rgba(0,0,0,0.45)] md:p-5">
                 <Image
                   src="/supervisie/Ruimte circles +logo.png"
                   alt="Visual van de supervisieruimte."
                   width={1600}
                   height={1200}
-                  className="h-auto w-full object-cover"
+                  className="h-auto w-full rounded-[2rem] object-cover"
                 />
               </div>
-              <article className="rounded-[2rem] border border-white/12 bg-white/6 p-7">
+              <article className="mx-auto w-full max-w-4xl rounded-[2rem] border border-white/10 bg-white/10 p-7 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.45)] backdrop-blur-sm md:p-8">
                 <p className="text-lg leading-8 text-white/84">
                   &ldquo;Ardie is een supervisor die je raakt, uitdaagt en in
                   beweging zet. Ze ziet wat ik zelf nog niet doorheb,
@@ -537,13 +537,13 @@ export default function SupervisiePage() {
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/Contact"
-                className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-purple"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-purple"
               >
                 Naar contact
               </Link>
               <Link
                 href="tel:+31651088688"
-                className="inline-flex min-h-14 items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
               >
                 Bel +31 6 51088688
               </Link>

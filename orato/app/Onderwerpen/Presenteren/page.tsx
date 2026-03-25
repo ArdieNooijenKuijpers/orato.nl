@@ -196,7 +196,7 @@ export default function PresenterenPage() {
                 <div className="mt-5 h-px w-24 bg-gradient-to-r from-orato-green via-orato-green/60 to-transparent" />
                 <Link
                   href="/Info/Ardie"
-                  className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.16em] text-orato-green underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-green"
+                  className="mt-5 inline-flex cursor-small text-sm font-semibold uppercase tracking-[0.16em] text-orato-green underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-green"
                 >
                   Meer over Ardie
                 </Link>
@@ -207,19 +207,19 @@ export default function PresenterenPage() {
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center md:justify-start">
                 <Link
                   href="#coaching"
-                  className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-green"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-green"
                 >
                   1-op-1 presentatiecoaching
                 </Link>
                 <Link
                   href="#speaking-circle"
-                  className="inline-flex min-h-14 items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
                 >
                   Authentiek presenteren
                 </Link>
                 <Link
                   href="#workshops"
-                  className="inline-flex min-h-14 items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
                 >
                   Workshops
                 </Link>
@@ -304,14 +304,14 @@ export default function PresenterenPage() {
                       Uiteraard AVG-proof volgens{" "}
                       <Link
                         href="/Info/PrivacyVerklaring"
-                        className="font-semibold underline decoration-orato-dark/20 underline-offset-4 transition hover:decoration-orato-green"
+                        className="cursor-small font-semibold underline decoration-orato-dark/20 underline-offset-4 transition hover:decoration-orato-green"
                       >
                         Privacyverklaring
                       </Link>{" "}
                       en{" "}
                       <Link
                         href="/Info/AlgemeneVoorwaarden"
-                        className="font-semibold underline decoration-orato-dark/20 underline-offset-4 transition hover:decoration-orato-green"
+                        className="cursor-small font-semibold underline decoration-orato-dark/20 underline-offset-4 transition hover:decoration-orato-green"
                       >
                         Algemene voorwaarden
                       </Link>
@@ -366,7 +366,7 @@ export default function PresenterenPage() {
           <div className="mx-auto max-w-3xl">
             <Link
               href="/Contact"
-              className="group cursor-invert relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-green/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/40"
+              className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-green/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/40"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(84,166,94,0.16),transparent_38%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
@@ -408,7 +408,7 @@ export default function PresenterenPage() {
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Link
                 href="/Contact"
-                className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-green px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-orato-dark"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-green px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-orato-dark"
               >
                 Download hier de informatieflyer
               </Link>
@@ -717,13 +717,13 @@ export default function PresenterenPage() {
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/Contact"
-                className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-green"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-green"
               >
                 Naar contact
               </Link>
               <Link
                 href="tel:+31651088688"
-                className="inline-flex min-h-14 items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
               >
                 Bel +31 6 51088688
               </Link>
