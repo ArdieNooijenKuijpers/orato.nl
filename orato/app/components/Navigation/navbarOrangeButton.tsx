@@ -16,6 +16,8 @@ const NavbarOrangeButton = ({
   const pathname = usePathname();
   const normalizedPath = pathname.replace(/\/$/, '').toLowerCase();
   const isCoachingPage = normalizedPath === '/onderwerpen/coaching';
+  const isSupervisiePage = normalizedPath === '/onderwerpen/supervisie';
+  const isPresenterenPage = normalizedPath === '/onderwerpen/presenteren';
 
   if (normalizedPath === '/contact') {
     return null;
@@ -25,7 +27,13 @@ const NavbarOrangeButton = ({
     <Link
       href={href}
       className={`group cursor-small relative inline-flex items-center gap-2 overflow-hidden rounded-full px-3 py-1.5 text-sm font-medium text-white transition-shadow duration-500 ease-out hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 sm:px-5 sm:py-2 sm:text-lg ${
-        isCoachingPage ? "bg-orato-blue" : "bg-orato-orange"
+        isCoachingPage
+          ? "bg-orato-blue"
+          : isSupervisiePage
+            ? "bg-orato-purple"
+            : isPresenterenPage
+              ? "bg-orato-green"
+              : "bg-orato-orange"
       }`}
     >
       <span
