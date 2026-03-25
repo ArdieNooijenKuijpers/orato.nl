@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import Reveal from "../../components/motion/Reveal";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"] });
@@ -76,7 +77,7 @@ export default function SupervisiePage() {
       <main className="bg-orato-light text-orato-dark">
         <section className="overflow-hidden bg-orato-light px-4 py-12 md:px-8 md:py-20 lg:px-10">
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
-            <div className="text-center md:text-left">
+            <Reveal className="text-center md:text-left" direction="left">
               <div className="inline-flex rounded-full border border-orato-dark/15 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-orato-dark/70">
                 Supervisie bij Orato
               </div>
@@ -114,9 +115,9 @@ export default function SupervisiePage() {
                   Meer over Ardie
                 </Link>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <Reveal className="relative" direction="right" delay={0.08}>
               <div className="absolute -left-4 top-12 hidden h-28 w-28 rounded-full bg-orato-purple/20 blur-3xl lg:block" />
               <div className="absolute -right-4 bottom-10 hidden h-36 w-36 rounded-full bg-orato-purple/20 blur-3xl lg:block" />
               <div className="relative overflow-hidden rounded-[2.5rem] border border-orato-dark/10 bg-white shadow-[0_40px_120px_-45px_rgba(20,20,20,0.45)]">
@@ -144,13 +145,13 @@ export default function SupervisiePage() {
                   supervisie, naast het normatieve en formatieve.
                 </p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
+            <Reveal direction="left">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
                 Supervisie
               </p>
@@ -182,37 +183,43 @@ export default function SupervisiePage() {
                   className="h-auto w-full object-cover"
                 />
               </div>
-            </div>
+            </Reveal>
 
             <div className="grid gap-5">
-              <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                <h3 className="text-2xl font-semibold text-white">
-                  Professionalisering
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-white/80">
-                  Je mag van mij verwachten dat ik jouw professionalisering en
-                  daarmee de kwaliteit van coachen, centraal zet.
-                </p>
-              </article>
-              <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                <h3 className="text-2xl font-semibold text-white">
-                  Secure base
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-white/80">
-                  Supervisie gebeurt met de grootste psychologische veiligheid.
-                  Als een katalysator gericht op secure base.
-                </p>
-              </article>
-              <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                <h3 className="text-2xl font-semibold text-white">
-                  Professionele dialoog
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-white/80">
-                  Supervisie is meer dan een professionele dialoog. Het is ook
-                  nog fijngevoeliger duiden, sparren en een kijkje in de
-                  keuken van Ardie.
-                </p>
-              </article>
+              <Reveal>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Professionalisering
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    Je mag van mij verwachten dat ik jouw professionalisering en
+                    daarmee de kwaliteit van coachen, centraal zet.
+                  </p>
+                </article>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Secure base
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    Supervisie gebeurt met de grootste psychologische veiligheid.
+                    Als een katalysator gericht op secure base.
+                  </p>
+                </article>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Professionele dialoog
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    Supervisie is meer dan een professionele dialoog. Het is ook
+                    nog fijngevoeliger duiden, sparren en een kijkje in de
+                    keuken van Ardie.
+                  </p>
+                </article>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -230,16 +237,17 @@ export default function SupervisiePage() {
             <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
               <div className="space-y-5">
                 {expertiseBlocks.map((paragraph, index) => (
-                  <article
-                    key={paragraph}
-                    className={`rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm ${
-                      index === 0 ? "shadow-[0_24px_70px_-38px_rgba(20,20,20,0.22)]" : ""
-                    }`}
-                  >
-                    <p className="text-base leading-7 text-orato-dark/78">
-                      {paragraph}
-                    </p>
-                  </article>
+                  <Reveal key={paragraph} delay={index * 0.06}>
+                    <article
+                      className={`rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm ${
+                        index === 0 ? "shadow-[0_24px_70px_-38px_rgba(20,20,20,0.22)]" : ""
+                      }`}
+                    >
+                      <p className="text-base leading-7 text-orato-dark/78">
+                        {paragraph}
+                      </p>
+                    </article>
+                  </Reveal>
                 ))}
               </div>
               <div className="space-y-5">
@@ -252,30 +260,32 @@ export default function SupervisiePage() {
                     className="h-auto w-full object-cover"
                   />
                 </div>
-                <article className="rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm">
-                  <h3 className="text-2xl font-semibold text-orato-dark">
-                    AvC
-                  </h3>
-                  <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
-                    {trainingBlocks.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <Link
-                      href="https://associatievoorcoaching.com/"
-                      className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
-                    >
+                <Reveal delay={0.1}>
+                  <article className="rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm">
+                    <h3 className="text-2xl font-semibold text-orato-dark">
                       AvC
-                    </Link>
-                    <Link
-                      href="https://associatievoorcoaching.com/transactionele-analyse/"
-                      className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
-                    >
-                      Transactionele Analyse
-                    </Link>
-                  </div>
-                </article>
+                    </h3>
+                    <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
+                      {trainingBlocks.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <Link
+                        href="https://associatievoorcoaching.com/"
+                        className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                      >
+                        AvC
+                      </Link>
+                      <Link
+                        href="https://associatievoorcoaching.com/transactionele-analyse/"
+                        className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                      >
+                        Transactionele Analyse
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
               </div>
             </div>
           </div>
@@ -368,42 +378,46 @@ export default function SupervisiePage() {
                 </article>
               </div>
 
-              <article className="rounded-[2rem] border border-white/12 bg-orato-light p-7 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
-                  Verder lezen
-                </p>
-                <p className="mt-4 text-base leading-7 text-orato-dark/78">
-                  Wil je meer weten over de professionele en persoonlijke
-                  ontwikkeling van Ardie klik dan hier.
-                </p>
-                <Link
-                  href="/Info/Ardie"
-                  className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-purple underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-purple"
-                >
-                  Naar Ardie
-                </Link>
-              </article>
-
-              <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7">
-                <h3 className="text-2xl font-semibold">Kaders & vertrouwen</h3>
-                <p className="mt-4 text-sm leading-7 text-white/82">
-                  Uiteraard AVG-proof volgens{" "}
+              <Reveal delay={0.05}>
+                <article className="rounded-[2rem] border border-white/12 bg-orato-light p-7 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+                    Verder lezen
+                  </p>
+                  <p className="mt-4 text-base leading-7 text-orato-dark/78">
+                    Wil je meer weten over de professionele en persoonlijke
+                    ontwikkeling van Ardie klik dan hier.
+                  </p>
                   <Link
-                    href="/Info/PrivacyVerklaring"
-                    className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    href="/Info/Ardie"
+                    className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-purple underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-purple"
                   >
-                    Privacyverklaring
-                  </Link>{" "}
-                  en{" "}
-                  <Link
-                    href="/Info/AlgemeneVoorwaarden"
-                    className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
-                  >
-                    Algemene voorwaarden
+                    Naar Ardie
                   </Link>
-                  . Met aandacht voor ethische aspecten van ons mooie coachvak.
-                </p>
-              </article>
+                </article>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7">
+                  <h3 className="text-2xl font-semibold">Kaders & vertrouwen</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/82">
+                    Uiteraard AVG-proof volgens{" "}
+                    <Link
+                      href="/Info/PrivacyVerklaring"
+                      className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    >
+                      Privacyverklaring
+                    </Link>{" "}
+                    en{" "}
+                    <Link
+                      href="/Info/AlgemeneVoorwaarden"
+                      className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    >
+                      Algemene voorwaarden
+                    </Link>
+                    . Met aandacht voor ethische aspecten van ons mooie coachvak.
+                  </p>
+                </article>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -420,26 +434,27 @@ export default function SupervisiePage() {
             </h2>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {subjects.map((subject, index) => (
-                <article
-                  key={subject}
-                  className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-purple/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-purple/10 text-xs font-semibold text-orato-purple transition-colors duration-300 group-hover:bg-orato-purple group-hover:text-white">
-                      {index + 1}
-                    </span>
-                    <p className="text-sm leading-6 text-orato-dark/82">
-                      {subject}
-                    </p>
-                  </div>
-                </article>
+                <Reveal key={subject} delay={index * 0.025}>
+                  <article
+                    className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-purple/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-purple/10 text-xs font-semibold text-orato-purple transition-colors duration-300 group-hover:bg-orato-purple group-hover:text-white">
+                        {index + 1}
+                      </span>
+                      <p className="text-sm leading-6 text-orato-dark/82">
+                        {subject}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <Link
               href="/Contact"
               className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-purple/15 bg-gradient-to-br from-white via-white to-orato-purple/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-purple/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-purple/40"
@@ -466,7 +481,7 @@ export default function SupervisiePage() {
                 tussen jou en coaches die al supervisie genoten hebben.
               </p>
             </Link>
-          </div>
+          </Reveal>
         </section>
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
@@ -489,31 +504,33 @@ export default function SupervisiePage() {
                   className="h-auto w-full rounded-[2rem] object-cover"
                 />
               </div>
-              <article className="mx-auto w-full max-w-4xl rounded-[2rem] border border-white/10 bg-white/10 p-7 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.45)] backdrop-blur-sm md:p-8">
-                <p className="text-lg leading-8 text-white/84">
-                  &ldquo;Ardie is een supervisor die je raakt, uitdaagt en in
-                  beweging zet. Ze ziet wat ik zelf nog niet doorheb,
-                  confronteert me zonder aarzeling, maar altijd met humor en
-                  een vleugje lerares-strengheid. Elke sessie verrast me met
-                  nieuwe inzichten en een flinke dosis energie.&rdquo;
-                </p>
-                <p className="mt-6 text-base font-semibold text-white">
-                  Jasper Nooij
-                </p>
-                <p className="mt-1 text-sm text-white/58">
-                  Zelfstandig tenderspecialist en (team)coach, Estland
-                </p>
-                <p className="mt-8 text-sm leading-7 text-white/74">
-                  Laat het me weten als ik een bruggenbouwer mag zijn tussen jou
-                  en een van de collega&apos;s die ik al gesuperviseerd heb.
-                </p>
-              </article>
+              <Reveal delay={0.08}>
+                <article className="mx-auto w-full max-w-4xl rounded-[2rem] border border-white/10 bg-white/10 p-7 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.45)] backdrop-blur-sm md:p-8">
+                  <p className="text-lg leading-8 text-white/84">
+                    &ldquo;Ardie is een supervisor die je raakt, uitdaagt en in
+                    beweging zet. Ze ziet wat ik zelf nog niet doorheb,
+                    confronteert me zonder aarzeling, maar altijd met humor en
+                    een vleugje lerares-strengheid. Elke sessie verrast me met
+                    nieuwe inzichten en een flinke dosis energie.&rdquo;
+                  </p>
+                  <p className="mt-6 text-base font-semibold text-white">
+                    Jasper Nooij
+                  </p>
+                  <p className="mt-1 text-sm text-white/58">
+                    Zelfstandig tenderspecialist en (team)coach, Estland
+                  </p>
+                  <p className="mt-8 text-sm leading-7 text-white/74">
+                    Laat het me weten als ik een bruggenbouwer mag zijn tussen jou
+                    en een van de collega&apos;s die ik al gesuperviseerd heb.
+                  </p>
+                </article>
+              </Reveal>
             </div>
           </div>
         </section>
 
         <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
-          <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
+          <Reveal className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
               Welkom
             </p>
@@ -548,7 +565,7 @@ export default function SupervisiePage() {
                 Bel +31 6 51088688
               </Link>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 

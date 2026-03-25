@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import Reveal from "../../components/motion/Reveal";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"] });
@@ -178,7 +179,7 @@ export default function CoachingPage() {
       <main className="bg-orato-light text-orato-dark">
         <section className="overflow-hidden bg-orato-light px-4 py-12 md:px-8 md:py-20 lg:px-10">
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="text-center md:text-left">
+            <Reveal className="text-center md:text-left" direction="left">
               <div className="inline-flex rounded-full border border-orato-dark/15 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-orato-dark/70">
                 Coaching bij Orato
               </div>
@@ -217,9 +218,9 @@ export default function CoachingPage() {
                   Meer over Ardie
                 </Link>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <Reveal className="relative" direction="right" delay={0.08}>
               <div className="absolute -left-4 top-12 hidden h-28 w-28 rounded-full bg-orato-blue/20 blur-3xl lg:block" />
               <div className="absolute -right-4 bottom-10 hidden h-36 w-36 rounded-full bg-orato-blue/20 blur-3xl lg:block" />
               <div className="relative overflow-hidden rounded-[2.5rem] border border-orato-dark/10 bg-white shadow-[0_40px_120px_-45px_rgba(20,20,20,0.45)]">
@@ -247,13 +248,13 @@ export default function CoachingPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
+            <Reveal direction="left">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
                 Coachonderwerpen
               </p>
@@ -289,21 +290,23 @@ export default function CoachingPage() {
                   .
                 </p>
               </div>
-            </div>
+            </Reveal>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {topicCards.map((card) => (
-                <article
+              {topicCards.map((card, index) => (
+                <Reveal
                   key={card.title}
-                  className="rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]"
+                  delay={index * 0.06}
                 >
-                  <h3 className="text-2xl font-semibold text-white">
-                    {card.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-white/78">
-                    {card.text}
-                  </p>
-                </article>
+                  <article className="rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                    <h3 className="text-2xl font-semibold text-white">
+                      {card.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-white/78">
+                      {card.text}
+                    </p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -330,21 +333,22 @@ export default function CoachingPage() {
             </div>
             <div className="mt-10 grid gap-5 lg:grid-cols-2">
               {specialties.map((item, index) => (
-                <article
+                <Reveal
                   key={item.title}
-                  className={`rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm ${
-                    index === 0 ? "lg:col-span-2" : ""
-                  }`}
+                  delay={index * 0.06}
+                  className={index === 0 ? "lg:col-span-2" : undefined}
                 >
-                  <h3 className="text-2xl font-semibold text-orato-dark">
-                    {item.title}
-                  </h3>
-                  <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
-                    {item.text.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                </article>
+                  <article className="rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
+                    <h3 className="text-2xl font-semibold text-orato-dark">
+                      {item.title}
+                    </h3>
+                    <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
+                      {item.text.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -393,7 +397,7 @@ export default function CoachingPage() {
                   <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78">
                     <li>
                       Sessies plannen we in zoals dat bij de ontwikkelvraag en
-                      agenda's past.
+                      agenda&apos;s past.
                     </li>
                     <li>
                       Bijvoorbeeld aanvankelijk eens per twee weken, 1 tot 1,5
@@ -415,68 +419,74 @@ export default function CoachingPage() {
             </div>
 
             <div className="space-y-5">
-              <div className="overflow-hidden rounded-[2.4rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-40px_rgba(0,0,0,0.6)]">
-                <Image
-                  src="/coaching/ERF03819_WEB.jpg"
-                  alt="Coachsessie bij Orato."
-                  width={1600}
-                  height={1000}
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-
-              <article className="rounded-[2rem] border border-white/12 bg-orato-light p-7 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
-                  7V-methode en A-methode
-                </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {principles.map((principle) => (
-                    <span
-                      key={principle}
-                      className="rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-medium text-orato-dark"
-                    >
-                      {principle}
-                    </span>
-                  ))}
+              <Reveal>
+                <div className="overflow-hidden rounded-[2.4rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-40px_rgba(0,0,0,0.6)]">
+                  <Image
+                    src="/coaching/ERF03819_WEB.jpg"
+                    alt="Coachsessie bij Orato."
+                    width={1600}
+                    height={1000}
+                    className="h-auto w-full object-cover"
+                  />
                 </div>
-              </article>
+              </Reveal>
 
-              <article className="rounded-[2rem] border border-orato-blue/20 bg-orato-blue/10 p-7">
-                <h3 className="text-2xl font-semibold">Kaders en vertrouwen</h3>
-                <p className="mt-4 text-sm leading-7 text-white/82">
-                  Uiteraard AVG-proof volgens Privacyverklaring en Algemene
-                  voorwaarden. Volgens de Ethische gedragscodes van de ICF en
-                  NOBCO/EMCC, met aandacht voor zorgvuldigheid en vertrouwen.
-                  Lees meer in de{" "}
+              <Reveal delay={0.05}>
+                <article className="rounded-[2rem] border border-white/12 bg-orato-light p-7 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+                    7V-methode en A-methode
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {principles.map((principle) => (
+                      <span
+                        key={principle}
+                        className="rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-medium text-orato-dark"
+                      >
+                        {principle}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <article className="rounded-[2rem] border border-orato-blue/20 bg-orato-blue/10 p-7">
+                  <h3 className="text-2xl font-semibold">Kaders en vertrouwen</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/82">
+                    Uiteraard AVG-proof volgens Privacyverklaring en Algemene
+                    voorwaarden. Volgens de Ethische gedragscodes van de ICF en
+                    NOBCO/EMCC, met aandacht voor zorgvuldigheid en vertrouwen.
+                    Lees meer in de{" "}
+                    <Link
+                      href="/Info/PrivacyVerklaring"
+                      className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    >
+                      privacyverklaring
+                    </Link>{" "}
+                    en{" "}
+                    <Link
+                      href="/Info/AlgemeneVoorwaarden"
+                      className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    >
+                      algemene voorwaarden
+                    </Link>
+                    .
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-white/82">
+                    APK. Ardie&apos;s Periodieke Koaching. Ooit zo genoemd door
+                    een coachee. Regelmatig onderhoud, een soort strippenkaart
+                    bijv. 1x per kwartaal, voor (door)ontwikkeling van oude en
+                    nieuwe thema&apos;s m.b.t. je professionele en persoonlijke
+                    ontwikkeling.
+                  </p>
                   <Link
-                    href="/Info/PrivacyVerklaring"
-                    className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    href="/Info/Ardie"
+                    className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
                   >
-                    privacyverklaring
-                  </Link>{" "}
-                  en{" "}
-                  <Link
-                    href="/Info/AlgemeneVoorwaarden"
-                    className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
-                  >
-                    algemene voorwaarden
+                    Lees meer over Ardie
                   </Link>
-                  .
-                </p>
-                <p className="mt-4 text-sm leading-7 text-white/82">
-                  APK. Ardie&apos;s Periodieke Koaching. Ooit zo genoemd door
-                  een coachee. Regelmatig onderhoud, een soort strippenkaart
-                  bijv. 1x per kwartaal, voor (door)ontwikkeling van oude en
-                  nieuwe thema&apos;s m.b.t. je professionele en persoonlijke
-                  ontwikkeling.
-                </p>
-                <Link
-                  href="/Info/Ardie"
-                  className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
-                >
-                  Lees meer over Ardie
-                </Link>
-              </article>
+                </article>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -493,26 +503,27 @@ export default function CoachingPage() {
             </h2>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {examples.map((example, index) => (
-                <article
-                  key={example}
-                  className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-blue/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-blue/10 text-xs font-semibold text-orato-blue transition-colors duration-300 group-hover:bg-orato-blue group-hover:text-white">
-                      {index + 1}
-                    </span>
-                    <p className="text-sm leading-6 text-orato-dark/82">
-                      {example}
-                    </p>
-                  </div>
-                </article>
+                <Reveal key={example} delay={index * 0.02}>
+                  <article
+                    className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-blue/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-blue/10 text-xs font-semibold text-orato-blue transition-colors duration-300 group-hover:bg-orato-blue group-hover:text-white">
+                        {index + 1}
+                      </span>
+                      <p className="text-sm leading-6 text-orato-dark/82">
+                        {example}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <Link
               href="/Contact"
               className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-blue/15 bg-gradient-to-br from-white via-white to-orato-blue/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-blue/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-blue/40"
@@ -545,7 +556,7 @@ export default function CoachingPage() {
                 Ik ga ervoor! Waarvoor? Voor jou en je ontwikkeling.
               </p>
             </Link>
-          </div>
+          </Reveal>
         </section>
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
@@ -559,26 +570,27 @@ export default function CoachingPage() {
               Ervaringen van coachees en opdrachtgevers.
             </h2>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {references.map((item) => (
-                <article
-                  key={item.name}
-                  className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
-                >
-                  <p className="text-base leading-8 text-white/84">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                  <p className="mt-6 text-base font-semibold text-white">
-                    {item.name}
-                  </p>
-                  <p className="mt-1 text-sm text-white/58">{item.role}</p>
-                </article>
+              {references.map((item, index) => (
+                <Reveal key={item.name} delay={index * 0.06}>
+                  <article
+                    className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
+                  >
+                    <p className="text-base leading-8 text-white/84">
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
+                    <p className="mt-6 text-base font-semibold text-white">
+                      {item.name}
+                    </p>
+                    <p className="mt-1 text-sm text-white/58">{item.role}</p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
-          <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
+          <Reveal className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
 
             <p
               className={`${tangerine.className} mt-4 text-5xl leading-none text-orato-blue md:text-7xl`}
@@ -603,7 +615,7 @@ export default function CoachingPage() {
                 Bel +31 6 51088688
               </Link>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 

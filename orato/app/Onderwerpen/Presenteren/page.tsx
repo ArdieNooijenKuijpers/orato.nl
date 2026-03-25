@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import Reveal from "../../components/motion/Reveal";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -153,7 +154,7 @@ export default function PresenterenPage() {
       <main className="bg-orato-light text-orato-dark">
         <section className="overflow-hidden bg-orato-light px-4 py-12 md:px-8 md:py-20 lg:px-10">
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
-            <div className="text-center md:text-left">
+            <Reveal className="text-center md:text-left" direction="left">
               <div className="inline-flex rounded-full border border-orato-dark/15 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-orato-dark/70">
                 Presenteren
               </div>
@@ -224,9 +225,9 @@ export default function PresenterenPage() {
                   Workshops
                 </Link>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="relative">
+            <Reveal className="relative" direction="right" delay={0.08}>
               <div className="absolute -left-4 top-12 hidden h-28 w-28 rounded-full bg-orato-green/20 blur-3xl lg:block" />
               <div className="absolute -right-4 bottom-10 hidden h-36 w-36 rounded-full bg-orato-green/20 blur-3xl lg:block" />
               <div className="relative overflow-hidden rounded-[2.5rem] border border-orato-dark/10 bg-white shadow-[0_40px_120px_-45px_rgba(20,20,20,0.45)]">
@@ -250,7 +251,7 @@ export default function PresenterenPage() {
                   />
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -363,7 +364,7 @@ export default function PresenterenPage() {
         </section>
 
         <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
-          <div className="mx-auto max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl">
             <Link
               href="/Contact"
               className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-green/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/40"
@@ -394,7 +395,7 @@ export default function PresenterenPage() {
                 Jij in de volle aandacht en dat voelt nog goed ook.
               </p>
             </Link>
-          </div>
+          </Reveal>
         </section>
 
         <section
@@ -456,101 +457,106 @@ export default function PresenterenPage() {
 
               <div className="grid gap-5">
                 {speakingCircleSections.map((section, index) => (
-                  <article
-                    key={section.title}
-                    className={`rounded-[2rem] border p-7 shadow-sm ${
-                      index === 0
-                        ? "border-orato-green/20 bg-orato-green/10"
-                        : "border-white/12 bg-white/6"
-                    }`}
-                  >
-                    <h3 className="text-2xl font-semibold text-white">
-                      {section.title}
-                    </h3>
-                    <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
-                      {section.body.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
-                  </article>
+                  <Reveal key={section.title} delay={index * 0.05}>
+                    <article
+                      className={`rounded-[2rem] border p-7 shadow-sm ${
+                        index === 0
+                          ? "border-orato-green/20 bg-orato-green/10"
+                          : "border-white/12 bg-white/6"
+                      }`}
+                    >
+                      <h3 className="text-2xl font-semibold text-white">
+                        {section.title}
+                      </h3>
+                      <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
+                        {section.body.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </article>
+                  </Reveal>
                 ))}
               </div>
             </div>
 
             <div className="mt-10 grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
-              <article className="rounded-[2rem] border border-white/12 bg-white/6 p-7">
-                <h3 className="text-2xl font-semibold text-white">
-                  Hoe bereid ik me voor?
-                </h3>
-                <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
-                  <p>
-                    Niet door een presentatie of onderwerp voor te bereiden.
-                    Kom zoals je bent. Kenmerkend is juist dat je vertrouwt op
-                    het moment zelf en op je eigen capaciteiten.
-                  </p>
-                  <p>
-                    Wel door de richtlijnen te lezen die je vooraf krijgt en
-                    eventueel door het boek Be seen now van Lee Glickstein of
-                    Present! van Burghard en Wolcken te lezen.
-                  </p>
-                  <p>
-                    Geen voorbereiding dus maar wel een portie moed en
-                    eerlijkheid. Het belangrijkst is misschien nog wel dat je
-                    nieuwsgierig bent naar deze mogelijkheid om jouw manier van
-                    presenteren te verbeteren.
-                  </p>
-                </div>
-              </article>
-
-              <article className="rounded-[2rem] border border-orato-green bg-orato-green p-7 shadow-[0_28px_80px_-42px_rgba(0,0,0,0.55)]">
-                <h3 className="text-2xl font-semibold text-white">
-                  Locatie ZIN
-                </h3>
-                <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
-                  <p>
-                    Omdat mijn Speaking Circle werk wordt georganiseerd in een
-                    zeer inspirerende omgeving, volgt hieronder extra informatie
-                    over deze bijzondere locatie te Vught waar jij als
-                    deelnemer kunt overnachten.
-                  </p>
-                  <p>
-                    ZIN is een adviserende gesprekspartner voor organisaties die
-                    met ziel en zakelijkheid willen werken. Het klooster waarin
-                    ZIN is gehuisvest, is stijlvol verbouwd en biedt ruimte aan
-                    2 tot 150 gasten.
-                  </p>
-                  <p>
-                    Deze dag wordt in 2026 georganiseerd bij ZIN op dinsdag 24
-                    maart, vrijdag 26 juni en maandag 9 november.
-                  </p>
-                  <p className="font-semibold text-white">
-                    Kosten: € 250,- excl. btw./ incl. lunch en video-opnames.
-                  </p>
-                  <p className="pt-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
-                    Klik op deze links voor meer informatie
-                  </p>
-                  <div className="grid gap-3 pt-1 sm:grid-cols-3">
-                    <Link
-                      href="https://kloosterhotelzin.nl/agenda/"
-                      className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
-                    >
-                      ZIN agenda
-                    </Link>
-                    <Link
-                      href="https://relationalpresence.eu/"
-                      className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
-                    >
-                      Relational Presence
-                    </Link>
-                    <Link
-                      href="https://www.speakingcircles.com"
-                      className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
-                    >
-                      Speaking Circle
-                    </Link>
+              <Reveal>
+                <article className="rounded-[2rem] border border-white/12 bg-white/6 p-7">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Hoe bereid ik me voor?
+                  </h3>
+                  <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
+                    <p>
+                      Niet door een presentatie of onderwerp voor te bereiden.
+                      Kom zoals je bent. Kenmerkend is juist dat je vertrouwt op
+                      het moment zelf en op je eigen capaciteiten.
+                    </p>
+                    <p>
+                      Wel door de richtlijnen te lezen die je vooraf krijgt en
+                      eventueel door het boek Be seen now van Lee Glickstein of
+                      Present! van Burghard en Wolcken te lezen.
+                    </p>
+                    <p>
+                      Geen voorbereiding dus maar wel een portie moed en
+                      eerlijkheid. Het belangrijkst is misschien nog wel dat je
+                      nieuwsgierig bent naar deze mogelijkheid om jouw manier van
+                      presenteren te verbeteren.
+                    </p>
                   </div>
-                </div>
-              </article>
+                </article>
+              </Reveal>
+
+              <Reveal delay={0.08}>
+                <article className="rounded-[2rem] border border-orato-green bg-orato-green p-7 shadow-[0_28px_80px_-42px_rgba(0,0,0,0.55)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Locatie ZIN
+                  </h3>
+                  <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
+                    <p>
+                      Omdat mijn Speaking Circle werk wordt georganiseerd in een
+                      zeer inspirerende omgeving, volgt hieronder extra informatie
+                      over deze bijzondere locatie te Vught waar jij als
+                      deelnemer kunt overnachten.
+                    </p>
+                    <p>
+                      ZIN is een adviserende gesprekspartner voor organisaties die
+                      met ziel en zakelijkheid willen werken. Het klooster waarin
+                      ZIN is gehuisvest, is stijlvol verbouwd en biedt ruimte aan
+                      2 tot 150 gasten.
+                    </p>
+                    <p>
+                      Deze dag wordt in 2026 georganiseerd bij ZIN op dinsdag 24
+                      maart, vrijdag 26 juni en maandag 9 november.
+                    </p>
+                    <p className="font-semibold text-white">
+                      Kosten: € 250,- excl. btw./ incl. lunch en video-opnames.
+                    </p>
+                    <p className="pt-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
+                      Klik op deze links voor meer informatie
+                    </p>
+                    <div className="grid gap-3 pt-1 sm:grid-cols-3">
+                      <Link
+                        href="https://kloosterhotelzin.nl/agenda/"
+                        className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
+                      >
+                        ZIN agenda
+                      </Link>
+                      <Link
+                        href="https://relationalpresence.eu/"
+                        className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
+                      >
+                        Relational Presence
+                      </Link>
+                      <Link
+                        href="https://www.speakingcircles.com"
+                        className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
+                      >
+                        Speaking Circle
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
             </div>
 
             <div className="mt-8 grid gap-5">
@@ -584,38 +590,40 @@ export default function PresenterenPage() {
               </p>
             </div>
 
-            <article className="mt-8 rounded-[2rem] border border-white/12 bg-white/6 p-7">
-              <h3 className="text-2xl font-semibold text-white">
-                Speaking from Inner Space
-              </h3>
-              <p className="mt-2 text-sm text-white/58">
-                Lee Glickstein, Founder, SCI
-              </p>
-              <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
-                <p>
-                  In facilitating 6,000+ Speaking Circles over the past 35
-                  years I&apos;ve successfully treated all varieties of
-                  performance anxiety from abject stage fright to mild unease.
+            <Reveal className="mt-8" delay={0.12}>
+              <article className="rounded-[2rem] border border-white/12 bg-white/6 p-7">
+                <h3 className="text-2xl font-semibold text-white">
+                  Speaking from Inner Space
+                </h3>
+                <p className="mt-2 text-sm text-white/58">
+                  Lee Glickstein, Founder, SCI
                 </p>
-                <p>
-                  The commonality of all is that standing in front of a group
-                  triggers inner contraction. Those with the most severe
-                  constriction have no resources at all to cope with attention,
-                  even benign attention.
-                </p>
-                <p>
-                  Practicing Relational Presence at a Speaking Circle
-                  (gazing/being with one person at a time without even having
-                  to speak) begins to open up the inner space required to move
-                  toward ease.
-                </p>
-                <p>
-                  Those who come to this work having had positive public
-                  speaking experience quickly expand their capacity for
-                  spacious attunement and magnetism from the inside out.
-                </p>
-              </div>
-            </article>
+                <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
+                  <p>
+                    In facilitating 6,000+ Speaking Circles over the past 35
+                    years I&apos;ve successfully treated all varieties of
+                    performance anxiety from abject stage fright to mild unease.
+                  </p>
+                  <p>
+                    The commonality of all is that standing in front of a group
+                    triggers inner contraction. Those with the most severe
+                    constriction have no resources at all to cope with attention,
+                    even benign attention.
+                  </p>
+                  <p>
+                    Practicing Relational Presence at a Speaking Circle
+                    (gazing/being with one person at a time without even having
+                    to speak) begins to open up the inner space required to move
+                    toward ease.
+                  </p>
+                  <p>
+                    Those who come to this work having had positive public
+                    speaking experience quickly expand their capacity for
+                    spacious attunement and magnetism from the inside out.
+                  </p>
+                </div>
+              </article>
+            </Reveal>
           </div>
         </section>
 
@@ -660,19 +668,20 @@ export default function PresenterenPage() {
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {questionExamples.map((example, index) => (
-                <article
-                  key={example}
-                  className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-green/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-green/10 text-xs font-semibold text-orato-green transition-colors duration-300 group-hover:bg-orato-green group-hover:text-white">
-                      {index + 1}
-                    </span>
-                    <p className="text-sm leading-6 text-orato-dark/82">
-                      {example}
-                    </p>
-                  </div>
-                </article>
+                <Reveal key={example} delay={index * 0.025}>
+                  <article
+                    className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-green/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-green/10 text-xs font-semibold text-orato-green transition-colors duration-300 group-hover:bg-orato-green group-hover:text-white">
+                        {index + 1}
+                      </span>
+                      <p className="text-sm leading-6 text-orato-dark/82">
+                        {example}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -684,26 +693,27 @@ export default function PresenterenPage() {
               Referenties
             </p>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {references.map((item) => (
-                <article
-                  key={item.name}
-                  className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
-                >
-                  <p className="text-base leading-8 text-white/84">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                  <p className="mt-6 text-base font-semibold text-white">
-                    {item.name}
-                  </p>
-                  <p className="mt-1 text-sm text-white/58">{item.role}</p>
-                </article>
+              {references.map((item, index) => (
+                <Reveal key={item.name} delay={index * 0.06}>
+                  <article
+                    className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
+                  >
+                    <p className="text-base leading-8 text-white/84">
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
+                    <p className="mt-6 text-base font-semibold text-white">
+                      {item.name}
+                    </p>
+                    <p className="mt-1 text-sm text-white/58">{item.role}</p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
 
         <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
-          <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
+          <Reveal className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
               Contact
             </p>
@@ -728,7 +738,7 @@ export default function PresenterenPage() {
                 Bel +31 6 51088688
               </Link>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 
