@@ -434,7 +434,7 @@ export default function CoachingPage() {
               <Reveal delay={0.05}>
                 <article className="rounded-[2rem] border border-white/12 bg-orato-light p-7 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
-                    7V-methode en A-methode
+                    7V-methode en A-methode gebaseerd op uitgangspunten zoals: 
                   </p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     {principles.map((principle) => (
@@ -545,7 +545,7 @@ export default function CoachingPage() {
                 <p className="text-xs uppercase tracking-[0.2em] text-orato-dark/60">
                   Uurtarief vanaf
                 </p>
-                <p className="mt-2 text-5xl font-semibold text-orato-dark">
+                <p className="mt-2 text-2xl font-semibold text-orato-dark">
                   €185
                 </p>
                 <p className="mt-3 text-sm leading-6 text-orato-dark/70">

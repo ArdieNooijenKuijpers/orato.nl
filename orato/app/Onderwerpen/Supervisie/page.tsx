@@ -472,7 +472,7 @@ export default function SupervisiePage() {
                 <p className="text-xs uppercase tracking-[0.2em] text-orato-dark/60">
                   Uurtarief vanaf
                 </p>
-                <p className="mt-2 text-5xl font-semibold text-orato-dark">
+                <p className="mt-2 text-2xl font-semibold text-orato-dark">
                   €185
                 </p>
               </div>
