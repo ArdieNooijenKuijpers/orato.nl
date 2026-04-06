@@ -65,7 +65,7 @@ type InschrijfFormProps = {
 };
 
 const InschrijfForm = ({
-  title = "Inschrijfformulier",
+  title = "",
   description = "Fijn dat je meedoet. Alvast bedankt voor je inschrijving. Mocht je nog vragen hebben, ik beantwoord ze graag.",
   compact = false,
   initialSelectedDate = "",
@@ -229,11 +229,9 @@ const InschrijfForm = ({
       </div>
 
       <form className="space-y-8" onSubmit={handleSubmit} noValidate>
-        <FormSection title="Ik schrijf me in voor">
+        <FormSection title="Datum">
           <fieldset className="space-y-3">
-            <legend className="text-sm font-medium text-orato-dark">
-              De dag ‘Authentiek presenteren met Speaking Circleop: *
-            </legend>
+            <legend className="text-sm font-medium text-orato-dark">Kies een dag *</legend>
             <div className="grid gap-3">
               {inschrijfDataOptions.map((option) => (
                 <ChoiceCard
@@ -513,7 +511,7 @@ const InschrijfForm = ({
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <LabelInputContainer>
               <label className="text-sm font-medium text-orato-dark" htmlFor="dieetwensen">
-                dieetwensen:
+                Waar mag de kok rekening mee houden?
               </label>
               <TextArea
                 id="dieetwensen"
@@ -610,7 +608,6 @@ const InschrijfForm = ({
           </div>
 
           <div className="space-y-2 pt-2 text-xs leading-relaxed text-orato-dark/70">
-            <p>Je krijgt automatisch een bevestiging van je bericht per e-mail.</p>
           </div>
         </FormSection>
       </form>

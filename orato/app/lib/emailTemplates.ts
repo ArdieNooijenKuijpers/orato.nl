@@ -318,10 +318,11 @@ export const sampleRegistrationConfirmation = renderConfirmationEmail({
     { label: "Telefoon", value: "+31 6 9876 5432" },
     {
       label: "Datum",
-      value: "Woensdag 26 november 2025 | 9.30 - 17.30 u",
+      value: "Maandag 9 november 2026 | 9.30 - 17.30 u",
     },
     { label: "Facturatie", value: "Zakelijk, per e-mail" },
     { label: "Dieetwensen", value: "Vegetarisch" },
+    { label: "Akkoord voorwaarden", value: "Ja" },
   ],
 });
 
@@ -351,7 +352,7 @@ export const sampleRegistrationNotification = renderNotificationEmail({
   highlights: [
     {
       label: "Gekozen datum",
-      value: "Woensdag 26 november 2025 | 9.30 - 17.30 u",
+      value: "Maandag 9 november 2026 | 9.30 - 17.30 u",
     },
     { label: "Naam", value: "Mark Peters" },
     { label: "E-mail", value: "mark@example.com" },
@@ -362,6 +363,7 @@ export const sampleRegistrationNotification = renderNotificationEmail({
     { label: "Factuur naar", value: "Per e-mail naar finance@bedrijf.nl" },
     { label: "Organisatie", value: "Peters & Coaching" },
     { label: "Dieetwensen", value: "Vegetarisch" },
+    { label: "Akkoord voorwaarden", value: "Ja" },
     { label: "Opmerkingen", value: "Ik kom met de trein en ben op tijd aanwezig." },
   ],
 });

@@ -11,8 +11,12 @@ import {
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Orato - E-mail templates",
+  title: "E-mail templates",
   description: "Preview van de e-mail templates voor contact en inschrijving.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const previews = [

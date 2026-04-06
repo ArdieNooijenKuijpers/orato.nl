@@ -335,7 +335,7 @@ const CompanyCircles: React.FC = () => {
           </div>
 
           <div className="mt-1 inline-flex items-center rounded-full bg-orato-orange px-5 py-2 text-center text-sm font-medium text-white shadow-md">
-            <span>Hover over an orb to expand and reveal the company</span>
+            <span>Beweeg over een stip om de referent te zien.</span>
           </div>
         </div>
 

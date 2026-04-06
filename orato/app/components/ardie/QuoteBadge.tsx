@@ -44,8 +44,9 @@ export default function QuoteBadge({
   return (
     <button
       type="button"
-      className={`group relative inline-flex appearance-none border-0 bg-transparent p-0 text-left ${className}`}
+      className={`group relative inline-flex cursor-small appearance-none border-0 bg-transparent p-0 text-left ${className}`}
       onClick={() => setIsVisible(true)}
+      onPointerLeave={() => setIsVisible(false)}
       aria-expanded={isVisible}
       aria-controls={`quote-tooltip-${id}`}
     >
