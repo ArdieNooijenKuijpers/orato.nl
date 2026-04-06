@@ -69,17 +69,25 @@ const ContactPage = () => {
                       orato.nl
                     </a>
                   </p>
-                  <p>
+                  <div className="pt-2">
                     <a
-                      className="underline underline-offset-4 hover:text-orato-orange"
+                      className="inline-flex items-center gap-2 rounded-full border border-orato-orange/40 bg-orato-orange/10 px-4 py-2 text-sm font-semibold text-orato-dark transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-orange hover:bg-orato-orange hover:text-white"
                       href="https://nl.linkedin.com/in/ardienooijenkuijpers"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      LinkedIn berichten
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      >
+                        <path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38a1.56 1.56 0 0 1 0 3.12ZM5.5 9.75h2.9V18H5.5V9.75Zm4.7 0h2.78v1.13h.04c.39-.73 1.34-1.5 2.76-1.5 2.95 0 3.49 1.94 3.49 4.46V18h-2.9v-3.69c0-.88-.02-2.01-1.23-2.01-1.23 0-1.42.96-1.42 1.95V18h-2.9V9.75Z" />
+                      </svg>
+                      LinkedIn
                     </a>
-                    {" "}of Let&apos;s connect.
-                  </p>
+                  </div>
                 </div>
 
                 <div className="mt-5 flex flex-col justify-center space-y-2 text-xs text-orato-dark/75">

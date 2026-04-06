@@ -111,7 +111,7 @@ const FooterComp = () => {
             <div className="w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px]">
             <nav className="text-center md:text-left">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white">Menu</h2>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-orato-orange">Menu</h2>
               <ul className="space-y-2">
                 {footerMenuItems.map((item) => (
                   <li key={item.name}>
@@ -132,7 +132,7 @@ const FooterComp = () => {
             </nav>
 
             <div className="flex h-full flex-col text-center md:text-left">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white">Contact</h2>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-orato-orange">Contact</h2>
               <div className="space-y-1 text-sm text-white/90">
                 <p className="font-semibold text-white">Drs. Ardie Nooijen-Kuijpers</p>
                 <p>Rutger van den Broeckelaan 3</p>
@@ -198,7 +198,7 @@ const FooterComp = () => {
             </div>
 
             <div className="flex h-full flex-col text-center md:text-left">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Bedrijfsgegevens</h2>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-orato-orange">Bedrijfsgegevens</h2>
               <div className="space-y-1 text-sm text-white/90">
                 <p>KvK: 160 65 919</p>
                 <p>BTW: NL001890491B36</p>
