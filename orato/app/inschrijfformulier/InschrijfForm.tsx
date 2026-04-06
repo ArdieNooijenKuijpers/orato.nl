@@ -110,7 +110,6 @@ const InschrijfForm = ({
       formData.email,
       formData.facturatie,
       formData.factuurEmail,
-      formData.factuurEmailZelfdeAlsPersoonlijk,
       formData.factuurNaar,
       formData.factuurPostadres,
       formData.gekozenDatum,
