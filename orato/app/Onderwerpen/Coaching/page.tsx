@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import CoachingConversationIllustration from "../../components/motion/CoachingConversationIllustration";
+import InteractiveGlowPanel from "../../components/motion/InteractiveGlowPanel";
 import Reveal from "../../components/motion/Reveal";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
@@ -252,6 +254,8 @@ export default function CoachingPage() {
           </div>
         </section>
 
+        <CoachingConversationIllustration />
+
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <Reveal direction="left">
@@ -294,19 +298,22 @@ export default function CoachingPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {topicCards.map((card, index) => (
-                <article
+                <InteractiveGlowPanel
                   key={card.title}
-                  className="rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]"
+                  className="h-full rounded-[1.8rem]"
+                  glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
                 >
-                  <Reveal delay={index * 0.06}>
-                    <h3 className="text-2xl font-semibold text-white">
-                      {card.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-white/78">
-                      {card.text}
-                    </p>
-                  </Reveal>
-                </article>
+                  <article className="flex h-full flex-col rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-blue/14">
+                    <Reveal delay={index * 0.06}>
+                      <h3 className="text-2xl font-semibold text-white">
+                        {card.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-7 text-white/78">
+                        {card.text}
+                      </p>
+                    </Reveal>
+                  </article>
+                </InteractiveGlowPanel>
               ))}
             </div>
           </div>

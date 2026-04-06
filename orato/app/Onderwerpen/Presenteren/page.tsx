@@ -252,7 +252,7 @@ export default function PresenterenPage() {
                       <Reveal key={track.id} delay={index * 0.06}>
                         <Link
                           href={`#${track.id}`}
-                          className={`group flex h-full flex-col rounded-[2rem] border p-7 transition-transform duration-300 hover:-translate-y-1 ${track.theme}`}
+                          className={`group flex h-full flex-col rounded-[2rem] border p-7 transition-transform duration-300 hover:-translate-y-1 ${track.theme} cursor-small`}
                         >
                           <p className="text-xs font-semibold uppercase tracking-[0.2em] opacity-65">
                             {track.eyebrow}
