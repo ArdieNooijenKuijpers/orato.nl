@@ -6,6 +6,8 @@ import Image from "next/image";
 
 const FooterComp = () => {
   const pathname = usePathname();
+  const normalizePath = (path: string) => path.replace(/\/$/, "").toLowerCase();
+  const currentPath = normalizePath(pathname);
   const footerRef = useRef<HTMLElement | null>(null);
   const [viewportHeight, setViewportHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
@@ -25,6 +27,16 @@ const FooterComp = () => {
     { name: 'ALGEMENE VOORWAARDEN', path: '/Info/AlgemeneVoorwaarden' },
     { name: 'PRIVACYVERKLARING', path: '/Info/PrivacyVerklaring' },
   ];
+
+  const getActiveLinkColor = (path: string) => {
+    const normalizedPath = normalizePath(path);
+
+    if (normalizedPath === "/onderwerpen/coaching") return "text-orato-blue";
+    if (normalizedPath === "/onderwerpen/supervisie") return "text-orato-purple";
+    if (normalizedPath === "/onderwerpen/presenteren") return "text-orato-green";
+
+    return "text-orato-orange";
+  };
 
   const bedrijfImages = [
     "AVC.jfif",
@@ -98,15 +110,18 @@ const FooterComp = () => {
           <div className="mx-auto max-w-7xl px-4 py-6 md:px-6 md:py-8 lg:px-8">
             <div className="w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px]">
-            <nav>
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Menu</h2>
+            <nav className="text-center md:text-left">
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white">Menu</h2>
               <ul className="space-y-2">
                 {footerMenuItems.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.path}
-                      className={`inline-block text-sm md:text-base transition-colors hover:text-orato-orange cursor-small ${
-                        pathname === item.path ? "font-semibold text-orato-orange" : "text-white/90"
+                      aria-current={currentPath === normalizePath(item.path) ? "page" : undefined}
+                      className={`inline-block cursor-small text-sm transition-colors md:text-base ${
+                        currentPath === normalizePath(item.path)
+                          ? `font-semibold ${getActiveLinkColor(item.path)}`
+                          : "text-white/90 hover:text-orato-orange"
                       }`}
                     >
                       {item.name}
@@ -116,26 +131,26 @@ const FooterComp = () => {
               </ul>
             </nav>
 
-            <div className="flex h-full flex-col">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Contact</h2>
+            <div className="flex h-full flex-col text-center md:text-left">
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white">Contact</h2>
               <div className="space-y-1 text-sm text-white/90">
                 <p className="font-semibold text-white">Drs. Ardie Nooijen-Kuijpers</p>
                 <p>Rutger van den Broeckelaan 3</p>
                 <p>5671 EB Nuenen</p>
-                <p>
+                <p className="flex flex-wrap items-center justify-center gap-y-1 md:block">
                   <Link href="tel:+31402842901" className="hover:text-orato-orange cursor-small">
                     +31 40 284 29 01
                   </Link>
-                  <span className="mx-2 text-white/50">•</span>
+                  <span className="mx-2 hidden text-white/50 md:inline">•</span>
                   <Link href="tel:+31651088688" className="hover:text-orato-orange cursor-small">
                     +31 6 5108 8688
                   </Link>
                 </p>
-                <p>
+                <p className="flex flex-wrap items-center justify-center gap-y-1 md:block">
                   <Link href="mailto:ardie@orato.info" className="hover:text-orato-orange cursor-small">
                     ardie@orato.info
                   </Link>
-                  <span className="mx-2 text-white/50">•</span>
+                  <span className="mx-2 hidden text-white/50 md:inline">•</span>
                   <Link
                     href="https://orato.nl"
                     target="_blank"
@@ -145,7 +160,7 @@ const FooterComp = () => {
                     orato.nl
                   </Link>
                 </p>
-                <p>
+                <p className="flex justify-center md:justify-start">
                   <Link
                     href="https://www.linkedin.com/in/ardienooijenkuijpers/"
                     target="_blank"
@@ -168,7 +183,7 @@ const FooterComp = () => {
               <div className="mt-auto pt-4 text-sm">
                 <p className="font-semibold text-white">Scan LinkedIn</p>
               <div
-                className="mt-3 relative rounded-md border border-white/10 bg-white p-1"
+                className="relative mx-auto mt-3 rounded-md border border-white/10 bg-white p-1 md:mx-0"
                 style={{ width: qrSize, height: qrSize }}
               >
                 <Image
@@ -182,7 +197,7 @@ const FooterComp = () => {
               </div>
             </div>
 
-            <div className="flex h-full flex-col">
+            <div className="flex h-full flex-col text-center md:text-left">
               <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Bedrijfsgegevens</h2>
               <div className="space-y-1 text-sm text-white/90">
                 <p>KvK: 160 65 919</p>
@@ -192,7 +207,7 @@ const FooterComp = () => {
               <div className="mt-auto pt-4 text-sm">
                 <p className="font-semibold text-white">Scan voor contactgegevens</p>
                 <div
-                  className="mt-3 relative rounded-md border border-white/10 bg-white p-1"
+                  className="relative mx-auto mt-3 rounded-md border border-white/10 bg-white p-1 md:mx-0"
                   style={{ width: qrSize, height: qrSize }}
                 >
                   <Image

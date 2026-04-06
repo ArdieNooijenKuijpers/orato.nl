@@ -1,312 +1,575 @@
-
-"use client";
-
-import { Noto_Serif_Display } from "next/font/google";
-import { WobbleCard } from "@/components/ui/wobble-card";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
-import InschrijfFormModal from "../../inschrijfformulier/InschrijfFormModal";
+import Reveal from "../../components/motion/Reveal";
 
-const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
+const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
+const tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"] });
 
-const SupervisiePage = () => {
-  return (
-    <div className="min-h-screen bg-orato-light">
-      
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className={`${noto_Serif_Display.className} text-6xl md:text-8xl font-bold text-orato-dark mb-8`}>
-            SUPERVISIE
-          </h1>
-          <p className="text-xl md:text-2xl text-orato-dark/80 max-w-3xl mx-auto leading-relaxed">
-            Een ontmoeting tussen twee professionals met hetzelfde beroep. 
-            Ik superviseer coaches, supervisoren en paramedici zoals logopedisten.
-          </p>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute lg:bottom-20 lg:translate-y-6 right-20 md:bottom-16 bottom-12 flex flex-col items-center">
-          <span className="text-orato-dark text-sm mb-2 animate-pulse">Scroll</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 animate-bounce"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </div>
-      </div>
-
-      {/* Main Content with Wobble Cards */}
-      <div className="bg-orato-dark py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
-            
-            {/* Intro Card - Spans 2 columns */}
-            <WobbleCard 
-              containerClassName="col-span-1 lg:col-span-2 h-full bg-orato-orange/10 min-h-[600px] lg:min-h-[500px]"
-              className=""
-            >
-              <div className="max-w-3xl">
-                <h2 className={`${noto_Serif_Display.className} text-left text-balance text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                  Over Supervisie
-                </h2>
-                <div className="mt-4 space-y-4 text-left text-base/6 text-orato-dark/80">
-                  <p>
-                    Supervisie, vaak ook mentoring genoemd, is in mijn ogen een ontmoeting tussen twee professionals met hetzelfde beroep. Ik superviseer coaches, supervisoren en paramedici zoals logopedisten. Evenwaardig, dat wil zeggen als mens niet meer of minder dan de ander. Niet gelijkwaardig, omdat we dat per definitie niet zijn met een ander lijf, verleden en andere (levens)ervaringen, kennis en kunde en verantwoordelijkheden.
-                  </p>
-                  <p>
-                    Je mag van mij verwachten dat ik jouw professionalisering en daarmee de kwaliteit van coachen, centraal zet. Vanuit mijn expertise als Master Coach voorzie ik jou van feedback. Ook jouw welzijn, het restoratieve aspect, valt onder supervisie, naast het normatieve en formatieve.
-                  </p>
-                  <p>
-                    Doel is jouw coachkwaliteiten maximaal in te zetten en blinde vlekken bewust te krijgen. Reflecteren, op allerlei manieren, gaat je nieuwe perspectieven bieden om een nog efficiëntere en tevreden coach, supervisor of therapeut te zijn. Of misschien wil je vooral op de millimeter werken aan de hand van een casus of ontwikkelvraag, of wil je geïnspireerd worden?
-                  </p>
-                  <p>
-                    Supervisie verschilt van coaching door focus op sparren middels een professionele dialoog, nog fijngevoeliger duiden, het proces van jouw ontwikkeling, talrijke perspectieven, verbreden en/of verdiepen van kennis en kunde. Supervisie gebeurt met de grootste psychologische veiligheid. Als een katalysator gericht op secure base.
-                  </p>
-                </div>
-                <div className="mt-6 p-4 bg-orato-orange/20 rounded-lg">
-                  <p className="text-sm text-orato-dark/70">
-                    <strong>Doel:</strong> Jouw coachkwaliteiten maximaal inzetten en blinde vlekken bewust krijgen.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <InschrijfFormModal
-                    triggerLabel="Direct inschrijven"
-                    title="Inschrijven voor Speaking Circle"
-                    description="Open hier direct het inschrijfformulier zonder de supervisiepagina te verlaten."
-                  />
-                </div>
-              </div>
-            </WobbleCard>
-
-            {/* Expertise Card - Single column */}
-            <WobbleCard containerClassName="col-span-1 min-h-[600px]">
-              <h2 className={`${noto_Serif_Display.className} max-w-80 text-left text-balance text-xl md:text-2xl lg:text-3xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                Mijn Expertise
-              </h2>
-              <div className="mt-4 max-w-[26rem] text-left text-base/6 text-orato-dark/80 space-y-4">
-                <p>
-                  Voor de Associatie voor Coaching (AvC) superviseer ik coaches sinds 2018. In 2024 rondde ik de 2-jarige ESIA Certified Supervisor opleiding af, gegeven door Tom Battye in samenwerking met EMCC.
-                </p>
-                <p>
-                  Ik geef bij voorkeur individuele supervisie. In een groep mijn expert-rol inzetten doe ik het liefst als ik professionele coaches opleid, of in de vorm van begeleide intervisie.
-                </p>
-                <div className="space-y-2">
-                  <p>Ik ben een expert in coachen door mijn 35+ jaar werkervaring en betrokkenheid bij ons prachtige vak. Onderscheidend van andere supervisoren is mijn therapeutische ervaring als paramedicus, gesterkt door 10 jaar ervaring met het werken aan emoties, gedachtes en fysieke ervaringen, oftewel door een grondige introspectie, middels een Freudiaanse psycho-analyse. Verder kan ik je helpen bij een (herhaalde) aanvraag van registratie als gecertificeerde coach bij ICF (International Coaching Federation) (doorklik naar ICF global) en NOBCO (doorklik naar NOBCO)/EMCC (doorklik naar EMCC) (Nederlandse Orde van Beroepscoaches/ European Mentoring and Coaching Counsil) ) etc. </p>
-
-                </div>
-                <p className="text-sm">
-                Als opleider van professionele coaches en coachende leidinggevenden namens de AvC, ben ik vertrouwd met de coachcompetenties van zowel de ICF (International Coaching Federation) als de NOBCO (Nederlandse…) /EMCC. Waar ik trots op ben is dat de AvC (doorklik naar homepage website AvC:  https://associatievoorcoaching.com/?gad_source=1&gclid=Cj0KCQiA1p28BhCBARIsADP9HrPkkX3KIgL66IY8M45cgJAtKyY9VFtLEf-J0eQtf4kAY7y_qTLtHiQaApfPEALw_wcB
-) de enige plek in Nederland is waar je sinds 1992 coachopleidingen kunt doen die zowel door de ICF als NOBCO/EMCC geaccrediteerd zijn. Ik vind het belangrijk het ámbacht dat coachen is, te doceren met als basis contact maken, contracteren en de kunst van het vragen stellen. Een ‘kapstok’ dus waar een professionele coach alle methodes, werkvormen en theorieën aan op kan hangen. 
-Namens de AvC leid ik ook ESIA gecertificeerde supervisoren op én geef ik de meerdaagse ‘Transactionele Analyse toegepast in professionele coaching’. (doorklik naar TA website AvC:  https://associatievoorcoaching.com/transactionele-analyse/
- ) 
-Verder neem ik, zoals jij, natuurlijk ook mijn levenservaring mee in onze werkrelatie.
-                </p>
-                <div className="mt-4 p-3 bg-orato-blue/10 rounded-lg">
-                  <p className="text-sm text-orato-dark/70">
-                    <strong>AvC:</strong> De enige plek in Nederland waar je sinds 1992 coachopleidingen kunt doen die zowel door de ICF als NOBCO/EMCC geaccrediteerd zijn.
-                  </p>
-                </div>
-              </div>
-            </WobbleCard>
-
-            {/* Werkwijze Card - Full width */}
-            <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-orato-blue/10 min-h-[700px] lg:min-h-[600px]">
-              <div className="max-w-6xl">
-                <h2 className={`${noto_Serif_Display.className} max-w-2xl text-left text-balance text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                  Werkwijze
-                </h2>
-                <p className="mt-4 max-w-4xl text-left text-base/6 text-orato-dark/80">
-                  Na een oriëntatiegesprek waarin we kennismaken en ter tafel brengen wat-ertoe-doet, stellen we een werkovereenkomst op. Na akkoord gaan we aan de slag.
-                </p>
-                <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-orato-dark">Aanpak & Methoden</h3>
-                    <ul className="text-orato-dark/80 space-y-2 text-sm">
-                      <li>• Pragmatisch en met emotionele diepgang aan de hand van voorbeelden uit jouw beroepspraktijk</li>
-                      <li>• Verdieping en/of verbreding van kennis en kunde</li>
-                      <li>• Middels alle ervaring en coach- en communicatiemethodes/theorieën die ik in huis heb. Een &apos;kijkje in de keuken van een ander&apos; is altijd leuk</li>
-                      <li>• Met de voordelen van de &apos;kruisbestuiving&apos; tussen mijn werk als MasterCoach, Coachopleider, trainer, communicatie expert, therapeut en supervisor</li>
-                      <li>• Middels specifieke en diverse reflectiemodellen</li>
-                      <li>• Met de mogelijkheid jezelf te oefenen in Relational Presence ter verdieping van cont(r)act maken. Bijvoorbeeld in een groep</li>
-                      <li>• Eventueel gebruikmakend van SkillReflect. Een digitale tool voor videofeedback en reflectie speciaal ontwikkeld voor coaches</li>
-                    </ul>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-orato-dark">Focus & Planning</h3>
-                    <ul className="text-orato-dark/80 space-y-2 text-sm">
-                      <li>• Met oog voor de 8 coachcompetenties (met bijbehorende markers) van de ICF en de 8 coachcompetenties (met de bijbehorende vaardigheidsindicatoren) van NOBCO/EMCC</li>
-                      <li>• ZIJN-modus ipv Doe-modus</li>
-                      <li>• Indien gewenst gericht op een aanvraag voor registratie als een Professional Certified Coach (PCC) of Master Certified Coach (MCC) bij ICF. Of als Senior Practitioner of Master Practitioner bij NOBCO/EMCC</li>
-                      <li>• De sessies plannen we in zoals dat bij de ontwikkelvraag en agenda&apos;s past. Bijvoorbeeld om de 6 weken of 1 keer per kwartaal</li>
-                      <li>• Handig is een traject van 10 uren zoals vereist door ICF. NOBCO/EMCC vereist 1 uur per kwartaal bij maximaal 140 coachpraktijkuren of bij meer coachpraktijkuren: 1 uur per 35 coachuren</li>
-                      <li>• Online sessies zijn mogelijk na een persoonlijke ontmoeting</li>
-                      <li>• Uiteraard AVG-proof volgens Privacyverklaring en Algemene voorwaarden</li>
-                      <li>• Met aandacht voor ethische aspecten van ons mooie coachvak</li>
-                      <li>• Gebaseerd op de 8 ESIA supervisiecompetenties</li>
-                      <li>• Je krijgt een bewijs van supervisie/mentoring. Handig voor als je CCEU en/of PE uren nodig hebt</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="mt-6 p-4 bg-orato-light/20 rounded-lg">
-                  <p className="text-sm text-orato-dark/70">
-                    <strong>Wil je meer weten over de professionele en persoonlijke ontwikkeling van Ardie?</strong> Klik dan hier om naar de pagina Ardie te gaan.
-                  </p>
-                </div>
-              </div>
-            </WobbleCard>
-
-            {/* Onderwerpen Card - Spans 2 columns */}
-            <WobbleCard containerClassName="col-span-1 lg:col-span-2 min-h-[700px]">
-              <h2 className={`${noto_Serif_Display.className} max-w-80 text-left text-balance text-xl md:text-2xl lg:text-3xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                Supervisie Onderwerpen
-              </h2>
-              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="p-3 bg-orato-green/10 rounded-lg border border-orato-green/20 hover:bg-orato-green/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Ik wil mijn manier van reflecteren verbeteren en heb behoefte aan verdieping van mijn zelfreflectie</p>
-                </div>
-                <div className="p-3 bg-orato-blue/10 rounded-lg border border-orato-blue/20 hover:bg-orato-blue/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Hoe voer ik een 3-gesprek met een coachee en zijn of haar leidinggevende?</p>
-                </div>
-                <div className="p-3 bg-orato-purple/10 rounded-lg border border-orato-purple/20 hover:bg-orato-purple/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Wat voor soort coaching past bij mij?</p>
-                </div>
-                <div className="p-3 bg-orato-orange/10 rounded-lg border border-orato-orange/20 hover:bg-orato-orange/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Ik merk dat ik veel adviezen geef en wil graag begeleiding om hiermee te stoppen of een goede balans te vinden tussen coachen en adviseren</p>
-                </div>
-                <div className="p-3 bg-orato-red/10 rounded-lg border border-orato-red/20 hover:bg-orato-red/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Hoe kan ik mijn werkrelatie met mijn coachees efficiënt inzetten?</p>
-                </div>
-                <div className="p-3 bg-orato-green/10 rounded-lg border border-orato-green/20 hover:bg-orato-green/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Ben ik geschikt om een coachsupervisor te worden of zijn?</p>
-                </div>
-                <div className="p-3 bg-orato-blue/10 rounded-lg border border-orato-blue/20 hover:bg-orato-blue/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Ik wil de manier waarop ik me presenteer als coach eens onder de loep nemen</p>
-                </div>
-                <div className="p-3 bg-orato-purple/10 rounded-lg border border-orato-purple/20 hover:bg-orato-purple/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Hoe kan ik mijn coachee helpen nog meer inzichten te krijgen en/of verantwoordelijkheid te nemen?</p>
-                </div>
-                <div className="p-3 bg-orato-orange/10 rounded-lg border border-orato-orange/20 hover:bg-orato-orange/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Tot hoever ga ik in het begeleiden van een coachee, hoeveel ben ik bereikbaar en waar liggen andere grenzen?</p>
-                </div>
-                <div className="p-3 bg-orato-red/10 rounded-lg border border-orato-red/20 hover:bg-orato-red/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Heeft het zin om me te specialiseren?</p>
-                </div>
-                <div className="p-3 bg-orato-green/10 rounded-lg border border-orato-green/20 hover:bg-orato-green/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Ik wil voorbeelden van werkvormen, oefeningen, theorieën die ik kan inzetten</p>
-                </div>
-                <div className="p-3 bg-orato-blue/10 rounded-lg border border-orato-blue/20 hover:bg-orato-blue/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Hoe kan ik mijn oplossingsenthousiasme nog meer temperen?</p>
-                </div>
-                <div className="p-3 bg-orato-purple/10 rounded-lg border border-orato-purple/20 hover:bg-orato-purple/15 transition-colors">
-                  <p className="text-orato-dark/80 text-sm leading-relaxed">Ik wil sparren over de kwaliteit van ons vak</p>
-                </div>
-              </div>
-            </WobbleCard>
-
-            {/* Investering Card - Single column */}
-            <WobbleCard containerClassName="col-span-1 min-h-[500px]">
-              <h2 className={`${noto_Serif_Display.className} max-w-80 text-left text-balance text-xl md:text-2xl lg:text-3xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                Investering
-              </h2>
-              <div className="mt-4 text-center">
-                <div className="text-4xl font-bold text-orato-orange mb-2">€185</div>
-                <div className="text-orato-dark/70 mb-6">per uur</div>
-                <div className="space-y-3 text-orato-dark/80 text-left">
-                  <p className="text-sm font-semibold">Tijd en aandacht</p>
-                  <p className="text-sm">• Referenties opvraagbaar</p>
-                  <p className="text-sm">• Online sessies mogelijk</p>
-                  <p className="text-sm">• AVG-proof</p>
-                </div>
-                <div className="mt-6 p-3 bg-orato-orange/10 rounded-lg">
-                  <p className="text-sm text-orato-dark/70 text-center">
-                    <strong>Flexibele planning:</strong> Om de 6 weken of 1x per kwartaal
-                  </p>
-                </div>
-                <div className="mt-4 p-3 bg-orato-blue/10 rounded-lg">
-                  <p className="text-xs text-orato-dark/70 text-center">
-                    <strong>Referenties opvraagbaar:</strong> Met plezier ben ik een bruggenbouwer tussen jou en coaches die al supervisie genoten hebben.
-                  </p>
-                </div>
-              </div>
-            </WobbleCard>
-
-            {/* Referentie Card - Full width */}
-            <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-orato-purple/10 min-h-[500px]">
-              <div className="max-w-5xl">
-                <h2 className={`${noto_Serif_Display.className} max-w-2xl text-left text-balance text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                  Referentie
-                </h2>
-                <div className="mt-4 max-w-4xl">
-                  <div className="bg-orato-light/20 p-6 rounded-lg border border-orato-purple/20">
-                    <blockquote className="text-orato-dark/80 italic text-lg leading-relaxed mb-6">
-                      &ldquo;Ardie is een supervisor die je raakt, uitdaagt en in beweging zet. 
-                      Ze ziet wat ik zelf nog niet doorheb, confronteert me zonder aarzeling, 
-                      maar altijd met humor en een vleugje lerares-strengheid. Elke sessie 
-                      verrast me met nieuwe inzichten en een flinke dosis energie.&rdquo;
-                    </blockquote>
-                    <div className="text-orato-dark font-semibold text-lg">
-                      — Jasper Nooij
-                    </div>
-                    <div className="text-orato-dark/60 text-sm">
-                      Zelfstandig tenderspecialist en (team)coach, Estland
-                    </div>
-                  </div>
-                  <div className="mt-6 p-4 bg-orato-light/10 rounded-lg">
-                    <p className="text-orato-dark/80 text-sm">
-                      <strong>Referenties opvraagbaar:</strong> Laat het me weten als ik een bruggenbouwer mag zijn tussen jou en een collega die ik als gesuperviseerd heb.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </WobbleCard>
-
-            {/* CTA Card - Full width */}
-            <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-orato-green/10 min-h-[500px]">
-              <div className="max-w-5xl text-center">
-                <h2 className={`${noto_Serif_Display.className} max-w-4xl text-balance text-2xl md:text-3xl lg:text-4xl font-semibold tracking-[-0.015em] text-orato-dark`}>
-                  Welkom!
-                </h2>
-                <p className="mt-4 max-w-5xl text-base/6 text-orato-dark/80">
-                  Ben jij een coachsupervisor, paramedische therapeut of professionele coach, 
-                  met een eigen bedrijf/praktijk of heb je een beroep waar coaching een wezenlijk 
-                  deel van uitmaakt, heb je een erkende (coach)opleiding en (veel) ervaring, 
-                  en wil jij je verder ontwikkelen, dan ontmoet ik je graag persoonlijk in het kader van supervisie/mentoring.
-                </p>
-                <p className="mt-4 text-lg text-orato-dark/70 italic">
-                  Ik ga ervoor! Waarvoor? Voor jou en je ont-wikkeling.
-                </p>
-                <div className="mt-6 p-4 bg-orato-light/20 rounded-lg max-w-3xl mx-auto">
-                  <p className="text-orato-dark/80 text-sm">
-                    <strong>Wat mag ik voor jou betekenen?</strong> Klik hier om naar het contactformulier te gaan of bel me.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                  <button className="px-8 py-4 bg-orato-orange text-white rounded-lg font-semibold hover:bg-orato-orange/90 transition-colors shadow-lg">
-                    Contactformulier
-                  </button>
-                  <button className="px-8 py-4 border-2 border-orato-dark text-orato-dark rounded-lg font-semibold hover:bg-orato-dark hover:text-white transition-colors">
-                    Bel me: +31-651088688
-                  </button>
-                </div>
-              </div>
-            </WobbleCard>
-
-          </div>
-        </div>
-      </div>
-
-      <FooterComp />
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Orato - Supervisie",
+  description:
+    "Supervisie, vaak ook mentoring genoemd, is een ontmoeting tussen twee professionals met hetzelfde beroep.",
 };
 
-export default SupervisiePage;
+const expertiseBlocks = [
+  "Voor de Associatie voor Coaching (AvC) superviseer ik coaches sinds 2018. Er zijn verschillende pakketten beschikbaar om te blijven groeien in je vak, zichtbaarder te worden en je senioriteit te verdiepen. In 2024 rondde ik de 2-jarige ESIA Certified Supervisor opleiding af, gegeven door Tom Battye in samenwerking met EMCC.",
+  "Ik geef bij voorkeur individuele supervisie. In een groep mijn expert-rol inzetten doe ik het liefst als ik professionele coaches opleid, of in de vorm van begeleide intervisie.",
+  "Ik ben een expert in coachen door mijn 35+ jaar werkervaring en betrokkenheid bij ons prachtige vak. Onderscheidend van andere supervisoren is mijn therapeutische ervaring als paramedicus, gesterkt door 10 jaar ervaring met het werken aan emoties, gedachtes en fysieke ervaringen, oftewel door een grondige introspectie, middels een Freudiaanse psycho-analyse en de nodige levenservaring.",
+  "Verder kan ik je helpen bij een (herhaalde) aanvraag van registratie als gecertificeerde coach bij ICF (International Coaching Federation) en NOBCO/EMCC etc.",
+];
+
+const trainingBlocks = [
+  "Als opleider van professionele coaches en coachende leidinggevenden namens de AvC, ben ik vertrouwd met de coachcompetenties van zowel de ICF als de NOBCO/EMCC.",
+  "Waar ik trots op ben is dat de AvC de enige plek in Nederland is waar je sinds 1992 coachopleidingen kunt doen die zowel door de ICF als NOBCO/EMCC geaccrediteerd zijn.",
+  "Ik vind het belangrijk het ambacht dat coachen is, te doceren met als basis contact maken, contracteren en de kunst van het vragen stellen. Een kapstok dus, waar een professionele coach alle methodes, werkvormen en theorieen aan op kan hangen.",
+  "Het is een voorrecht om te werken in een team van vakmensen, waarbij ieder een bijdrage levert aan professionalisering. Namens de AvC leid ik ook ESIA gecertificeerde supervisoren op en geef ik de meerdaagse Transactionele Analyse toegepast in professionele coaching.",
+  "Verder neem ik, zoals jij, natuurlijk ook mijn levenservaring mee in iedere werkrelatie.",
+];
+
+const methods = [
+  "Pragmatisch en met emotionele diepgang aan de hand van voorbeelden uit jouw beroepspraktijk.",
+  "Verdieping en/of verbreding van kennis en kunde.",
+  "Middels alle ervaring en coach- en communicatiemethodes/theorieen die ik in huis heb. Een kijkje in de keuken van een ander is altijd leuk.",
+  "Met de voordelen van de kruisbestuiving tussen mijn werk als MasterCoach, Coachopleider, trainer, communicatie expert, therapeut en supervisor.",
+  "Leren aan de hand van specifieke en diverse reflectiemodellen.",
+  "Met de mogelijkheid jezelf te oefenen in Relational Presence ter verdieping van cont(r)act maken. Bijvoorbeeld in een groep.",
+  "Eventueel gebruikmakend van video- of audiofeedback of ter plekke coachen.",
+];
+
+const planning = [
+  "Met oog voor de 8 coachcompetenties (met bijbehorende markers) van de ICF en de 8 coachcompetenties (met de bijbehorende vaardigheidsindicatoren) van NOBCO/EMCC.",
+  "ZIJN-modus ipv Doe-modus.",
+  "Indien gewenst gericht op een aanvraag voor registratie als een Professional Certified Coach (PCC) of Master Certified Coach (MCC) bij ICF. Of als Senior Practitioner of Master Practitioner bij NOBCO/EMCC.",
+  "De sessies plannen we in zoals dat bij de ontwikkelvraag en agenda's past. Bijvoorbeeld om de 6 weken of 1 keer per kwartaal.",
+  "Handig is een traject van 10 uren zoals vereist door ICF. NOBCO/EMCC vereist 1 uur per kwartaal bij maximaal 140 coachpraktijkuren of bij meer coachpraktijkuren: 1 uur per 35 coachuren.",
+  "Online sessies zijn zeker mogelijk na een persoonlijke ontmoeting.",
+  "Uiteraard AVG-proof volgens Privacyverklaring en Algemene voorwaarden.",
+  "Met aandacht voor ethische aspecten van ons mooie coachvak.",
+  "Gebaseerd op de 8 ESIA supervisiecompetenties.",
+  "Je krijgt een bewijs van supervisie/mentoring. Handig voor als je CCEU en/of PE-uren nodig hebt.",
+];
+
+const subjects = [
+  "Ik wil mijn manier van reflecteren verbeteren en heb behoefte aan verdieping van mijn zelfreflectie.",
+  "Hoe voer ik een 3-gesprek met een coachee en zijn of haar leidinggevende?",
+  "Wat voor soort coaching past bij mij?",
+  "Ik merk dat ik veel adviezen geef en wil graag begeleiding om hiermee te stoppen of een goede balans te vinden tussen coachen en adviseren.",
+  "Hoe kan ik mijn werkrelatie met mijn coachees efficient inzetten?",
+  "Ben ik geschikt om een coachsupervisor te worden of zijn?",
+  "Hoe kan ik optimaal mijn en dijn ontvlechten?",
+  "Ik wil de manier waarop ik me presenteer als coach eens onder de loep nemen.",
+  "Hoe kan ik mijn coachee helpen nog meer inzichten te krijgen en/of verantwoordelijkheid te nemen?",
+  "Tot hoever ga ik in het begeleiden van een coachee, hoeveel ben ik bereikbaar en waar liggen andere grenzen?",
+  "Heeft het zin om me te specialiseren?",
+  "Ik wil levelen en onderzoeken.",
+  "Ik wil voorbeelden van werkvormen, oefeningen, theorieen die ik kan inzetten.",
+  "Hoe kan ik mijn oplossingsenthousiasme nog meer temperen?",
+  "Ik wil sparren over de kwaliteit van ons vak.",
+  "Etc.",
+];
+
+export default function SupervisiePage() {
+  return (
+    <>
+      <main className="bg-orato-light text-orato-dark">
+        <section className="overflow-hidden bg-orato-light px-4 py-12 md:px-8 md:py-20 lg:px-10">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
+            <Reveal className="text-center md:text-left" direction="left">
+              <div className="inline-flex rounded-full border border-orato-dark/15 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-orato-dark/70">
+                Supervisie bij Orato
+              </div>
+              <h1
+                className={`${notoSerifDisplay.className} mt-6 max-w-4xl text-5xl leading-none md:text-7xl lg:text-[6.1rem]`}
+              >
+                Een ontmoeting tussen twee professionals.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-orato-dark/80 md:text-xl">
+                Supervisie, vaak ook mentoring genoemd, is in mijn ogen een
+                ontmoeting tussen twee professionals met hetzelfde beroep. Ik
+                superviseer coaches, supervisoren en paramedici zoals
+                logopedisten.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-orato-dark/72 md:text-lg">
+                Evenwaardig, dat wil zeggen als mens niet meer of minder dan de
+                ander. Niet gelijkwaardig, omdat we dat per definitie niet zijn
+                met een ander lijf, verleden en andere (levens)ervaringen,
+                kennis en kunde en verantwoordelijkheden.
+              </p>
+              <p className="mt-6 text-lg font-semibold text-orato-purple md:text-xl">
+                Supervisie gebeurt met de grootste psychologische veiligheid.
+              </p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center md:justify-start">
+                <Link
+                  href="/Contact"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-purple"
+                >
+                  Kennismakingsgesprek
+                </Link>
+                <Link
+                  href="/Info/Ardie"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                >
+                  Meer over Ardie
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal className="relative" direction="right" delay={0.08}>
+              <div className="absolute -left-4 top-12 hidden h-28 w-28 rounded-full bg-orato-purple/20 blur-3xl lg:block" />
+              <div className="absolute -right-4 bottom-10 hidden h-36 w-36 rounded-full bg-orato-purple/20 blur-3xl lg:block" />
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-orato-dark/10 bg-white shadow-[0_40px_120px_-45px_rgba(20,20,20,0.45)]">
+                <Image
+                  src="/supervisie/ardie voor smartboard kracht van supervisie.PNG"
+                  alt="Ardie tijdens supervisie bij een smartboard."
+                  width={1800}
+                  height={1300}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+              <div className="mt-5 rounded-[2rem] border border-orato-dark/10 bg-white/85 p-6 shadow-sm backdrop-blur">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+                  Focus
+                </p>
+                <p className="mt-3 text-base leading-7 text-orato-dark/78">
+                  Je mag van mij verwachten dat ik jouw professionalisering en
+                  daarmee de kwaliteit van coachen, centraal zet. Vanuit mijn
+                  expertise als Master Coach voorzie ik jou van feedback.
+                </p>
+                <div className="mt-5 h-px w-24 bg-gradient-to-r from-orato-purple via-orato-purple/60 to-transparent" />
+                <p className="mt-5 text-sm leading-6 text-orato-dark/70">
+                  Ook jouw welzijn, het restoratieve aspect, valt onder
+                  supervisie, naast het normatieve en formatieve.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+            <Reveal direction="left">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
+                Supervisie
+              </p>
+              <h2
+                className={`${notoSerifDisplay.className} mt-3 max-w-2xl text-4xl text-center md:text-left md:text-6xl`}
+              >
+                Reflecteren met scherpte en nieuwe perspectieven.
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-white/78">
+                Doel is jouw coachkwaliteiten maximaal in te zetten en blinde
+                vlekken bewust te krijgen. Reflecteren, op allerlei manieren,
+                gaat je nieuwe perspectieven bieden om een nog efficientere en
+                tevreden coach, supervisor of therapeut te zijn.
+              </p>
+              <p className="mt-4 max-w-xl text-base leading-7 text-white/72">
+                Of misschien wil je vooral op de millimeter werken aan de hand
+                van een casus of ontwikkelvraag, of wil je geinspireerd worden?
+                Supervisie verschilt van coaching door focus op sparren middels
+                een professionele dialoog, nog fijngevoeliger duiden, het
+                proces van jouw ontwikkeling, talrijke perspectieven, verbreden
+                en/of verdiepen van kennis en kunde.
+              </p>
+              <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/12">
+                <Image
+                  src="/supervisie/Supervision is facilitating perspectives.jpeg"
+                  alt="Supervisie betekent perspectieven faciliteren."
+                  width={1800}
+                  height={1300}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </Reveal>
+
+            <div className="grid gap-5">
+              <Reveal>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Professionalisering
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    Je mag van mij verwachten dat ik jouw professionalisering en
+                    daarmee de kwaliteit van coachen, centraal zet.
+                  </p>
+                </article>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Secure base
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    Supervisie gebeurt met de grootste psychologische veiligheid.
+                    Als een katalysator gericht op secure base.
+                  </p>
+                </article>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                  <h3 className="text-2xl font-semibold text-white">
+                    Professionele dialoog
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">
+                    Supervisie is meer dan een professionele dialoog. Het is ook
+                    nog fijngevoeliger duiden, sparren en een kijkje in de
+                    keuken van Ardie.
+                  </p>
+                </article>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+              Expertise
+            </p>
+            <h2
+              className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-center md:text-left md:text-6xl`}
+            >
+              Ervaring, senioriteit en vakliefde.
+            </h2>
+            <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="space-y-5">
+                {expertiseBlocks.map((paragraph, index) => (
+                  <Reveal key={paragraph} delay={index * 0.06}>
+                    <article
+                      className={`rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm ${
+                        index === 0 ? "shadow-[0_24px_70px_-38px_rgba(20,20,20,0.22)]" : ""
+                      }`}
+                    >
+                      <p className="text-base leading-7 text-orato-dark/78">
+                        {paragraph}
+                      </p>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
+              <div className="space-y-5">
+                <div className="overflow-hidden rounded-[2.35rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
+                  <Image
+                    src="/supervisie/•vloerkleedERF03115_WEB.jpg"
+                    alt="Supervisie bij Orato in gesprek op locatie."
+                    width={1800}
+                    height={1200}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+                <Reveal delay={0.1}>
+                  <article className="rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm">
+                    <h3 className="text-2xl font-semibold text-orato-dark">
+                      AvC
+                    </h3>
+                    <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
+                      {trainingBlocks.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <Link
+                        href="https://associatievoorcoaching.com/"
+                        className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                      >
+                        AvC
+                      </Link>
+                      <Link
+                        href="https://associatievoorcoaching.com/transactionele-analyse/"
+                        className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+                      >
+                        Transactionele Analyse
+                      </Link>
+                    </div>
+                  </article>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
+                Werkwijze
+              </p>
+              <h2
+                className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-center md:text-left md:text-6xl`}
+              >
+                Pragmatisch, verdiepend en zorgvuldig.
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
+                Na een orientatiegesprek waarin we kennismaken en ter tafel
+                brengen wat-ertoe-doet, stellen we een werkovereenkomst op. Na
+                akkoord gaan we aan de slag.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[1.8rem] border border-white/12 bg-white/6 p-6">
+                  <h3 className="text-lg font-semibold">Aanpak</h3>
+                  <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78">
+                    {methods.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-[1.8rem] border border-white/12 bg-white/6 p-6">
+                  <h3 className="text-lg font-semibold">Planning & kaders</h3>
+                  <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78">
+                    {planning.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-5">
+              <div className="overflow-hidden rounded-[2.4rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-40px_rgba(0,0,0,0.6)]">
+                <Image
+                  src="/supervisie/sleutelbos met bloemen.jpg"
+                  alt="Beeld passend bij verdieping en ontwikkeling in supervisie."
+                  width={1600}
+                  height={1100}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <article className="overflow-hidden rounded-[1.8rem] border border-white/12 bg-white/6 shadow-[0_24px_70px_-36px_rgba(0,0,0,0.5)]">
+                  <Image
+                    src="/supervisie/Blog-2-Slak-300x234.jpg"
+                    alt="Beeld van een slak als metafoor voor vertraging, aandacht en reflectie."
+                    width={600}
+                    height={468}
+                    className="h-auto w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+                      Reflectie
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-white/78">
+                      Soms vraagt supervisie om vertragen, waarnemen en op de
+                      millimeter werken.
+                    </p>
+                  </div>
+                </article>
+
+                <article className="overflow-hidden rounded-[1.8rem] border border-white/12 bg-white/6 shadow-[0_24px_70px_-36px_rgba(0,0,0,0.5)]">
+                  <Image
+                    src="/supervisie/kip met gouden ei.jpg"
+                    alt="Beeld van een kip met een gouden ei als metafoor voor potentieel en ontwikkeling."
+                    width={414}
+                    height={426}
+                    className="h-auto w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+                      Ontwikkeling
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-white/78">
+                      Supervisie helpt kwaliteiten zichtbaar maken en verder
+                      ontwikkelen.
+                    </p>
+                  </div>
+                </article>
+              </div>
+
+              <Reveal delay={0.05}>
+                <article className="rounded-[2rem] border border-white/12 bg-orato-light p-7 text-orato-dark shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+                    Verder lezen
+                  </p>
+                  <p className="mt-4 text-base leading-7 text-orato-dark/78">
+                    Wil je meer weten over de professionele en persoonlijke
+                    ontwikkeling van Ardie klik dan hier.
+                  </p>
+                  <Link
+                    href="/Info/Ardie"
+                    className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-purple underline decoration-orato-dark/15 underline-offset-4 transition hover:decoration-orato-purple"
+                  >
+                    Naar Ardie
+                  </Link>
+                </article>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7">
+                  <h3 className="text-2xl font-semibold">Kaders & vertrouwen</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/82">
+                    Uiteraard AVG-proof volgens{" "}
+                    <Link
+                      href="/Info/PrivacyVerklaring"
+                      className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    >
+                      Privacyverklaring
+                    </Link>{" "}
+                    en{" "}
+                    <Link
+                      href="/Info/AlgemeneVoorwaarden"
+                      className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-purple"
+                    >
+                      Algemene voorwaarden
+                    </Link>
+                    . Met aandacht voor ethische aspecten van ons mooie coachvak.
+                  </p>
+                </article>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+              Supervisie/mentoring onderwerpen
+            </p>
+            <h2
+              className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-center md:text-left md:text-6xl`}
+            >
+              Vragen uit de praktijk.
+            </h2>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {subjects.map((subject, index) => (
+                <Reveal key={subject} delay={index * 0.025}>
+                  <article
+                    className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-purple/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-purple/10 text-xs font-semibold text-orato-purple transition-colors duration-300 group-hover:bg-orato-purple group-hover:text-white">
+                        {index + 1}
+                      </span>
+                      <p className="text-sm leading-6 text-orato-dark/82">
+                        {subject}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
+          <Reveal className="mx-auto max-w-3xl">
+            <Link
+              href="/Contact"
+              className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-purple/15 bg-gradient-to-br from-white via-white to-orato-purple/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-purple/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-purple/40"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(155,95,245,0.16),transparent_38%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+                Investering
+              </p>
+              <h3
+                className={`${notoSerifDisplay.className} relative mt-3 text-4xl text-orato-dark`}
+              >
+                Tijd en aandacht
+              </h3>
+              <div className="relative mt-5 rounded-[1.5rem] border border-orato-purple/15 bg-white/80 px-5 py-5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.01]">
+                <p className="text-xs uppercase tracking-[0.2em] text-orato-dark/60">
+                  Uurtarief vanaf
+                </p>
+                <p className="mt-2 text-2xl font-semibold text-orato-dark">
+                  €185
+                </p>
+              </div>
+              <p className="relative mt-5 text-base leading-7 text-orato-dark/75">
+                Referenties opvraagbaar. Met plezier ben ik een bruggenbouwer
+                tussen jou en coaches die al supervisie genoten hebben.
+              </p>
+            </Link>
+          </Reveal>
+        </section>
+
+        <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
+              Referentie
+            </p>
+            <h2
+              className={`${notoSerifDisplay.className} mt-3 max-w-3xl text-4xl text-center md:text-left md:text-6xl`}
+            >
+              Een voorbeeld van blended supervisie.
+            </h2>
+            <div className="mt-10 grid gap-5">
+              <div className="overflow-hidden rounded-[2.6rem] bg-orato-light p-3 shadow-[0_30px_90px_-40px_rgba(0,0,0,0.45)] md:p-5">
+                <Image
+                  src="/supervisie/Ruimte circles +logo.png"
+                  alt="Visual van de supervisieruimte."
+                  width={1600}
+                  height={1200}
+                  className="h-auto w-full rounded-[2rem] object-cover"
+                />
+              </div>
+              <Reveal delay={0.08}>
+                <article className="mx-auto w-full max-w-4xl rounded-[2rem] border border-white/10 bg-white/10 p-7 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.45)] backdrop-blur-sm md:p-8">
+                  <p className="text-lg leading-8 text-white/84">
+                    &ldquo;Ardie is een supervisor die je raakt, uitdaagt en in
+                    beweging zet. Ze ziet wat ik zelf nog niet doorheb,
+                    confronteert me zonder aarzeling, maar altijd met humor en
+                    een vleugje lerares-strengheid. Elke sessie verrast me met
+                    nieuwe inzichten en een flinke dosis energie.&rdquo;
+                  </p>
+                  <p className="mt-6 text-base font-semibold text-white">
+                    Jasper Nooij
+                  </p>
+                  <p className="mt-1 text-sm text-white/58">
+                    Zelfstandig tenderspecialist en (team)coach, Estland
+                  </p>
+                  <p className="mt-8 text-sm leading-7 text-white/74">
+                    Laat het me weten als ik een bruggenbouwer mag zijn tussen jou
+                    en een van de collega&apos;s die ik al gesuperviseerd heb.
+                  </p>
+                </article>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+          <Reveal className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
+              Welkom
+            </p>
+            <p className="mx-auto mt-6 max-w-4xl text-base leading-7 text-orato-dark/75">
+              Ben jij een coachsupervisor, paramedische therapeut of
+              professionele coach, met een eigen bedrijf/praktijk of heb je een
+              beroep waar coaching een wezenlijk deel van uitmaakt, heb je een
+              erkende (coach)opleiding en (veel) ervaring, en wil jij je verder
+              ontwikkelen, dan ontmoet ik je graag persoonlijk in het kader van
+              supervisie/mentoring.
+            </p>
+            <p
+              className={`${tangerine.className} mt-6 text-5xl leading-none text-orato-purple md:text-7xl`}
+            >
+              Ik ga ervoor! Waarvoor? Voor jou en je ont-wikkeling.
+            </p>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-orato-dark/75">
+              Wat mag ik voor jou betekenen? Klik hier om naar het
+              contactformulier te gaan of bel me.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+              <Link
+                href="/Contact"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-purple"
+              >
+                Naar contact
+              </Link>
+              <Link
+                href="tel:+31651088688"
+                className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
+              >
+                Bel +31 6 51088688
+              </Link>
+            </div>
+          </Reveal>
+        </section>
+      </main>
+
+      <FooterComp />
+    </>
+  );
+}
