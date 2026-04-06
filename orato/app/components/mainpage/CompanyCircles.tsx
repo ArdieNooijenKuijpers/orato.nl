@@ -5,14 +5,6 @@ import { companies } from '../mainpage/Data/Companies';
 
 const SHOW_CHROMATIC_ABERRATION = true;
 
-// Tailwind sizing classes for each company size.
-const sizeMap: Record<'K' | 'M' | 'G' | 'GG', string> = {
-  K: 'w-6 h-6',   // 16px
-  M: 'w-10 h-10',   // 24px
-  G: 'w-16 h-16', // 40px
-  GG: 'w-28 h-28' // 96px
-};
-
 // Pixel sizes corresponding to the Tailwind sizes.
 const pixelSizeMap: Record<'K' | 'M' | 'G' | 'GG', number> = {
   K: 24,
@@ -27,19 +19,24 @@ interface Position {
   radius: number;
 }
 
-// A helper to compute the scaling variants based on company size.
 const getOrbVariants = (size: 'K' | 'M' | 'G' | 'GG') => {
-  // For GG orbs, we don't scale on hover.
-  if (size === 'GG') {
-    return {
-      initial: { scale: 1 },
-      hover: { scale: 1 },
-    };
-  }
-  // For smaller orbs, scale so the final diameter equals that of a GG orb.
+  const baseSize = pixelSizeMap[size];
+  const hoverSize = size === 'GG' ? baseSize : pixelSizeMap['GG'];
+  const offset = (hoverSize - baseSize) / 2;
+
   return {
-    initial: { scale: 1 },
-    hover: { scale: pixelSizeMap['GG'] / pixelSizeMap[size] },
+    initial: {
+      width: baseSize,
+      height: baseSize,
+      x: 0,
+      y: 0,
+    },
+    hover: {
+      width: hoverSize,
+      height: hoverSize,
+      x: -offset,
+      y: -offset,
+    },
   };
 };
 
@@ -47,27 +44,33 @@ interface CompanyOrbProps {
   company: { name: string; size: 'K' | 'M' | 'G' | 'GG' };
   position: Position;
   dimensions: { width: number; height: number };
+  isAutoHovered?: boolean;
 }
 
-const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }) => {
+const CompanyOrb: React.FC<CompanyOrbProps> = ({
+  company,
+  position,
+  dimensions,
+  isAutoHovered = false,
+}) => {
   // Local state to control the text animation.
   const [isHovered, setIsHovered] = useState(false);
-
-  // Compute parent's scale factor if this is a smaller orb.
-  // For non-GG orbs, parent's hover scale factor is:
-  const parentScaleFactor =
-    company.size !== 'GG' ? pixelSizeMap['GG'] / pixelSizeMap[company.size] : 1;
+  const isActive = isHovered || isAutoHovered;
 
   return (
     <motion.div
-      className={`absolute rounded-full bg-orato-dark   flex justify-center items-center text-center transition-colors duration-300 cursor-invert cursor-small overflow-visible ${sizeMap[company.size]}`}
+      className="absolute flex items-center justify-center overflow-visible rounded-full bg-orato-dark text-center transition-colors duration-300 cursor-invert cursor-small"
       style={{
         top: `${(position.y / dimensions.height) * 100}%`,
         left: `${(position.x / dimensions.width) * 100}%`,
       }}
       variants={getOrbVariants(company.size)}
       initial="initial"
-      whileHover="hover"
+      animate={isActive ? "hover" : "initial"}
+      transition={{
+        duration: 0.35,
+        ease: 'easeInOut',
+      }}
       // Update local hover state.
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -105,9 +108,7 @@ const CompanyOrb: React.FC<CompanyOrbProps> = ({ company, position, dimensions }
         <motion.span
           className="absolute z-10 text-white font-bold text-xs pointer-events-none"
           animate={{
-            opacity: isHovered ? 1 : 0,
-            // When hovered, apply inverse scale to keep the text size constant.
-            scale: isHovered ? 1 / parentScaleFactor : 1,
+            opacity: isActive ? 1 : 0,
           }}
           transition={{ duration: 0.3 }}
         >
@@ -127,6 +128,8 @@ const CompanyCircles: React.FC = () => {
     height: 0,
   });
   const [positions, setPositions] = useState<Position[]>([]);
+  const [isInView, setIsInView] = useState(false);
+  const [activeOrbIndex, setActiveOrbIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setIsFirefox(
@@ -146,6 +149,18 @@ const CompanyCircles: React.FC = () => {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.35 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -203,6 +218,30 @@ const CompanyCircles: React.FC = () => {
 
     setPositions(posArray);
   }, [dimensions]);
+
+  useEffect(() => {
+    if (!isInView || positions.length !== companies.length) {
+      setActiveOrbIndex(null);
+      return;
+    }
+
+    const chooseNextOrb = () => {
+      setActiveOrbIndex((currentIndex) => {
+        if (companies.length <= 1) return 0;
+
+        let nextIndex = Math.floor(Math.random() * companies.length);
+        while (nextIndex === currentIndex) {
+          nextIndex = Math.floor(Math.random() * companies.length);
+        }
+        return nextIndex;
+      });
+    };
+
+    chooseNextOrb();
+    const intervalId = window.setInterval(chooseNextOrb, 2400);
+
+    return () => window.clearInterval(intervalId);
+  }, [isInView, positions.length]);
 
   const ggCompanies = companies.filter((company) => company.size === 'GG');
   const otherCompanies = companies.filter((company) => company.size !== 'GG');
@@ -306,6 +345,7 @@ const CompanyCircles: React.FC = () => {
             company={company}
             position={positions[index]}
             dimensions={dimensions}
+            isAutoHovered={activeOrbIndex === index}
           />
         ))}
       </div>
