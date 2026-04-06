@@ -531,7 +531,7 @@ export default function PresenterenPage() {
                 {inschrijfDataOptions.map((date) => (
                   <InschrijfFormModal
                     key={date}
-                    title="Inschrijven voor Speaking Circle"
+                    title="Inschrijfformulier"
                     description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
                     initialSelectedDate={date}
                     triggerClassName="group cursor-small inline-flex w-full items-center justify-between rounded-[1.15rem] border border-white/10 bg-white/6 px-4 py-3 text-left text-sm font-medium text-white/84 transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-green/45 hover:bg-white/10 hover:text-white hover:shadow-[0_16px_34px_-22px_rgba(84,166,94,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/45"
@@ -730,7 +730,7 @@ export default function PresenterenPage() {
                   Klaar om mee te doen?
                 </p>
                 <InschrijfFormModal
-                  title="Inschrijven voor Speaking Circle"
+                  title="Inschrijfformulier"
                   description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
                   triggerClassName="group inline-flex min-h-12 items-center gap-3 rounded-full border border-orato-green/40 bg-orato-green/12 px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-orato-green transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-green hover:bg-orato-green hover:text-orato-dark hover:shadow-[0_18px_38px_-24px_rgba(84,166,94,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/50"
                 >

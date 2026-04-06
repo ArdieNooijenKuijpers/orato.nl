@@ -38,20 +38,68 @@ const FooterComp = () => {
     return "text-orato-orange";
   };
 
-  const bedrijfImages = [
-    "AVC.jfif",
-    "CRKBO.jfif",
-    "EIA.jfif",
-    "EMCC.jfif",
-    "ESIA.jfif",
-    "MCC.jfif",
-    "NOBCO.jfif",
-    "OCN.jfif",
-    "Oratowhite.jfif",
-    "RP.jfif",
-    "SC.png",
+  const partnerLogos = [
+    {
+      name: "AvC",
+      file: "AVC.jpg",
+      href: "https://associatievoorcoaching.com/",
+    },
+    {
+      name: "CRKBO",
+      file: "CRKBO.jpg",
+      href: "https://www.crkbo.nl/",
+    },
+    {
+      name: "EIA",
+      file: "EIA.jpg",
+      href: "https://emccglobal.org/",
+    },
+    {
+      name: "EMCC",
+      file: "EMCC.jpg",
+      href: "https://emccglobal.org/",
+    },
+    {
+      name: "ESIA",
+      file: "ESIA.jpg",
+      href: "https://nobco.nl/voor-coaches/ontwikkeling-en-inspiratie/supervisie/",
+    },
+    {
+      name: "MCC",
+      file: "MCC.jpg",
+      href: "https://coachingfederation.nl/",
+    },
+    {
+      name: "NOBCO",
+      file: "NOBCO.jpg",
+      href: "https://nobco.nl",
+    },
+    {
+      name: "OCN",
+      file: "OCN.jpg",
+      href: "https://www.ocnuenen.nl/",
+    },
+    {
+      name: "Orato",
+      file: "Oratowhite.jpg",
+      href: "https://orato.nl",
+    },
+    {
+      name: "RP",
+      file: "RP.jpg",
+      href: "https://relationalpresence.eu/",
+    },
+    {
+      name: "SC",
+      file: "SC.png",
+      href: "https://www.speakingcircles.com/",
+    },
+    {
+      name: "MySupervisor",
+      file: "my supervisor.png",
+      href: "https://mysupervisor.eu/",
+    },
   ];
-  const marqueeImages = bedrijfImages.filter((image) => !image.toLowerCase().endsWith(".tif"));
 
   useEffect(() => {
     const updateViewportMetrics = () => {
@@ -202,7 +250,6 @@ const FooterComp = () => {
               <div className="space-y-1 text-sm text-white/90">
                 <p>KvK: 160 65 919</p>
                 <p>BTW: NL001890491B36</p>
-                <p>IBAN: NL40 RABO 01774.110.74</p>
               </div>
               <div className="mt-auto pt-4 text-sm">
                 <p className="font-semibold text-white">Scan voor contactgegevens</p>
@@ -319,20 +366,25 @@ const FooterComp = () => {
                 style={{ background: `linear-gradient(to left, ${footerCardBackground}, transparent)` }}
               />
               <div className="flex w-max animate-marquee gap-4">
-                {marqueeImages.concat(marqueeImages).map((image, index) => (
-                  <div
+                {partnerLogos.concat(partnerLogos).map((logo, index) => (
+                  <Link
                     key={index}
+                    href={logo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${logo.name} website`}
+                    title={logo.name}
                     className="relative flex-shrink-0 rounded-xl border border-white/15 bg-white p-3 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.8)]"
                     style={{ width: partnerLogoCardWidth, height: partnerLogoCardHeight }}
                   >
                     <Image
-                      src={`/Homepage/bedrijven/${encodeURIComponent(image)}`}
-                      alt={image}
+                      src={`/Homepage/bedrijven/${encodeURIComponent(logo.file)}`}
+                      alt={`${logo.name} logo`}
                       fill
                       sizes={`${partnerLogoCardWidth}px`}
                       className="object-contain"
                     />
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

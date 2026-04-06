@@ -3,18 +3,29 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+
+type HighlightedText = {
+  text: string;
+  highlights?: string[];
+};
+
+type TimelineImage = {
+  src: string;
+  alt: string;
+  placement?: "card" | "edge";
+  tall?: boolean;
+  wide?: boolean;
+  badgeLabel?: string;
+  badgeIcon?: "crown";
+  whiteBackground?: boolean;
+};
+
 export type ArdieTimelineEntry = {
   year: string;
   title: string;
   summary?: string;
-  details: string[];
-  image?: {
-    src: string;
-    alt: string;
-    placement?: "card" | "edge";
-    tall?: boolean;
-    wide?: boolean;
-  };
+  details: HighlightedText[];
+  images?: TimelineImage[];
   accentColor?: "red" | "orange" | "blue" | "green";
 };
 
@@ -25,6 +36,7 @@ type RedThreadTimelineProps = {
 const TOP_PADDING = 60;
 const DESKTOP_ROW_GAP = 88;
 const MOBILE_ROW_GAP = 44;
+const END_TAIL_HEIGHT = 180;
 
 const accentStyles: Record<NonNullable<ArdieTimelineEntry["accentColor"]>, string> = {
   red: "border-orato-red/35 bg-orato-red/10",
@@ -39,27 +51,28 @@ const estimateLineBlockHeight = (lines: string[], charsPerLine: number, lineHeig
 const estimateCardHeight = (entry: ArdieTimelineEntry, mobile: boolean) => {
   const summaryHeight = entry.summary ? (mobile ? 48 : 56) : 0;
   const detailsHeight = estimateLineBlockHeight(
-    entry.details,
+    entry.details.map((detail) => detail.text),
     mobile ? 42 : 72,
     mobile ? 22 : 24
   );
-  const imageHeight =
-    entry.image && entry.image.placement !== "edge"
-      ? entry.image.tall
+  const imageHeight = (entry.images ?? []).reduce((total, image, index) => {
+    const baseHeight = image.tall
+      ? mobile
+        ? 340
+        : 420
+      : image.wide
         ? mobile
-          ? 340
-          : 420
-        : entry.image.wide
-          ? mobile
-            ? 300
-            : 360
+          ? 300
+          : 360
         : mobile
           ? 272
-          : 320
-      : 0;
+          : 320;
+
+    return total + baseHeight + (index > 0 ? 16 : 0);
+  }, 0);
   const textHeight = (mobile ? 176 : 206) + summaryHeight + detailsHeight;
 
-  if (!mobile && entry.image) {
+  if (!mobile && entry.images?.length) {
     return Math.max(textHeight, imageHeight);
   }
 
@@ -119,6 +132,53 @@ const buildPath = (points: Array<{ x: number; y: number }>) => {
   return path;
 };
 
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const renderHighlightedText = (text: string, highlights?: string[]) => {
+  if (!highlights?.length) {
+    return text;
+  }
+
+  const uniqueHighlights = Array.from(new Set(highlights))
+    .filter(Boolean)
+    .sort((first, second) => second.length - first.length);
+
+  if (uniqueHighlights.length === 0) {
+    return text;
+  }
+
+  const pattern = new RegExp(`(${uniqueHighlights.map((item) => escapeRegExp(item)).join("|")})`, "gi");
+  const segments = text.split(pattern);
+
+  return segments.map((segment, index) => {
+    const isHighlight = uniqueHighlights.some(
+      (item) => item.toLocaleLowerCase() === segment.toLocaleLowerCase()
+    );
+
+    return isHighlight ? (
+      <strong
+        key={`${segment}-${index}`}
+        className="font-semibold text-orato-dark"
+      >
+        {segment}
+      </strong>
+    ) : (
+      <span key={`${segment}-${index}`}>{segment}</span>
+    );
+  });
+};
+
+const CrownBadge = () => (
+  <Image
+    src="/Ardie/crown-gold-transparent.png"
+    alt=""
+    aria-hidden="true"
+    width={8000}
+    height={8000}
+    className="h-52 w-52 object-contain drop-shadow-[0_18px_30px_rgba(120,78,0,0.28)]"
+  />
+);
+
 const TimelineCard = ({
   entry,
   align,
@@ -152,7 +212,7 @@ const TimelineCard = ({
       {entry.summary ? <p className="mt-3 text-base font-medium text-orato-dark/85">{entry.summary}</p> : null}
       <div className="mt-4 space-y-3 text-sm leading-6 text-orato-dark/80">
         {entry.details.map((detail) => (
-          <p key={detail}>{detail}</p>
+          <p key={detail.text}>{renderHighlightedText(detail.text, detail.highlights)}</p>
         ))}
       </div>
     </motion.article>
@@ -168,7 +228,7 @@ const TimelineImageCard = ({
   align: "left" | "right";
   reducedMotion: boolean;
 }) => {
-  if (!entry.image) {
+  if (!entry.images?.length) {
     return null;
   }
 
@@ -182,23 +242,43 @@ const TimelineImageCard = ({
       whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
-      className={`w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.9)] ${
+      className={`grid w-full gap-4 ${
         align === "left" ? "justify-self-end" : "justify-self-start"
       }`}
     >
-      <Image
-        src={entry.image.src}
-        alt={entry.image.alt}
-        width={entry.image.wide ? 760 : 620}
-        height={entry.image.wide ? 620 : 820}
-        className={`object-cover opacity-95 ${
-          entry.image.wide
-            ? "h-[24rem] w-full"
-            : entry.image.tall
-              ? "h-[30rem] w-full"
-              : "h-[24rem] w-full"
-        }`}
-      />
+      {entry.images.map((image) => (
+        <div
+          key={image.src}
+          className={`relative rounded-[1.75rem] border shadow-[0_24px_70px_-35px_rgba(0,0,0,0.9)] ${
+            image.whiteBackground ? "border-orato-dark/10 bg-white" : "border-white/10 bg-white/5"
+          }`}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.wide ? 760 : 620}
+            height={image.wide ? 620 : 820}
+            className={`object-cover opacity-95 ${
+              image.wide
+                ? "h-[24rem] w-full"
+                : image.tall
+                  ? "h-[30rem] w-full"
+                  : "h-[24rem] w-full"
+            }`}
+          />
+          {image.badgeLabel ? (
+            image.badgeIcon === "crown" ? (
+              <div className="pointer-events-none absolute -right-14 -top-28 z-20 rotate-[18deg] text-[#d4a11d]">
+                <CrownBadge />
+              </div>
+            ) : (
+              <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-lg">
+                <span>{image.badgeLabel}</span>
+              </div>
+            )
+          ) : null}
+        </div>
+      ))}
     </motion.div>
   );
 };
@@ -212,10 +292,34 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
   const mobileLayout = buildLayout(entries, true);
   const desktopPoints = desktopLayout.map((item, index) => getDesktopPoint(index, item.centerY));
   const mobilePoints = mobileLayout.map((item, index) => getMobilePoint(index, item.centerY));
-  const desktopHeight = (desktopLayout.at(-1)?.top ?? TOP_PADDING) + (desktopLayout.at(-1)?.height ?? 0) + TOP_PADDING;
-  const mobileHeight = (mobileLayout.at(-1)?.top ?? TOP_PADDING) + (mobileLayout.at(-1)?.height ?? 0) + TOP_PADDING;
-  const desktopPath = buildPath(desktopPoints);
-  const mobilePath = buildPath(mobilePoints);
+  const desktopTailPoint = desktopPoints.at(-1) && desktopLayout.at(-1)
+    ? {
+        x: desktopPoints.at(-1)!.x,
+        y: desktopLayout.at(-1)!.top + desktopLayout.at(-1)!.height + END_TAIL_HEIGHT,
+      }
+    : null;
+  const mobileTailPoint = mobilePoints.at(-1) && mobileLayout.at(-1)
+    ? {
+        x: mobilePoints.at(-1)!.x,
+        y: mobileLayout.at(-1)!.top + mobileLayout.at(-1)!.height + END_TAIL_HEIGHT,
+      }
+    : null;
+  const desktopHeight =
+    (desktopLayout.at(-1)?.top ?? TOP_PADDING) +
+    (desktopLayout.at(-1)?.height ?? 0) +
+    TOP_PADDING +
+    END_TAIL_HEIGHT;
+  const mobileHeight =
+    (mobileLayout.at(-1)?.top ?? TOP_PADDING) +
+    (mobileLayout.at(-1)?.height ?? 0) +
+    TOP_PADDING +
+    END_TAIL_HEIGHT;
+  const desktopPath = buildPath(
+    desktopTailPoint ? [...desktopPoints, desktopTailPoint] : desktopPoints
+  );
+  const mobilePath = buildPath(
+    mobileTailPoint ? [...mobilePoints, mobileTailPoint] : mobilePoints
+  );
 
   useEffect(() => {
     const updateActiveMarker = () => {
@@ -271,10 +375,18 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                 <stop offset="0%" stopColor="#ff5a45" stopOpacity="1" />
                 <stop offset="18%" stopColor="#ff4128" stopOpacity="1" />
                 <stop offset="62%" stopColor="#eb4a2d" stopOpacity="1" />
-                <stop offset="100%" stopColor="#a3170d" stopOpacity="1" />
+                <stop offset="98.6%" stopColor="#cf2f1d" stopOpacity="1" />
+                <stop offset="99.35%" stopColor="#9b1b10" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#6f0f08" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="red-thread-line-base" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#cd2414" stopOpacity="0.74" />
+                <stop offset="98.6%" stopColor="#b42517" stopOpacity="0.74" />
+                <stop offset="99.35%" stopColor="#7c140c" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#7c140c" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <path d={desktopPath} stroke="rgba(205,36,20,0.74)" strokeWidth="3.4" fill="none" />
+            <path d={desktopPath} stroke="url(#red-thread-line-base)" strokeWidth="3.4" fill="none" />
             <motion.path
               d={desktopPath}
               stroke="url(#red-thread-line)"
@@ -307,7 +419,7 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                 <div className="relative z-10 col-start-1 flex h-full items-center">
                   {align === "left" ? (
                     <TimelineCard entry={entry} align="left" reducedMotion={reducedMotion} />
-                  ) : entry.image ? (
+                  ) : entry.images?.length ? (
                     <TimelineImageCard entry={entry} align="right" reducedMotion={reducedMotion} />
                   ) : null}
                 </div>
@@ -376,7 +488,7 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                 <div className="relative z-10 col-start-3 flex h-full items-center">
                   {align === "right" ? (
                     <TimelineCard entry={entry} align="right" reducedMotion={reducedMotion} />
-                  ) : entry.image ? (
+                  ) : entry.images?.length ? (
                     <div className="ml-auto">
                       <TimelineImageCard entry={entry} align="left" reducedMotion={reducedMotion} />
                     </div>
@@ -400,10 +512,18 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
               <linearGradient id="red-thread-line-mobile" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="#ff5a45" stopOpacity="1" />
                 <stop offset="45%" stopColor="#ff4128" stopOpacity="1" />
-                <stop offset="100%" stopColor="#a3170d" stopOpacity="1" />
+                <stop offset="98.6%" stopColor="#cf2f1d" stopOpacity="1" />
+                <stop offset="99.35%" stopColor="#9b1b10" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#6f0f08" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="red-thread-line-mobile-base" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#cd2414" stopOpacity="0.7" />
+                <stop offset="98.6%" stopColor="#b42517" stopOpacity="0.7" />
+                <stop offset="99.35%" stopColor="#7c140c" stopOpacity="0.28" />
+                <stop offset="100%" stopColor="#7c140c" stopOpacity="0" />
               </linearGradient>
             </defs>
-            <path d={mobilePath} stroke="rgba(205,36,20,0.7)" strokeWidth="2.7" fill="none" />
+            <path d={mobilePath} stroke="url(#red-thread-line-mobile-base)" strokeWidth="2.7" fill="none" />
             <motion.path
               d={mobilePath}
               stroke="url(#red-thread-line-mobile)"
@@ -439,22 +559,47 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                     {entry.summary ? <p className="mt-2 text-sm font-medium text-orato-dark/85">{entry.summary}</p> : null}
                     <div className="mt-3 space-y-3 text-sm leading-6 text-orato-dark/80">
                       {entry.details.map((detail) => (
-                        <p key={detail}>{detail}</p>
+                        <p key={detail.text}>
+                          {renderHighlightedText(detail.text, detail.highlights)}
+                        </p>
                       ))}
                     </div>
-                    {entry.image ? (
-                      <div className="mt-4 overflow-hidden rounded-[1.35rem] border border-orato-dark/10">
+                    {entry.images?.map((image) => (
+                      <div
+                        key={image.src}
+                        className={`relative mt-4 rounded-[1.35rem] border border-orato-dark/10 ${
+                          image.whiteBackground ? "bg-white" : ""
+                        }`}
+                      >
                         <Image
-                          src={entry.image.src}
-                          alt={entry.image.alt}
+                          src={image.src}
+                          alt={image.alt}
                           width={1200}
                           height={900}
                           className={`w-full object-cover ${
-                            entry.image.tall ? "h-80" : entry.image.wide ? "h-72" : "h-64"
+                            image.tall ? "h-80" : image.wide ? "h-72" : "h-64"
                           }`}
                         />
+                        {image.badgeLabel ? (
+                          image.badgeIcon === "crown" ? (
+                            <div className="pointer-events-none absolute -right-5 -top-14 z-20 rotate-[18deg] text-[#d4a11d]">
+                              <Image
+                                src="/Ardie/crown-gold-transparent.png"
+                                alt=""
+                                aria-hidden="true"
+                                width={8000}
+                                height={8000}
+                                className="h-32 w-32 object-contain drop-shadow-[0_12px_20px_rgba(120,78,0,0.28)]"
+                              />
+                            </div>
+                          ) : (
+                            <div className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-lg">
+                              <span>{image.badgeLabel}</span>
+                            </div>
+                          )
+                        ) : null}
                       </div>
-                    ) : null}
+                    ))}
                   </div>
                 </motion.article>
               );

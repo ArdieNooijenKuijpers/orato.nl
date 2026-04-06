@@ -59,7 +59,10 @@ const ContactForm = () => {
   };
 
   const updateField = (key: keyof FormState, value: string) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
+    const nextValue =
+      key === "telefoon" ? value.replace(/[^\d+\s()-]/g, "") : value;
+
+    setFormData((prev) => ({ ...prev, [key]: nextValue }));
     if (showSuccess) {
       setShowSuccess(false);
     }
@@ -135,7 +138,10 @@ const ContactForm = () => {
             <Input
               id="telefoon"
               name="telefoon"
-              placeholder="+31"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel"
+              placeholder="+31 6 12345678"
               value={formData.telefoon}
               onChange={(e) => updateField("telefoon", e.target.value)}
             />

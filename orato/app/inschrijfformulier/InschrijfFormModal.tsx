@@ -1,6 +1,7 @@
 "use client";
 
-import { ReactNode, useEffect, useId, useState } from "react";
+import Image from "next/image";
+import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import InschrijfForm from "./InschrijfForm";
@@ -17,14 +18,13 @@ type InschrijfFormModalProps = {
 const InschrijfFormModal = ({
   triggerLabel = "Schrijf je in",
   triggerClassName,
-  title = "Inschrijven",
+  title = "Inschrijfformulier",
   description = "Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’.",
   children,
   initialSelectedDate,
 }: InschrijfFormModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const headingId = useId();
 
   useEffect(() => {
     setIsMounted(true);
@@ -74,7 +74,7 @@ const InschrijfFormModal = ({
         onClick={() => setIsOpen(true)}
         className={
           triggerClassName ??
-          "inline-flex h-11 items-center justify-center rounded-xl bg-orato-orange px-5 text-sm font-semibold text-white transition hover:bg-orato-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
+          "inline-flex h-11 cursor-small items-center justify-center rounded-xl bg-orato-orange px-5 text-sm font-semibold text-white transition hover:bg-orato-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
         }
       >
         {children ?? triggerLabel}
@@ -85,7 +85,7 @@ const InschrijfFormModal = ({
             <div className="fixed inset-0 z-[400] p-4 md:p-6">
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-orato-dark/70 backdrop-blur-sm"
+                className="absolute inset-0 cursor-small bg-orato-dark/70 backdrop-blur-sm"
                 onClick={() => setIsOpen(false)}
               />
 
@@ -93,25 +93,30 @@ const InschrijfFormModal = ({
                 <div
                   role="dialog"
                   aria-modal="true"
-                  aria-labelledby={headingId}
-                  className="relative z-10 flex h-full max-h-[calc(100vh-2rem)] w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-white/15 bg-orato-light shadow-[0_30px_120px_-40px_rgba(0,0,0,0.8)] md:max-h-[calc(100vh-3rem)]"
+                  aria-label={title}
+                  className="relative z-10 flex h-full max-h-[calc(100dvh-2rem)] w-full max-w-6xl flex-col overflow-hidden rounded-[2rem] border border-white/15 bg-orato-light shadow-[0_30px_120px_-40px_rgba(0,0,0,0.8)] md:max-h-[calc(100dvh-3rem)]"
                   onClick={(event) => event.stopPropagation()}
                 >
                   <div className="sticky top-0 z-20 shrink-0 border-b border-orato-dark/10 bg-orato-light/95 px-5 py-4 backdrop-blur-sm">
                     <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.24em] text-orato-dark/55">Modal</p>
-                        <h2 id={headingId} className="text-lg font-semibold text-orato-dark">
-                          {title}
-                        </h2>
+                      <div className="flex items-center">
+                        <Image
+                          src="/Homepage/orato bloem.png"
+                          alt="Orato"
+                          width={40}
+                          height={40}
+                          className="h-10 w-10"
+                          priority
+                        />
                       </div>
-
                       <button
                         type="button"
                         onClick={() => setIsOpen(false)}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-orato-dark/10 bg-white text-orato-dark transition hover:border-orato-orange hover:text-orato-orange"
+                        aria-label="Sluiten"
+                        className="inline-flex h-10 cursor-small items-center gap-2 justify-center rounded-full border border-orato-dark/10 bg-white px-3 text-orato-dark transition hover:border-orato-orange hover:text-orato-orange"
                       >
                         <X className="h-5 w-5" />
+                        <span className="hidden text-sm font-medium sm:inline">Sluiten</span>
                       </button>
                     </div>
                   </div>
