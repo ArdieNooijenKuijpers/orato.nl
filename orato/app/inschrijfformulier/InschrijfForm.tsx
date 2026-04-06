@@ -4,14 +4,9 @@ import Link from "next/link";
 import { FormEvent, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes, useMemo, useState } from "react";
 import { Noto_Serif_Display } from "next/font/google";
 import QuoteBadge from "../components/ardie/QuoteBadge";
+import { inschrijfDataOptions } from "./inschrijfData";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
-
-export const inschrijfDataOptions = [
-  "Dinsdag 24 maart 2025 | 9.30 - 17.30 u",
-  "Maandag 1 juli 2025 | 9.30 - 17.30 u",
-  "Woensdag 26 november 2025 | 9.30 - 17.30 u",
-] as const;
 
 type FacturatieType = "" | "zakelijk" | "privé";
 type FactuurNaarType = "" | "email" | "post";
@@ -66,14 +61,19 @@ type InschrijfFormProps = {
   title?: string;
   description?: string;
   compact?: boolean;
+  initialSelectedDate?: string;
 };
 
 const InschrijfForm = ({
   title = "Inschrijfformulier",
   description = "Fijn dat je meedoet. Alvast bedankt voor je inschrijving. Mocht je nog vragen hebben, ik beantwoord ze graag.",
   compact = false,
+  initialSelectedDate = "",
 }: InschrijfFormProps) => {
-  const [formData, setFormData] = useState<FormState>(initialState);
+  const [formData, setFormData] = useState<FormState>(() => ({
+    ...initialState,
+    gekozenDatum: initialSelectedDate,
+  }));
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -177,7 +177,10 @@ const InschrijfForm = ({
       return;
     }
 
-    setFormData(initialState);
+    setFormData({
+      ...initialState,
+      gekozenDatum: initialSelectedDate,
+    });
     setTouched({});
     setShowSuccess(true);
   };

@@ -1,5 +1,5 @@
 import NavbarLogoLeft from "./navbarLogoLeft"
-import NavbarMenuRight from "./navbarMenuRight"
+import NavbarMenuRight, { NavbarPresenterenTracks } from "./navbarMenuRight"
 import NavbarOrangeButton from "./navbarOrangeButton"
 
 
@@ -32,6 +32,11 @@ const Navbar = () => {
                 <div className="absolute inset-y-0 right-full mr-2 sm:mr-4 flex items-center pointer-events-auto">
                     <NavbarOrangeButton />
                 </div>
+            </div>
+        </div>
+        <div className="fixed top-0 left-0 w-full z-30 hidden justify-end pointer-events-none sm:flex">
+            <div className="mr-3 mt-40 p-1 sm:mr-8 sm:mt-36 sm:p-2 pointer-events-auto">
+                <NavbarPresenterenTracks />
             </div>
         </div>
     </div>
