@@ -37,13 +37,13 @@ export default function CoachingConversationIllustration() {
 
   const leftX = useTransform(progress, [0, 0.32, 0.62, 1], [46, 112, 112, 58]);
   const rightX = useTransform(progress, [0, 0.32, 0.62, 1], [274, 208, 208, 262]);
-  const leftY = useTransform(progress, [0, 0.32, 0.62, 1], [92, 92, 108, 92]);
-  const rightY = useTransform(progress, [0, 0.32, 0.62, 1], [92, 92, 108, 92]);
+  const leftY = useTransform(progress, [0, 0.32, 0.62, 1], [124, 124, 140, 124]);
+  const rightY = useTransform(progress, [0, 0.32, 0.62, 1], [124, 124, 140, 124]);
   const leftScale = useTransform(progress, [0, 0.45, 0.7, 1], [1, 1, 0.96, 0.98]);
   const rightScale = useTransform(progress, [0, 0.45, 0.7, 1], [1, 1, 0.96, 0.98]);
 
   const tableOpacity = useTransform(progress, [0.18, 0.34, 0.68, 0.82], [0, 1, 1, 0]);
-  const chairsOpacity = useTransform(progress, [0.22, 0.38, 0.64, 0.78], [0, 1, 1, 0]);
+  const chairsOpacity = useTransform(progress, [0.3, 0.46, 0.68, 0.82], [0, 1, 1, 0]);
   const chatOpacity = useTransform(progress, [0, 0.1, 0.28, 0.38], [0.2, 1, 0.9, 0]);
   const insightOpacity = useTransform(progress, [0.3, 0.44, 0.7, 0.88], [0, 1, 1, 0.15]);
   const pathProgress = useTransform(progress, [0, 1], [0.18, 1]);
@@ -136,14 +136,14 @@ export default function CoachingConversationIllustration() {
               <motion.g style={{ x: leftX, y: leftY, scale: leftScale }}>
                 <circle cx="0" cy="-30" r="14" fill="#5685F5" fillOpacity="0.22" />
                 <path
-                  d="M-26 8C-17 -9 -2 -18 15 -18C30 -18 45 -9 54 8"
+                  d="M-22 8C-15 -8 -7 -18 0 -18C7 -18 15 -8 22 8"
                   stroke="#5685F5"
                   strokeOpacity="0.4"
                   strokeWidth="2.4"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M-4 -12V26"
+                  d="M0 -12V26"
                   stroke="#5685F5"
                   strokeOpacity="0.28"
                   strokeWidth="2.2"
@@ -157,19 +157,43 @@ export default function CoachingConversationIllustration() {
                   strokeLinecap="round"
                   style={{ opacity: chairsOpacity }}
                 />
+                <motion.path
+                  d="M-18 28V8"
+                  stroke="#5685F5"
+                  strokeOpacity="0.18"
+                  strokeWidth="3.4"
+                  strokeLinecap="round"
+                  style={{ opacity: chairsOpacity }}
+                />
+                <motion.path
+                  d="M-14 28V42"
+                  stroke="#5685F5"
+                  strokeOpacity="0.16"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  style={{ opacity: chairsOpacity }}
+                />
+                <motion.path
+                  d="M12 28V42"
+                  stroke="#5685F5"
+                  strokeOpacity="0.16"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  style={{ opacity: chairsOpacity }}
+                />
               </motion.g>
 
               <motion.g style={{ x: rightX, y: rightY, scale: rightScale }}>
                 <circle cx="0" cy="-30" r="14" fill="#5685F5" fillOpacity="0.22" />
                 <path
-                  d="M-26 8C-17 -9 -2 -18 15 -18C30 -18 45 -9 54 8"
+                  d="M-22 8C-15 -8 -7 -18 0 -18C7 -18 15 -8 22 8"
                   stroke="#5685F5"
                   strokeOpacity="0.4"
                   strokeWidth="2.4"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M-4 -12V26"
+                  d="M0 -12V26"
                   stroke="#5685F5"
                   strokeOpacity="0.28"
                   strokeWidth="2.2"
@@ -180,6 +204,30 @@ export default function CoachingConversationIllustration() {
                   stroke="#5685F5"
                   strokeOpacity="0.2"
                   strokeWidth="4"
+                  strokeLinecap="round"
+                  style={{ opacity: chairsOpacity }}
+                />
+                <motion.path
+                  d="M18 28V8"
+                  stroke="#5685F5"
+                  strokeOpacity="0.18"
+                  strokeWidth="3.4"
+                  strokeLinecap="round"
+                  style={{ opacity: chairsOpacity }}
+                />
+                <motion.path
+                  d="M-12 28V42"
+                  stroke="#5685F5"
+                  strokeOpacity="0.16"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  style={{ opacity: chairsOpacity }}
+                />
+                <motion.path
+                  d="M14 28V42"
+                  stroke="#5685F5"
+                  strokeOpacity="0.16"
+                  strokeWidth="3"
                   strokeLinecap="round"
                   style={{ opacity: chairsOpacity }}
                 />
