@@ -82,12 +82,12 @@ const ParticleRing = () => {
               Interactie
             </p>
             <p className="text-base font-medium leading-tight md:text-xl">
-              Nieuw perspectief voor nieuwe mogelijkheden
+              Wil je nieuwe mogelijkheden ontdekken?
             </p>
             <p className="max-w-sm text-sm leading-relaxed text-white/70 md:text-base">
               {hasInteracted
-                ? "Blijf klikken en slepen om alvast nieuwe richtingen te ontdekken."
-                : "Ontdek hier alvast door te klikken en te slepen."}
+                ? "Blijf klikken en slepen om nieuwe mogelijkheden te ontdekken."
+                : "Klik en sleep hier alvast om je blik te verruimen."}
             </p>
           </div>
         </div>
