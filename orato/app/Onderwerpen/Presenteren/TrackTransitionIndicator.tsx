@@ -8,6 +8,7 @@ const trackConfig = [
     id: "coaching",
     label: "1-op-1 presentatiecoaching",
     accent: "#54a65e",
+    triggerOffset: 0.35,
     panelClassName:
       "border-orato-dark/18 bg-white/96 text-orato-dark shadow-[0_22px_60px_-26px_rgba(20,20,20,0.36)] backdrop-blur-lg",
     sheenClassName:
@@ -20,6 +21,7 @@ const trackConfig = [
     id: "speaking-circle",
     label: "Speaking Circle",
     accent: "#ffffff",
+    triggerOffset: 0.35,
     panelClassName:
       "border-white/18 bg-[#101010]/82 text-white shadow-[0_22px_60px_-26px_rgba(0,0,0,0.7)] backdrop-blur-md",
     sheenClassName:
