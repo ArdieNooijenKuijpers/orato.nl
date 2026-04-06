@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import IntroVideoCard from "../../components/ardie/IntroVideoCard";
 import QuoteBadge from "../../components/ardie/QuoteBadge";
 import RedThreadTimeline, {
   type ArdieTimelineEntry,
@@ -25,6 +26,13 @@ const heroContent = {
     src: "/Ardie/orato_2024_21 september 2024-41_WEB 03634 schommel hand links.jpg",
     alt: "Ardie met haar gezin op een schommel in het groen.",
   },
+};
+
+const introVideo = {
+  
+  src: "/Ardie/Ardie intro edited.mov",
+  title: "Introfilmpje",
+  description: "Maak alvast kort kennis met mij en mijn werk.",
 };
 
 const profileSections = [
@@ -410,21 +418,11 @@ const ArdiePage = () => {
                 </div> */}
               </div>
 
-              <div className="mt-5 rounded-[2rem] border border-orato-dark/10 bg-white/80 p-5 shadow-sm backdrop-blur">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
-                      Introfilmpje
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-orato-dark/75">
-                      Hier kan een klikbare video-preview komen zodra het definitieve filmfragment is toegevoegd.
-                    </p>
-                  </div>
-                  <div className="flex h-14 w-14 flex-none items-center justify-center rounded-full border border-orato-dark/10 bg-orato-dark text-white">
-                    <span className="ml-1 text-lg">▶</span>
-                  </div>
-                </div>
-              </div>
+              <IntroVideoCard
+                src={introVideo.src}
+                title={introVideo.title}
+                description={introVideo.description}
+              />
             </div>
           </div>
         </section>

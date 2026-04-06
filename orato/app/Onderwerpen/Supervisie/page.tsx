@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
+import QuoteBadge from "../../components/ardie/QuoteBadge";
 import FooterComp from "../../components/Navigation/Footer";
 import Reveal from "../../components/motion/Reveal";
 
@@ -251,7 +252,7 @@ export default function SupervisiePage() {
                 ))}
               </div>
               <div className="space-y-5">
-                <div className="overflow-hidden rounded-[2.35rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
+                <div className="relative overflow-visible rounded-[2.35rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
                   <Image
                     src="/supervisie/•vloerkleedERF03115_WEB.jpg"
                     alt="Supervisie bij Orato in gesprek op locatie."
@@ -259,6 +260,14 @@ export default function SupervisiePage() {
                     height={1200}
                     className="h-auto w-full object-cover"
                   />
+                  <div className="pointer-events-none absolute bottom-4 right-4 z-20 rounded-full bg-white p-1 shadow-[0_18px_40px_-24px_rgba(20,20,20,0.45)] sm:bottom-6 sm:right-6">
+                    <QuoteBadge
+                      id="supervisie-kleurrijk-quote"
+                      quote="Mijn werk is stevig geworteld, kleurrijk en blijft in beweging."
+                      className="pointer-events-auto"
+                      tooltipAlign="right"
+                    />
+                  </div>
                 </div>
                 <Reveal delay={0.1}>
                   <article className="rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm">

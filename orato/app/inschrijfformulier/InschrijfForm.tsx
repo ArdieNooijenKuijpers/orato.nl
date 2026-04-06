@@ -13,7 +13,7 @@ export const inschrijfDataOptions = [
   "Woensdag 26 november 2025 | 9.30 - 17.30 u",
 ] as const;
 
-type FacturatieType = "" | "zakelijk" | "prive";
+type FacturatieType = "" | "zakelijk" | "privé";
 type FactuurNaarType = "" | "email" | "post";
 
 type FormState = {
@@ -86,7 +86,7 @@ const InschrijfForm = ({
       naam: formData.naam.trim().length > 1 ? "" : "Vul je naam in.",
       email: /^\S+@\S+\.\S+$/.test(formData.email) ? "" : "Vul een geldig e-mailadres in.",
       telefoon: formData.telefoon.trim().length >= 10 ? "" : "Vul een telefoonnummer in.",
-      facturatie: formData.facturatie ? "" : "Kies zakelijk of prive.",
+      facturatie: formData.facturatie ? "" : "Kies zakelijk of privé.",
       organisatieNaam:
         formData.facturatie !== "zakelijk" || formData.organisatieNaam.trim().length > 1
           ? ""
@@ -230,7 +230,7 @@ const InschrijfForm = ({
         <FormSection title="Ik schrijf me in voor">
           <fieldset className="space-y-3">
             <legend className="text-sm font-medium text-orato-dark">
-              De dag ‘Authentiek presenteren met Relational Presence’ (Speaking Circle) op: *
+              De dag ‘Authentiek presenteren met Speaking Circleop: *
             </legend>
             <div className="grid gap-3">
               {inschrijfDataOptions.map((option) => (
@@ -412,12 +412,12 @@ const InschrijfForm = ({
                 label="Zakelijk"
               />
               <ChoiceCard
-                checked={formData.facturatie === "prive"}
+                checked={formData.facturatie === "privé"}
                 name="facturatie"
-                value="prive"
+                value="privé"
                 onChange={(value) => updateField("facturatie", value as FacturatieType)}
                 onBlur={() => onFieldBlur("facturatie")}
-                label="Prive"
+                label="Privé"
               />
             </div>
             <ErrorText message={showError("facturatie")} />
@@ -511,13 +511,13 @@ const InschrijfForm = ({
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <LabelInputContainer>
               <label className="text-sm font-medium text-orato-dark" htmlFor="dieetwensen">
-                Dieetwensen i.v.m. de lunch
+                dieetwensen:
               </label>
               <TextArea
                 id="dieetwensen"
                 name="dieetwensen"
                 rows={4}
-                placeholder="Laat het weten als er iets belangrijk is voor de lunch."
+                placeholder="Waar mag de kok rekening mee houden?"
                 value={formData.dieetwensen}
                 onChange={(event) => updateField("dieetwensen", event.target.value)}
               />

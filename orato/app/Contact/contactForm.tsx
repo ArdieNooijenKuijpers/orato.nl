@@ -96,7 +96,7 @@ const ContactForm = () => {
             <Input
               id="naam"
               name="naam"
-              placeholder="Jouw naam"
+              placeholder="Voornaam achternaam"
               value={formData.naam}
               onChange={(e) => updateField("naam", e.target.value)}
               onBlur={() => onFieldBlur("naam")}
