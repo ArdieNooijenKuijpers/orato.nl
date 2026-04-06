@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import {
   motion,
+  useMotionValue,
   useReducedMotion,
   useScroll,
   useTransform,
@@ -30,8 +31,9 @@ export default function CoachingConversationIllustration() {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
+  const reducedProgress = useMotionValue(0.5);
 
-  const progress = reducedMotion ? 0.5 : scrollYProgress;
+  const progress = reducedMotion ? reducedProgress : scrollYProgress;
 
   const leftX = useTransform(progress, [0, 0.32, 0.62, 1], [46, 112, 112, 58]);
   const rightX = useTransform(progress, [0, 0.32, 0.62, 1], [274, 208, 208, 262]);
