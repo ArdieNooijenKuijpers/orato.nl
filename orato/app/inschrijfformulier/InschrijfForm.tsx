@@ -86,7 +86,7 @@ const InschrijfForm = ({
       naam: formData.naam.trim().length > 1 ? "" : "Vul je naam in.",
       email: /^\S+@\S+\.\S+$/.test(formData.email) ? "" : "Vul een geldig e-mailadres in.",
       telefoon: formData.telefoon.trim().length >= 10 ? "" : "Vul een telefoonnummer in.",
-      facturatie: formData.facturatie ? "" : "Kies zakelijk of prive.",
+      facturatie: formData.facturatie ? "" : "Kies zakelijk of privé.",
       organisatieNaam:
         formData.facturatie !== "zakelijk" || formData.organisatieNaam.trim().length > 1
           ? ""
@@ -412,12 +412,12 @@ const InschrijfForm = ({
                 label="Zakelijk"
               />
               <ChoiceCard
-                checked={formData.facturatie === "prive"}
+                checked={formData.facturatie === "privé"}
                 name="facturatie"
-                value="prive"
+                value="privé"
                 onChange={(value) => updateField("facturatie", value as FacturatieType)}
                 onBlur={() => onFieldBlur("facturatie")}
-                label="Prive"
+                label="Privé"
               />
             </div>
             <ErrorText message={showError("facturatie")} />
