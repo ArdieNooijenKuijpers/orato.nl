@@ -236,8 +236,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
     title: "Schrijven, presenteren en Relational Presence",
     summary: "Een jaar van oogsten, zelfexpressie en internationale verbondenheid.",
     details: [
-      "Vanuit de vraag uit het bedrijfsleven en mijn eigen behoefte om ook in het Engels te coachen volg ik een taaltraining op maat bij Regina Coeli in Vught.",
-      "In de lente van 2017 word ik 50 jaar en beëindig ik de psychoanalyse. In de zomer schrijf ik in The Little House in Cotswold het ervaringsverhaal Op de bank.",
+      "Vanuit de vraag uit het bedrijfsleven en mijn eigen behoefte om ook in het Engels te coachen volg ik een taaltraining op maat bij Regina Coeli in Vught. Een mooie bijvangst is de tijd voor bezinning.",
+      "In de lente van 2017 word ik 50 jaar en beëindig ik de psychoanalyse. In de zomemaanden schrijf ik in The Little House in Cotswold hierover een ervaringsverhaal. Ik ontdek  de uitdaging van een dergelijk schrijfproces en geniet daar met volle teugen van de ochtendwandelingen met onze hond in de prachtige natuur.",
       "Tijdens de European Speaking Circle Facilitator Days geef ik in Londen een TEDTalk over psychoanalyse en mijn vak als coach en facilitator.",
       "Samen met gepassioneerde collega’s in Europa stichten we het Relational Presence Network en word ik bestuurslid.",
     ],
@@ -250,13 +250,13 @@ const timelineEntries: ArdieTimelineEntry[] = [
   },
   {
     year: "2018",
-    title: "Opleiden, superviseren en teams begeleiden",
+    title: "Volle bak manifestatie van senioriteit.",
     summary: "Mijn rol als opleider en supervisor krijgt stevig vorm.",
     details: [
       "De eerste editie van de 4-daagse training Kerntraject !K-2.0 wordt gegeven als resultaat van een niet nader te noemen samenwerking.",
-      "Ik ga samenwerken met de Associatie voor Coaching en leid coaches op, geef in-company trainingen in coachen, coachend leidinggeven en acquireren en start met groepssupervisie.",
-      "Ik train Technasiumdocenten in coachend begeleiden en help onder de vlag van ORATO steeds vaker teams beter met elkaar te communiceren.",
-      "Ik word lid van de NOBCO. Mijn algemene voorwaarden en privacyverklaring worden geactualiseerd in het kader van de AVG en ik zet de stap naar registratie als MCC Master Certified Coach bij de ICF.",
+      "Ik ga samenwerken met de Associatie voor Coaching en leid coaches op, geef in-company trainingen in coachen, coachend leidinggeven en acquireren en start met groepssupervisie. ",
+      "Ik train Technasiumdocenten in coachend begeleiden. Heerlijk dit opleidingsinstituut op fietsafstand in Aarle-Rixtel. Onder de vlag van Orato help ik steeds vaker teams beter te communiceren met elkaar en collega’s.",
+      "Ik word lid van de NOBCO. Mijn algemene voorwaarden en privacyverklaring worden geactualiseerd in het kader van de AVG en ik zet de stap naar registratie als MCC Master Certified Coach bij de ICF met o.a. meer dan 2500 uur coachervaring. Een kroon op mijn werk!",
     ],
     image: {
       src: "/Ardie/•koen buiten cirkelERF03522_WEB.jpg",
@@ -268,11 +268,10 @@ const timelineEntries: ArdieTimelineEntry[] = [
   },
   {
     year: "2019",
-    title: "Boek, pitchbegeleiding en nieuwe vormen van expressie",
-    summary: "Mijn verhaal krijgt tastbare vorm en ik begeleid anderen nadrukkelijker in zichtbaarheid.",
+    title: "Boek, pitchbegeleiding en workshop",
+    summary: "Binnenkant krijgt buitenkant en ik help anderen met hun zichtbaarheid.",
     details: [
-      "Het verhaal Op de bank wordt vormgegeven door Bas Linssen.",
-      "Mijn boek Voorbij de buitenkant verschijnt in kleine oplage in eigen beheer.",
+      "Mijn boek Voorbij de buitenkant wordt gedrukt in kleine oplage in eigen beheer, prachtig vormgegeven door Bas Linssen.",
       "Ik start met pitchbegeleiding in het kader van de Young Talent Award van het OCN en geef de workshop Een groot ei leggen om belangrijke veranderingen en keuzes te faciliteren.",
     ],
     accentColor: "blue",
@@ -282,10 +281,10 @@ const timelineEntries: ArdieTimelineEntry[] = [
     title: "Volhouden in een lastige periode",
     summary: "Ook onder druk blijf ik werken, hosten en betekenisvolle ontmoetingen organiseren.",
     details: [
-      "Een ongewenste rechtszaak begint en wordt na twee jaar afgesloten met 100% gelijk voor mij en finale kwijting rond de beëindiging van een niet nader te noemen samenwerking.",
-      "Ik organiseer en host online Practice Circles namens RPN en geef intervisiebegeleiding voor gemeentes.",
-      "Samen met theologen, een psychiater en anderen ben ik gastvrouw en programmaleider tijdens inspiratiebijeenkomsten op basis van bijbelschrift en zelftheologie.",
-      "Mijn carrière als behandelend logopedist wordt afgesloten met een laatste factuur voor logopedie aan een zorgverzekeraar.",
+      "Een ongewenste rechtszaak begint en zal na twee jaar afgesloten met 100% gelijk voor mij en finale kwijting m.b.t. de beëindiging van een 'collegiale' samenwerking. Een levensles rijker.",
+      "Ik organiseer en host online Practice Circles namens Relational Presence Network en geef intervisiebegeleiding voor gemeentes. ",
+      "Samen met theologen, een psychiater en anderen ben ik ben ik programmaleider en gastvrouw tijdens inspiratiebijeenkomsten op basis van bijbelschrift en zelftheologie.",
+      "Mijn carrière als behandelend logopedist wordt afgesloten met een groot compliment van een klant die stotterde en een laatste factuur voor logopedie aan een zorgverzekeraar.",
     ],
     accentColor: "red",
   },
@@ -294,9 +293,9 @@ const timelineEntries: ArdieTimelineEntry[] = [
     title: "Verdieping, herbeslissen en Europese erkenning",
     summary: "Ik blijf mijn vak aanscherpen en verbreed mijn professionele registraties.",
     details: [
-      "Mijn MCC-registratie wordt verlengd met drie jaren. Ik leer over Transactionele Analyse via TA-101 en doe een herbeslissingsmarathon bij de TA-Academie.",
-      "In 2022 bekwaam ik me verder in Redecision Therapy onder begeleiding van Mil en Sonja Rosseau.",
-      "In 2023 volg ik een PCC assessor training bij ICF Global rond de acht nieuwe coachcompetenties.",
+      "Mijn MCC-registratie wordt verlengd met drie jaren. Ik leer over Transactionele Analyse (TA-101) en doe een herbeslissingsmarathon bij de TA-Academie.",
+      "In 2022 bekwaam ik me verder in Redecision Therapy onder de bezielende begeleiding van Mil en Sonja Rosseau.",
+      "In het kader van de coachopleidingen die ik geef, volg ik in 2023 een PCC assessor training bij ICF Global gebaseerd op de 8 nieuwe coachcompetenties.",
       "Ik word lid van de EMCC en sta sinds 6 september 2023 ook bij de European Mentoring and Coaching Council, met NOBCO als Nederlandse divisie, geregistreerd als Senior Practitioner coach.",
       "Met de aanschaf van krielkippen die cliënten nieuwsgierig tegemoet kunnen komen, geniet ik volop van mijn afkomst uit boerenfamilies.",
     ],
@@ -311,9 +310,9 @@ const timelineEntries: ArdieTimelineEntry[] = [
     title: "Supervisor worden op Europees niveau",
     summary: "Mijn netwerk en mijn rol als opleider en supervisor groeien opnieuw.",
     details: [
-      "Ik rond de tweejarige opleiding tot ESIA gecertificeerd Supervisor van zorgprofessionals af onder begeleiding van Tom Battye en zijn team in samenwerking met NOBCO/EMCC.",
+      "Ik rond de tweejarige opleiding tot ESIA gecertificeerd Supervisor van zorgprofessionals af onder begeleiding van de Engelse Tom Battye en zijn team in samenwerking met NOBCO/EMCC.",
       "Mijn netwerk met Nederlandse en Europese collega’s wordt flink uitgebreid en ik verzorg workshops over supervisie en Relational Presence, bijvoorbeeld in het kader van intervisie.",
-      "Ik neem deel aan een intervisiegroep voor supervisie en executive coaching en ontwikkel samen met Dirk Verhoeven de meerdaagse Transactionele Analyse toegepast in professionele coaching.",
+      "Ik neem deel aan een intervisiegroep voor supervisie en executive coaching (VEC). Ik ontwikkel en geef de meerdaagse Transactionele Analyse toegepast in professionele coaching in nauwe samenwerking met Dirk Verhoeven, Associatie voor Coaching.",
       "Inmiddels lever ik ook mijn bijdrage aan de opleiding tot ESIA gecertificeerde Supervisor.",
     ],
     accentColor: "orange",
@@ -321,13 +320,14 @@ const timelineEntries: ArdieTimelineEntry[] = [
   {
     year: "2025",
     title: "Doorgaan met wat ertoe doet",
-    summary: "Mijn werk is stevig geworteld en tegelijk in beweging.",
+    summary: "Mijn werk is stevig geworteld, kleurrijk en blijft in beweging.",
     details: [
       "Samen met collega’s organiseer ik de European Relational Presence Facilitator Days, dit keer in Eindhoven.",
       "Ik neem nog altijd deel aan inhoudelijke cursussen, professionaliseringsdagen, intervisie en spar regelmatig met een supervisor om mijn zaag scherp te houden.",
-      "Momenteel bestaat mijn werk uit executive coachtrajecten vanuit Orato, het opleiden van professionele coaches namens de Associatie voor Coaching en supervisie van coaches.",
-      "De dagen Authentiek Presenteren in Relational Presence die ik sinds 2003 geef bij ZIN in Vught blijven een kers op de taart.",
-      "Mijn wens is om samen met andere specialisten mijn werk voor persoonlijke en professionele ontwikkeling voort te zetten.",
+      "Momenteel bestaat mijn werk uit (executive) coachtrajecten vanuit Orato, het opleiden van professionele coaches namens de Associatie voor Coaching en supervisie van coaches.",
+      "Met als kers op de taart de dagen ‘Authentiek Presenteren in Relational Presence’ die ik sinds 2003 geef bij ZIN in Vught.",
+      "Een half jaar na elkaar overlijden mijn geliefde schoonmoeder en vader. In dankbaarheid nemen we waardig afscheid. Meer tijd is nodig om met toewijding mantelzorg te verlenen aan mijn schooonvader en moeder.",
+      "In 2026 besluit ik minder dagen per week te gaan werken. De nieuwe up-to-date website voor ORATO is een feit!. Dankjewel Art! Ik blijf, samen met andere vakmensen, mijn werk voor persoonlijke en professionele ontwikkeling voortzetten! ",
     ],
     image: {
       src: "/Ardie/•voor boekenkast mooi ERF03356_WEB.jpg",
@@ -647,8 +647,7 @@ Geen rechte lijn, juist een golfbeweging van keuzes, verdieping, ondernemerschap
                 Ik ben benieuwd naar jou en je vraag
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
-                Klik door naar het contactformulier of bel me. Als jij wilt onderzoeken, oefenen, aanscherpen of veranderen, kijk ik graag met je mee.
-              </p>
+                Klik door naar het contactformulier of bel me. Als jij wilt sparren, oefenen, aanscherpen of veranderen, ben ik er voor je.              </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
@@ -661,7 +660,8 @@ Geen rechte lijn, juist een golfbeweging van keuzes, verdieping, ondernemerschap
                   href="tel:+31651088688"
                   className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:border-orato-orange hover:text-orato-orange"
                 >
-                  Bel +31 6 5108 8688
+                  Bel <br />
+                  +31 6 5108 8688
                 </a>
               </div>
             </div>
