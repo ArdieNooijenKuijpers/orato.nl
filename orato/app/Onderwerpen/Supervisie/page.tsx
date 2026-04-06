@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import QuoteBadge from "../../components/ardie/QuoteBadge";
 import FooterComp from "../../components/Navigation/Footer";
+import InteractiveGlowPanel from "../../components/motion/InteractiveGlowPanel";
 import Reveal from "../../components/motion/Reveal";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
@@ -150,7 +151,79 @@ export default function SupervisiePage() {
           </div>
         </section>
 
-        <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+        <section className="relative overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 hidden w-[34rem] translate-x-12 opacity-50 lg:block"
+          >
+            <svg
+              viewBox="0 0 520 760"
+              className="h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient
+                  id="supervisie-line"
+                  x1="80"
+                  y1="40"
+                  x2="420"
+                  y2="680"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#FFFFFF" stopOpacity="0.06" />
+                  <stop offset="0.55" stopColor="#B48AFF" stopOpacity="0.35" />
+                  <stop offset="1" stopColor="#FFFFFF" stopOpacity="0.04" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M445 40C347 106 317 170 327 238C338 304 389 355 366 426C344 495 231 525 213 595C196 661 246 707 302 730"
+                stroke="url(#supervisie-line)"
+                strokeWidth="1.5"
+                strokeDasharray="7 13"
+                strokeLinecap="round"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-180"
+                  dur="18s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <path
+                d="M381 18C292 99 253 175 269 261C286 349 341 378 330 449C318 532 221 579 217 649"
+                stroke="#FFFFFF"
+                strokeOpacity="0.12"
+                strokeWidth="1"
+              />
+              <circle cx="327" cy="238" r="6" fill="#FFFFFF" fillOpacity="0.2">
+                <animate
+                  attributeName="opacity"
+                  values="0.25;0.8;0.25"
+                  dur="6s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle cx="366" cy="426" r="4.5" fill="#B48AFF" fillOpacity="0.42">
+                <animateTransform
+                  attributeName="transform"
+                  attributeType="XML"
+                  type="translate"
+                  values="0 0; -7 5; 0 0"
+                  dur="8s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle cx="216" cy="596" r="5" fill="#FFFFFF" fillOpacity="0.16">
+                <animate
+                  attributeName="opacity"
+                  values="0.15;0.6;0.15"
+                  dur="7s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
+          </div>
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <Reveal direction="left">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
@@ -186,46 +259,97 @@ export default function SupervisiePage() {
               </div>
             </Reveal>
 
-            <div className="grid gap-5">
-              <Reveal>
-                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                  <h3 className="text-2xl font-semibold text-white">
-                    Professionalisering
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-white/80">
-                    Je mag van mij verwachten dat ik jouw professionalisering en
-                    daarmee de kwaliteit van coachen, centraal zet.
-                  </p>
-                </article>
+            <div className="grid gap-5 lg:h-full lg:grid-rows-3">
+              <Reveal className="h-full">
+                <InteractiveGlowPanel
+                  className="h-full rounded-[2rem]"
+                  glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
+                >
+                  <article className="flex h-full flex-col rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-purple/14">
+                    <h3 className="text-2xl font-semibold text-white">
+                      Professionalisering
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-white/80">
+                      Je mag van mij verwachten dat ik jouw professionalisering
+                      en daarmee de kwaliteit van coachen, centraal zet.
+                    </p>
+                  </article>
+                </InteractiveGlowPanel>
               </Reveal>
-              <Reveal delay={0.06}>
-                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                  <h3 className="text-2xl font-semibold text-white">
-                    Secure base
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-white/80">
-                    Supervisie gebeurt met de grootste psychologische veiligheid.
-                    Als een katalysator gericht op secure base.
-                  </p>
-                </article>
+              <Reveal delay={0.06} className="h-full">
+                <InteractiveGlowPanel
+                  className="h-full rounded-[2rem]"
+                  glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
+                >
+                  <article className="flex h-full flex-col rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-purple/14">
+                    <h3 className="text-2xl font-semibold text-white">
+                      Secure base
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-white/80">
+                      Supervisie gebeurt met de grootste psychologische
+                      veiligheid. Als een katalysator gericht op secure base.
+                    </p>
+                  </article>
+                </InteractiveGlowPanel>
               </Reveal>
-              <Reveal delay={0.12}>
-                <article className="rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                  <h3 className="text-2xl font-semibold text-white">
-                    Professionele dialoog
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-white/80">
-                    Supervisie is meer dan een professionele dialoog. Het is ook
-                    nog fijngevoeliger duiden, sparren en een kijkje in de
-                    keuken van Ardie.
-                  </p>
-                </article>
+              <Reveal delay={0.12} className="h-full">
+                <InteractiveGlowPanel
+                  className="h-full rounded-[2rem]"
+                  glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
+                >
+                  <article className="flex h-full flex-col rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-purple/14">
+                    <h3 className="text-2xl font-semibold text-white">
+                      Professionele dialoog
+                    </h3>
+                    <p className="mt-4 text-sm leading-7 text-white/80">
+                      Supervisie is meer dan een professionele dialoog. Het is
+                      ook nog fijngevoeliger duiden, sparren en een kijkje in
+                      de keuken van Ardie.
+                    </p>
+                  </article>
+                </InteractiveGlowPanel>
               </Reveal>
             </div>
           </div>
         </section>
 
-        <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+        <section className="relative overflow-hidden bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-0 top-0 hidden h-56 w-56 translate-x-1/4 -translate-y-1/4 lg:block"
+          >
+            <svg
+              viewBox="0 0 220 220"
+              className="h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="110" cy="110" r="82" stroke="#9B5FF5" strokeOpacity="0.12" />
+              <circle
+                cx="110"
+                cy="110"
+                r="54"
+                stroke="#9B5FF5"
+                strokeOpacity="0.2"
+                strokeDasharray="6 10"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-96"
+                  dur="16s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle cx="160" cy="74" r="6" fill="#9B5FF5" fillOpacity="0.18">
+                <animate
+                  attributeName="opacity"
+                  values="0.12;0.45;0.12"
+                  dur="7s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
+          </div>
           <div className="mx-auto max-w-7xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
               Expertise
@@ -300,7 +424,50 @@ export default function SupervisiePage() {
           </div>
         </section>
 
-        <section className="overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+        <section className="relative overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-0 top-12 hidden h-72 w-72 -translate-x-1/3 lg:block"
+          >
+            <svg
+              viewBox="0 0 320 320"
+              className="h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M272 44C206 70 162 121 156 178C149 235 175 267 136 302"
+                stroke="#FFFFFF"
+                strokeOpacity="0.12"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M244 20C182 51 122 120 120 189C119 229 136 256 168 284"
+                stroke="#B48AFF"
+                strokeOpacity="0.24"
+                strokeWidth="1.5"
+                strokeDasharray="8 12"
+                strokeLinecap="round"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-160"
+                  dur="18s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <circle cx="156" cy="177" r="5" fill="#FFFFFF" fillOpacity="0.18" />
+              <circle cx="198" cy="95" r="4" fill="#B48AFF" fillOpacity="0.34">
+                <animate
+                  attributeName="opacity"
+                  values="0.2;0.7;0.2"
+                  dur="6s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
+          </div>
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
@@ -431,7 +598,50 @@ export default function SupervisiePage() {
           </div>
         </section>
 
-        <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+        <section className="relative overflow-hidden bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 right-0 hidden h-52 w-52 translate-x-1/4 translate-y-1/4 lg:block"
+          >
+            <svg
+              viewBox="0 0 220 220"
+              className="h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M28 122C58 86 108 70 152 80C177 85 191 97 198 115"
+                stroke="#9B5FF5"
+                strokeOpacity="0.16"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+              <path
+                d="M40 148C73 116 124 106 170 118"
+                stroke="#9B5FF5"
+                strokeOpacity="0.2"
+                strokeWidth="1.2"
+                strokeDasharray="5 9"
+                strokeLinecap="round"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-72"
+                  dur="12s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <circle cx="98" cy="94" r="5" fill="#9B5FF5" fillOpacity="0.16" />
+              <circle cx="156" cy="118" r="4" fill="#9B5FF5" fillOpacity="0.22">
+                <animate
+                  attributeName="opacity"
+                  values="0.18;0.55;0.18"
+                  dur="5s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
+          </div>
           <div className="mx-auto max-w-7xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
               Supervisie/mentoring onderwerpen
@@ -493,7 +703,50 @@ export default function SupervisiePage() {
           </Reveal>
         </section>
 
-        <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+        <section className="relative overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 right-0 hidden h-72 w-72 translate-x-1/4 translate-y-1/4 lg:block"
+          >
+            <svg
+              viewBox="0 0 320 320"
+              className="h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="154"
+                cy="154"
+                r="90"
+                stroke="#FFFFFF"
+                strokeOpacity="0.08"
+              />
+              <circle
+                cx="154"
+                cy="154"
+                r="62"
+                stroke="#B48AFF"
+                strokeOpacity="0.24"
+                strokeDasharray="7 11"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-144"
+                  dur="15s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle cx="112" cy="104" r="5" fill="#FFFFFF" fillOpacity="0.18" />
+              <circle cx="196" cy="176" r="4.5" fill="#B48AFF" fillOpacity="0.34">
+                <animate
+                  attributeName="opacity"
+                  values="0.22;0.72;0.22"
+                  dur="6s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
+          </div>
           <div className="mx-auto max-w-7xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
               Referentie
@@ -538,7 +791,50 @@ export default function SupervisiePage() {
           </div>
         </section>
 
-        <section className="bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+        <section className="relative overflow-hidden bg-orato-light px-4 py-16 md:px-8 md:py-24 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-0 top-1/2 hidden h-64 w-64 -translate-x-1/3 -translate-y-1/2 lg:block"
+          >
+            <svg
+              viewBox="0 0 260 260"
+              className="h-full w-full"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M216 78C185 60 154 57 126 70C92 87 72 123 76 162C79 190 96 214 126 228"
+                stroke="#9B5FF5"
+                strokeOpacity="0.16"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+              />
+              <path
+                d="M195 52C167 43 130 44 100 61C55 86 31 135 47 184"
+                stroke="#9B5FF5"
+                strokeOpacity="0.22"
+                strokeWidth="1.2"
+                strokeDasharray="6 10"
+                strokeLinecap="round"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-96"
+                  dur="14s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <circle cx="125" cy="168" r="6" fill="#9B5FF5" fillOpacity="0.14" />
+              <circle cx="169" cy="74" r="4.5" fill="#9B5FF5" fillOpacity="0.24">
+                <animate
+                  attributeName="opacity"
+                  values="0.18;0.52;0.18"
+                  dur="5.5s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
+          </div>
           <Reveal className="mx-auto max-w-5xl rounded-[2.5rem] border border-orato-dark/10 bg-white px-6 py-10 text-center shadow-[0_40px_120px_-48px_rgba(20,20,20,0.35)] md:px-12">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
               Welkom

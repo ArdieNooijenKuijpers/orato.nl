@@ -11,6 +11,7 @@ type InschrijfFormModalProps = {
   title?: string;
   description?: string;
   children?: ReactNode;
+  initialSelectedDate?: string;
 };
 
 const InschrijfFormModal = ({
@@ -19,6 +20,7 @@ const InschrijfFormModal = ({
   title = "Inschrijven",
   description = "Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’.",
   children,
+  initialSelectedDate,
 }: InschrijfFormModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -118,7 +120,12 @@ const InschrijfFormModal = ({
                     className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3 [scrollbar-gutter:stable] [-webkit-overflow-scrolling:touch] md:p-4"
                     onWheel={(event) => event.stopPropagation()}
                   >
-                    <InschrijfForm title={title} description={description} compact />
+                    <InschrijfForm
+                      title={title}
+                      description={description}
+                      compact
+                      initialSelectedDate={initialSelectedDate}
+                    />
                   </div>
                 </div>
               </div>
