@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
@@ -11,6 +12,36 @@ import RedThreadTimeline, {
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400"] });
+
+export const metadata: Metadata = {
+  title: "Ardie",
+  description:
+    "Maak kennis met Ardie Nooijen-Kuijpers: Master Certified Coach, coachsupervisor, coachopleider en presentatietrainer met meer dan 35 jaar ervaring.",
+  alternates: {
+    canonical: "/Info/Ardie",
+  },
+  openGraph: {
+    title: "Ardie | ORATO",
+    description:
+      "Maak kennis met Ardie Nooijen-Kuijpers en haar werk als Master Certified Coach, coachsupervisor, coachopleider en presentatietrainer.",
+    url: "/Info/Ardie",
+    images: [
+      {
+        url: "/Ardie/orato_2024_21 september 2024-41_WEB 03634 schommel hand links.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ardie Nooijen-Kuijpers in een groene omgeving.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ardie | ORATO",
+    description:
+      "Maak kennis met Ardie Nooijen-Kuijpers en haar werk als coach, supervisor en opleider.",
+    images: ["/Ardie/orato_2024_21 september 2024-41_WEB 03634 schommel hand links.jpg"],
+  },
+};
 
 const heroContent = {
   eyebrow: "Kennismaken met Ardie",

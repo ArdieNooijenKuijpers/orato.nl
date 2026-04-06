@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import ContactForm from "./contactForm";
@@ -5,6 +6,36 @@ import FooterComp from "../components/Navigation/Footer";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400"] });
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Neem vrijblijvend contact op met ORATO voor coaching, supervisie, presenteren of een kennismakingsgesprek met Ardie Nooijen-Kuijpers.",
+  alternates: {
+    canonical: "/Contact",
+  },
+  openGraph: {
+    title: "Contact | ORATO",
+    description:
+      "Neem vrijblijvend contact op met ORATO voor coaching, supervisie, presenteren of een kennismakingsgesprek.",
+    url: "/Contact",
+    images: [
+      {
+        url: "/Contact/foto ardie deur contact 2.png",
+        width: 1200,
+        height: 630,
+        alt: "Ardie bij de deuropening van ORATO.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact | ORATO",
+    description:
+      "Neem vrijblijvend contact op met ORATO voor coaching, supervisie, presenteren of een kennismakingsgesprek.",
+    images: ["/Contact/foto ardie deur contact 2.png"],
+  },
+};
 
 const ContactPage = () => {
   return (

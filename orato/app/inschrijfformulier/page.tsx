@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
 import FooterComp from "../components/Navigation/Footer";
@@ -5,6 +6,36 @@ import InschrijfForm from "./InschrijfForm";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400"] });
+
+export const metadata: Metadata = {
+  title: "Inschrijfformulier",
+  description:
+    "Schrijf je in voor de dag Authentiek presenteren met Relational Presence van ORATO in Vught.",
+  alternates: {
+    canonical: "/inschrijfformulier",
+  },
+  openGraph: {
+    title: "Inschrijfformulier | ORATO",
+    description:
+      "Schrijf je in voor de dag Authentiek presenteren met Relational Presence van ORATO in Vught.",
+    url: "/inschrijfformulier",
+    images: [
+      {
+        url: "/Contact/foto ardie deur contact 1.png",
+        width: 1200,
+        height: 630,
+        alt: "Ardie in een rustige pose bij ORATO.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Inschrijfformulier | ORATO",
+    description:
+      "Schrijf je in voor de dag Authentiek presenteren met Relational Presence van ORATO in Vught.",
+    images: ["/Contact/foto ardie deur contact 1.png"],
+  },
+};
 
 const InschrijfPage = () => {
   return (
