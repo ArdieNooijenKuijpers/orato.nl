@@ -139,7 +139,7 @@ const examples = [
   "Ik durf geen risico's te lopen terwijl ik dat nodig heb om verder te komen.",
   "Wat zijn mijn drijfveren en wat wil IK nou?",
   "Ik wil eindelijk doen wat ik altijd al wil, namelijk...",
-  "Effectief communiceren, hoe doe ik dat?",
+  "Ik wil meer invloed en het verschil kunnen maken!",
   "Hoe krijg ik overzicht?",
   "Ik wil een liefdespartner.",
   "Ik wil niet langer opzien tegen mensen.",
@@ -153,7 +153,7 @@ const references = [
   {
     quote:
       "Ik heb jou ervaren als een fijn, oprecht mens, bij wie ik me volkomen op mijn gemak en veilig voelde. En ook als ik dacht, wat moeten we nu, wist je dat aan te raken wat me verder hielp en ik nodig had. Met een zachte, maar vaste hand. Dank voor je wijsheid, inlevingsvermogen en inzicht. Jij hebt me laten ervaren dat ook als het niet duidelijk is wat er speelt of hoe het moet, ik al doende op weg kom. Veel dank!",
-    name: "Henriette den Hartog",
+    name: "Henriëtte den Hartog",
     role: "Advocaat Generaal Openbaar Ministerie",
   },
   {
@@ -170,7 +170,7 @@ const references = [
   },
   {
     quote:
-      "Ardie, je hebt me niet alleen geholpen mijn uitdagingen rondom stotteren aan te pakken, maar ook om meer zelfvertrouwen te ontwikkelen en te ontdekken waar mijn kracht en passie liggen. Dankjewel voor je inzichten en de veilige ruimte die je hebt gecreeerd om aan mezelf te werken. Je hebt echt het verschil gemaakt en dat waardeer ik enorm.",
+      "Ardie, je hebt me niet alleen geholpen mijn uitdagingen rondom stotteren aan te pakken, maar ook om meer zelfvertrouwen te ontwikkelen en te ontdekken waar mijn kracht en passie liggen. Dankjewel voor je inzichten en de veilige ruimte die je hebt gecreëerd om aan mezelf te werken. Je hebt echt het verschil gemaakt en dat waardeer ik enorm.",
     name: "Joost Rijksen",
     role: "Beleidsmedewerker Gemeente Geldrop-Mierlo",
   },
@@ -434,7 +434,7 @@ export default function CoachingPage() {
                 Pragmatisch, zorgvuldig en met emotionele diepgang.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
-                Na een orientatiegesprek waarin we kennismaken en ter tafel
+                Na een oriëntatiegesprek waarin we kennismaken en ter tafel
                 brengen wat-ertoe-doet, stellen we een werkovereenkomst op.
                 Eventueel wordt ook afgestemd met een leidinggevende en wordt
                 gevraagd naar zijn of haar succescriteria, bij voorkeur in een
@@ -448,7 +448,7 @@ export default function CoachingPage() {
                     <li>
                       Middels de kunst van het vragen stellen en een grote
                       diversiteit aan (ervarings)oefeningen, modellen en
-                      theorieen kom je tot inzichten en verandering.
+                      theorieën kom je tot inzichten en verandering.
                     </li>
                     <li>
                       Coaching gebeurt op basis van de 8 coachcompetenties van
@@ -468,7 +468,7 @@ export default function CoachingPage() {
                       agenda&apos;s past.
                     </li>
                     <li>
-                      Bijvoorbeeld aanvankelijk eens per twee weken, 1 tot 1,5
+                      Bijvoorbeeld aanvankelijk eens per twee weken, 1 tot anderhalf
                       uur.
                     </li>
                     <li>
@@ -521,24 +521,22 @@ export default function CoachingPage() {
                 <article className="rounded-[2rem] border border-orato-blue/20 bg-orato-blue/10 p-7">
                   <h3 className="text-2xl font-semibold">Kaders en vertrouwen</h3>
                   <p className="mt-4 text-sm leading-7 text-white/82">
-                    Uiteraard AVG-proof volgens Privacyverklaring en Algemene
-                    voorwaarden. Volgens de Ethische gedragscodes van de ICF en
-                    NOBCO/EMCC, met aandacht voor zorgvuldigheid en vertrouwen.
-                    Lees meer in de{" "}
+                    Uiteraard AVG-proof volgens{" "}
                     <Link
                       href="/Info/PrivacyVerklaring"
                       className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
                     >
-                      privacyverklaring
+                      Privacyverklaring
                     </Link>{" "}
                     en{" "}
                     <Link
                       href="/Info/AlgemeneVoorwaarden"
                       className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
                     >
-                      algemene voorwaarden
+                      Algemene voorwaarden
                     </Link>
-                    .
+                    . Volgens de Ethische gedragscodes van de ICF en
+                    NOBCO/EMCC, met aandacht voor zorgvuldigheid en vertrouwen.
                   </p>
                   <p className="mt-4 text-sm leading-7 text-white/82">
                     APK. Ardie&apos;s Periodieke Koaching. Ooit zo genoemd door
@@ -549,9 +547,9 @@ export default function CoachingPage() {
                   </p>
                   <Link
                     href="/Info/Ardie"
-                    className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    className="mt-6 inline-flex min-h-12 cursor-small items-center justify-center rounded-full bg-white px-5 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:bg-orato-blue hover:text-white"
                   >
-                    Lees meer over Ardie
+                    Meer over Orato
                   </Link>
                 </article>
               </Reveal>
@@ -681,7 +679,7 @@ export default function CoachingPage() {
                 href="tel:+31651088688"
                 className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-blue hover:text-orato-blue"
               >
-                Bel +31 6 51088688
+                Bel +31 6 510 88 6 88
               </Link>
             </div>
           </Reveal>
