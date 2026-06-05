@@ -393,7 +393,7 @@ export default function CoachingPage() {
                       <h3 className="min-w-0 flex-1 text-2xl font-semibold text-orato-dark">
                         {item.title}
                       </h3>
-                      {"quote" in item ? (
+                      {item.quote ? (
                         <div className="relative z-30 flex h-20 w-20 shrink-0 items-start justify-end overflow-visible">
                           <QuoteBadge
                             id={`coaching-specialty-${index}-quote`}
