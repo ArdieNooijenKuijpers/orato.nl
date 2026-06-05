@@ -29,7 +29,7 @@ const topicCards = [
   },
   {
     title: "Overtuigend(er) overkomen",
-    text: "Of juist minder hard, bedreigend. Zoals dat echt past bij jouw persoonlijkheid en bij de functie of rol die je hebt.",
+    text: "Of Juist de congruentie tussen ‘binnen- en buitenkant’ oftewel ‘performance ‘ersus ‘voelen en denken’ is vaak onderwerp van een coachtraject. ",
   },
   {
     title: "Zelfvertrouwen voelen",
@@ -54,15 +54,16 @@ const specialties = [
     text: [
       "Ik coach therapeutisch waar nodig en gewenst, dat wil zeggen met emotionele diepgang. Iemands verleden maakt namelijk deel uit van de oplossing in de toekomst.",
       "Met name met mijn jarenlange ervaring als paramedisch therapeut met kennis van psychopathologie, als NLP-Master, Relational Presence facilitator en met mijn TA-deskundigheid gespecialiseerd in herbeslissingswerk kan ik je dan helpen.",
-      "Bijvoorbeeld als er op het werk ook een persoonlijk, of meer prive, issue meespeelt waar aandacht voor nodig is. Externe objectiviteit en een emotioneel veilige omgeving is dan zeker gewenst. Een psycholoog is niet aan de orde maar toch...",
+      "Bijvoorbeeld als er op het werk ook een persoonlijk, of meer privé, issue meespeelt waar aandacht voor nodig is. Externe objectiviteit en een emotioneel veilige omgeving is dan zeker gewenst. Een psycholoog is niet aan de orde maar toch...",
     ],
+    quote: "Je hoeft je niet goed te voelen, je moet goed voelen. Léon Vasterink",
   },
   {
     title: "Expressie Coaching",
     text: [
-      "Voor als jij je wilt uiten (verbaal en non-verbaal) zoals dat past bij jou als persoon en past bij jouw verantwoordelijkheden (professioneel en prive).",
-      "Aan de slag dus met de zogenaamde buitenkant, jouw persoonlijke uitstraling en manier van communiceren en met de binnenkant oftewel jouw gedachtes en gevoelens.",
-      "Dit vraagt enerzijds om innerlijk veranderwerk (transformationele coaching), door vragen te beantwoorden zoals Wie ben jij? en Hoe wil je gekend worden? en anderzijds om moed zodat jij jezelf daadwerkelijk laat zien en horen op basis van alle do's en don'ts op het gebied van communiceren en presenteren.",
+      "Voor als jij je wilt uiten (verbaal en non-verbaal) zoals dat past bij jou als persoon en past bij jouw verantwoordelijkheden (professioneel en privé).",
+      "Aan de slag dus met de zogenaamde buitenkant, jouw persoonlijke uitstraling en manier van communiceren en met de binnenkant oftewel jouw overtuigingen en gevoelens.",
+      "Dit vraagt enerzijds om innerlijk veranderwerk (transformationele coaching), door vragen te beantwoorden zoals Wie ben ik? en Hoe wil ik gekend worden? en anderzijds om moed zodat jij jezelf daadwerkelijk laat zien en horen op basis van alle do's en don'ts op het gebied van communiceren en presenteren.",
     ],
   },
   {
@@ -83,10 +84,11 @@ const specialties = [
   {
     title: "Communicatie Coaching",
     text: [
-      "Vaak, eigenlijk altijd, is anders communiceren met anderen (en jezelf) belangrijk om iets te laten lukken. Dat geldt voor collega's onderling, in gesprek met externe contacten, tijdens eens overleg, advies- of verkoopgesprek etc.",
-      "In het bijzonder coach ik ook kinderen vanaf 15 jaar met hun ouders en help ik liefdespartners met hun manier van communiceren.",
+      "Vaak, eigenlijk altijd, is anders communiceren met anderen (en jezelf) belangrijk om iets te laten lukken. Dat geldt voor collega's onderling, in gesprek met externe contacten, tijdens een overleg, advies- of verkoopgesprek, praten met naasten etc.",
+      "In het bijzonder coach ik ook kinderen vanaf 15 jaar met of zonder hun ouders en help ik liefdespartners met hun manier van communiceren.",
       "Aan het werk dus, om praktisch en respectvol in gesprek te gaan op basis van diverse communicatietechnieken, communicatiestijlen en liefdestalen, met oprechte waardering, voorbij het oordeel. Impactvolle gespreksvaardigheden kun je leren.",
     ],
+    quote: "Alles is een 'Act of love' of een 'Cry for love'.",
   },
 ];
 
@@ -156,7 +158,7 @@ const references = [
   },
   {
     quote:
-      "Coaching door Ardie is absoluut zinvol. Alles wat ik heb geleerd kan ik zowel op het werk als prive toepassen. Het zorgt ervoor dat ik me professioneler kan opstellen, maar toch dicht bij mezelf kan blijven.",
+      "Coaching door Ardie is absoluut zinvol. Alles wat ik heb geleerd kan ik zowel op het werk als privé toepassen. Het zorgt ervoor dat ik me professioneler kan opstellen, maar toch dicht bij mezelf kan blijven.",
     name: "Meggie Spierings",
     role: "Projectleider gemeente",
   },
@@ -278,6 +280,14 @@ export default function CoachingPage() {
 
         {/* <CoachingConversationIllustration /> */}
 
+        <section className="bg-orato-light px-4 py-7 text-center md:px-8 md:py-9 lg:px-10">
+          <p
+            className={`${tangerine.className} text-4xl font-bold leading-none text-orato-blue md:text-5xl`}
+          >
+            Even stil staan . . . om verder te komen!
+          </p>
+        </section>
+
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <Reveal direction="left">
@@ -328,9 +338,9 @@ export default function CoachingPage() {
                     <Reveal delay={index * 0.06}>
                       <div className="flex items-start gap-5">
                         <h3 className="min-w-0 flex-1 text-2xl font-semibold text-white">
-                          {card.title}
-                        </h3>
-                        {"quote" in card ? (
+                        {card.title}
+                      </h3>
+                        {card.quote ? (
                           <div className="relative z-30 flex h-20 w-20 shrink-0 items-start justify-end overflow-visible">
                             <QuoteBadge
                               id={`coaching-topic-${index}-quote`}
@@ -364,10 +374,10 @@ export default function CoachingPage() {
             </h2>
             <div className="mt-8 overflow-hidden rounded-[2.4rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
               <Image
-                src="/coaching/•geknield flipover koenERF03509_WEB.jpg"
-                alt="Ardie tijdens een coachsessie bij een flipover."
+                src="/coaching/•koen buiten cirkel 2 ERF03538_WEB.jpg"
+                alt="Ardie en Koen buiten in de tuin in een cirkel."
                 width={1800}
-                height={1200}
+                height={1013}
                 className="h-auto w-full object-cover"
               />
             </div>
@@ -378,10 +388,23 @@ export default function CoachingPage() {
                   delay={index * 0.06}
                   className={index === 0 ? "lg:col-span-2" : undefined}
                 >
-                  <article className="rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
-                    <h3 className="text-2xl font-semibold text-orato-dark">
-                      {item.title}
-                    </h3>
+                  <article className="relative overflow-visible rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
+                    <div className="flex items-start gap-5">
+                      <h3 className="min-w-0 flex-1 text-2xl font-semibold text-orato-dark">
+                        {item.title}
+                      </h3>
+                      {"quote" in item ? (
+                        <div className="relative z-30 flex h-20 w-20 shrink-0 items-start justify-end overflow-visible">
+                          <QuoteBadge
+                            id={`coaching-specialty-${index}-quote`}
+                            quote={item.quote}
+                            className="origin-top-right scale-[0.82]"
+                            badgeClassName="text-orato-dark"
+                            tooltipAlign="right"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
                     <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
                       {item.text.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
@@ -391,6 +414,11 @@ export default function CoachingPage() {
                 </Reveal>
               ))}
             </div>
+            <p
+              className={`${tangerine.className} mt-10 text-center text-4xl font-bold leading-none text-orato-blue md:text-5xl`}
+            >
+              Even stil staan . . . om verder te komen!
+            </p>
           </div>
         </section>
 
