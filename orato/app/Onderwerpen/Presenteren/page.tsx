@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display } from "next/font/google";
+import { CalendarCheck, Download } from "lucide-react";
+import QuoteBadge from "../../components/ardie/QuoteBadge";
 import InschrijfFormModal from "../../inschrijfformulier/InschrijfFormModal";
 import { inschrijfDataOptions } from "../../inschrijfformulier/inschrijfData";
 import FooterComp from "../../components/Navigation/Footer";
@@ -219,7 +221,7 @@ export default function PresenterenPage() {
                   Wil je werken aan jouw manier van contact maken en
                   presenteren, of dat nu gaat over een gesprek van mens tot mens
                   of over in of voor een groep? Dat kan. Kies de vorm die past
-                  bij jouw vraag: individueel, in een Speaking Circle of in een
+                  bij jouw vraag: individueel maatwerk,, in een Speaking Circle of in een
                   workshop met anderen.
                 </p>
                 <p className="mt-8 text-lg font-semibold text-orato-green md:text-xl">
@@ -238,13 +240,9 @@ export default function PresenterenPage() {
                     <h2
                       className={`${notoSerifDisplay.className} mt-3 text-4xl md:text-6xl`}
                     >
-                      Kies de vorm die past bij jouw vraag.
+                      Kies de weg die past bij jouw leervraag.
                     </h2>
-                    <p className="mt-5 max-w-2xl text-base leading-7 text-orato-dark/75 md:text-lg">
-                      De inhoud raakt hetzelfde vakgebied, maar de aanpak is
-                      duidelijk anders: individueel verdiepen, in een circle
-                      authentiek leren spreken of met een groep samen trainen.
-                    </p>
+
                   </div>
 
                   <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -457,9 +455,8 @@ export default function PresenterenPage() {
 
         <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
           <Reveal className="mx-auto max-w-3xl">
-            <Link
-              href="/Contact"
-              className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-green/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/40"
+            <div
+              className="group relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(84,166,94,0.16),transparent_38%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
@@ -481,18 +478,18 @@ export default function PresenterenPage() {
               <p className="relative mt-5 text-base leading-7 text-orato-dark/75">
                 Vaak wordt individueel op-maat-leren gecombineerd met leren in
                 een groep, juist omdat het over contact en communiceren gaat in
-                relatie tot anderen. De sandwich-methode werkt dan goed.
+                relatie tot anderen. De sandwich-methode werkt dan goed: eerst individuele coaching, vervolgens deelnemen aan de dag ‘Authentiek Presenteren met Speaking Circle in Relational Presence’ om daarna weer 1-op-1, verrijkt met feedback, verder te leren.
               </p>
               <p className="relative mt-5 text-base font-semibold text-orato-green md:text-lg">
                 Jij in de volle aandacht en dat voelt nog goed ook.
               </p>
-            </Link>
+            </div>
           </Reveal>
         </section>
 
         <section
           id="speaking-circle"
-          className="overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10"
+          className="overflow-visible bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10"
         >
           <div className="mx-auto max-w-7xl">
             <Reveal>
@@ -507,18 +504,30 @@ export default function PresenterenPage() {
                     Authentiek presenteren met Speaking Circle
                   </h2>
                 </div>
-                <div className="grid gap-3 text-sm leading-6 text-white/72 md:grid-cols-3">
-                  <p>Voor wie vrijer wil spreken zonder zichzelf kwijt te raken.</p>
-                  <p>Voor oefenen in een groep, met maximale veiligheid.</p>
-                  <p>Voor minder performen en meer echt contact maken.</p>
+                <div className="flex items-start gap-5">
+                  <div className="grid flex-1 gap-3 text-sm leading-6 text-white/72 md:grid-cols-3">
+                    <p>Voor wie vrijer wil spreken zonder zichzelf kwijt te raken.</p>
+                    <p>Voor oefenen in een groep, met maximale veiligheid.</p>
+                    <p>Voor minder performen en meer echt contact maken.</p>
+                  </div>
+                  <div className="relative z-30 flex h-20 w-20 shrink-0 justify-end overflow-visible">
+                    <QuoteBadge
+                      id="presenteren-speaking-circle-aandacht-quote"
+                      quote="Ervaar de kracht van aandacht."
+                      className="origin-top-right scale-[0.82]"
+                      tooltipAlign="right"
+                    />
+                  </div>
                 </div>
               </div>
             </Reveal>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Link
-                href="/Contact"
+                href="/supervisie/Authentiek%20presenteren%20met%20SPEAKING%20CIRCLE%C2%AE%20en%20Relational%20Presence%C2%AE%202026.pdf"
+                download
                 className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-green px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-orato-dark"
               >
+                <Download className="mr-2 h-4 w-4" aria-hidden="true" />
                 Download hier de informatieflyer
               </Link>
             </div>
@@ -536,28 +545,15 @@ export default function PresenterenPage() {
                     initialSelectedDate={date}
                     triggerClassName="group cursor-small inline-flex w-full items-center justify-between rounded-[1.15rem] border border-white/10 bg-white/6 px-4 py-3 text-left text-sm font-medium text-white/84 transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-green/45 hover:bg-white/10 hover:text-white hover:shadow-[0_16px_34px_-22px_rgba(84,166,94,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/45"
                   >
-                    <span>{date}</span>
-                    <span className="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full border border-white/14 bg-white/8 text-orato-green transition-all duration-300 group-hover:border-orato-green/40 group-hover:bg-orato-green/12 group-hover:text-white">
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 20 20"
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                      >
-                        <path
-                          d="M3 10h10"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M10 5l5 5-5 5"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                    <span>
+                      <span className="block text-xs uppercase tracking-[0.16em] text-orato-green">
+                        Inschrijven
+                      </span>
+                      <span className="mt-1 block">Voor {date}</span>
+                    </span>
+                    <span className="inline-flex flex-none items-center gap-2 rounded-full border border-orato-green/35 bg-orato-green px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 group-hover:bg-white group-hover:text-orato-dark">
+                      <CalendarCheck className="h-4 w-4" aria-hidden="true" />
+                      Hier
                     </span>
                   </InschrijfFormModal>
                 ))}
