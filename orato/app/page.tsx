@@ -182,6 +182,24 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="bg-orato-light px-4 pb-14 text-orato-dark md:px-10 md:pb-20">
+        <div className="mx-auto max-w-5xl border-y border-orato-dark/10 py-10 text-center md:py-14">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-orato-dark/55">
+            Referentie
+          </p>
+          <blockquote
+            className={`${noto_Serif_Display.className} mx-auto mt-5 max-w-3xl text-4xl leading-tight md:text-6xl`}
+          >
+            &ldquo;Ik gun iedereen een Ardie!&rdquo;
+          </blockquote>
+          <p className="mt-6 text-base font-semibold text-orato-dark">
+            Arthur Gieles
+          </p>
+          <p className="mt-1 text-sm text-orato-dark/60">
+            Huisarts, in memoriam
+          </p>
+        </div>
+      </section>
       <div className="  min-h-screen bg-orato-light   ">
           <CompanyCircles />
       </div>

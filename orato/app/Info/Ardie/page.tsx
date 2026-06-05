@@ -73,9 +73,9 @@ const profileSections = [
     title: "Typisch Ardie",
     text: [
       "Men kent mij als een betrokken en warm mens, denkend in mogelijkheden en genietend van het leven. Als oudste dochter geboren in het Noord-Brabantse Deurne, nu wonend in Nuenen, gelukkig met Peet Nooijen als levenspartner sinds ons 15e levensjaar én gezegend met onze kinderen Eva en Art.",
-      "Van jongs af aan ben ik degene voor het goede gesprek. Ik vind aansluiting met mensen van jong tot oud, met uiteenlopende opvattingen, functies en levenservaringen. Ik houd van afspraken nakomen en mijn perfectionisme maakt dat ik zeker ben van mijn onzekerheden en zorgvuldig te werk ga.",
+      "Van jongs af aan ben ik degene voor 'het goede gesprek'. Ik vind aansluiting met mensen van jong tot oud, met uiteenlopende opvattingen, functies en levenservaringen. Ik houd van afspraken nakomen en mijn perfectionisme maakt dat ik zorgvuldig te werk ga en zeker ben van mijn onzekerheden.",
       "Ik sport veel, houd van lekker eten, inspiratie opdoen, kunst, bloemen en de rust van de natuur. Ook ik heb veerkracht moeten tonen in het leven met impactvolle levenslessen zoals: gooi niet weg wat goed is en blijf trouw aan je eigen waarheid.",
-      "Mijn boek Voorbij de buitenkant beschrijft een grondige introspectie, een ervaringsverhaal over 50 jaar Ardie in 10 jaar psychoanalyse. Ik ben trots op meer dan 35 jaar werk als eigenaar van Orato. De naam is afgeleid van 'Oratio', Latijns voor welsprekendheid, redevoering. Ik voel me een bevoorrecht mens, rijk van binnen en van buiten, dankbaar voor alles en iedereen waar ik iets voor mag betekenen.",
+      "Mijn boek 'Voorbij de buitenkant' beschrijft een grondige introspectie, een ervaringsverhaal over 50 jaar Ardie in 10 jaar psychoanalyse. Ik ben trots op meer dan 35 jaar werk als eigenaar van Orato. De naam is afgeleid van 'Oratio', Latijns voor welsprekendheid, redevoering. Ik voel me een bevoorrecht mens, rijk van binnen en van buiten, dankbaar voor alles en iedereen waar ik iets voor mag betekenen.",
     ],
     image: {
       src: "/Ardie/Iris 001.jpg",
@@ -96,9 +96,9 @@ const methodCards = [
   {
     title: "Werkwijze",
     text: [
-      "Ik sta bekend om mijn professionele aanpak in de omgang met cliënten en opdrachtgevers en word ervaren als een veelzijdig gesprekspartner. Men voelt zich snel vertrouwd bij mij. De essentie van een vraagstuk ligt snel op tafel, resultaatgericht en zonder gezweef.",
+      "Ik sta bekend om mijn professionele aanpak in de omgang met cliënten en opdrachtgevers en wordt ervaren als een veelzijdig gesprekspartner. Men voelt zich snel vertrouwd bij mij. De essentie van een vraagstuk ligt snel op tafel, resultaatgericht en zonder gezweef.",
       "Confronterend waar nodig, uitgesproken en liefdevol sturend met tact. Pragmatisch ook, met emotionele diepgang, therapeutisch indien gewenst. Doelen stellen is niet genoeg: we gaan voor wenselijke effecten, zo concreet mogelijk geformuleerd als succescriteria.",
-      "Ik werk bij voorkeur met tussentijdse reflectie door jou.",
+      "Mijn brede aanbod van zeer veel werkvormen wordt gewaardeerd.",
       "Je mag verwachten dat ik gebruik wat zich aandient in onze werkrelatie aan gedrag, gedachtes en gevoelens, in dienst van jouw ontwikkelvraag. Kortom, warm en structurerend.",
     ],
     image: {
@@ -112,7 +112,8 @@ const methodCards = [
     text: [
       "Hoewel ik arts wilde worden en getrouwd ben met een specialist, ben ik van huis uit praktijkhoudend logopedist en Spraak- en Taalpatholoog. Ik heb me gespecialiseerd in talloze aspecten van effectieve communicatie, oftewel in gesprek met jezelf en anderen.",
       "Momenteel kent mijn werk vier pijlers: (executive)coaching, coachsupervisie, coachopleiding en presentatietraining-coaching, met alle voordelen van de kruisbestuiving daartussen. Verder ben ik actief als inspirator van de OCN-Dames (Ondernemers Contact Nuenen) en houd ik ook mijn eigen zaag scherp middels intervisie en supervisie.",
-      "Ik heb sinds 1989 honderden mensen therapeutisch behandeld, minstens 400 mensen individueel gecoacht en gesuperviseerd en meer dan honderd groepstrainingen en workshops gegeven. Men noemt mij een makelaar in zelfvertrouwen en nieuw perspectief. Ambitie is mij niet vreemd.",
+      "Ik heb sinds 1989 honderden mensen therapeutisch behandeld, minstens 400 mensen individueel gecoacht en gesuperviseerd en meer dan honderd groepstrainingen en workshops gegeven. Men noemt mij een makelaar in zelfvertrouwen en nieuw perspectief.",
+      "Ambitie is mij niet vreemd."
     ],
     tone: "blue",
   },
@@ -161,8 +162,8 @@ const assignRandomQuote = (seed: string, offset = 0) => {
 const timelineEntries: ArdieTimelineEntry[] = [
   {
     year: "1985-1989",
-    title: "De eerste bewuste afslag",
-    summary: "Na het Atheneum loopt de route anders dan gedacht, maar wel precies richting mijn vak.",
+    title: "De eerste afslag",
+    summary: "Na het Atheneum loopt de route anders dan gedacht, maar wel precies richting mijn passie.",
     details: [
       {
         text: "Na het Atheneum word ik uitgeloot voor de studie geneeskunde.",
@@ -170,7 +171,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
       },
       {
         text: "Ik start de opleiding Logopedie en Foniatrie en leg daar de basis voor mijn latere werk. Communicatie als basis.",
-        highlights: ["Logopedie en Foniatrie"],
+        highlights: ["Logopedie en Foniatrie","opleiding"],
       },
     ],
     images: [
@@ -192,7 +193,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["Spraak- en Taalpathologie", "wetenschappelijk onderzoek"],
       },
       {
-        text: "Ik neem zitting in de Thinktank van de Universiteit Nijmegen.",
+        text: "Ik neem zitting in de Thinktank van Universiteit Nijmegen.",
         highlights: ["Thinktank"],
       },
       {
@@ -217,7 +218,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
       },
       {
         text: "Een verblijf in Ghana vanwege een coschap van mijn levenspartner Peet maakt diepe indruk. Ik trouw in 1995. Eva en Art worden geboren. TSP groeit door tot ORATO spreken en presenteren.",
-        highlights: ["Ghana", "Eva en Art", "ORATO spreken en presenteren"],
+        highlights: ["Ghana", "trouw", "ORATO spreken en presenteren"],
       },
       {
         text: "Ik train ambtenaren en wethouders voor Bestuursacademie Nederland, en krijg een aanbod van Schouten & Nelissen als trainer/acquisiteur. Een intensieve periode volgt waarin praktijkwerk, trainen, verdere scholing, een jong gezin en een druk sociaal leven samenkomen.",
@@ -239,7 +240,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     summary: "Een nieuwe woonplaats vraagt om een nieuw netwerk en nieuwe professionele rollen.",
     details: [
       {
-        text: "Ik verkoop mijn logopediepraktijk als we verhuizen van Wijchen naar Nuenen nadat mijn echtgenoot zijn promotieonderzoek en specialisatie tot patholoog afrondt.",
+        text: "Ik verkoop mijn logopediepraktijk als we verhuizen naar Nuenen nadat mijn echtgenoot zijn promotieonderzoek en specialisatie tot patholoog afrondt.",
         highlights: ["logopediepraktijk"],
       },
       {
@@ -247,11 +248,11 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["voorzitterschap van de MedezeggenschapsRaad", "OCN"],
       },
       {
-        text: "Ik word externe deskundige bij examinering van studenten, geef gastcolleges over ondernemerschap, neem deel aan een klankbordgroep van Fontys Paramedisch Hogeschool en sluit me aan bij Logopediekring Nuenen.",
+        text: "Ik word externe deskundige bij examinering van studenten, geef gastcolleges over ondernemerschap, neem deel aan een klankbordgroep van Fontys Paramedisch Hogeschool  waar ik jarenlang lid van de Raad van Advies zal zijn. Ik sluit me aan bij Logopediekring Nuenen.",
         highlights: ["externe deskundige", "gastcolleges", "Logopediekring Nuenen"],
       },
       {
-        text: "Daarnaast volg ik twee jaar opleidingen tot NLP Master bij het IEP in Nijmegen en vervolgens de opleiding tot Speaking Circle Facilitator in Amsterdam.",
+        text: "Daarnaast volg ik twee jaaropleidingen tot NLP Master bij het IEP in Nijmegen en vervolgens de opleiding tot Speaking Circle Facilitator in Amsterdam.",
         highlights: ["NLP Master", "Speaking Circle Facilitator"],
       },
     ],
@@ -275,8 +276,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["ORATO", "Effectief Presenteren"],
       },
       {
-        text: "De combinatie van logopedisch onderzoek en behandeling met trainingen, workshops en interactieve lezingen blijft bestaan en wordt aangevuld met commerciële presentatiecoaching voor diverse (non)profitorganisaties.",
-        highlights: ["commerciële presentatiecoaching"],
+        text: "De combinatie van logopedisch onderzoek en behandeling met trainingen, workshops en interactieve lezingen blijft bestaan en wordt aangevuld met commerciële (presentatie)coaching voor diverse (non)profitorganisaties.",
+        highlights: ["commerciële (presentatie)coaching"],
       },
       {
         text: "Samen met Maja Visser ontwikkel ik nieuwe trainingen voor onder meer MEE Nederland, gemeenten en provincies, zoals: Sterk overkomen, Leren acquireren, Netwerk MEE, Persoonlijke uitstraling en Jij en je werk in de schijnwerpers.",
@@ -311,8 +312,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
   },
   {
     year: "2007",
-    title: "Een diepgaand persoonlijk avontuur",
-    summary: "Grondige introspectie  'Ken U zelve' werkt!",
+    title: "Ken uzelve! Een grondige introspectie",
+    summary: "You have to feel it, to heal it. Carl Jung",
     details: [
       {
         text: "Ik ga een intensief en diepgaand avontuur aan via een klassieke Freudiaanse psychoanalyse.",
@@ -329,6 +330,13 @@ const timelineEntries: ArdieTimelineEntry[] = [
         placement: "edge",
         tall: true,
       },
+      {
+        src: "/Ardie/mijn dijn pijn fijn zijn.jpg",
+        alt: "Gedicht met de woorden mijn, dijn, pijn en fijn zijn.",
+        placement: "edge",
+        tall: true,
+        contain: true,
+      },
     ],
     accentColor: "red",
   },
@@ -343,7 +351,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
       },
       {
         text: "Ik krijg verdere training in het trainen van Karin de Galan.",
-        highlights: ["Karin de Galan"],
+        highlights: ["trainen"],
       },
       {
         text: "In 2011 neem ik mijn eigen salesvaardigheden onder de loep met salescoach Michel van Vuuren van de Nederlandse Sales Academie.",
@@ -370,8 +378,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["praktijkondersteuner GGZ", "ORATO Communicatie Coaching"],
       },
       {
-        text: "In deze periode verdiep ik me bovendien in psychopathologie bij volwassenen via een cursus bij het RINO.",
-        highlights: ["psychopathologie"],
+        text: "In deze periode verdiep ik me ook in psychopathologie bij volwassenen via een cursus bij het RINO.",
+        highlights: ["psychopathologie","bij vowassenen"],
       },
     ],
     images: [
@@ -397,11 +405,11 @@ const timelineEntries: ArdieTimelineEntry[] = [
     summary: "Internationale erkenning maakt het verschil en ORATO krijgt een nieuwe visuele jas.",
     details: [
       {
-        text: "Ik start met geaccrediteerde opleidingen tot professionele coach (ACC en PCC) bij de Associatie voor Coaching volgens kwalificaties van de ICF en EMCC.",
-        highlights: ["ACC", "PCC"],
+        text: "Ik start met opleidingen bij de Associatie voor Coaching tot professionele coach (ACC Advanced Certified Coach en PCC Professional Certified Coach) volgens kwalificaties van de ICF en EMCC.",
+        highlights: ["professionele coach", "ACC", "PCC"],
       },
       {
-        text: "Ik word lid van ICF Global en Nederland en sluit me in 2014 aan bij een intervisiegroep voor professionele coaches: de Binnencirkel van de AvC.",
+        text: "Ik word lid van ICF International Coach Federation en Nederland en sluit me in 2014 aan bij een intervisiegroep voor professionele coaches: de Binnencirkel van de AvC.",
         highlights: ["intervisiegroep", "Binnencirkel"],
       },
       {
@@ -409,7 +417,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
       },
       {
         text: "In diezelfde periode ontwikkel en geef ik samen met Anne Vinke-van Ingen de cursus Aansprekend (s)Preken voor mensen die het woord nemen in een kerk.",
-        highlights: ["cursus Aansprekend (s)Preken", "Anne Vinke-van Ingen"],
+        highlights: ["cursus Aansprekend (s)Preken"],
       },
     ],
     images: [
@@ -432,7 +440,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["Regina Coeli"],
       },
       {
-        text: "In de lente van 2017 word ik 50 jaar en beëindig ik de psychoanalyse. In de zomemaanden schrijf ik in The Little House in Cotswold hierover een ervaringsverhaal. Ik ontdek de uitdaging van een dergelijk schrijfproces en geniet daar met volle teugen van de ochtendwandelingen met onze hond in de prachtige natuur.",
+        text: "In de lente van 2017 word ik 50 jaar en beëindig ik de psychoanalyse. In de zomemaanden sschrijf ik in the Little House in Cotswold: 'Op de bank' Een ervaringsverhaal over 50 jaar Ardie in 10 jaar psychoanalyse.  Een ervaringsverhaal t/m analyse moet vet.",
         highlights: ["The Little House in Cotswold", "een ervaringsverhaal"],
       },
       {
@@ -463,11 +471,12 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["Kerntraject !K-2.0"],
       },
       {
-        text: "Ik ga samenwerken met de Associatie voor Coaching en leid coaches op, geef in-company trainingen in coachen, coachend leidinggeven en acquireren en start met groepssupervisie.",
-        highlights: ["Associatie voor Coaching", "coaches op", "in-company trainingen", "groepssupervisie"],
+        text: "k volg mijn hart en ga namens de Associatie voor Coaching professionele coaches opleiden, geef in-company trainingen in coachen, coachend leidinggeven en acquireren en start met groepssupervisie.",
+        highlights: ["professionele coaches opleiden", "coaches op", "in-company trainingen", "groepssupervisie"],
       },
       {
         text: "Ik train Technasiumdocenten in coachend begeleiden. Heerlijk dit opleidingsinstituut op fietsafstand in Aarle-Rixtel. Onder de vlag van Orato help ik steeds vaker teams beter te communiceren met elkaar en collega’s.",
+        highlights: ["teams"]
       },
       {
         text: "Ik word lid van de NOBCO. Mijn algemene voorwaarden en privacyverklaring worden geactualiseerd in het kader van de AVG en ik zet de stap naar registratie als MCC Master Certified Coach bij de ICF met o.a. meer dan 2500 uur coachervaring. Een kroon op mijn werk!",
@@ -492,12 +501,12 @@ const timelineEntries: ArdieTimelineEntry[] = [
     summary: "Binnenkant krijgt buitenkant en ik help anderen met hun zichtbaarheid.",
     details: [
       {
-        text: "Mijn boek Voorbij de buitenkant wordt gedrukt in kleine oplage in eigen beheer, prachtig vormgegeven door Bas Linssen.",
-        highlights: ["Mijn boek Voorbij de buitenkant"],
+        text: "Mijn boek 'Voorbij de buitenkant' wordt gedrukt in kleine oplage in eigen beheer, prachtig vormgegeven door Bas Linssen.",
+        highlights: ["Mijn boek 'Voorbij de buitenkant'"],
       },
       {
-        text: "Ik start met pitchbegeleiding in het kader van de Young Talent Award van het OCN en geef de workshop Een groot ei leggen om belangrijke veranderingen en keuzes te faciliteren.",
-        highlights: ["pitchbegeleiding", "workshop Een groot ei leggen", "Young Talent Award"],
+        text: "Ik start met pitchbegeleiding in het kader van de Young Talent Award van het OCN en geef de workshop ' Een groot ei leggen' om belangrijke veranderingen en keuzes te faciliteren.",
+        highlights: ["pitchbegeleiding", "workshop ' Een groot ei leggen'", "Young Talent Award"],
       },
     ],
     images: [
@@ -516,7 +525,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     summary: "Ook onder druk blijf ik werken, hosten en betekenisvolle ontmoetingen organiseren.",
     details: [
       {
-        text: "Een ongewenste rechtszaak begint en zal na twee jaar afgesloten met 100% gelijk voor mij en finale kwijting m.b.t. de beëindiging van een collegiale samenwerking. Een levensles rijker.",
+        text: "Een ongewenste rechtszaak begint en zal na twee jaar aafgesloten worden met 100% gelijk voor mij en finale kwijting m.b.t. de beëindiging van een collegiale samenwerking. Een levensles rijker.",
         highlights: ["ongewenste", "rechtszaak", "100% gelijk"],
       },
       {
@@ -549,7 +558,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     details: [
       {
         text: "Mijn MCC-registratie wordt verlengd met drie jaren. Ik leer over Transactionele Analyse (TA-101) en doe een herbeslissingsmarathon bij de TA-Academie.",
-        highlights: ["Mijn MCC-registratie wordt verlengd", "Transactionele Analyse", "herbeslissingsmarathon"],
+        highlights: ["MCC-registratie wordt verlengd", "Transactionele Analyse", "herbeslissingsmarathon"],
       },
       {
         text: "In 2022 bekwaam ik me verder in Redecision Therapy onder de bezielende begeleiding van Mil en Sonja Rosseau.",
@@ -560,8 +569,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["PCC assessor training"],
       },
       {
-        text: "Ik word lid van de EMCC en sta sinds 6 september 2023 ook bij de European Mentoring and Coaching Council, met NOBCO als Nederlandse divisie, geregistreerd als Senior Practitioner coach.",
-        highlights: ["Senior Practitioner", "coach"],
+        text: "Ik word lid van de EMCC en sta m.i.v. september 2023 2023 ook bij de European Mentoring and Coaching Council, met NOBCO als Nederlandse divisie, geregistreerd als Senior Practitioner coach.",
+        highlights: ["Senior Practitioner"],
       },
       {
         text: "Met de aanschaf van krielkippen die cliënten nieuwsgierig tegemoet kunnen komen, geniet ik volop van mijn afkomst uit boerenfamilies.",
@@ -585,12 +594,12 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["ESIA gecertificeerd Supervisor"],
       },
       {
-        text: "Mijn netwerk met Nederlandse en Europese collega’s wordt flink uitgebreid en ik verzorg workshops over supervisie en Relational Presence, bijvoorbeeld in het kader van intervisie.",
+        text: "Mijn netwerk met Nederlandse en Europese collega’s wordt flink uitgebreid en ik verzorg workshops over supervisie en Relational Presence, bijvoorbeeld in het kader van intervisie. Opnieuw een renewal als MCC.",
         highlights: ["workshops over supervisie en Relational Presence", "Relational Presence"],
       },
       {
         text: "Ik neem deel aan een intervisiegroep voor supervisie en executive coaching (VEC). Ik ontwikkel en geef de meerdaagse Transactionele Analyse toegepast in professionele coaching in nauwe samenwerking met Dirk Verhoeven, Associatie voor Coaching.",
-        highlights: ["meerdaagse Transactionele Analyse toegepast in professionele coaching"],
+        highlights: ["intervisiegroep voor supervisie en executive coaching","meerdaagse Transactionele Analyse toegepast in professionele coaching"],
       },
       {
         text: "Inmiddels lever ik ook mijn bijdrage aan de opleiding tot ESIA gecertificeerde Supervisor.",
@@ -599,7 +608,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
     accentColor: "orange",
   },
   {
-    year: "2025",
+    year: "2025-2026",
     title: "Doorgaan met wat ertoe doet",
     summary: "Mijn werk is stevig geworteld, kleurrijk en blijft in beweging.",
     details: [
@@ -608,8 +617,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["European Relational Presence Facilitator Days", "Eindhoven"],
       },
       {
-        text: "Ik neem nog altijd deel aan inhoudelijke cursussen, professionaliseringsdagen, intervisie en spar regelmatig met een supervisor om mijn zaag scherp te houden.",
-        highlights: ["mijn zaag scherp", "intervisie"],
+        text: "Ik neem nog altijd deel aan inhoudelijke cursussen, professionaliseringsdagen, intervisie en spar regelmatig met een supervisor om 'mijn zaag scherp te houden'.",
+        highlights: ["mijn zaag scherp te houden"],
       },
       {
         text: "Momenteel bestaat mijn werk uit (executive) coachtrajecten vanuit Orato, het opleiden van professionele coaches namens de Associatie voor Coaching en supervisie van coaches.",
@@ -632,6 +641,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         src: "/Ardie/Ardie timeline new/naast 2025 boom met gekleurde bladeren.JPG",
         alt: "Boom met gekleurde bladeren als beeld voor doorgaan en blijven groeien.",
         placement: "edge",
+        quote: "Als je goed om je heen kijkt, zie je dat alles gekleurd is.",
       },
     ],
     accentColor: "blue",
@@ -750,6 +760,12 @@ const ArdiePage = () => {
                   ) : null}
                 </article>
               ))}
+              <Link
+                href="/Contact"
+                className={`${kennismakingCtaClassName} w-full bg-orato-orange text-white hover:bg-white hover:text-orato-dark sm:w-auto`}
+              >
+                Vrijblijvend kennismaken
+              </Link>
             </div>
 
             <div className="space-y-6">
@@ -773,22 +789,24 @@ const ArdiePage = () => {
               </div>
               <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
                 <Image
-                  src="/Ardie/•geknield flipover koenERF03509_WEB.jpg"
-                  alt="Ardie geknield bij een flipover tijdens een coachingsmoment."
-                  width={1400}
-                  height={1100}
+                  src="/Ardie/zonsopkomst gratis pxhere.jpg"
+                  alt="Zonsopkomst als beeld voor een nieuw perspectief."
+                  width={1200}
+                  height={675}
                   className="h-[18rem] w-full object-cover md:h-[22rem]"
                 />
               </div>
-
-              <Link
-                href="/Contact"
-                className={`${kennismakingCtaClassName} w-full bg-orato-orange text-white hover:bg-white hover:text-orato-dark`}
-              >
-                Plan een kennismaking
-              </Link>
-
             </div>
+          </div>
+          <div className="mx-auto mt-12 max-w-4xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/45">
+              Mijn persoonlijke motto
+            </p>
+            <p
+              className={`${tangerine.className} mt-2 text-5xl font-bold leading-none text-orato-orange md:text-7xl`}
+            >
+              Liefdevol voorwaarts
+            </p>
           </div>
         </section>
 
@@ -867,32 +885,26 @@ const ArdiePage = () => {
               })}
             </div>
 
-            <div className="mt-10 rounded-[2rem] border border-orato-dark/10 bg-white px-6 py-6 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
-                Registraties & rollen
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {credentialChips.map((chip) => (
-                  <span
-                    key={chip}
-                    className="rounded-full border border-orato-dark/10 bg-orato-light px-4 py-2 text-sm font-medium text-orato-dark"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-6 flex justify-end">
-                <QuoteBadge id="credentials-quote" quote={assignRandomQuote("credentials", 4)} />
-              </div>
-            </div>
+
 
             <article className="mt-6 rounded-[2rem] border border-orato-orange/20 bg-orato-orange/8 px-6 py-6 shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
                 Referentie
               </p>
-              <blockquote className="mt-4 text-2xl leading-tight text-orato-dark md:text-3xl">
-                &ldquo;{featuredReference.quote}&rdquo;
-              </blockquote>
+              <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-start">
+                <blockquote className="min-w-0 flex-1 text-2xl leading-tight text-orato-dark md:text-3xl">
+                  &ldquo;{featuredReference.quote}&rdquo;
+                </blockquote>
+                <div className="relative z-30 flex h-20 w-20 shrink-0 justify-end overflow-visible">
+                  <QuoteBadge
+                    id="credentials-quote"
+                    quote={assignRandomQuote("credentials", 4)}
+                    className="origin-top-right scale-[0.82]"
+                    badgeClassName="text-orato-dark"
+                    tooltipAlign="right"
+                  />
+                </div>
+              </div>
               <p className="mt-5 text-base font-semibold text-orato-dark">
                 {featuredReference.name}
               </p>
@@ -904,7 +916,7 @@ const ArdiePage = () => {
                 href="/Contact"
                 className={`${kennismakingCtaClassName} bg-orato-dark text-white hover:bg-orato-orange`}
               >
-                Plan een kennismaking
+                vrijblijvend kennismaken
               </Link>
             </div>
           </div>
@@ -914,10 +926,10 @@ const ArdiePage = () => {
           <div className="mx-auto max-w-7xl">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/50">
-                Ontwikkeling als rode draad
+                Een leven in beweging
               </p>
               <h2 className={`${notoSerifDisplay.className} mt-3 text-4xl text-center text-white md:text-left md:text-6xl`}>
-                Een leven in beweging. Verbeeld als een rode lijn
+                Ontwikkeling als 'rode draad' 
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
                 Geen rechte lijn, juist een golfbeweging van keuzes, verdieping, ondernemerschap, relaties, opleidingen en vakmanschap. Dit is de route waarlangs mijn professionele en persoonlijke leven elkaar blijven voeden:
@@ -959,19 +971,14 @@ const ArdiePage = () => {
                     href="/Contact"
                     className={`${kennismakingCtaClassName} bg-orato-dark text-white hover:bg-orato-orange`}
                   >
-                    Plan een kennismaking
+                    vrijblijvend kennismaken
                   </Link>
                 </div>
               </div>
 
-              <div className="relative min-h-[23rem] overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(242,178,115,0.28),transparent_38%),linear-gradient(180deg,rgba(246,242,236,0.95),rgba(233,223,210,0.9))] px-6 py-8 md:px-10 md:py-10">
-                <div className="absolute left-10 top-10 h-24 w-24 rounded-full bg-orato-orange/18 blur-3xl" />
-                <div className="absolute bottom-10 right-10 h-32 w-32 rounded-full bg-orato-blue/10 blur-3xl" />
-                <div className="relative mx-auto flex h-full max-w-[30rem] items-center justify-center">
-                  <div className="absolute left-8 top-10 hidden h-[16rem] w-[12rem] -rotate-[8deg] rounded-[1.75rem] border border-white/75 bg-white/72 shadow-[0_30px_60px_-35px_rgba(0,0,0,0.25)] md:block" />
-                  <div className="absolute right-6 bottom-6 hidden h-[14rem] w-[10rem] rotate-[10deg] rounded-[1.75rem] border border-orato-dark/8 bg-[#f4eadf]/88 shadow-[0_26px_60px_-38px_rgba(0,0,0,0.22)] md:block" />
-                  <div className="relative w-full max-w-[22rem] rotate-[-3deg] overflow-hidden rounded-[2rem] border border-white/80 bg-white p-3 shadow-[0_35px_90px_-40px_rgba(0,0,0,0.35)] md:max-w-[24rem]">
-                    <div className="absolute right-4 top-4 h-12 w-12 rounded-full border border-orato-orange/18 bg-orato-orange/8" />
+              <div className="relative min-h-[23rem] overflow-hidden bg-orato-light px-6 py-8 md:px-10 md:py-10">
+                <div className="relative mx-auto h-full max-w-[32rem]">
+                  <div className="relative overflow-hidden rounded-[2rem] border border-orato-dark/10 bg-white p-3 shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
                     <Image
                       src="/Ardie/Ardie timeline new/naast motto onderaan pag Ardiesleutelbos.jpg"
                       alt="Sleutelbos met bloemen als beeld bij het bedrijfsmotto."
@@ -979,7 +986,7 @@ const ArdiePage = () => {
                       height={900}
                       className="h-[20rem] w-full rounded-[1.35rem] object-cover md:h-[24rem]"
                     />
-                    <div className="absolute inset-x-6 bottom-6 rounded-[1.1rem] bg-white/78 px-4 py-3 backdrop-blur-sm">
+                    <div className="absolute inset-x-6 bottom-6 rounded-[1rem] border border-white/60 bg-white/88 px-4 py-3 shadow-sm backdrop-blur-sm">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-orato-dark/48">
                         Sleutels Tot Succes
                       </p>
@@ -1014,7 +1021,7 @@ const ArdiePage = () => {
                 Ik ben benieuwd naar jou en je vraag
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
-                Klik door naar het contactformulier of bel me. Als jij wilt sparren, oefenen, aanscherpen of veranderen, ben ik er voor je.              </p>
+                 Ik ontmoet je graag persoonlijk.              </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
@@ -1028,7 +1035,7 @@ const ArdiePage = () => {
                   className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:border-orato-orange hover:text-orato-orange"
                 >
                   Bel <br />
-                  +31 6 5108 8688
+                  +316 510 88 6 88
                 </a>
               </div>
             </div>
