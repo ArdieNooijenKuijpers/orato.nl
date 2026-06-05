@@ -25,7 +25,7 @@ const topicCards = [
   },
   {
     title: "Keuzes maken",
-    text: "Leven door te handelen vanuit een innerlijk kompas in plaats van te veel afgestemd zijn op de ander en de buitenwereld. Niet langer uitstellen, of het nu gaat over je werk of prive.",
+    text: "Leven door te handelen vanuit een innerlijk kompas in plaats van te veel afgestemd zijn op de ander en de buitenwereld. Niet langer uitstellen, of het nu gaat over je werk of privé.",
   },
   {
     title: "Overtuigend(er) overkomen",
