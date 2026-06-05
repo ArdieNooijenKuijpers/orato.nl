@@ -17,19 +17,19 @@ const personalData = [
   "titulatuur",
   "geboortedatum en -plaats",
   "zorgverzekering",
-  "prive-adres",
-  "telefoonnummer (prive en/of zakelijk)",
-  "e-mailadres (prive en/of zakelijk)",
+  "privé-adres",
+  "telefoonnummer (privé en/of zakelijk)",
+  "E-mailadres (privé en/of zakelijk)",
   "dieetgegevens",
   "bedrijfsgegevens (naam, adres, naam en contactgegevens opdrachtgever, URL)",
-  "LinkedIn-contact",
+  "linkedIN contact",
   "video- en audio-opnames",
-  "foto's",
+  "foto’s",
   "coach-, supervisie- of trainingsplan",
   "reflectieverslagen",
   "prestatie- en evaluatiegegevens",
   "relationele informatie",
-  "gegevens m.b.t. gezondheid of welzijn",
+  "gegevens m.b.t. gezondheid of welzijn.",
   "factuurgegevens (bankrekeningnummer)",
 ];
 
@@ -42,12 +42,12 @@ const processingGoals = [
   "om een eventuele nieuwsbrief te verzenden",
   "om een referentie op te nemen op de website van ORATO",
   "om de dienstverlening te kunnen verbeteren",
-  "omdat ORATO hier wettelijk toe verplicht is, o.a. voor belastingaangifte",
+  "omdat ORATO hier wettelijk toe verplicht is, o.a. voor belastingaangifte.",
 ];
 
 const retentionPeriods = [
   { label: "Dossier coachee/supervisant", value: "max. 7 jaar" },
-  { label: "Patientdossier", value: "15 jaar" },
+  { label: "Patiëntdossier", value: "15 jaar" },
   { label: "Factuur", value: "7 jaar" },
   { label: "Inschrijfgegevens", value: "max. 7 jaar" },
   { label: "Trainingsgegevens", value: "max. 7 jaar" },
@@ -68,13 +68,39 @@ const securityMeasures = [
 ];
 
 const contactDetails = [
-  "ORATO",
-  "Drs. Ardie Nooijen-Kuijpers",
-  "Rutger van den Broeckelaan 3",
-  "5671 EB Nuenen",
-  "040-2842901 of 06-51088688",
-  "ardie@orato.info",
-  "www.orato.nl",
+  { label: "ORATO" },
+  { label: "Drs. Ardie Nooijen-Kuijpers" },
+  { label: "Rutger van den Broeckelaan 3" },
+  { label: "5671 EB Nuenen" },
+  {
+    label: "040-2842901 of 06-51088688",
+    content: (
+      <>
+        <a
+          href="tel:+31402842901"
+          className="font-semibold text-orato-blue underline decoration-orato-blue/30 underline-offset-4 transition hover:decoration-orato-blue"
+        >
+          040-2842901
+        </a>
+        {" of "}
+        <a
+          href="tel:+31651088688"
+          className="font-semibold text-orato-blue underline decoration-orato-blue/30 underline-offset-4 transition hover:decoration-orato-blue"
+        >
+          06-51088688
+        </a>
+      </>
+    ),
+  },
+  {
+    label: "ardie@orato.info",
+    href: "mailto:ardie@orato.info",
+  },
+  {
+    label: "www.orato.nl",
+    href: "https://www.orato.nl",
+    external: true,
+  },
 ];
 
 export default function PrivacyVerklaringPage() {
@@ -106,7 +132,7 @@ export default function PrivacyVerklaringPage() {
 
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <a
-                    href="/downloads/Orato%20-%20Privacyverklaring.pdf"
+                    href="/downloads/Privacyverklaring%20ORATO%202025%20.pdf"
                     download
                     className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-blue"
                   >
@@ -165,15 +191,18 @@ export default function PrivacyVerklaringPage() {
               <p className="mt-5 text-base leading-7 text-orato-dark/78">
                 Het kan gaan over de volgende persoonsgegevens:
               </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {personalData.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-[1.35rem] border border-orato-dark/10 bg-orato-light/70 px-4 py-4 text-sm leading-6 text-orato-dark/82"
-                  >
-                    {item}
-                  </div>
-                ))}
+              <div className="mt-6 rounded-[2rem] bg-orato-dark/5 p-5 md:p-7">
+                <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                  {personalData.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-sm leading-6 text-orato-dark/82"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-orato-blue" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
 
@@ -205,7 +234,7 @@ export default function PrivacyVerklaringPage() {
                   <p className="mt-5 text-base leading-7 text-orato-dark/78">
                     ORATO bewaart je persoonsgegevens niet langer dan wettelijk,
                     fiscaal of praktisch nodig is om de huidige of toekomstige
-                    doelen te realiseren waarvoor de gegevens zijn verzameld.
+                    doelen te realiseren waarvoor gegevens zijn verzameld. ORATO houdt rekening met de volgende bewaartermijnen.
                   </p>
                 </div>
                 <div className="rounded-[1.8rem] bg-orato-light/75 p-4">
@@ -238,7 +267,7 @@ export default function PrivacyVerklaringPage() {
                   wettelijke verplichting.
                 </p>
                 <p>
-                  Met (werk)relaties die al dan niet in opdracht inzage kunnen
+                  Met (werk)relaties die al dan niet in opdracht, inzage kunnen
                   hebben in je gegevens sluit ORATO een
                   verwerkersovereenkomst om te zorgen voor eenzelfde niveau van
                   beveiliging en vertrouwelijkheid van je gegevens. Het betreft
@@ -283,7 +312,7 @@ export default function PrivacyVerklaringPage() {
                       Internationale Ethische Code (NOBCO / EMCC):
                       {" "}
                       <Link
-                        href="https://www.nobco.nl/over-nobco/kwaliteit/internationale-ethische-code"
+                        href="https://nobco.nl/wp-content/uploads/2025/09/1683627782_122022-NOBCO-IEC-2.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-semibold text-orato-blue underline decoration-orato-blue/35 underline-offset-4 transition hover:text-orato-orange hover:decoration-orato-orange"
@@ -451,7 +480,22 @@ export default function PrivacyVerklaringPage() {
                   </p>
                   <div className="mt-4 space-y-2 text-base leading-7 text-orato-dark/80">
                     {contactDetails.map((item) => (
-                      <p key={item}>{item}</p>
+                      <p key={item.label}>
+                        {"content" in item ? (
+                          item.content
+                        ) : "href" in item ? (
+                          <a
+                            href={item.href}
+                            target={item.external ? "_blank" : undefined}
+                            rel={item.external ? "noreferrer" : undefined}
+                            className="font-semibold text-orato-blue underline decoration-orato-blue/30 underline-offset-4 transition hover:decoration-orato-blue"
+                          >
+                            {item.label}
+                          </a>
+                        ) : (
+                          item.label
+                        )}
+                      </p>
                     ))}
                   </div>
                 </div>

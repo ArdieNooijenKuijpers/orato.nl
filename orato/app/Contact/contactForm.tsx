@@ -171,7 +171,7 @@ const ContactForm = () => {
           <textarea
             id="bericht"
             name="bericht"
-            placeholder="Waar kan ik je mee helpen?"
+            placeholder="Waar mag ik je mee helpen?"
             rows={5}
             value={formData.bericht}
             onChange={(e) => updateField("bericht", e.target.value)}
