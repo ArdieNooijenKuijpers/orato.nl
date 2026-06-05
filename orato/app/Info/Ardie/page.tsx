@@ -929,7 +929,7 @@ const ArdiePage = () => {
                 Een leven in beweging
               </p>
               <h2 className={`${notoSerifDisplay.className} mt-3 text-4xl text-center text-white md:text-left md:text-6xl`}>
-                Ontwikkeling als 'rode draad' 
+                Ontwikkeling als &apos;rode draad&apos;
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
                 Geen rechte lijn, juist een golfbeweging van keuzes, verdieping, ondernemerschap, relaties, opleidingen en vakmanschap. Dit is de route waarlangs mijn professionele en persoonlijke leven elkaar blijven voeden:

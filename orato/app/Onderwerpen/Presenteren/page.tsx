@@ -638,7 +638,7 @@ export default function PresenterenPage() {
                       </p>
                       <p>
                         Wel door de richtlijnen te lezen die je vooraf krijgt en
-                        eventueel door het boek 'Be seen now'  van Lee Glickstein te lezen of het boek 'Present!' van Burghard en Wolcken.
+                        eventueel door het boek &apos;Be seen now&apos;  van Lee Glickstein te lezen of het boek &apos;Present!&apos; van Burghard en Wolcken.
                       </p>
                       <p>
                         Geen voorbereiding dus maar wel een portie moed en
