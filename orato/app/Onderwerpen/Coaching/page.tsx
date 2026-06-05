@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
+import QuoteBadge from "../../components/ardie/QuoteBadge";
 import FooterComp from "../../components/Navigation/Footer";
 import CoachingConversationIllustration from "../../components/motion/CoachingConversationIllustration";
 import InteractiveGlowPanel from "../../components/motion/InteractiveGlowPanel";
@@ -20,6 +21,7 @@ const topicCards = [
   {
     title: "Bewustwording vergroten",
     text: "Jouw blinde vlekken in beeld krijgen met mijn analytisch vermogen als spiegel van de realiteit. En soms is dat alleen al genoeg om anders te kunnen handelen.",
+    quote: "Mensen staan op voor zover ze zichzelf kennen.",
   },
   {
     title: "Keuzes maken",
@@ -32,14 +34,17 @@ const topicCards = [
   {
     title: "Zelfvertrouwen voelen",
     text: "Iets goed willen doen, in de ogen van anderen en ook volgens je eigen maatstaven, kan motiverend maar ook tegen je werken. Senang zijn met wie je bent en hoe je doet, werkt altijd. Men noemt mij een makelaar in zelfvertrouwen.",
+    quote: "Druk maken is voor compressors. Koen Huiskes",
   },
   {
     title: "Gezonder en lichter leven",
     text: "Als dit jou betreft weet je wat daarmee wordt bedoeld. Je bent succesvol, hebt je leven prima op orde en toch houdt iets je tegen. Het kan letterlijk over je lijf gaan of figuurlijk aan de orde zijn. De tijd is rijp voor verandering.",
+    quote: "Je houden aan de afspraken met jezelf, dat is vaak het allermoeilijkst.",
   },
   {
     title: "Echt doen",
-    text: "Verantwoordelijkheid nemen en ernaar handelen. Doen wat ertoe doet. Ik help je van oude patronen naar nieuwe patronen doen. Ik word ervaren als een resultaatgerichte en pragmatische coach die de zaag scherp houdt.",
+    text: "Verantwoordelijkheid nemen en ernaar handelen. Doen wat ertoe doet. Ik help je van oude patronen naar nieuwe patronen doen. Ik word ervaren als een resultaatgerichte en pragmatische coach die 'de zaag scherp houdt'.",
+    quote: "Het is zoals het is, realisme werkt.",
   },
 ];
 
@@ -211,7 +216,7 @@ export default function CoachingPage() {
                   href="/Contact"
                   className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-blue"
                 >
-                  Kennismakingsgesprek
+                  Vrijblijvend kennismaken 
                 </Link>
                 <Link
                   href="/Info/Ardie"
@@ -241,20 +246,37 @@ export default function CoachingPage() {
                     Welkom
                   </p>
                   <p className="mt-3 text-base leading-7 text-orato-dark/78">
-                    Je bent welkom voor een kennismakingsgesprek.
+                    Coachen is iemand tevoorschijn luisteren.
                   </p>
                   <div className="mt-5 h-px w-24 bg-gradient-to-r from-orato-blue via-orato-blue/60 to-transparent" />
                   <p className="mt-5 text-sm leading-6 text-orato-dark/70">
-                    Coaching door mij, gaat altijd over jou als persoon in de
-                    context van je werk (of studie).
+                    Je bent welkom!
                   </p>
+                </div>
+              </div>
+              <div className="mt-5 overflow-hidden rounded-[2rem] border border-orato-dark/10 bg-white shadow-[0_28px_80px_-45px_rgba(20,20,20,0.45)]">
+                <div className="relative">
+                  <Image
+                    src="/coaching/schilderij wolken.jpeg"
+                    alt="Wolkenlucht als beeld voor denken in mogelijkheden."
+                    width={1400}
+                    height={900}
+                    className="h-auto w-full object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-[32%] items-end bg-gradient-to-t from-white/72 via-white/30 to-transparent px-6 pb-5 pt-16 backdrop-blur-[1px] md:px-7 md:pb-6">
+                    <p
+                      className={`${notoSerifDisplay.className} text-lg leading-tight text-orato-dark/88 drop-shadow-[0_1px_10px_rgba(255,255,255,0.55)] sm:text-xl md:text-2xl`}
+                    >
+                      The sky is the limit. Denken in mogelijkheden is een sociaal geschenk.
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>
           </div>
         </section>
 
-        <CoachingConversationIllustration />
+        {/* <CoachingConversationIllustration /> */}
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
@@ -283,15 +305,14 @@ export default function CoachingPage() {
               <div className="mt-6 rounded-[1.6rem] border border-orato-blue/25 bg-orato-blue/10 p-5">
                 <p className="text-sm leading-7 text-white/82">
                   Heb je specifieke wensen m.b.t. de manier waarop jij jezelf
-                  en een onderwerp wilt kunnen presenteren? Klik dan hier voor
-                  meer informatie over{" "}
+                  en een onderwerp wilt kunnen presenteren? Klik dan{" "}
                   <Link
                     href="/Onderwerpen/Presenteren"
-                    className="cursor-small font-semibold text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    className="cursor-small font-bold uppercase text-white underline decoration-white/40 decoration-2 underline-offset-4 transition hover:decoration-orato-blue"
                   >
-                    Presenteren
+                    HIER
                   </Link>
-                  .
+                  {" "}voor meer informatie.
                 </p>
               </div>
             </Reveal>
@@ -303,11 +324,23 @@ export default function CoachingPage() {
                   className="h-full rounded-[1.8rem]"
                   glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
                 >
-                  <article className="flex h-full flex-col rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-blue/14">
+                  <article className="relative flex h-full flex-col overflow-visible rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-blue/14">
                     <Reveal delay={index * 0.06}>
-                      <h3 className="text-2xl font-semibold text-white">
-                        {card.title}
-                      </h3>
+                      <div className="flex items-start gap-5">
+                        <h3 className="min-w-0 flex-1 text-2xl font-semibold text-white">
+                          {card.title}
+                        </h3>
+                        {"quote" in card ? (
+                          <div className="relative z-30 flex h-20 w-20 shrink-0 items-start justify-end overflow-visible">
+                            <QuoteBadge
+                              id={`coaching-topic-${index}-quote`}
+                              quote={card.quote}
+                              className="origin-top-right scale-[0.82]"
+                              tooltipAlign="right"
+                            />
+                          </div>
+                        ) : null}
+                      </div>
                       <p className="mt-4 text-sm leading-7 text-white/78">
                         {card.text}
                       </p>

@@ -16,11 +16,11 @@ const steps = [
   },
   {
     title: "Onderzoeken",
-    text: "In gesprek ontstaat ruimte voor reflectie, inzicht en het beantwoorden van vragen die gaan over werk, gedrag, gevoel en keuzes.",
+    text: "IIn gesprek of middels ervaringsoefeningen ontstaat ruimte voor reflectie en feedback om antwoord te geven op vragen die gaan over jou, je werk, studie, gedrag, gevoel en gedachten.",
   },
   {
     title: "In Beweging",
-    text: "Vanuit meer bewustwording en zelfvertrouwen kun je anders denken, voelen en handelen in de context van je werk of studie.",
+    text: "Vanuit bewustwording en verantwoordelijkheid nemen, keuzes maken en ervaring opdoen door iets te doen of laten. ",
   },
 ];
 

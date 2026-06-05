@@ -124,13 +124,20 @@ export default function SupervisiePage() {
               <div className="absolute -right-4 bottom-10 hidden h-36 w-36 rounded-full bg-orato-purple/20 blur-3xl lg:block" />
               <div className="relative overflow-hidden rounded-[2.5rem] border border-orato-dark/10 bg-white shadow-[0_40px_120px_-45px_rgba(20,20,20,0.45)]">
                 <Image
-                  src="/supervisie/ardie voor smartboard kracht van supervisie.PNG"
+                  src="/supervisie/raken en geraakt worden.jpg"
                   alt="Ardie tijdens supervisie bij een smartboard."
                   width={1800}
                   height={1300}
                   className="h-full w-full object-cover"
                   priority
                 />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-[24%] items-end bg-gradient-to-t from-white/60 via-white/24 to-transparent px-6 pb-6 pt-16 backdrop-blur-[1px] md:px-8 md:pb-8">
+                  <p
+                    className={`${notoSerifDisplay.className} max-w-none whitespace-nowrap text-base leading-tight text-orato-dark/88 drop-shadow-[0_1px_10px_rgba(255,255,255,0.55)] sm:text-lg md:text-2xl`}
+                  >
+                    Supervisie is raken en geraakt worden.
+                  </p>
+                </div>
               </div>
               <div className="mt-5 rounded-[2rem] border border-orato-dark/10 bg-white/85 p-6 shadow-sm backdrop-blur">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">

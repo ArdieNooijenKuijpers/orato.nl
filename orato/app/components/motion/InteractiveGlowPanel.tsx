@@ -55,7 +55,7 @@ export default function InteractiveGlowPanel({
   return (
     <div
       className={cn(
-        "group relative isolate overflow-hidden",
+        "group relative isolate overflow-visible",
         hoverLift &&
           "transition-transform duration-500 ease-out hover:-translate-y-1",
         className,
@@ -69,20 +69,22 @@ export default function InteractiveGlowPanel({
         } as CSSProperties
       }
     >
-      <div
-        aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500",
-          reducedMotion || !glowPosition.active
-            ? "opacity-0"
-            : "opacity-100",
-          glowClassName,
-        )}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-px rounded-[inherit] border border-white/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+        <div
+          aria-hidden="true"
+          className={cn(
+            "absolute inset-0 opacity-0 transition-opacity duration-500",
+            reducedMotion || !glowPosition.active
+              ? "opacity-0"
+              : "opacity-100",
+            glowClassName,
+          )}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-px rounded-[inherit] border border-white/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+      </div>
       <div className="relative z-10 h-full">{children}</div>
     </div>
   );

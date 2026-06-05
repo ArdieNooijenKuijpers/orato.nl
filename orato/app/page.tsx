@@ -153,6 +153,35 @@ export default function Home() {
         </div>
 
       </div>
+      <section className="relative overflow-hidden bg-orato-light px-4 py-16 text-orato-dark md:px-10 md:py-24">
+        <div className="mx-auto flex min-h-[58vh] max-w-7xl flex-col justify-center gap-12 md:min-h-[68vh] md:flex-row md:items-center md:justify-between">
+          <div className="max-w-3xl">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-orato-dark/55">
+              Daarnaast
+            </p>
+            <h2
+              className={`${noto_Serif_Display.className} cursor-invert cursor-big text-5xl leading-[0.95] text-orato-dark sm:text-6xl md:text-7xl lg:text-8xl`}
+            >
+              Plus veel mensen
+              <span className="block font-bold">op persoonlijke titel!</span>
+            </h2>
+          </div>
+
+          <div className="relative flex w-full max-w-md flex-col items-start md:items-end">
+            <div className="text-[8rem] font-bold leading-none text-orato-orange sm:text-[10rem] md:text-[12rem]">
+              9+
+            </div>
+            <div className="max-w-sm border-t border-orato-dark/15 pt-5 text-left md:text-right">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-orato-dark/60">
+                Gemiddelde evaluatiescore
+              </p>
+              <p className="mt-3 text-xl font-medium leading-snug text-orato-dark md:text-2xl">
+                gebaseerd op ervaringen van deelnemers en opdrachtgevers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className="  min-h-screen bg-orato-light   ">
           <CompanyCircles />
       </div>
