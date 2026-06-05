@@ -50,10 +50,10 @@ const heroContent = {
     "Hallo, welkom op mijn website, bedoeld als kennismaking met mij en mijn werk als MasterCoach, coachsupervisor, coachopleider en presentatietrainer-en coach. Ja, ik heb iets met communicatie en vooral met coaching.",
   body: "Ik help jou graag met wat jij wilt onderzoeken en bereiken. Je bent van harte welkom!",
   roles: [
-    "MasterCoach",
-    "coachsupervisor",
-    "coachopleider",
-    "presentatietrainer-en coach",
+    { label: "Mastercoach", href: "/Onderwerpen/Coaching" },
+    { label: "Supervisie", href: "/Onderwerpen/Supervisie" },
+    { label: "Coachopleider", href: "/Onderwerpen/Supervisie#coachopleider" },
+    { label: "Presentatietrainer", href: "/Onderwerpen/Presenteren" },
   ],
   image: {
     src: "/Ardie/orato_2024_21 september 2024-41_WEB 03634 schommel hand links.jpg",
@@ -667,14 +667,15 @@ const ArdiePage = () => {
                 {heroContent.body}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 grid max-w-2xl grid-cols-2 gap-3 lg:grid-cols-4">
                 {heroContent.roles.map((role) => (
-                  <span
-                    key={role}
-                    className="rounded-full border border-orato-dark/10 bg-white/70 px-4 py-2 text-sm font-medium text-orato-dark shadow-sm"
+                  <Link
+                    key={role.label}
+                    href={role.href}
+                    className="inline-flex min-h-12 cursor-small items-center justify-center rounded-full border border-orato-dark/10 bg-white/75 px-4 py-2 text-center text-sm font-semibold text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:border-orato-orange/45 hover:text-orato-orange hover:shadow-[0_16px_34px_-24px_rgba(20,20,20,0.3)]"
                   >
-                    {role}
-                  </span>
+                    {role.label}
+                  </Link>
                 ))}
               </div>
 
@@ -683,13 +684,12 @@ const ArdiePage = () => {
                   href="/Contact"
                   className={`${kennismakingCtaClassName} bg-orato-dark text-white hover:bg-orato-orange`}
                 >
-                  Plan een kennismaking
-                </Link>
+                  Vrijblijvend kennismaken                </Link>
                 <a
                   href="tel:+31651088688"
                   className="inline-flex min-h-14 items-center justify-center rounded-full border border-orato-dark/20 bg-white/60 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-orange hover:text-orato-orange"
                 >
-                  Bel +31 6 5108 8688
+                  Bel +31 6 510 88 6 88
                 </a>
               </div>
             </div>

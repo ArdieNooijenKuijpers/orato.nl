@@ -410,7 +410,10 @@ export default function SupervisiePage() {
                   </div>
                 </div>
                 <Reveal delay={0.1}>
-                  <article className="rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm">
+                  <article
+                    id="coachopleider"
+                    className="scroll-mt-28 rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm"
+                  >
                     <h3 className="text-2xl font-semibold text-orato-dark">
                       AvC
                     </h3>
