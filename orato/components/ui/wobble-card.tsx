@@ -44,16 +44,6 @@ export const WobbleCard = ({
           {children}
         </div>
         
-        {/* Background noise texture - uncomment when noise.webp is added to public folder */}
-        {/* <div 
-          className="absolute inset-0 rounded-2xl opacity-5 group-hover:opacity-10 transition-opacity duration-300"
-          style={{
-            backgroundImage: "url('/noise.webp')",
-            backgroundSize: "200px 200px",
-            backgroundRepeat: "repeat",
-          }}
-        /> */}
-        
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orato-orange/5 via-transparent to-orato-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </motion.div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import QuoteBadge from "./QuoteBadge";
 
 type HighlightedText = {
   text: string;
@@ -15,6 +16,8 @@ type TimelineImage = {
   placement?: "card" | "edge";
   tall?: boolean;
   wide?: boolean;
+  contain?: boolean;
+  quote?: string;
   badgeLabel?: string;
   badgeIcon?: "crown";
   whiteBackground?: boolean;
@@ -258,12 +261,16 @@ const TimelineImageCard = ({
             alt={image.alt}
             width={image.wide ? 760 : 620}
             height={image.wide ? 620 : 820}
-            className={`object-cover opacity-95 ${
-              image.wide
-                ? "h-[24rem] w-full"
-                : image.tall
-                  ? "h-[30rem] w-full"
-                  : "h-[24rem] w-full"
+            className={`opacity-95 ${
+              image.contain
+                ? "h-auto w-full object-contain"
+                : `object-cover ${
+                    image.wide
+                      ? "h-[24rem] w-full"
+                      : image.tall
+                        ? "h-[30rem] w-full"
+                        : "h-[24rem] w-full"
+                  }`
             }`}
           />
           {image.badgeLabel ? (
@@ -276,6 +283,16 @@ const TimelineImageCard = ({
                 <span>{image.badgeLabel}</span>
               </div>
             )
+          ) : null}
+          {image.quote ? (
+            <div className="pointer-events-none absolute bottom-4 left-4 z-20 rounded-full bg-white p-1 shadow-[0_18px_40px_-24px_rgba(20,20,20,0.45)]">
+              <QuoteBadge
+                id={`timeline-image-quote-${image.src.replace(/[^a-z0-9]/gi, "-")}`}
+                quote={image.quote}
+                className="pointer-events-auto"
+                tooltipAlign="right"
+              />
+            </div>
           ) : null}
         </div>
       ))}
@@ -576,9 +593,15 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                           alt={image.alt}
                           width={1200}
                           height={900}
-                          className={`w-full object-cover ${
-                            image.tall ? "h-80" : image.wide ? "h-72" : "h-64"
-                          }`}
+                            className={`w-full object-cover ${
+                              image.contain
+                                ? "h-auto object-contain"
+                                : image.tall
+                                  ? "h-80"
+                                  : image.wide
+                                    ? "h-72"
+                                    : "h-64"
+                            }`}
                         />
                         {image.badgeLabel ? (
                           image.badgeIcon === "crown" ? (
@@ -597,6 +620,15 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                               <span>{image.badgeLabel}</span>
                             </div>
                           )
+                        ) : null}
+                        {image.quote ? (
+                          <div className="pointer-events-none absolute bottom-3 left-3 z-20 rounded-full bg-white p-1 shadow-[0_18px_40px_-24px_rgba(20,20,20,0.45)]">
+                            <QuoteBadge
+                              id={`timeline-mobile-image-quote-${image.src.replace(/[^a-z0-9]/gi, "-")}`}
+                              quote={image.quote}
+                              className="pointer-events-auto origin-bottom-left scale-[0.82]"
+                            />
+                          </div>
                         ) : null}
                       </div>
                     ))}

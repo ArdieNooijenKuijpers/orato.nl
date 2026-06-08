@@ -219,9 +219,7 @@ const sections = [
         content: (
           <p>
             Bij verhindering van een coachee of supervisant binnen 2 werkdagen
-            voorafgaand aan de tijd waarop een sessie ingepland staat, is het
-            uurtarief van 1 uur, exclusief 21% Btw. verschuldigd. Deze regel
-            geldt ongeacht de reden voor de annulering.
+            voorafgaand aan de tijd waarop een sessie ingepland staat, wordt een 1/2 uur van het uurtarief, exclusief 21% Btw. in rekening gebracht, ongeacht de reden voor de annulering.
           </p>
         ),
       },
@@ -392,7 +390,7 @@ const sections = [
             International Coaching Federation), Senior Practitioner (NOBCO
             Nederlandse Orde van Beroepscoaches, onderdeel van EMCC European
             Mentoring and Coaching Council), ESIA Supervisor en Speaking
-            CircleFacilitator.
+            CircleFacilitator. Je kunt meer informatie vinden over ORATO en de deskundigheid van Ardie op haar website en op LinkedIn. 
             {" "}
             <Link
               href="/Info/Ardie"
@@ -424,9 +422,34 @@ const sections = [
             instantie contact op met Ardie Nooijen-Kuijpers. Een formele klacht
             kan ingediend worden bij ORATO. Op alle met ORATO gesloten
             overeenkomsten is het Nederlands Recht van toepassing. Ardie coacht
-            volgens de ICF Code and Pledge of Ethics en werkt volgens de
-            Internationale Ethische Code (IEC) van EMCC met bijbehorende
-            klachtenprocedures zoals het klachtenreglement 2025 van de NOBCO.
+            volgens de{" "}
+            <Link
+              href="https://coachingfederation.org/credentialing/coaching-ethics/icf-code-of-ethics/"
+              target="_blank"
+              rel="noreferrer"
+              className="cursor-small font-semibold underline decoration-orato-orange/35 underline-offset-4 transition hover:text-orato-orange hover:decoration-orato-orange"
+            >
+              ICF Code and Pledge of Ethics
+            </Link>{" "}
+            en werkt volgens de{" "}
+            <Link
+              href="https://nobco.nl/wp-content/uploads/2025/09/EMCC-Global-Ethics-Guidance-for-Coaching-Using-Technology-AI-v1-0-1.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="cursor-small font-semibold underline decoration-orato-orange/35 underline-offset-4 transition hover:text-orato-orange hover:decoration-orato-orange"
+            >
+              Internationale Ethische Code (IEC) van EMCC
+            </Link>{" "}
+            met bijbehorende klachtenprocedures zoals het{" "}
+            <Link
+              href="https://nobco.nl/wp-content/uploads/2025/09/1747314246_NL-NOBCO-klachtenreglement-2025.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="cursor-small font-semibold underline decoration-orato-orange/35 underline-offset-4 transition hover:text-orato-orange hover:decoration-orato-orange"
+            >
+              klachtenreglement 2025 van de NOBCO
+            </Link>
+            .
           </p>
         ),
       },
@@ -435,15 +458,41 @@ const sections = [
 ];
 
 const contactDetails = [
-  "Drs. Ardie Nooijen-Kuijpers",
-  "Rutger van den Broeckelaan 3",
-  "5671 EB Nuenen",
-  "+31 40 284 29 01 of +31 6 5108 8688",
-  "ardie@orato.info",
-  "www.orato.nl",
-  "KvK 160 65 919",
-  "Btw. Nummer NL001890491B36",
-  "IBAN NL40 RABO 01774.110.74",
+  { label: "Drs. Ardie Nooijen-Kuijpers" },
+  { label: "Rutger van den Broeckelaan 3" },
+  { label: "5671 EB Nuenen" },
+  {
+    label: "+31 40 284 29 01 of +31 6 5108 8688",
+    content: (
+      <>
+        <a
+          href="tel:+31402842901"
+          className="font-semibold text-orato-blue underline decoration-orato-blue/30 underline-offset-4 transition hover:decoration-orato-blue"
+        >
+          +31 40 284 29 01
+        </a>
+        {" of "}
+        <a
+          href="tel:+31651088688"
+          className="font-semibold text-orato-blue underline decoration-orato-blue/30 underline-offset-4 transition hover:decoration-orato-blue"
+        >
+          +31 6 5108 8688
+        </a>
+      </>
+    ),
+  },
+  {
+    label: "ardie@orato.info",
+    href: "mailto:ardie@orato.info",
+  },
+  {
+    label: "www.orato.nl",
+    href: "https://www.orato.nl",
+    external: true,
+  },
+  { label: "KvK 160 65 919" },
+  { label: "Btw. Nummer NL001890491B36" },
+  { label: "IBAN NL40 RABO 01774.110.74" },
 ];
 
 export default function AlgemeneVoorwaardenPage() {
@@ -468,7 +517,7 @@ export default function AlgemeneVoorwaardenPage() {
 
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <a
-                    href="/downloads/Orato%20-%20Algemene%20Voorwaarden.pdf"
+                    href="/downloads/Algemene%20voorwaarden%20ORATO%202025%20.pdf"
                     download
                     className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-orange"
                   >
@@ -575,7 +624,22 @@ export default function AlgemeneVoorwaardenPage() {
               <div className="rounded-[2rem] bg-orato-light/75 p-6">
                 <div className="space-y-2 text-base leading-7 text-orato-dark/80">
                   {contactDetails.map((item) => (
-                    <p key={item}>{item}</p>
+                    <p key={item.label}>
+                      {"content" in item ? (
+                        item.content
+                      ) : "href" in item ? (
+                        <a
+                          href={item.href}
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noreferrer" : undefined}
+                          className="font-semibold text-orato-blue underline decoration-orato-blue/30 underline-offset-4 transition hover:decoration-orato-blue"
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        item.label
+                      )}
+                    </p>
                   ))}
                 </div>
               </div>

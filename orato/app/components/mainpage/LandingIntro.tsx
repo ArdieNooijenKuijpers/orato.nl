@@ -5,13 +5,10 @@ import LandingIntroClient from "./LandingIntroClient";
 
 const INTRO_VIDEO_WEBM = "/Homepage/LandingAnimation/landing-intro.webm";
 const INTRO_VIDEO_MP4 = "/Homepage/LandingAnimation/landing-intro.mp4";
-const INTRO_VIDEO_LEGACY_MP4 =
-  "/Homepage/LandingAnimation/Video%20ardie%20DEF%20zonder%20fade%20PLAATSEN%20Start%20HOMEPAGE.mp4";
 
 const videoSourceCandidates = [
   { src: INTRO_VIDEO_WEBM, type: "video/webm" as const },
   { src: INTRO_VIDEO_MP4, type: "video/mp4" as const },
-  { src: INTRO_VIDEO_LEGACY_MP4, type: "video/mp4" as const },
 ];
 
 const publicFileExists = (publicPath: string) =>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display, Tangerine } from "next/font/google";
+import QuoteBadge from "../../components/ardie/QuoteBadge";
 import FooterComp from "../../components/Navigation/Footer";
 import CoachingConversationIllustration from "../../components/motion/CoachingConversationIllustration";
 import InteractiveGlowPanel from "../../components/motion/InteractiveGlowPanel";
@@ -20,26 +21,30 @@ const topicCards = [
   {
     title: "Bewustwording vergroten",
     text: "Jouw blinde vlekken in beeld krijgen met mijn analytisch vermogen als spiegel van de realiteit. En soms is dat alleen al genoeg om anders te kunnen handelen.",
+    quote: "Mensen staan op voor zover ze zichzelf kennen.",
   },
   {
     title: "Keuzes maken",
-    text: "Leven door te handelen vanuit een innerlijk kompas in plaats van te veel afgestemd zijn op de ander en de buitenwereld. Niet langer uitstellen, of het nu gaat over je werk of prive.",
+    text: "Leven door te handelen vanuit een innerlijk kompas in plaats van te veel afgestemd zijn op de ander en de buitenwereld. Niet langer uitstellen, of het nu gaat over je werk of privé.",
   },
   {
     title: "Overtuigend(er) overkomen",
-    text: "Of juist minder hard, bedreigend. Zoals dat echt past bij jouw persoonlijkheid en bij de functie of rol die je hebt.",
+    text: "Of Juist de congruentie tussen ‘binnen- en buitenkant’ oftewel ‘performance ‘ersus ‘voelen en denken’ is vaak onderwerp van een coachtraject. ",
   },
   {
     title: "Zelfvertrouwen voelen",
     text: "Iets goed willen doen, in de ogen van anderen en ook volgens je eigen maatstaven, kan motiverend maar ook tegen je werken. Senang zijn met wie je bent en hoe je doet, werkt altijd. Men noemt mij een makelaar in zelfvertrouwen.",
+    quote: "Druk maken is voor compressors. Koen Huiskes",
   },
   {
     title: "Gezonder en lichter leven",
     text: "Als dit jou betreft weet je wat daarmee wordt bedoeld. Je bent succesvol, hebt je leven prima op orde en toch houdt iets je tegen. Het kan letterlijk over je lijf gaan of figuurlijk aan de orde zijn. De tijd is rijp voor verandering.",
+    quote: "Je houden aan de afspraken met jezelf, dat is vaak het allermoeilijkst.",
   },
   {
     title: "Echt doen",
-    text: "Verantwoordelijkheid nemen en ernaar handelen. Doen wat ertoe doet. Ik help je van oude patronen naar nieuwe patronen doen. Ik word ervaren als een resultaatgerichte en pragmatische coach die de zaag scherp houdt.",
+    text: "Verantwoordelijkheid nemen en ernaar handelen. Doen wat ertoe doet. Ik help je van oude patronen naar nieuwe patronen doen. Ik word ervaren als een resultaatgerichte en pragmatische coach die 'de zaag scherp houdt'.",
+    quote: "Het is zoals het is, realisme werkt.",
   },
 ];
 
@@ -49,15 +54,16 @@ const specialties = [
     text: [
       "Ik coach therapeutisch waar nodig en gewenst, dat wil zeggen met emotionele diepgang. Iemands verleden maakt namelijk deel uit van de oplossing in de toekomst.",
       "Met name met mijn jarenlange ervaring als paramedisch therapeut met kennis van psychopathologie, als NLP-Master, Relational Presence facilitator en met mijn TA-deskundigheid gespecialiseerd in herbeslissingswerk kan ik je dan helpen.",
-      "Bijvoorbeeld als er op het werk ook een persoonlijk, of meer prive, issue meespeelt waar aandacht voor nodig is. Externe objectiviteit en een emotioneel veilige omgeving is dan zeker gewenst. Een psycholoog is niet aan de orde maar toch...",
+      "Bijvoorbeeld als er op het werk ook een persoonlijk, of meer privé, issue meespeelt waar aandacht voor nodig is. Externe objectiviteit en een emotioneel veilige omgeving is dan zeker gewenst. Een psycholoog is niet aan de orde maar toch...",
     ],
+    quote: "Je hoeft je niet goed te voelen, je moet goed voelen. Léon Vasterink",
   },
   {
     title: "Expressie Coaching",
     text: [
-      "Voor als jij je wilt uiten (verbaal en non-verbaal) zoals dat past bij jou als persoon en past bij jouw verantwoordelijkheden (professioneel en prive).",
-      "Aan de slag dus met de zogenaamde buitenkant, jouw persoonlijke uitstraling en manier van communiceren en met de binnenkant oftewel jouw gedachtes en gevoelens.",
-      "Dit vraagt enerzijds om innerlijk veranderwerk (transformationele coaching), door vragen te beantwoorden zoals Wie ben jij? en Hoe wil je gekend worden? en anderzijds om moed zodat jij jezelf daadwerkelijk laat zien en horen op basis van alle do's en don'ts op het gebied van communiceren en presenteren.",
+      "Voor als jij je wilt uiten (verbaal en non-verbaal) zoals dat past bij jou als persoon en past bij jouw verantwoordelijkheden (professioneel en privé).",
+      "Aan de slag dus met de zogenaamde buitenkant, jouw persoonlijke uitstraling en manier van communiceren en met de binnenkant oftewel jouw overtuigingen en gevoelens.",
+      "Dit vraagt enerzijds om innerlijk veranderwerk (transformationele coaching), door vragen te beantwoorden zoals Wie ben ik? en Hoe wil ik gekend worden? en anderzijds om moed zodat jij jezelf daadwerkelijk laat zien en horen op basis van alle do's en don'ts op het gebied van communiceren en presenteren.",
     ],
   },
   {
@@ -78,10 +84,11 @@ const specialties = [
   {
     title: "Communicatie Coaching",
     text: [
-      "Vaak, eigenlijk altijd, is anders communiceren met anderen (en jezelf) belangrijk om iets te laten lukken. Dat geldt voor collega's onderling, in gesprek met externe contacten, tijdens eens overleg, advies- of verkoopgesprek etc.",
-      "In het bijzonder coach ik ook kinderen vanaf 15 jaar met hun ouders en help ik liefdespartners met hun manier van communiceren.",
+      "Vaak, eigenlijk altijd, is anders communiceren met anderen (en jezelf) belangrijk om iets te laten lukken. Dat geldt voor collega's onderling, in gesprek met externe contacten, tijdens een overleg, advies- of verkoopgesprek, praten met naasten etc.",
+      "In het bijzonder coach ik ook kinderen vanaf 15 jaar met of zonder hun ouders en help ik liefdespartners met hun manier van communiceren.",
       "Aan het werk dus, om praktisch en respectvol in gesprek te gaan op basis van diverse communicatietechnieken, communicatiestijlen en liefdestalen, met oprechte waardering, voorbij het oordeel. Impactvolle gespreksvaardigheden kun je leren.",
     ],
+    quote: "Alles is een 'Act of love' of een 'Cry for love'.",
   },
 ];
 
@@ -132,7 +139,7 @@ const examples = [
   "Ik durf geen risico's te lopen terwijl ik dat nodig heb om verder te komen.",
   "Wat zijn mijn drijfveren en wat wil IK nou?",
   "Ik wil eindelijk doen wat ik altijd al wil, namelijk...",
-  "Effectief communiceren, hoe doe ik dat?",
+  "Ik wil meer invloed en het verschil kunnen maken!",
   "Hoe krijg ik overzicht?",
   "Ik wil een liefdespartner.",
   "Ik wil niet langer opzien tegen mensen.",
@@ -146,12 +153,12 @@ const references = [
   {
     quote:
       "Ik heb jou ervaren als een fijn, oprecht mens, bij wie ik me volkomen op mijn gemak en veilig voelde. En ook als ik dacht, wat moeten we nu, wist je dat aan te raken wat me verder hielp en ik nodig had. Met een zachte, maar vaste hand. Dank voor je wijsheid, inlevingsvermogen en inzicht. Jij hebt me laten ervaren dat ook als het niet duidelijk is wat er speelt of hoe het moet, ik al doende op weg kom. Veel dank!",
-    name: "Henriette den Hartog",
+    name: "Henriëtte den Hartog",
     role: "Advocaat Generaal Openbaar Ministerie",
   },
   {
     quote:
-      "Coaching door Ardie is absoluut zinvol. Alles wat ik heb geleerd kan ik zowel op het werk als prive toepassen. Het zorgt ervoor dat ik me professioneler kan opstellen, maar toch dicht bij mezelf kan blijven.",
+      "Coaching door Ardie is absoluut zinvol. Alles wat ik heb geleerd kan ik zowel op het werk als privé toepassen. Het zorgt ervoor dat ik me professioneler kan opstellen, maar toch dicht bij mezelf kan blijven.",
     name: "Meggie Spierings",
     role: "Projectleider gemeente",
   },
@@ -163,7 +170,7 @@ const references = [
   },
   {
     quote:
-      "Ardie, je hebt me niet alleen geholpen mijn uitdagingen rondom stotteren aan te pakken, maar ook om meer zelfvertrouwen te ontwikkelen en te ontdekken waar mijn kracht en passie liggen. Dankjewel voor je inzichten en de veilige ruimte die je hebt gecreeerd om aan mezelf te werken. Je hebt echt het verschil gemaakt en dat waardeer ik enorm.",
+      "Ardie, je hebt me niet alleen geholpen mijn uitdagingen rondom stotteren aan te pakken, maar ook om meer zelfvertrouwen te ontwikkelen en te ontdekken waar mijn kracht en passie liggen. Dankjewel voor je inzichten en de veilige ruimte die je hebt gecreëerd om aan mezelf te werken. Je hebt echt het verschil gemaakt en dat waardeer ik enorm.",
     name: "Joost Rijksen",
     role: "Beleidsmedewerker Gemeente Geldrop-Mierlo",
   },
@@ -211,7 +218,7 @@ export default function CoachingPage() {
                   href="/Contact"
                   className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-blue"
                 >
-                  Kennismakingsgesprek
+                  Vrijblijvend kennismaken 
                 </Link>
                 <Link
                   href="/Info/Ardie"
@@ -241,20 +248,45 @@ export default function CoachingPage() {
                     Welkom
                   </p>
                   <p className="mt-3 text-base leading-7 text-orato-dark/78">
-                    Je bent welkom voor een kennismakingsgesprek.
+                    Coachen is iemand tevoorschijn luisteren.
                   </p>
                   <div className="mt-5 h-px w-24 bg-gradient-to-r from-orato-blue via-orato-blue/60 to-transparent" />
                   <p className="mt-5 text-sm leading-6 text-orato-dark/70">
-                    Coaching door mij, gaat altijd over jou als persoon in de
-                    context van je werk (of studie).
+                    Je bent welkom!
                   </p>
+                </div>
+              </div>
+              <div className="mt-5 overflow-hidden rounded-[2rem] border border-orato-dark/10 bg-white shadow-[0_28px_80px_-45px_rgba(20,20,20,0.45)]">
+                <div className="relative">
+                  <Image
+                    src="/coaching/schilderij wolken.jpeg"
+                    alt="Wolkenlucht als beeld voor denken in mogelijkheden."
+                    width={1400}
+                    height={900}
+                    className="h-auto w-full object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-[32%] items-end bg-gradient-to-t from-white/72 via-white/30 to-transparent px-6 pb-5 pt-16 backdrop-blur-[1px] md:px-7 md:pb-6">
+                    <p
+                      className={`${notoSerifDisplay.className} text-lg leading-tight text-orato-dark/88 drop-shadow-[0_1px_10px_rgba(255,255,255,0.55)] sm:text-xl md:text-2xl`}
+                    >
+                      The sky is the limit. Denken in mogelijkheden is een sociaal geschenk.
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>
           </div>
         </section>
 
-        <CoachingConversationIllustration />
+        {/* <CoachingConversationIllustration /> */}
+
+        <section className="bg-orato-light px-4 py-7 text-center md:px-8 md:py-9 lg:px-10">
+          <p
+            className={`${tangerine.className} text-4xl font-bold leading-none text-orato-blue md:text-5xl`}
+          >
+            Even stil staan . . . om verder te komen!
+          </p>
+        </section>
 
         <section className="bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr]">
@@ -283,15 +315,14 @@ export default function CoachingPage() {
               <div className="mt-6 rounded-[1.6rem] border border-orato-blue/25 bg-orato-blue/10 p-5">
                 <p className="text-sm leading-7 text-white/82">
                   Heb je specifieke wensen m.b.t. de manier waarop jij jezelf
-                  en een onderwerp wilt kunnen presenteren? Klik dan hier voor
-                  meer informatie over{" "}
+                  en een onderwerp wilt kunnen presenteren? Klik dan{" "}
                   <Link
                     href="/Onderwerpen/Presenteren"
-                    className="cursor-small font-semibold text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    className="cursor-small font-bold uppercase text-white underline decoration-white/40 decoration-2 underline-offset-4 transition hover:decoration-orato-blue"
                   >
-                    Presenteren
+                    HIER
                   </Link>
-                  .
+                  {" "}voor meer informatie.
                 </p>
               </div>
             </Reveal>
@@ -303,11 +334,23 @@ export default function CoachingPage() {
                   className="h-full rounded-[1.8rem]"
                   glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
                 >
-                  <article className="flex h-full flex-col rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-blue/14">
+                  <article className="relative flex h-full flex-col overflow-visible rounded-[1.8rem] border border-orato-blue/20 bg-orato-blue/10 p-6 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-blue/14">
                     <Reveal delay={index * 0.06}>
-                      <h3 className="text-2xl font-semibold text-white">
+                      <div className="flex items-start gap-5">
+                        <h3 className="min-w-0 flex-1 text-2xl font-semibold text-white">
                         {card.title}
                       </h3>
+                        {card.quote ? (
+                          <div className="relative z-30 flex h-20 w-20 shrink-0 items-start justify-end overflow-visible">
+                            <QuoteBadge
+                              id={`coaching-topic-${index}-quote`}
+                              quote={card.quote}
+                              className="origin-top-right scale-[0.82]"
+                              tooltipAlign="right"
+                            />
+                          </div>
+                        ) : null}
+                      </div>
                       <p className="mt-4 text-sm leading-7 text-white/78">
                         {card.text}
                       </p>
@@ -331,10 +374,10 @@ export default function CoachingPage() {
             </h2>
             <div className="mt-8 overflow-hidden rounded-[2.4rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
               <Image
-                src="/coaching/•geknield flipover koenERF03509_WEB.jpg"
-                alt="Ardie tijdens een coachsessie bij een flipover."
+                src="/coaching/•koen buiten cirkel 2 ERF03538_WEB.jpg"
+                alt="Ardie en Koen buiten in de tuin in een cirkel."
                 width={1800}
-                height={1200}
+                height={1013}
                 className="h-auto w-full object-cover"
               />
             </div>
@@ -345,10 +388,23 @@ export default function CoachingPage() {
                   delay={index * 0.06}
                   className={index === 0 ? "lg:col-span-2" : undefined}
                 >
-                  <article className="rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
-                    <h3 className="text-2xl font-semibold text-orato-dark">
-                      {item.title}
-                    </h3>
+                  <article className="relative overflow-visible rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
+                    <div className="flex items-start gap-5">
+                      <h3 className="min-w-0 flex-1 text-2xl font-semibold text-orato-dark">
+                        {item.title}
+                      </h3>
+                      {item.quote ? (
+                        <div className="relative z-30 flex h-20 w-20 shrink-0 items-start justify-end overflow-visible">
+                          <QuoteBadge
+                            id={`coaching-specialty-${index}-quote`}
+                            quote={item.quote}
+                            className="origin-top-right scale-[0.82]"
+                            badgeClassName="text-orato-dark"
+                            tooltipAlign="right"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
                     <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
                       {item.text.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
@@ -358,6 +414,11 @@ export default function CoachingPage() {
                 </Reveal>
               ))}
             </div>
+            <p
+              className={`${tangerine.className} mt-10 text-center text-4xl font-bold leading-none text-orato-blue md:text-5xl`}
+            >
+              Even stil staan . . . om verder te komen!
+            </p>
           </div>
         </section>
 
@@ -373,7 +434,7 @@ export default function CoachingPage() {
                 Pragmatisch, zorgvuldig en met emotionele diepgang.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
-                Na een orientatiegesprek waarin we kennismaken en ter tafel
+                Na een oriëntatiegesprek waarin we kennismaken en ter tafel
                 brengen wat-ertoe-doet, stellen we een werkovereenkomst op.
                 Eventueel wordt ook afgestemd met een leidinggevende en wordt
                 gevraagd naar zijn of haar succescriteria, bij voorkeur in een
@@ -387,7 +448,7 @@ export default function CoachingPage() {
                     <li>
                       Middels de kunst van het vragen stellen en een grote
                       diversiteit aan (ervarings)oefeningen, modellen en
-                      theorieen kom je tot inzichten en verandering.
+                      theorieën kom je tot inzichten en verandering.
                     </li>
                     <li>
                       Coaching gebeurt op basis van de 8 coachcompetenties van
@@ -407,7 +468,7 @@ export default function CoachingPage() {
                       agenda&apos;s past.
                     </li>
                     <li>
-                      Bijvoorbeeld aanvankelijk eens per twee weken, 1 tot 1,5
+                      Bijvoorbeeld aanvankelijk eens per twee weken, 1 tot anderhalf
                       uur.
                     </li>
                     <li>
@@ -460,24 +521,22 @@ export default function CoachingPage() {
                 <article className="rounded-[2rem] border border-orato-blue/20 bg-orato-blue/10 p-7">
                   <h3 className="text-2xl font-semibold">Kaders en vertrouwen</h3>
                   <p className="mt-4 text-sm leading-7 text-white/82">
-                    Uiteraard AVG-proof volgens Privacyverklaring en Algemene
-                    voorwaarden. Volgens de Ethische gedragscodes van de ICF en
-                    NOBCO/EMCC, met aandacht voor zorgvuldigheid en vertrouwen.
-                    Lees meer in de{" "}
+                    Uiteraard AVG-proof volgens{" "}
                     <Link
                       href="/Info/PrivacyVerklaring"
                       className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
                     >
-                      privacyverklaring
+                      Privacyverklaring
                     </Link>{" "}
                     en{" "}
                     <Link
                       href="/Info/AlgemeneVoorwaarden"
                       className="cursor-small font-semibold underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
                     >
-                      algemene voorwaarden
+                      Algemene voorwaarden
                     </Link>
-                    .
+                    . Volgens de Ethische gedragscodes van de ICF en
+                    NOBCO/EMCC, met aandacht voor zorgvuldigheid en vertrouwen.
                   </p>
                   <p className="mt-4 text-sm leading-7 text-white/82">
                     APK. Ardie&apos;s Periodieke Koaching. Ooit zo genoemd door
@@ -488,9 +547,9 @@ export default function CoachingPage() {
                   </p>
                   <Link
                     href="/Info/Ardie"
-                    className="mt-6 inline-flex cursor-small items-center text-sm font-semibold uppercase tracking-[0.16em] text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-orato-blue"
+                    className="mt-6 inline-flex min-h-12 cursor-small items-center justify-center rounded-full bg-white px-5 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:bg-orato-blue hover:text-white"
                   >
-                    Lees meer over Ardie
+                    Meer over Orato
                   </Link>
                 </article>
               </Reveal>
@@ -620,7 +679,7 @@ export default function CoachingPage() {
                 href="tel:+31651088688"
                 className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-blue hover:text-orato-blue"
               >
-                Bel +31 6 51088688
+                Bel +31 6 510 88 6 88
               </Link>
             </div>
           </Reveal>

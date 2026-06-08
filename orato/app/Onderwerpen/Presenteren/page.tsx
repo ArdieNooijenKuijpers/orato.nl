@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Noto_Serif_Display } from "next/font/google";
+import { CalendarCheck, Download } from "lucide-react";
+import QuoteBadge from "../../components/ardie/QuoteBadge";
 import InschrijfFormModal from "../../inschrijfformulier/InschrijfFormModal";
 import { inschrijfDataOptions } from "../../inschrijfformulier/inschrijfData";
 import FooterComp from "../../components/Navigation/Footer";
@@ -93,7 +95,7 @@ const speakingCircleSections = [
     body: [
       "Voor iedereen die zich op zijn/haar gemak wil voelen in contact met een ander. Als je in gesprek bent met wie dan ook maar juist ook als je je wilt presenteren voor een groep, of in een groep.",
       "In het kader van effectieve meetings en high performing teams is wetenschappelijk bewezen dat psychologische veiligheid het allerbelangrijkst is. Relational Presence is voorwaardelijk om goed contact te maken, in welke rol dan ook.",
-      "De Speaking Circle methode is geschikt voor beginnende en ervaren sprekers, voor jong en oud, voor toepassing op je werk of prive.",
+      "De Speaking Circle methode is geschikt voor beginnende en ervaren sprekers, voor jong en oud, voor toepassing op je werk of privé.",
     ],
   },
   {
@@ -101,8 +103,8 @@ const speakingCircleSections = [
     body: [
       "Het is geen vaardigheidstraining waar je allerlei tips en technieken leert. Het nut hiervan heeft zich al bewezen in allerlei andere presentatietrainingen. De basis van impactvol spreken is en blijft authenticiteit.",
       "Speaking Circle is met name geschikt als je je zelfvertrouwen voor een groep wilt vergroten en je eigen stijl tot zijn recht wilt laten komen. Er wordt uitgegaan van het unieke van ieder mens.",
-      "Je krijgt de gelegenheid om alleen maar te zijn op het moment zelf, in een positieve omgeving. Dit betekent dat je zegt wat gezegd moet worden, doet wat gedaan moet worden en stil bent waar je aanwezigheid voldoende is. Echtheid boeit en dat is wat je boodschap doet overkomen.",
-      "Je leert dus echt te zijn. Wanneer je helemaal jezelf bent, maak je indruk op anderen, motiveer en inspireer je zelfs.",
+      "Je krijgt de gelegenheid om alleen maar te ZIJN op het moment zelf, in een positieve omgeving. Dit betekent dat je zegt wat gezegd moet worden, doet wat gedaan moet worden en stil bent waar je aanwezigheid voldoende is. Echtheid boeit en dat is wat je boodschap doet overkomen.",
+      "Je leert dus écht te zijn. Wanneer je helemaal jezelf bent, maak je indruk op anderen, motiveer en inspireer je zelfs.",
       "Ook uniek is de sfeer waarin je leert. Er wordt op een specifieke wijze, positieve feedback gegeven op jouw manier van zijn. Applaus ontvangen krijgt een andere dimensie.",
       "Het effect is groot. Omdat je ervaart hoe 't is jezelf volledig te kunnen laten zien en horen zul je deze rijkdom merken in alle mogelijke en onmogelijke situaties waarin je jezelf wilt presenteren c.q. profileren. Natuurlijk geldt ook hier oefening baart kunst oftewel herhaling doet wonderen.",
     ],
@@ -112,21 +114,38 @@ const speakingCircleSections = [
     body: [
       "De facilitator opent om de toon te zetten. Er wordt uitleg gegeven over de manier van werken, de richtlijnen voor absolute veiligheid worden gegeven en vragen worden beantwoord.",
       "Wanneer je voor de groep staat begin je vanuit stilte. Zo kun je de aanwezigheid van de groep en jouw gevoelens en gedachten ervaren. Hierna heb je een bepaalde tijd de kans om elk gewenst thema te bespreken.",
-      "Je hoeft niet te spreken, je mag! Stil zijn en kijken, bewegen, emoties tonen of zelfs zingen, alles kan zolang je anderen en jezelf niet schaadt. Altijd met aandacht om het luisteren te kunnen ontvangen, in contact met je luisteraars.",
+      "Je hoeft niet te spreken, je mag STIL zijn zijn en kijken, bewegen, emoties tonen of zelfs zingen, alles kan zolang je anderen en jezelf niet schaadt. Altijd met aandacht om het luisteren te kunnen ontvangen, in contact met je luisteraars.",
       "Jouw spreekbeurten krijg je eventueel op video. Tijdens een volgende Speaking Circle kun je je vaardigheden aanvullen met nieuwe ervaringen.",
     ],
   },
 ];
 
+const relationalPresenceMore = {
+  title: "NOG ZOVEEL MEER",
+  body: [
+    "Relational Presence geeft je toegang tot:",
+    "Authentic Presentation and Fear of public speaking. Learning to stay connected while being seen.",
+    "Authentic Leadership / High performing teams. Leading from presence instead of Authority.",
+    "Effective meetings / Facilitation / Group Leadership. Create relational (psychological) safety in groups.",
+    "Coaching and Deep listening. Practicing relational listening without directing.",
+    "Nervous system regulation / Overwhelm / Burn out. Co-regulation in connection with others.",
+    "Social anxiety / distrust / impact of polarisation. Connection based on RP reduces anxiety.",
+    "Meaningful conversations. Creating spaces where people feel truly being heard.",
+    "The anti-performance movement. Offering the possibility meeting yourself and others as you are, beyond constantly online and offline performing.",
+    "Personal Growth / Self discovery. Revealing who we are when we let go of our 'masks'.",
+    "Belonging. The experience of being seen without having to be different, no longer feeling isolated.",
+  ],
+};
+
 const workshopExamples = [
   "Effectief Presenteren (MEE Nederland)",
-  "Aansprekend (s)preken (Kerkelijke voorgangers)",
+  "Aansprekend (s)Preken (Kerkelijke voorgangers)",
   "Verbindend presenteren (Gemeentes)",
   "Sterk overkomen (Bestuursacademie)",
   "Express for Success (inclusief catwalktraining)",
   "Collegiaal communiceren",
   "Authenticiteit in Interactie (Regina Coeli)",
-  "Mentale coaching (Revolution PT)",
+  "Personal Training ipv PT",
   "De eerste indruk (Rabobank)",
   "Contact (Zorgprofesssionals)",
   "Pitchen met Impact (Ondernemers)",
@@ -219,7 +238,7 @@ export default function PresenterenPage() {
                   Wil je werken aan jouw manier van contact maken en
                   presenteren, of dat nu gaat over een gesprek van mens tot mens
                   of over in of voor een groep? Dat kan. Kies de vorm die past
-                  bij jouw vraag: individueel, in een Speaking Circle of in een
+                  bij jouw vraag: individueel maatwerk,, in een Speaking Circle of in een
                   workshop met anderen.
                 </p>
                 <p className="mt-8 text-lg font-semibold text-orato-green md:text-xl">
@@ -238,13 +257,9 @@ export default function PresenterenPage() {
                     <h2
                       className={`${notoSerifDisplay.className} mt-3 text-4xl md:text-6xl`}
                     >
-                      Kies de vorm die past bij jouw vraag.
+                      Kies de weg die past bij jouw leervraag.
                     </h2>
-                    <p className="mt-5 max-w-2xl text-base leading-7 text-orato-dark/75 md:text-lg">
-                      De inhoud raakt hetzelfde vakgebied, maar de aanpak is
-                      duidelijk anders: individueel verdiepen, in een circle
-                      authentiek leren spreken of met een groep samen trainen.
-                    </p>
+
                   </div>
 
                   <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -457,9 +472,8 @@ export default function PresenterenPage() {
 
         <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
           <Reveal className="mx-auto max-w-3xl">
-            <Link
-              href="/Contact"
-              className="group cursor-small relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-orato-green/30 hover:shadow-[0_30px_70px_-36px_rgba(20,20,20,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/40"
+            <div
+              className="group relative block overflow-hidden rounded-[2rem] border border-orato-green/15 bg-gradient-to-br from-white via-white to-orato-green/10 p-6 shadow-sm"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(84,166,94,0.16),transparent_38%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
@@ -481,18 +495,18 @@ export default function PresenterenPage() {
               <p className="relative mt-5 text-base leading-7 text-orato-dark/75">
                 Vaak wordt individueel op-maat-leren gecombineerd met leren in
                 een groep, juist omdat het over contact en communiceren gaat in
-                relatie tot anderen. De sandwich-methode werkt dan goed.
+                relatie tot anderen. De sandwich-methode werkt dan goed: eerst individuele coaching, vervolgens deelnemen aan de dag ‘Authentiek Presenteren met Speaking Circle in Relational Presence’ om daarna weer 1-op-1, verrijkt met feedback, verder te leren.
               </p>
               <p className="relative mt-5 text-base font-semibold text-orato-green md:text-lg">
                 Jij in de volle aandacht en dat voelt nog goed ook.
               </p>
-            </Link>
+            </div>
           </Reveal>
         </section>
 
         <section
           id="speaking-circle"
-          className="overflow-hidden bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10"
+          className="overflow-visible bg-orato-dark px-4 py-16 text-white md:px-8 md:py-24 lg:px-10"
         >
           <div className="mx-auto max-w-7xl">
             <Reveal>
@@ -507,18 +521,30 @@ export default function PresenterenPage() {
                     Authentiek presenteren met Speaking Circle
                   </h2>
                 </div>
-                <div className="grid gap-3 text-sm leading-6 text-white/72 md:grid-cols-3">
-                  <p>Voor wie vrijer wil spreken zonder zichzelf kwijt te raken.</p>
-                  <p>Voor oefenen in een groep, met maximale veiligheid.</p>
-                  <p>Voor minder performen en meer echt contact maken.</p>
+                <div className="flex items-start gap-5">
+                  <div className="grid flex-1 gap-3 text-sm leading-6 text-white/72 md:grid-cols-3">
+                    <p>Voor wie vrijer wil spreken zonder zichzelf kwijt te raken.</p>
+                    <p>Voor oefenen in een groep, met maximale veiligheid.</p>
+                    <p>Voor minder performen en meer echt contact maken.</p>
+                  </div>
+                  <div className="relative z-30 flex h-20 w-20 shrink-0 justify-end overflow-visible">
+                    <QuoteBadge
+                      id="presenteren-speaking-circle-aandacht-quote"
+                      quote="Ervaar de kracht van aandacht."
+                      className="origin-top-right scale-[0.82]"
+                      tooltipAlign="right"
+                    />
+                  </div>
                 </div>
               </div>
             </Reveal>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Link
-                href="/Contact"
+                href="/supervisie/Authentiek%20presenteren%20met%20SPEAKING%20CIRCLE%C2%AE%20en%20Relational%20Presence%C2%AE%202026.pdf"
+                download
                 className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-green px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-orato-dark"
               >
+                <Download className="mr-2 h-4 w-4" aria-hidden="true" />
                 Download hier de informatieflyer
               </Link>
             </div>
@@ -536,28 +562,15 @@ export default function PresenterenPage() {
                     initialSelectedDate={date}
                     triggerClassName="group cursor-small inline-flex w-full items-center justify-between rounded-[1.15rem] border border-white/10 bg-white/6 px-4 py-3 text-left text-sm font-medium text-white/84 transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-green/45 hover:bg-white/10 hover:text-white hover:shadow-[0_16px_34px_-22px_rgba(84,166,94,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/45"
                   >
-                    <span>{date}</span>
-                    <span className="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full border border-white/14 bg-white/8 text-orato-green transition-all duration-300 group-hover:border-orato-green/40 group-hover:bg-orato-green/12 group-hover:text-white">
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 20 20"
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                      >
-                        <path
-                          d="M3 10h10"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M10 5l5 5-5 5"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                    <span>
+                      <span className="block text-xs uppercase tracking-[0.16em] text-orato-green">
+                        Inschrijven
+                      </span>
+                      <span className="mt-1 block">Voor {date}</span>
+                    </span>
+                    <span className="inline-flex flex-none items-center gap-2 rounded-full border border-orato-green/35 bg-orato-green px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 group-hover:bg-white group-hover:text-orato-dark">
+                      <CalendarCheck className="h-4 w-4" aria-hidden="true" />
+                      Hier
                     </span>
                   </InschrijfFormModal>
                 ))}
@@ -568,10 +581,10 @@ export default function PresenterenPage() {
               <div className="self-start lg:flex lg:h-full lg:flex-col lg:gap-5">
                 <div className="overflow-hidden rounded-[2.35rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-44px_rgba(0,0,0,0.55)]">
                   <Image
-                    src="/presenteren/Ardie legt uit aan groep zittend RPN.jpg"
-                    alt="Ardie begeleidt een Speaking Circle groep."
-                    width={1800}
-                    height={1300}
+                    src="/presenteren/Ardie met Stef originele foto.jpeg"
+                    alt="Ardie met Stef tijdens presentatiecoaching."
+                    width={512}
+                    height={512}
                     className="h-auto w-full object-cover"
                   />
                 </div>
@@ -586,18 +599,37 @@ export default function PresenterenPage() {
                 </div>
                 <div className="overflow-hidden rounded-[2.35rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-44px_rgba(0,0,0,0.55)]">
                   <Image
-                    src="/presenteren/Ardie met Stef originele foto.jpeg"
-                    alt="Ardie in gesprek tijdens coaching of training."
-                    width={1024}
-                    height={1024}
+                    src="/supervisie/%20Speaking%20Circkel%20European%20RPN%20meeting.jpeg"
+                    alt="Grote kring tijdens een European RPN Speaking Circle meeting."
+                    width={2000}
+                    height={934}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-[2.35rem] border border-white/12 bg-white/6 shadow-[0_30px_90px_-44px_rgba(0,0,0,0.55)]">
+                  <Image
+                    src="/presenteren/Speaking Circle European rP facilitator Days.jpeg"
+                    alt="Speaking Circle European RP facilitator days."
+                    width={1600}
+                    height={747}
                     className="h-auto w-full object-cover"
                   />
                 </div>
                 <Reveal className="lg:flex-1">
-                  <article className="rounded-[2rem] border border-white/12 bg-white/6 p-7 lg:flex lg:h-full lg:flex-col">
-                    <h3 className="text-2xl font-semibold text-white">
-                      Hoe bereid ik me voor?
-                    </h3>
+                  <article className="relative overflow-visible rounded-[2rem] border border-white/12 bg-white/6 p-7 lg:flex lg:h-full lg:flex-col">
+                    <div className="flex items-start gap-5">
+                      <h3 className="min-w-0 flex-1 text-2xl font-semibold text-white">
+                        Hoe bereid ik me voor?
+                      </h3>
+                      <div className="relative z-30 flex h-20 w-20 shrink-0 justify-end overflow-visible">
+                        <QuoteBadge
+                          id="presenteren-voorbereiding-quote"
+                          quote="Boeiend presenteren is de moed hebben niet te weten wat je gaat zeggen."
+                          className="origin-top-right scale-[0.82]"
+                          tooltipAlign="right"
+                        />
+                      </div>
+                    </div>
                     <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
                       <p>
                         Niet door een presentatie of onderwerp voor te bereiden.
@@ -606,8 +638,7 @@ export default function PresenterenPage() {
                       </p>
                       <p>
                         Wel door de richtlijnen te lezen die je vooraf krijgt en
-                        eventueel door het boek Be seen now van Lee Glickstein of
-                        Present! van Burghard en Wolcken te lezen.
+                        eventueel door het boek &apos;Be seen now&apos;  van Lee Glickstein te lezen of het boek &apos;Present!&apos; van Burghard en Wolcken.
                       </p>
                       <p>
                         Geen voorbereiding dus maar wel een portie moed en
@@ -615,6 +646,24 @@ export default function PresenterenPage() {
                         nieuwsgierig bent naar deze mogelijkheid om jouw manier van
                         presenteren te verbeteren.
                       </p>
+                    </div>
+                  </article>
+                </Reveal>
+                <Reveal delay={0.08}>
+                  <article className="rounded-[2rem] border border-white/12 bg-white/6 p-7 shadow-sm">
+                    <h3 className="text-2xl font-semibold text-white">
+                      {relationalPresenceMore.title}
+                    </h3>
+                    <div className="mt-4 space-y-3 text-sm leading-7 text-white/80">
+                      {relationalPresenceMore.body.map((paragraph, index) =>
+                        index === 0 ? (
+                          <p key={paragraph} className="text-base font-semibold text-white">
+                            {paragraph}
+                          </p>
+                        ) : (
+                          <p key={paragraph}>{paragraph}</p>
+                        ),
+                      )}
                     </div>
                   </article>
                 </Reveal>
@@ -660,15 +709,58 @@ export default function PresenterenPage() {
                     ZIN is een adviserende gesprekspartner voor organisaties die
                     met ziel en zakelijkheid willen werken. Het klooster waarin
                     ZIN is gehuisvest, is stijlvol verbouwd en biedt ruimte aan
-                    2 tot 150 gasten.
+                    2 tot 150 gasten. De combinatie van moderne architectuur en het behoud van de kloostertraditie levert een unieke plek op voor een bijzondere ontmoeting. 
                   </p>
                   <p>
-                    Deze dag wordt in 2026 georganiseerd bij ZIN op dinsdag 24
-                    maart, vrijdag 26 juni en maandag 9 november.
+                    Deze dag wordt in 2026 georganiseerd bij ZIN op{" "}
+                    <InschrijfFormModal
+                      title="Inschrijfformulier"
+                      description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
+                      initialSelectedDate="Dinsdag 24 maart 2026 | 9.30 - 17.30 u"
+                      triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
+                    >
+                      dinsdag 24 maart
+                    </InschrijfFormModal>
+                    ,{" "}
+                    <InschrijfFormModal
+                      title="Inschrijfformulier"
+                      description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
+                      initialSelectedDate="Vrijdag 26 juni 2026 | 9.30 - 17.30 u"
+                      triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
+                    >
+                      vrijdag 26 juni
+                    </InschrijfFormModal>{" "}
+                    en{" "}
+                    <InschrijfFormModal
+                      title="Inschrijfformulier"
+                      description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
+                      initialSelectedDate="Maandag 9 november 2026 | 9.30 - 17.30 u"
+                      triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
+                    >
+                      maandag 9 november
+                    </InschrijfFormModal>
+                    .
                   </p>
                   <p className="font-semibold text-white">
                     Kosten: € 250,- excl. btw./ incl. lunch en video-opnames.
                   </p>
+                  <div className="rounded-[1.5rem] border border-white/40 bg-white p-5 text-orato-dark shadow-[0_20px_50px_-30px_rgba(0,0,0,0.55)]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-green">
+                      Hier
+                    </p>
+                    <p className="mt-2 text-base font-semibold">
+                      Inschrijven voor maandag 9 november 2026
+                    </p>
+                    <InschrijfFormModal
+                      title="Inschrijfformulier"
+                      description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
+                      initialSelectedDate="Maandag 9 november 2026 | 9.30 - 17.30 u"
+                      triggerClassName="mt-4 inline-flex min-h-12 cursor-small items-center justify-center rounded-full bg-orato-green px-5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-orato-dark"
+                    >
+                      <CalendarCheck className="mr-2 h-4 w-4" aria-hidden="true" />
+                      Inschrijven kan hier
+                    </InschrijfFormModal>
+                  </div>
                   <p className="pt-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
                     Klik op deze links voor meer informatie
                   </p>
@@ -771,7 +863,7 @@ export default function PresenterenPage() {
                 </p>
                 <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
                   <p>
-                    In facilitating 6,000+ Speaking Circles over the past 35
+                    In facilitating 7,000+ Speaking Circles over the past 45
                     years I&apos;ve successfully treated all varieties of
                     performance anxiety from abject stage fright to mild unease.
                   </p>
@@ -823,15 +915,6 @@ export default function PresenterenPage() {
               </div>
             </Reveal>
             <div className="mt-10 grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
-              <div className="overflow-hidden rounded-[2.35rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
-                <Image
-                  src="/presenteren/Trainer actief.PNG"
-                  alt="Ardie actief als trainer tijdens een workshop."
-                  width={1600}
-                  height={1100}
-                  className="block h-[22rem] w-full scale-[1.12] object-cover object-top md:h-[28rem]"
-                />
-              </div>
               <article className="rounded-[2rem] border border-orato-green/15 bg-orato-green/10 p-7 shadow-sm">
                 <h3 className="text-2xl font-semibold text-orato-dark">
                   Maatwerk voor groepen
@@ -842,10 +925,19 @@ export default function PresenterenPage() {
                   ))}
                 </div>
               </article>
+              <div className="overflow-hidden rounded-[2.35rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
+                <Image
+                  src="/presenteren/Trainer actief.PNG"
+                  alt="Ardie actief als trainer tijdens een workshop."
+                  width={1600}
+                  height={1100}
+                  className="block h-[22rem] w-full scale-[1.12] object-cover object-top md:h-[28rem]"
+                />
+              </div>
             </div>
             <article className="mt-5 rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-orato-dark/60">
-                Eerdere workshopthema&apos;s
+                  WORKSHOPS
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {workshopExamples.map((example, index) => (
@@ -863,7 +955,25 @@ export default function PresenterenPage() {
                   </Reveal>
                 ))}
               </div>
+              <div className="relative z-30 mt-6 flex justify-end overflow-visible">
+                <QuoteBadge
+                  id="presenteren-workshops-profileringskracht-quote"
+                  quote="Winnen aan profileringskracht is een cadeau voor 't leven!"
+                  className="origin-bottom-right scale-[0.82]"
+                  badgeClassName="text-orato-dark"
+                  tooltipAlign="right"
+                />
+              </div>
             </article>
+            <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-[2rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
+              <Image
+                src="/presenteren/Workshops Ardie traint collega's RPN.jpeg"
+                alt="Ardie traint collega's tijdens een workshop."
+                width={934}
+                height={1469}
+                className="h-auto w-full object-cover"
+              />
+            </div>
           </div>
         </section>
 

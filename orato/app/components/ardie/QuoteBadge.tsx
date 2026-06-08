@@ -6,6 +6,7 @@ type QuoteBadgeProps = {
   id: string;
   quote: string;
   className?: string;
+  badgeClassName?: string;
   tooltipAlign?: "center" | "right";
 };
 
@@ -13,6 +14,7 @@ export default function QuoteBadge({
   id,
   quote,
   className = "",
+  badgeClassName = "text-white mix-blend-difference",
   tooltipAlign = "center",
 }: QuoteBadgeProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,7 +52,7 @@ export default function QuoteBadge({
       aria-expanded={isVisible}
       aria-controls={`quote-tooltip-${id}`}
     >
-      <div className="relative flex h-24 w-24 items-center justify-center text-white mix-blend-difference">
+      <div className={`relative flex h-24 w-24 items-center justify-center ${badgeClassName}`}>
         <svg
           viewBox="0 0 100 100"
           className="absolute inset-0 h-full w-full animate-spin [animation-duration:12s] group-hover:[animation-play-state:paused]"
