@@ -19,6 +19,31 @@ const fillBaseRegistrationFields = async (user: ReturnType<typeof userEvent.setu
 };
 
 describe("InschrijfForm", () => {
+  it("uses the initial selected date and keeps it selected after submit reset", async () => {
+    const user = userEvent.setup();
+    const initialSelectedDate = inschrijfDataOptions[1];
+
+    render(<InschrijfForm initialSelectedDate={initialSelectedDate} />);
+
+    expect(screen.getByRole("radio", { name: initialSelectedDate })).toBeChecked();
+
+    await user.type(screen.getByPlaceholderText("Voornaam Achternaam"), "Ada Lovelace");
+    await user.type(screen.getByPlaceholderText("naam@voorbeeld.nl"), "ada@example.com");
+    await user.type(screen.getByPlaceholderText("+31 6 12345678"), "+31 6 12345678");
+    await user.click(screen.getByRole("radio", { name: /privé/i }));
+    await user.click(screen.getByRole("radio", { name: /e-mailadres/i }));
+    await user.click(screen.getByRole("checkbox", { name: /zelfde als persoonlijke e-mailadres/i }));
+    await user.click(screen.getByRole("checkbox", { name: /ik ga akkoord/i }));
+    await user.type(screen.getByPlaceholderText("Antwoord"), "13");
+    await user.click(screen.getByRole("button", { name: /verzenden/i }));
+
+    expect(screen.queryByText("Kies een dag.")).not.toBeInTheDocument();
+    expect(
+      screen.getByText("Dank je wel! Je inschrijving is klaar om verzonden te worden."),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: initialSelectedDate })).toBeChecked();
+  });
+
   it("shows the required validation errors when the form is submitted empty", async () => {
     const user = userEvent.setup();
 
