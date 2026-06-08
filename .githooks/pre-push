@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -eu
+
+should_run_tests=0
+
+while read -r local_ref local_sha remote_ref remote_sha
+do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/dev)
+      should_run_tests=1
+      ;;
+  esac
+done
+
+if [ "$should_run_tests" -ne 1 ]; then
+  exit 0
+fi
+
+printf '\nRunning npm test before pushing to main or dev...\n\n'
+
+cd orato
+npm test

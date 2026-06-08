@@ -15,6 +15,7 @@ Deze website is tot stand gekomen in samenwerking met Art Nooijen. Dank voor je 
 
 Hartelijke groet, Ardie
 
+
 ## Developer
 
 - GitHub: [ArtNooijen](https://github.com/ArtNooijen)

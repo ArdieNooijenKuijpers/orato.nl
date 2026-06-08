@@ -63,9 +63,10 @@ const Point = ({ position, color }: { position: [number, number, number]; color:
     <Sphere position={position} args={[0.1, 10, 10]}>
       <meshStandardMaterial
         emissive={color}
-        emissiveIntensity={0.5}
-        roughness={0.5}
+        emissiveIntensity={0.5} 
+        roughness={0.5} 
         color={color}
+        
       />
     </Sphere>
   );

@@ -59,7 +59,10 @@ const ContactForm = () => {
   };
 
   const updateField = (key: keyof FormState, value: string) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
+    const nextValue =
+      key === "telefoon" ? value.replace(/[^\d+\s()-]/g, "") : value;
+
+    setFormData((prev) => ({ ...prev, [key]: nextValue }));
     if (showSuccess) {
       setShowSuccess(false);
     }
@@ -96,7 +99,7 @@ const ContactForm = () => {
             <Input
               id="naam"
               name="naam"
-              placeholder="Jouw naam"
+              placeholder="Voornaam achternaam"
               value={formData.naam}
               onChange={(e) => updateField("naam", e.target.value)}
               onBlur={() => onFieldBlur("naam")}
@@ -135,7 +138,10 @@ const ContactForm = () => {
             <Input
               id="telefoon"
               name="telefoon"
-              placeholder="+31"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel"
+              placeholder="+31 6 12345678"
               value={formData.telefoon}
               onChange={(e) => updateField("telefoon", e.target.value)}
             />
@@ -165,7 +171,7 @@ const ContactForm = () => {
           <textarea
             id="bericht"
             name="bericht"
-            placeholder="Waar kan ik je mee helpen?"
+            placeholder="Waar mag ik je mee helpen?"
             rows={5}
             value={formData.bericht}
             onChange={(e) => updateField("bericht", e.target.value)}

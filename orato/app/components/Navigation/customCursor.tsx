@@ -1,19 +1,47 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 // Added the mouse following feature use cursor-invert and cursor-small to get the results
 
 export function CustomCursor() {
+  const pathname = usePathname();
   const [isEnabled, setIsEnabled] = useState(false);
   const [isHoveringSmall, setIsHoveringSmall] = useState(false);
   const [isInverting, setIsInverting] = useState(false);
   const [isHoveringBig, setIsHoveringBig] = useState(false);
   const [isShowingScrollHint, setIsShowingScrollHint] = useState(false);
+  const [presenterenTrack, setPresenterenTrack] = useState<string | null>(null);
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const x = useSpring(rawX, { stiffness: 900, damping: 40, mass: 0.2 });
   const y = useSpring(rawY, { stiffness: 900, damping: 40, mass: 0.2 });
+  const normalizedPath = pathname.replace(/\/$/, '').toLowerCase();
+  const isPresenterenPage = normalizedPath === '/onderwerpen/presenteren';
+  const sectionCursorColor =
+    presenterenTrack === 'coaching'
+      ? '#ffffff'
+      : presenterenTrack === 'speaking-circle'
+        ? '#141414'
+        : presenterenTrack === 'workshops'
+          ? '#77b829'
+          : null;
+  const sectionCursorLabel =
+    presenterenTrack === 'coaching'
+      ? '1-OP-1'
+      : presenterenTrack === 'speaking-circle'
+        ? 'SPEAKING CIRCLE'
+        : presenterenTrack === 'workshops'
+          ? 'WORKSHOPS'
+          : null;
+  const cursorColor = sectionCursorColor ?? '#f97316';
+  const cursorTextColor = cursorColor === '#141414' ? '#ffffff' : '#141414';
+  const isShowingSectionLabel =
+    Boolean(sectionCursorLabel) &&
+    !isShowingScrollHint &&
+    !isHoveringSmall &&
+    !isHoveringBig;
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)");
@@ -32,6 +60,39 @@ export function CustomCursor() {
       finePointerQuery.removeEventListener("change", updateEnabledState);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isPresenterenPage) {
+      setPresenterenTrack(null);
+      return;
+    }
+
+    const updatePresenterenTrack = () => {
+      const trackIds = ['coaching', 'speaking-circle', 'workshops'];
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+
+      for (let index = trackIds.length - 1; index >= 0; index -= 1) {
+        const id = trackIds[index];
+        const element = document.getElementById(id);
+
+        if (element && element.offsetTop <= scrollPosition) {
+          setPresenterenTrack(id);
+          return;
+        }
+      }
+
+      setPresenterenTrack(null);
+    };
+
+    updatePresenterenTrack();
+    window.addEventListener('scroll', updatePresenterenTrack, { passive: true });
+    window.addEventListener('resize', updatePresenterenTrack);
+
+    return () => {
+      window.removeEventListener('scroll', updatePresenterenTrack);
+      window.removeEventListener('resize', updatePresenterenTrack);
+    };
+  }, [isPresenterenPage]);
 
 //to so if the mouse is hovering over the cursor
   useEffect(() => {
@@ -106,7 +167,15 @@ export function CustomCursor() {
       return;
     }
 
-    const offset = isShowingScrollHint ? 48 : isHoveringSmall ? 8 : isHoveringBig ? 50 : 20;
+    const offset = isShowingScrollHint
+      ? 48
+      : isHoveringSmall
+        ? 8
+        : isHoveringBig
+          ? 50
+          : isShowingSectionLabel
+            ? 42
+            : 20;
     const handlePointerMove = (e: PointerEvent) => {
       rawX.set(e.clientX - offset);
       rawY.set(e.clientY - offset);
@@ -114,7 +183,15 @@ export function CustomCursor() {
 
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
     return () => window.removeEventListener('pointermove', handlePointerMove);
-  }, [isEnabled, isHoveringSmall, isHoveringBig, isShowingScrollHint, rawX, rawY]);
+  }, [
+    isEnabled,
+    isHoveringSmall,
+    isHoveringBig,
+    isShowingScrollHint,
+    isShowingSectionLabel,
+    rawX,
+    rawY,
+  ]);
 
   if (!isEnabled) {
     return null;
@@ -124,7 +201,7 @@ export function CustomCursor() {
     <>
       {/* Orb that follows the mouse */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50 rounded-full"
+        className="fixed top-0 left-0 pointer-events-none z-[500] rounded-full"
         style={{
           x,
           y,
@@ -133,15 +210,18 @@ export function CustomCursor() {
         }}
         animate={{
           //here i set the sizes of the cursor
-          width: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : 40,
-          height: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : 40,
-          backgroundColor: isInverting ? '#ffffff' : '#f97316', // white or orange-500
+          width: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : isShowingSectionLabel ? 84 : 40,
+          height: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : isShowingSectionLabel ? 84 : 40,
+          backgroundColor: isInverting ? '#ffffff' : cursorColor,
         }}
         //here you can play with the settings of the ball and how responsive it is
         transition={{ type: 'spring', stiffness: 450, damping: 35 }}
       >
         {isShowingScrollHint && (
-          <div className="relative flex h-full w-full items-center justify-center rounded-full  text-black">
+          <div
+            className="relative flex h-full w-full items-center justify-center rounded-full"
+            style={{ color: cursorTextColor }}
+          >
             <svg
               viewBox="0 0 100 100"
               className="absolute inset-0 h-full w-full animate-spin [animation-duration:10s]"
@@ -153,7 +233,7 @@ export function CustomCursor() {
                   d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0"
                 />
               </defs>
-              <text fill="black" fontSize="10" letterSpacing="1.4" textAnchor="middle">
+              <text fill="currentColor" fontSize="10" letterSpacing="1.4" textAnchor="middle">
                 <textPath
                   href="#cursor-scroll-circle-path"
                   startOffset="50%"
@@ -181,6 +261,35 @@ export function CustomCursor() {
                 />
               </svg>
             </div> */}
+          </div>
+        )}
+        {isShowingSectionLabel && sectionCursorLabel && (
+          <div
+            className="relative flex h-full w-full items-center justify-center rounded-full"
+            style={{ color: cursorTextColor }}
+          >
+            <svg
+              viewBox="0 0 100 100"
+              className="absolute inset-0 h-full w-full animate-spin [animation-duration:12s]"
+              aria-hidden="true"
+            >
+              <defs>
+                <path
+                  id="cursor-section-circle-path"
+                  d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0"
+                />
+              </defs>
+              <text fill="currentColor" fontSize="9" letterSpacing="1.5" textAnchor="middle">
+                <textPath
+                  href="#cursor-section-circle-path"
+                  startOffset="50%"
+                  textLength="211"
+                  lengthAdjust="spacing"
+                >
+                  {sectionCursorLabel} • {sectionCursorLabel} •
+                </textPath>
+              </text>
+            </svg>
           </div>
         )}
       </motion.div>
