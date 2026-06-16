@@ -24,12 +24,12 @@ describe("contact route smoke", () => {
     expect(screen.getByRole("heading", { name: "Contact" })).toBeInTheDocument();
     expect(screen.getByTestId("contact-form")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "+31 40 284 29 01" })).toHaveAttribute("href", "tel:+31402842901");
-    expect(screen.getByRole("link", { name: "+31 6 5108 8688" })).toHaveAttribute("href", "tel:+31651088688");
+    expect(screen.getByRole("link", { name: "+31 6 510 88 6 88" })).toHaveAttribute("href", "tel:+31651088688");
     expect(screen.getAllByRole("link", { name: "ardie@orato.info" })[0]).toHaveAttribute(
       "href",
       "mailto:ardie@orato.info",
     );
-    expect(screen.getByRole("link", { name: "orato.nl" })).toHaveAttribute("href", "https://orato.nl");
+    expect(screen.getByRole("link", { name: "www.orato.nl" })).toHaveAttribute("href", "https://www.orato.nl");
     expect(screen.getByTitle("Locatie Orato in Nuenen")).toBeInTheDocument();
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });

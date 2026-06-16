@@ -19,7 +19,7 @@ const trackConfig = [
   },
   {
     id: "speaking-circle",
-    label: "Speaking Circle",
+    label: "Speaking Circle®",
     accent: "#ffffff",
     triggerOffset: 0.35,
     panelClassName:

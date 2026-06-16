@@ -121,7 +121,7 @@ const methodCards = [
     title: "Kaders & vertrouwen",
     text: [
       "Ik werk volgens mijn privacyverklaring en algemene voorwaarden, met aandacht voor ethiek, zorgvuldigheid en psychologische veiligheid. Eigenlijk is geen vraag te gek zolang het past bij mijn morele kompas.",
-      "Ik sta geregistreerd als Master Certified Coach bij de ICF, als Senior Practitioner bij NOBCO/EMCC, als ESIA gecertificeerde Supervisor, als docent bij het CRKBO en als Speaking Circle Facilitator bij het Relational Presence Network.",
+      "Ik sta geregistreerd als Master Certified Coach bij de ICF, als Senior Practitioner bij NOBCO/EMCC, als ESIA gecertificeerde Supervisor, als docent bij het CRKBO en als Speaking Circle® Facilitator bij het Relational Presence Network.",
     ],
     tone: "green",
   },
@@ -132,7 +132,7 @@ const credentialChips = [
   "NOBCO/EMCC Senior Practitioner",
   "ESIA Supervisor",
   "Coachopleider",
-  "Speaking Circle Facilitator",
+  "Speaking Circle® Facilitator",
   "OCN-Dames inspirator",
 ];
 
@@ -252,8 +252,8 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["externe deskundige", "gastcolleges", "Logopediekring Nuenen"],
       },
       {
-        text: "Daarnaast volg ik twee jaaropleidingen tot NLP Master bij het IEP in Nijmegen en vervolgens de opleiding tot Speaking Circle Facilitator in Amsterdam.",
-        highlights: ["NLP Master", "Speaking Circle Facilitator"],
+        text: "Daarnaast volg ik twee jaaropleidingen tot NLP Master bij het IEP in Nijmegen en vervolgens de opleiding tot Speaking Circle® Facilitator in Amsterdam.",
+        highlights: ["NLP Master", "Speaking Circle® Facilitator"],
       },
     ],
     images: [
@@ -444,7 +444,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["The Little House in Cotswold", "een ervaringsverhaal"],
       },
       {
-        text: "Tijdens de European Speaking Circle Facilitator Days geef ik in Londen een TEDTalk over psychoanalyse en mijn vak als coach en facilitator.",
+        text: "Tijdens de European Speaking Circle® Facilitator Days geef ik in Londen een TEDTalk over psychoanalyse en mijn vak als coach en facilitator.",
         highlights: ["TEDTalk"],
       },
       {
@@ -963,9 +963,6 @@ const ArdiePage = () => {
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-orato-dark/78">
                   Omdat ik weet dat het onderbreken van de dagelijkse ratrace middels introspectie jou ontspanning, (zelf)compassie, inzicht, opties en verandering oplevert.
                 </p>
-                <p className="mt-4 text-lg font-semibold text-orato-orange">
-                  Ontdek jouw sleutels tot succes.
-                </p>
                 <div className="mt-8">
                   <Link
                     href="/Contact"
@@ -987,11 +984,8 @@ const ArdiePage = () => {
                       className="h-[20rem] w-full rounded-[1.35rem] object-cover md:h-[24rem]"
                     />
                     <div className="absolute inset-x-6 bottom-6 rounded-[1rem] border border-white/60 bg-white/88 px-4 py-3 shadow-sm backdrop-blur-sm">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-orato-dark/48">
-                        Sleutels Tot Succes
-                      </p>
-                      <p className={`${tangerine.className} mt-1 text-4xl leading-none text-orato-orange`}>
-                        even stil staan
+                      <p className="text-lg font-semibold leading-snug text-white md:text-xl">
+                        Ontdek jouw sleutels tot succes.
                       </p>
                     </div>
                   </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import InschrijfForm from "./InschrijfForm";
@@ -25,10 +25,48 @@ const InschrijfFormModal = ({
 }: InschrijfFormModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const hasModalHistoryEntry = useRef(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (hasModalHistoryEntry.current) {
+        hasModalHistoryEntry.current = false;
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("popstate", onPopState);
+
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+    };
+  }, []);
+
+  const openModal = () => {
+    if (!isOpen) {
+      window.history.pushState(
+        { ...(window.history.state ?? {}), oratoInschrijfFormModal: true },
+        "",
+        window.location.href,
+      );
+      hasModalHistoryEntry.current = true;
+    }
+
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    if (hasModalHistoryEntry.current) {
+      window.history.back();
+      return;
+    }
+
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -50,7 +88,7 @@ const InschrijfFormModal = ({
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        closeModal();
       }
     };
 
@@ -71,7 +109,7 @@ const InschrijfFormModal = ({
     <>
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={openModal}
         className={
           triggerClassName ??
           "inline-flex h-11 cursor-small items-center justify-center rounded-xl bg-orato-orange px-5 text-sm font-semibold text-white transition hover:bg-orato-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
@@ -86,7 +124,7 @@ const InschrijfFormModal = ({
               <div
                 aria-hidden="true"
                 className="absolute inset-0 cursor-small bg-orato-dark/70 backdrop-blur-sm"
-                onClick={() => setIsOpen(false)}
+                onClick={closeModal}
               />
 
               <div className="relative flex h-full items-center justify-center">
@@ -111,7 +149,7 @@ const InschrijfFormModal = ({
                       </div>
                       <button
                         type="button"
-                        onClick={() => setIsOpen(false)}
+                        onClick={closeModal}
                         aria-label="Sluiten"
                         className="inline-flex h-10 cursor-small items-center gap-2 justify-center rounded-full border border-orato-dark/10 bg-white px-3 text-orato-dark transition hover:border-orato-orange hover:text-orato-orange"
                       >

@@ -35,12 +35,19 @@ describe("presenteren route smoke", () => {
 
     expect(screen.getByRole("heading", { name: "Presenteren" })).toBeInTheDocument();
     expect(screen.getByTestId("track-transition-indicator")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /1-op-1 presentatiecoaching/ })).toHaveAttribute("href", "#coaching");
-    expect(screen.getAllByRole("link", { name: /Speaking Circle/ })[0]).toHaveAttribute(
+    expect(screen.getAllByRole("heading", { name: "1-op-1 presentatiecoaching" }).length).toBeGreaterThan(0);
+    expect(screen.getByRole("link", { name: "Bekijk 1-op-1 presentatiecoaching" })).toHaveAttribute("href", "#coaching");
+    expect(screen.getByRole("link", { name: "Bekijk Speaking Circle®" })).toHaveAttribute("href", "#speaking-circle");
+    expect(screen.getByRole("link", { name: "Bekijk Workshops" })).toHaveAttribute("href", "#workshops");
+    expect(screen.getByRole("link", { name: "Tarief vanaf €185/u" })).toHaveAttribute(
       "href",
-      "#speaking-circle",
+      "#presentatiecoaching-investering",
     );
-    expect(screen.getAllByRole("link", { name: /Workshops/ })[0]).toHaveAttribute("href", "#workshops");
+    expect(screen.getByRole("link", { name: "Tarief €250" })).toHaveAttribute("href", "#speaking-circle-investering");
+    expect(screen.getByRole("link", { name: "Tarief op aanvraag" })).toHaveAttribute(
+      "href",
+      "mailto:ardie@orato.info?subject=Aanvraag%20workshop%20presenteren",
+    );
     expect(screen.getByRole("link", { name: "Download hier de informatieflyer" })).toHaveAttribute("download");
     expect(screen.getAllByRole("button", { name: /schrijf je in/i }).length).toBeGreaterThan(0);
     expect(screen.getByText("Privacyverklaring")).toHaveAttribute("href", "/Info/PrivacyVerklaring");

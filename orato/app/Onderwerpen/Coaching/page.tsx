@@ -21,7 +21,7 @@ const topicCards = [
   {
     title: "Bewustwording vergroten",
     text: "Jouw blinde vlekken in beeld krijgen met mijn analytisch vermogen als spiegel van de realiteit. En soms is dat alleen al genoeg om anders te kunnen handelen.",
-    quote: "Mensen staan op voor zover ze zichzelf kennen.",
+    quote: "Mensen staan open voor zover ze zichzelf kennen.",
   },
   {
     title: "Keuzes maken",
@@ -29,7 +29,7 @@ const topicCards = [
   },
   {
     title: "Overtuigend(er) overkomen",
-    text: "Of Juist de congruentie tussen ‘binnen- en buitenkant’ oftewel ‘performance ‘ersus ‘voelen en denken’ is vaak onderwerp van een coachtraject. ",
+    text: "Of Juist de congruentie tussen ‘binnen- en buitenkant’ oftewel ‘performance versus voelen en denken’ is vaak onderwerp van een coachtraject. ",
   },
   {
     title: "Zelfvertrouwen voelen",
@@ -56,7 +56,7 @@ const specialties = [
       "Met name met mijn jarenlange ervaring als paramedisch therapeut met kennis van psychopathologie, als NLP-Master, Relational Presence facilitator en met mijn TA-deskundigheid gespecialiseerd in herbeslissingswerk kan ik je dan helpen.",
       "Bijvoorbeeld als er op het werk ook een persoonlijk, of meer privé, issue meespeelt waar aandacht voor nodig is. Externe objectiviteit en een emotioneel veilige omgeving is dan zeker gewenst. Een psycholoog is niet aan de orde maar toch...",
     ],
-    quote: "Je hoeft je niet goed te voelen, je moet goed voelen. Léon Vasterink",
+    quote: "Je hoeft je niet goed te voelen, je moet goed voelen. Léon Vasterink, psychiater",
   },
   {
     title: "Expressie Coaching",
@@ -67,18 +67,18 @@ const specialties = [
     ],
   },
   {
+    title: "Executive Coaching",
+    text: [
+      "Meer specifiek: nadrukkelijk geen businesscoaching. Wel meesterlijke hulp bij het verder ontwikkelen van de menselijke kant van leidinggeven en nemen.",
+      "Diepgaande introspectie op identiteitsniveau om in combinatie met je zakelijke kennis en kunde te excelleren. Transformatief. Werken aan de zaak, niet in de zaak, door jezelf onder de loep te nemen, gespiegeld door mij(n kennis en kunde) als Master People Coach. Leiderschap vraagt bezieling van binnenuit.",
+    ],
+  },
+  {
     title: "Bijzondere aandacht voor spreektechniek",
     text: [
       "Authentieke expressie gaat ook over de manier waarop je spreekt. Als je daar iets in wilt veranderen is coaching met speciale aandacht voor de manier waarop je spreekt en wilt spreken van toegevoegde waarde.",
       "Of het nu gaat om stotteren, onduidelijk praten, adem te kort komen of over je stem, daar kunnen we aan werken zodat je daar minder last van hebt en juist wel spreekt zoals dat bij jou en je verantwoordelijkheden past.",
       "Mijn specifieke ervaring als logopedist en spraak- en taalpatholoog zet ik dan graag voor jou in.",
-    ],
-  },
-  {
-    title: "Executive Coaching",
-    text: [
-      "Meer specifiek: nadrukkelijk geen businesscoaching. Wel meesterlijke hulp bij het verder ontwikkelen van de menselijke kant van leidinggeven en nemen.",
-      "Diepgaande introspectie op identiteitsniveau om in combinatie met je zakelijke kennis en kunde te excelleren. Transformatief. Werken aan de zaak, niet in de zaak, door jezelf onder de loep te nemen, gespiegeld door mij(n kennis en kunde) als Master People Coach. Leiderschap vraagt bezieling van binnenuit.",
     ],
   },
   {
@@ -96,7 +96,7 @@ const principles = [
   "Er is geen goed, geen fout, wel informatie.",
   "100% vertrouwen.",
   "Ieder mens wil tot zijn/haar/hun recht komen.",
-  "Ik ben wie ik ben en dat is oke! Jij bent wie je bent en dat is oke!",
+  "Ik ben wie ik ben en dat is oké! Jij bent wie je bent en dat is oké!",
   "Optimale groei door waardering.",
   "Mensen leren door zichzelf te uiten, in relatie tot anderen.",
 ];
@@ -198,9 +198,9 @@ export default function CoachingPage() {
                 Betekenisvolle gesprekken met impact.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-orato-dark/80 md:text-xl">
-                Wat is dat? Betekenisvolle gesprekken met impact. Coaching is
-                meer dan een goed gesprek. Voor mij is coaching een effectieve
-                manier om mensen te helpen antwoorden te vinden op hun vragen.
+                Coaching is meer dan een goed gesprek. Voor mij is coaching
+                een effectieve manier om mensen te helpen antwoorden te vinden
+                op hun vragen.
               </p>
               <p className="mt-4 max-w-2xl text-base leading-7 text-orato-dark/72 md:text-lg">
                 Die vragen kunnen gaan over een wens, probleem, ambitie,
@@ -213,18 +213,24 @@ export default function CoachingPage() {
               <p className="mt-6 text-lg font-semibold text-orato-blue md:text-xl">
                 Coaching met ziel en zakelijkheid, van mens tot mens.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center md:justify-start">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-nowrap sm:justify-center md:justify-start">
                 <Link
                   href="/Contact"
-                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-blue"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center whitespace-nowrap rounded-full bg-orato-dark px-5 text-center text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-orato-blue"
                 >
                   Vrijblijvend kennismaken 
                 </Link>
                 <Link
                   href="/Info/Ardie"
-                  className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-white/70 px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-blue hover:text-orato-blue"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center whitespace-nowrap rounded-full border border-orato-dark/15 bg-white/70 px-5 text-center text-sm font-semibold uppercase tracking-[0.12em] text-orato-dark transition hover:border-orato-blue hover:text-orato-blue"
                 >
                   Meer over Ardie
+                </Link>
+                <Link
+                  href="#investering"
+                  className="inline-flex min-h-14 cursor-small items-center justify-center whitespace-nowrap rounded-full bg-orato-blue px-5 text-center text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-orato-dark"
+                >
+                  Tarief
                 </Link>
               </div>
             </Reveal>
@@ -476,7 +482,7 @@ export default function CoachingPage() {
                       ontmoeting.
                     </li>
                     <li>
-                      Er wordt expliciet geevalueerd, tussentijd, en bij
+                      Er wordt expliciet geëvalueerd, tussentijds, en bij
                       afronding bij voorkeur met een gesprek met relevante
                       betrokkenen om te oogsten en te borgen.
                     </li>
@@ -588,7 +594,7 @@ export default function CoachingPage() {
           </div>
         </section>
 
-        <section className="bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
+        <section id="investering" className="scroll-mt-24 bg-orato-light px-4 pb-16 md:px-8 md:pb-24 lg:px-10">
           <Reveal className="mx-auto max-w-3xl">
             <Link
               href="/Contact"

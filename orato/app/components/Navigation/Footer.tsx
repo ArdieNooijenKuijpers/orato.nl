@@ -191,7 +191,7 @@ const FooterComp = () => {
                   </Link>
                   <span className="mx-2 hidden text-white/50 md:inline">•</span>
                   <Link href="tel:+31651088688" className="hover:text-orato-orange cursor-small">
-                    +31 6 5108 8688
+                    +31 6 510 88 6 88
                   </Link>
                 </p>
                 <p className="flex flex-wrap items-center justify-center gap-y-1 md:block">
@@ -200,12 +200,12 @@ const FooterComp = () => {
                   </Link>
                   <span className="mx-2 hidden text-white/50 md:inline">•</span>
                   <Link
-                    href="https://orato.nl"
+                    href="https://www.orato.nl"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-orato-orange cursor-small"
                   >
-                    orato.nl
+                    www.orato.nl
                   </Link>
                 </p>
                 <p className="flex justify-center md:justify-start">

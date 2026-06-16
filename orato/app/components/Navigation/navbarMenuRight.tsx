@@ -14,7 +14,7 @@ const presentationTrackItems = [
       'scale-[1.03] border-orato-dark bg-white text-orato-dark ring-2 ring-orato-dark/30 shadow-[0_16px_36px_-20px_rgba(20,20,20,0.3)]',
   },
   {
-    name: 'SPEAKING CIRCLE',
+    name: 'SPEAKING CIRCLE®',
     path: '#speaking-circle',
     inactiveClassName:
       'border-orato-dark bg-orato-dark text-white hover:-translate-y-0.5 hover:border-orato-dark hover:bg-orato-dark hover:text-white hover:shadow-[0_12px_28px_-18px_rgba(0,0,0,0.55)]',
