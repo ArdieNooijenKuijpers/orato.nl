@@ -36,7 +36,7 @@ const VideoMain = () => {
         Your browser does not support the video tag.
       </video>
       {/* Scroll Indicator */}
-      <div className="absolute bottom-32 left-8 flex flex-col items-center md:bottom-52 md:left-auto md:right-20 lg:bottom-80 lg:translate-y-10">
+      <div className="absolute bottom-28 left-5 flex flex-col items-center md:bottom-52 md:left-auto md:right-20 lg:bottom-80 lg:translate-y-10">
         <div className="relative flex items-center justify-center w-24 h-24">
           <svg
             viewBox="0 0 100 100"

@@ -271,9 +271,9 @@ export default function CoachingPage() {
                     height={900}
                     className="h-auto w-full object-cover"
                   />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-[32%] items-end bg-gradient-to-t from-white/72 via-white/30 to-transparent px-6 pb-5 pt-16 backdrop-blur-[1px] md:px-7 md:pb-6">
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-[38%] items-center justify-center bg-gradient-to-t from-white/72 via-white/30 to-transparent px-6 pb-5 pt-16 text-center backdrop-blur-[1px] md:min-h-[32%] md:items-end md:justify-start md:px-7 md:pb-6 md:text-left">
                     <p
-                      className={`${notoSerifDisplay.className} text-lg leading-tight text-orato-dark/88 drop-shadow-[0_1px_10px_rgba(255,255,255,0.55)] sm:text-xl md:text-2xl`}
+                      className={`${notoSerifDisplay.className} text-lg font-semibold leading-tight text-orato-dark/88 drop-shadow-[0_1px_10px_rgba(255,255,255,0.55)] sm:text-xl md:text-2xl`}
                     >
                       The sky is the limit. Denken in mogelijkheden is een sociaal geschenk.
                     </p>
@@ -305,18 +305,20 @@ export default function CoachingPage() {
               >
                 Ontwikkelvragen die ertoe doen.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-white/78">
-                De ontwikkelvragen van de mensen die ik coach hebben in zijn
-                algemeenheid te maken met:
-              </p>
-              <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/12">
-                <Image
-                  src="/coaching/orato_03856_21 september 2024.JPG"
-                  alt="Ardie tijdens een sessie aan tafel."
-                  width={1600}
-                  height={1100}
-                  className="h-full w-full object-cover"
-                />
+              <div className="mt-6 flex flex-col">
+                <p className="order-2 mt-5 max-w-xl text-lg leading-8 text-white/78 md:order-1 md:mt-0">
+                  De ontwikkelvragen van de mensen die ik coach hebben in zijn
+                  algemeenheid te maken met:
+                </p>
+                <div className="order-1 overflow-hidden rounded-[2rem] border border-white/12 md:order-2 md:mt-8">
+                  <Image
+                    src="/coaching/orato_03856_21 september 2024.JPG"
+                    alt="Ardie tijdens een sessie aan tafel."
+                    width={1600}
+                    height={1100}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
               <div className="mt-6 rounded-[1.6rem] border border-orato-blue/25 bg-orato-blue/10 p-5">
                 <p className="text-sm leading-7 text-white/82">

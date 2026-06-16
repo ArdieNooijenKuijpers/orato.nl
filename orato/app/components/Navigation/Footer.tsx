@@ -185,20 +185,20 @@ const FooterComp = () => {
                 <p className="font-semibold text-white">Drs. Ardie Nooijen-Kuijpers</p>
                 <p>Rutger van den Broeckelaan 3</p>
                 <p>5671 EB Nuenen</p>
-                <p className="flex flex-wrap items-center justify-center gap-y-1 md:block">
+                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:block">
                   <Link href="tel:+31402842901" className="hover:text-orato-orange cursor-small">
                     +31 40 284 29 01
                   </Link>
-                  <span className="mx-2 hidden text-white/50 md:inline">•</span>
+                  <span className="text-white/50 md:mx-2">•</span>
                   <Link href="tel:+31651088688" className="hover:text-orato-orange cursor-small">
                     +31 6 510 88 6 88
                   </Link>
                 </p>
-                <p className="flex flex-wrap items-center justify-center gap-y-1 md:block">
+                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:block">
                   <Link href="mailto:ardie@orato.info" className="hover:text-orato-orange cursor-small">
                     ardie@orato.info
                   </Link>
-                  <span className="mx-2 hidden text-white/50 md:inline">•</span>
+                  <span className="text-white/50 md:mx-2">•</span>
                   <Link
                     href="https://www.orato.nl"
                     target="_blank"
