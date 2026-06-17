@@ -19,7 +19,7 @@ export default function UnderConstructionPage() {
             className="mt-8 inline-flex rounded-full bg-orato-dark px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-orato-orange focus:outline-none focus:ring-2 focus:ring-orato-orange focus:ring-offset-4 focus:ring-offset-orato-light"
             href="mailto:info@orato.nl"
           >
-            info@orato.nl
+            ardie@orato.info
           </a>
         </div>
 
