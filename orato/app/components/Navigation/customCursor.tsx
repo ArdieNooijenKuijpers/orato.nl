@@ -31,7 +31,7 @@ export function CustomCursor() {
     presenterenTrack === 'coaching'
       ? '1-OP-1'
       : presenterenTrack === 'speaking-circle'
-        ? 'SPEAKING CIRCLE'
+        ? 'SPEAKING CIRCLE®'
         : presenterenTrack === 'workshops'
           ? 'WORKSHOPS'
           : null;

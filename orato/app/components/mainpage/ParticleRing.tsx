@@ -8,9 +8,7 @@ import { Group } from "three";
 const ParticleRing = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -27,9 +25,7 @@ const ParticleRing = () => {
     <div
       ref={containerRef}
       className="group relative h-[60vh] w-[90vw] md:h-screen md:w-screen"
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
-        setIsHovered(false);
         setIsDragging(false);
       }}
     >
@@ -47,7 +43,6 @@ const ParticleRing = () => {
         <SceneControls
           onDragStart={() => {
             setIsDragging(true);
-            setHasInteracted(true);
           }}
           onDragEnd={() => setIsDragging(false)}
         />
@@ -59,9 +54,7 @@ const ParticleRing = () => {
       </h1>
       <div
         className={`pointer-events-none absolute left-1/2 top-[76%] w-[min(32rem,86vw)] -translate-x-1/2 transition-all duration-500 ease-out ${
-          isHovered && !isDragging
-            ? "translate-y-0 opacity-100"
-            : "translate-y-3 opacity-0"
+          isDragging ? "translate-y-3 opacity-0" : "translate-y-0 opacity-100"
         }`}
       >
         <div className="mx-auto flex max-w-md items-start gap-4 rounded-[1.75rem] border border-white/15 bg-white/[0.06] px-5 py-4 text-slate-100 shadow-[0_18px_60px_rgba(0,0,0,0.18)] backdrop-blur-md">
@@ -83,11 +76,6 @@ const ParticleRing = () => {
             </p>
             <p className="text-base font-medium leading-tight md:text-xl">
 Wil je nieuwe mogelijkheden ontdekken?  Klik en sleep alvast om je blik te verruimen.            </p>
-            <p className="max-w-sm text-sm leading-relaxed text-white/70 md:text-base">
-              {hasInteracted
-                ? "Blijf klikken en slepen om nieuwe mogelijkheden te ontdekken."
-                : "Klik en sleep hier alvast om je blik te verruimen."}
-            </p>
           </div>
         </div>
       </div>

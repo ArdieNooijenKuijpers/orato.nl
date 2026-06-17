@@ -304,7 +304,11 @@ const CompanyCircles: React.FC = () => {
                 }
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", times: [0, 0.42, 0.5, 0.72, 1] }}
               >
-                Össur
+                Een
+                <br />
+                tevreden
+                <br />
+                klant
               </motion.span>
             </motion.div>
 

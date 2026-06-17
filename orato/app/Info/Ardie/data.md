@@ -37,7 +37,7 @@ Ontdek jouw sleutels tot succes.
 
 Deskundigheid
 Hoewel ik arts wilde worden en getrouwd ben met een specialist, ben ik van huis uit praktijkhoudend logopedist en Spraak-en Taalpatholoog. Ik heb me gespecialiseerd in talloze aspecten van effectieve communicatie, oftewel in gesprek met jezelf en anderen. 
-Momenteel kent mijn werk 4 pijlers: (executive)coaching, coachsupervisie, coachopleiding en presentatietraining -coaching, met alle voordelen van de ‘kruisbestuiving’ daartussen. Ik sta geregistreerd als Master Certified Coach (MCC) bij de ICF, als Senior Practitioner bij NOBCO/EMCC, als ESIA gecertificeerde Supervisor, als docent bij het CRKBO en als Speaking Circle Facilitator bij het Relational Presence Network. Ben actief als inspirator van de OCN-Dames (Ondernemers Contact Nuenen) en ‘houdt ook mijn eigen zaag scherp’ middels intervisie en supervisie.
+Momenteel kent mijn werk 4 pijlers: (executive)coaching, coachsupervisie, coachopleiding en presentatietraining -coaching, met alle voordelen van de ‘kruisbestuiving’ daartussen. Ik sta geregistreerd als Master Certified Coach (MCC) bij de ICF, als Senior Practitioner bij NOBCO/EMCC, als ESIA gecertificeerde Supervisor, als docent bij het CRKBO en als Speaking Circle® Facilitator bij het Relational Presence Network®. Ben actief als inspirator van de OCN-Dames (Ondernemers Contact Nuenen) en ‘houdt ook mijn eigen zaag scherp’ middels intervisie en supervisie.
 Ik heb sinds 1989 honderden mensen behandeld, minstens 300 mensen individueel gecoacht en gesuperviseerd en meer dan honderd groepstrainingen/workshops gegeven. Men noemt mij een makelaar in zelfvertrouwen en nieuw perspectief. Ambitie is mij niet vreemd.
 
 Ontwikkeling ‘als rode draad’ in mijn leven (chronologisch in beeld gebracht de volgende informatie)
@@ -53,7 +53,7 @@ Ontwikkeling ‘als rode draad’ in mijn leven (chronologisch in beeld gebracht
 Een verblijf in Ghana vanwege een coschap van mijn levenspartner Peet, maakt een onuitwisbare indruk. Ik trouw in 1995 en Eva en Art worden geboren. ‘TSP’ wordt ‘ORATO spreken en presenteren’. Ik ga ambtenaren en wethouders trainen voor Bestuursacademie Nederland en opleidingsinstituut Schouten & Nelissen biedt me een baan aan als trainer/acquisiteur. Een periode van werken als logopedist/spraak-en taalpatholoog en presentatietrainer in combinatie met een jong gezin, een druk sociaal leven, verdere bij- en nascholing, zingen in een kerkkoor etc. volgt.
 
 2001-	Ik verkoop mijn logopediepraktijk omdat we verhuizen van Wijchen naar Nuenen nadat mijn echtgenoot zijn promotieonderzoek en specialisatie tot Patholoog afrondt. Een nieuw leven en netwerk opbouwen met o.a. 8 jaar voorzitterschap van de MedezeggenschapsRaad van de basisschool van onze kinderen en ik sluit me aan bij netwerkvereniging OCN Ondernemers Contact Nuenen. Daarnaast word ik externe deskundige bij de examinering van studenten bij verschillende logopedieopleidingen, geef ik gastcolleges over de logopedist als ondernemer en neem ik deel aan een klankbordgroep voor Fontys Paramedisch Hogeschool, waar ik jarenlang lid van de Raad van Advies en externe deskundige zal zijn. Ik sluit me aan bij Logopediekring Nuenen, een groep betrokken logopedisten uit diverse werkvelden.
-Ik volg 2 jaren opleidingen tot NLP Master bij het IEP in Nijmegen. Vervolgens de opleiding tot Speaking Circle Facilitator in Amsterdam.
+Ik volg 2 jaren opleidingen tot NLP Master bij het IEP in Nijmegen. Vervolgens de opleiding tot Speaking Circle® Facilitator in Amsterdam.
 
 2004-	ORATO verandert van een V.O.F. naar mijn eenmansbedrijf. De training ‘Effectief Presenteren blijff ik samen met Drs. Marion Weijts geven.
 De combinatie van logopedisch onderzoek en behandeling met het geven van trainingen/workshops/interactieve lezingen gaan door. Nu aangevuld met commerciële (presentatie)coaching voor diverse (non)profit organisaties.
@@ -78,7 +78,7 @@ Met enthousiasme voorzie ik, dankzij het werk van Els Ruiters (Grafidi) in 2015 
 
 2017	Vanuit de vraag uit het bedrijfsleven en mijn eigen behoefte om ook in het Engels te coachen volg ik een taaltraining op maat bij Regina Coeli in Vught. Een mooie bijvangst is het interne verblijf met tijd voor bezinning.
 In de lente van 2017 word ik 50 jaar en beëindig ik de psychoanalyse. In de zomer die volgt schrijf ik in een paar maanden, in The Little House in Cotswold: ‘Op de bank’, een ervaringsverhaal over 50 jaar Ardie in 10 jaar psychoanalyse. Ik ontdek de uitdaging van een dergelijk schrijfproces en geniet met volle teugen van de ochtendwandelingen met onze hond in de prachtige omgeving daar.
-Tijdens de European Speaking Circle Facilitator Days geef ik in Londen een TEDTalk over psychoanalyse en mijn vak als coach/facilitator. Samen met gepassioneerde collega’s in Europa stichten we het Relational Presence Network en word ik bestuurslid.
+Tijdens de European Speaking Circle® Facilitator Days geef ik in Londen een TEDTalk over psychoanalyse en mijn vak als coach/facilitator. Samen met gepassioneerde collega’s in Europa stichten we het Relational Presence Network en word ik bestuurslid.
 
 2018	De eerste editie van de 4-daagse training: Kerntraject !K-2.0 wordt gegeven als resultaat van een niet nader te noemen samenwerking.
 Ik word gevraagd om samen te gaan werken met de Associatie voor Coaching. Ik volg mijn hart en ga coaches opleiden, (in-company) trainingen geven op het gebied van coachen en coachend leidinggeven/begeleiden én acquireren voor deze organisatie. Ik start met het geven van groepssupervisie. Ik train Technasiumdocenten in coachend begeleiden. Heerlijk, dit opleidingsinstituut op fietsafstand in Aarle-Rixtel. 
@@ -118,4 +118,3 @@ Je houden aan de afspraken met jezelf, dat is vaak het allermoeilijkst.
 Als je niet kunt zwemmen ligt het aan het water! Duh…
 Voor alles is een goed moment.
 Het is zoals het is, realisme werkt.
-

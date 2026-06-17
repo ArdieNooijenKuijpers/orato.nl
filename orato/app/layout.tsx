@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif_Display, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { CustomCursor } from "./components/Navigation/customCursor";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import SmoothScroll from "./components/SmoothScroll";
@@ -7,9 +7,10 @@ import SmoothScroll from "./components/SmoothScroll";
 
 import "./globals.css";
 import Navbar from "./components/Navigation/navbar";
+import UnderConstructionPage from "./components/UnderConstructionPage";
+import { ONDER_CONSTRUCTIE } from "./config";
 
 
-const inter = Inter({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -50,6 +51,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  robots: ONDER_CONSTRUCTIE
+    ? {
+        index: false,
+        follow: false,
+      }
+    : undefined,
 };
 
 export default function RootLayout({
@@ -60,11 +67,17 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={montserrat.className}>
-        <SmoothScroll />
-        {children}
-        <Navbar />
-        <CustomCursor />
-        {process.env.NODE_ENV === "production" ? <SpeedInsights /> : null}
+        {ONDER_CONSTRUCTIE ? (
+          <UnderConstructionPage />
+        ) : (
+          <>
+            <SmoothScroll />
+            {children}
+            <Navbar />
+            <CustomCursor />
+            {process.env.NODE_ENV === "production" ? <SpeedInsights /> : null}
+          </>
+        )}
       </body>
     </html>
   );
