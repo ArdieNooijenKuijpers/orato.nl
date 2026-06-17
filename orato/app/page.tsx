@@ -156,9 +156,6 @@ export default function Home() {
       <section className="relative overflow-hidden bg-orato-light px-4 py-16 text-orato-dark md:px-10 md:py-24">
         <div className="mx-auto flex min-h-[58vh] max-w-7xl flex-col justify-center gap-12 md:min-h-[68vh] md:flex-row md:items-center md:justify-between">
           <div className="max-w-3xl">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-orato-dark/55">
-              Daarnaast
-            </p>
             <h2
               className={`${noto_Serif_Display.className} cursor-invert cursor-big text-5xl leading-[0.95] text-orato-dark sm:text-6xl md:text-7xl lg:text-8xl`}
             >
@@ -176,7 +173,7 @@ export default function Home() {
                 Gemiddelde evaluatiescore
               </p>
               <p className="mt-3 text-xl font-medium leading-snug text-orato-dark md:text-2xl">
-                gebaseerd op ervaringen van deelnemers en opdrachtgevers.
+                Gebaseerd op ervaringen van deelnemers en opdrachtgevers.
               </p>
             </div>
           </div>

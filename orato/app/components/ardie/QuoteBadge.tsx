@@ -21,12 +21,12 @@ export default function QuoteBadge({
   const pathId = `quote-circle-path-${id}`;
   const tooltipPositionClass =
     tooltipAlign === "right"
-      ? "fixed inset-x-4 bottom-4 translate-x-0 sm:absolute sm:inset-x-auto sm:bottom-[calc(100%+0.85rem)] sm:left-auto sm:right-0 sm:translate-x-0 group-hover:-translate-y-1"
-      : "fixed inset-x-4 bottom-4 translate-x-0 sm:absolute sm:inset-x-auto sm:bottom-[calc(100%+0.85rem)] sm:left-1/2 sm:-translate-x-1/2 group-hover:-translate-y-1";
+      ? "absolute bottom-[calc(100%+0.85rem)] right-0 translate-x-0 group-hover/quote:-translate-y-1"
+      : "absolute bottom-[calc(100%+0.85rem)] right-0 translate-x-0 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 group-hover/quote:-translate-y-1";
   const tooltipArrowClass =
     tooltipAlign === "right"
-      ? "hidden sm:block sm:left-auto sm:right-8 sm:translate-x-0"
-      : "hidden sm:block sm:left-1/2 sm:-translate-x-1/2";
+      ? "right-8 translate-x-0"
+      : "right-8 translate-x-0 sm:left-1/2 sm:right-auto sm:-translate-x-1/2";
   const tooltipVisibilityClass = isVisible
     ? "pointer-events-auto opacity-100 sm:pointer-events-none sm:opacity-0"
     : "pointer-events-none opacity-0";
@@ -46,7 +46,7 @@ export default function QuoteBadge({
   return (
     <button
       type="button"
-      className={`group relative inline-flex cursor-small appearance-none border-0 bg-transparent p-0 text-left ${className}`}
+      className={`group/quote relative inline-flex cursor-small appearance-none border-0 bg-transparent p-0 text-left ${className}`}
       onClick={() => setIsVisible(true)}
       onPointerLeave={() => setIsVisible(false)}
       aria-expanded={isVisible}
@@ -55,7 +55,7 @@ export default function QuoteBadge({
       <div className={`relative flex h-24 w-24 items-center justify-center ${badgeClassName}`}>
         <svg
           viewBox="0 0 100 100"
-          className="absolute inset-0 h-full w-full animate-spin [animation-duration:12s] group-hover:[animation-play-state:paused]"
+          className="absolute inset-0 h-full w-full animate-spin [animation-duration:12s] group-hover/quote:[animation-play-state:paused]"
           aria-hidden="true"
         >
           <defs>
@@ -74,7 +74,7 @@ export default function QuoteBadge({
           <span className="text-sm font-semibold">Click</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5"
+            className="h-4 w-4 transition-transform duration-300 group-hover/quote:-translate-y-0.5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -92,7 +92,7 @@ export default function QuoteBadge({
       <div
         id={`quote-tooltip-${id}`}
         role="tooltip"
-        className={`z-30 w-auto rounded-[1.5rem] border border-orato-dark/10 bg-white/95 px-4 py-3 text-sm leading-6 text-orato-dark shadow-[0_24px_60px_-28px_rgba(20,20,20,0.45)] transition-all duration-300 group-hover:sm:pointer-events-auto group-hover:sm:opacity-100 sm:w-72 ${tooltipPositionClass} ${tooltipVisibilityClass}`}
+        className={`z-30 w-[min(18rem,calc(100vw-2rem))] rounded-[1.5rem] border border-orato-dark/10 bg-white/95 px-4 py-3 text-sm leading-6 text-orato-dark shadow-[0_24px_60px_-28px_rgba(20,20,20,0.45)] transition-all duration-300 group-hover/quote:sm:pointer-events-auto group-hover/quote:sm:opacity-100 sm:w-72 ${tooltipPositionClass} ${tooltipVisibilityClass}`}
       >
         <div
           className={`absolute top-full h-3 w-3 -translate-y-1/2 rotate-45 border-b border-r border-orato-dark/10 bg-white/95 ${tooltipArrowClass}`}

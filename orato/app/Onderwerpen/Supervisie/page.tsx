@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const expertiseBlocks = [
   "Voor de Associatie voor Coaching (AvC) superviseer ik coaches sinds 2018. Er zijn verschillende pakketten beschikbaar om te blijven groeien in je vak, zichtbaarder te worden en je senioriteit te verdiepen. In 2024 rondde ik de 2-jarige ESIA Certified Supervisor opleiding af, gegeven door Tom Battye in samenwerking met EMCC.",
   "Ik geef bij voorkeur individuele supervisie. In een groep mijn expert-rol inzetten doe ik het liefst als ik professionele coaches opleid, of in de vorm van begeleide intervisie.",
-  "Ik ben een expert in coachen door mijn 35+ jaar werkervaring en betrokkenheid bij ons prachtige vak. Onderscheidend van andere supervisoren is mijn therapeutische ervaring. als paramedicus. Gesterkt door 10 jaar ervaring met het werken aan emoties, gedachtes en fysieke ervaringen, oftewel door een grondige introspectie, middels een Freudiaanse psycho-analyse, waar ik een boek over schreef.",
+  "Ik ben een expert in coachen door mijn 35+ jaar werkervaring en betrokkenheid bij ons prachtige vak. Onderscheidend van andere supervisoren is mijn therapeutische ervaring als paramedicus, gesterkt door 10 jaar ervaring met het werken aan emoties, gedachtes en fysieke ervaringen, oftewel door een grondige introspectie, middels een Freudiaanse psycho-analyse, waar ik een boek over schreef.",
   "Verder kan ik je helpen bij een (herhaalde) aanvraag van registratie als gecertificeerde coach bij ICF en NOBCO/EMCC.",
 ];
 
@@ -38,7 +38,7 @@ const methods = [
   "Middels alle ervaring en coach- en communicatiemethodes/theorieën die ik in huis heb. Een kijkje in de keuken van een ander is altijd leuk.",
   "Met de voordelen van de kruisbestuiving tussen mijn werk als MasterCoach, Coachopleider, trainer, communicatie expert, therapeut en supervisor.",
   "Leren aan de hand van specifieke en diverse reflectiemodellen.",
-  "Met de mogelijkheid jezelf te oefenen in Relational Presence / Speaking Circle ter verdieping van cont(r)act maken. 1-op-1 en in of voor een groep.",
+  "Met de mogelijkheid jezelf te oefenen in Relational Presence ter verdieping van cont(r)act maken. 1-op-1 en in of voor een groep.",
   "Eventueel gebruikmakend van video- of audiofeedback of ter plekke coachen.",
   "Indien gewenst gericht op een aanvraag voor registratie als een Professional Certified Coach (PCC) of Master Certified Coach (MCC) bij ICF. Of als Senior Practitioner of Master Practitioner bij NOBCO/EMCC.",
 ];
@@ -268,7 +268,7 @@ export default function SupervisiePage() {
               </p>
             </Reveal>
 
-            <div className="grid gap-5 lg:h-full lg:grid-rows-[1fr_auto_1fr]">
+            <div className="grid gap-5 lg:h-full">
               <Reveal className="h-full">
                 <InteractiveGlowPanel
                   className="h-full rounded-[2rem]"
@@ -278,50 +278,35 @@ export default function SupervisiePage() {
                     <h3 className="text-2xl font-semibold text-white">
                       Professionalisering
                     </h3>
-                    <p className="mt-4 text-sm leading-7 text-white/80">
-                      Je mag van mij verwachten dat ik jouw professionalisering
-                      en daarmee de kwaliteit van coachen, centraal zet.
-                    </p>
-                    <p className="mt-4 text-sm leading-7 text-white/80">
-                      Supervisie is meer dan een professionele dialoog. Het is
-                      ook een kijkje in de keuken van Ardie en jezelf zien
-                      zoals je dat nog niet eerder deed.
-                    </p>
-                  </article>
-                </InteractiveGlowPanel>
-              </Reveal>
-              <Reveal delay={0.06}>
-                <div className="relative flex items-center gap-5 overflow-visible">
-                  <div className="h-[300px] w-[225px] shrink-0 overflow-hidden rounded-[1.35rem] border border-white/12 bg-white/8 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
-                    <Image
-                      src="/supervisie/OOG baby in oog (supervisie).JPG"
-                      alt="Oog met een baby ervoor als beeld voor kijken en gezien worden."
-                      width={240}
-                      height={320}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="flex min-w-0 flex-1 justify-center overflow-visible">
-                    <QuoteBadge
-                      id="supervisie-oog-baby-quote"
-                      quote="In de ogen van de ander kom je jezelf tegen."
-                    />
-                  </div>
-                </div>
-              </Reveal>
-              <Reveal delay={0.12} className="h-full">
-                <InteractiveGlowPanel
-                  className="h-full rounded-[2rem]"
-                  glowClassName="bg-[radial-gradient(28rem_circle_at_var(--glow-x)_var(--glow-y),rgba(255,255,255,0.12),transparent_64%)]"
-                >
-                  <article className="flex h-full flex-col rounded-[2rem] border border-orato-purple/20 bg-orato-purple/10 p-7 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)] transition-colors duration-500 group-hover:bg-orato-purple/14">
-                    <h3 className="text-2xl font-semibold text-white">
-                      Secure base
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-white/80">
-                      Supervisie gebeurt met de grootste psychologische
-                      veiligheid. Als een katalysator gericht op secure base.
-                    </p>
+                    <div className="mt-4 space-y-5">
+                      <p className="text-sm leading-7 text-white/80">
+                        Je mag van mij verwachten dat ik jouw professionalisering
+                        en daarmee de kwaliteit van coachen, centraal zet.
+                      </p>
+                      <p className="text-sm leading-7 text-white/80">
+                        Supervisie is meer dan een professionele dialoog. Het is
+                        ook een kijkje in de keuken van Ardie en jezelf zien
+                        zoals je dat nog niet eerder deed.
+                      </p>
+                      <div className="relative overflow-visible">
+                        <div className="relative z-30 mb-4 flex justify-center overflow-visible">
+                          <QuoteBadge
+                            id="supervisie-oog-baby-quote"
+                            quote="In de ogen van de ander kom je jezelf tegen."
+                            tooltipAlign="right"
+                          />
+                        </div>
+                        <div className="overflow-hidden rounded-[1.35rem] border border-white/12 bg-white/8 shadow-[0_24px_80px_-42px_rgba(0,0,0,0.45)]">
+                          <Image
+                            src="/supervisie/OOG baby in oog (supervisie).JPG"
+                            alt="Oog met een baby ervoor als beeld voor kijken en gezien worden."
+                            width={240}
+                            height={320}
+                            className="h-auto w-full object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </article>
                 </InteractiveGlowPanel>
               </Reveal>
@@ -498,7 +483,7 @@ export default function SupervisiePage() {
                 Pragmatisch, verdiepend en zorgvuldig.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/78">
-                Na een orientatiegesprek waarin we kennismaken en ter tafel
+                Na een oriëntatiegesprek waarin we kennismaken en ter tafel
                 brengen wat-ertoe-doet, stellen we een werkovereenkomst op. Na
                 akkoord gaan we aan de slag.
               </p>
@@ -508,15 +493,14 @@ export default function SupervisiePage() {
                   <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78">
                     {methods.map((item) => (
                       <li key={item}>
-                        {item.includes("Speaking Circle") ? (
+                        {item.includes("Relational Presence") ? (
                           <>
-                            Met de mogelijkheid jezelf te oefenen in Relational
-                            Presence /{" "}
+                            Met de mogelijkheid jezelf te oefenen in{" "}
                             <Link
                               href="/Onderwerpen/Presenteren#speaking-circle"
                               className="cursor-small font-bold text-orato-purple underline decoration-orato-purple/60 decoration-2 underline-offset-4 transition hover:text-white hover:decoration-white"
                             >
-                              Speaking Circle
+                              Relational Presence
                             </Link>{" "}
                             ter verdieping van cont(r)act maken. 1-op-1 en in
                             of voor een groep.
@@ -527,6 +511,14 @@ export default function SupervisiePage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+                <div className="relative overflow-visible rounded-[1.8rem] border border-white/12 bg-white/6 p-6">
+                  <h3 className="text-lg font-semibold">Planning & kaders</h3>
+                  <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78">
+                    {planning.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                   <div className="relative z-30 mt-5 flex justify-end overflow-visible">
                     <QuoteBadge
                       id="supervisie-aanpak-quote"
@@ -535,14 +527,6 @@ export default function SupervisiePage() {
                       tooltipAlign="right"
                     />
                   </div>
-                </div>
-                <div className="rounded-[1.8rem] border border-white/12 bg-white/6 p-6">
-                  <h3 className="text-lg font-semibold">Planning & kaders</h3>
-                  <ul className="mt-4 space-y-3 text-sm leading-7 text-white/78">
-                    {planning.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>

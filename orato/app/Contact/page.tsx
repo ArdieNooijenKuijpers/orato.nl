@@ -77,29 +77,35 @@ const ContactPage = () => {
                   <p className="font-semibold text-orato-dark">Drs. Ardie Nooijen-Kuijpers</p>
                   <p>Rutger van den Broeckelaan 3</p>
                   <p>5671 EB Nuenen</p>
-                  <p>
-                    <a className="underline underline-offset-4 hover:text-orato-blue" href="tel:+31402842901">
-                      +31 40 284 29 01
-                    </a>{" "}
-                    <span className="mx-2 inline-block h-2 w-2 rounded-full bg-orato-blue align-middle" />
-                    <a className="underline underline-offset-4 hover:text-orato-blue" href="tel:+31651088688">
-                      +31 6 5108 8688
-                    </a>
-                  </p>
-                  <p>
-                    <a className="underline underline-offset-4 hover:text-orato-green" href="mailto:ardie@orato.info">
-                      ardie@orato.info
-                    </a>{" "}
-                    <span className="mx-2 inline-block h-2 w-2 rounded-full bg-orato-green align-middle" />
-                    <a
-                      className="underline underline-offset-4 hover:text-orato-green"
-                      href="https://orato.nl"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      orato.nl
-                    </a>
-                  </p>
+                  <div className="grid grid-cols-[max-content_auto_1fr] items-center gap-x-2 gap-y-2">
+                    <p className="min-w-0">
+                      <a className="underline underline-offset-4 hover:text-orato-blue" href="tel:+31402842901">
+                        +31 40 284 29 01
+                      </a>
+                    </p>
+                    <span className="h-2 w-2 rounded-full bg-orato-blue" />
+                    <p className="min-w-0">
+                      <a className="underline underline-offset-4 hover:text-orato-blue" href="tel:+31651088688">
+                        +31 6 510 88 6 88
+                      </a>
+                    </p>
+                    <p className="min-w-0">
+                      <a className="underline underline-offset-4 hover:text-orato-green" href="mailto:ardie@orato.info">
+                        ardie@orato.info
+                      </a>
+                    </p>
+                    <span className="h-2 w-2 rounded-full bg-orato-green" />
+                    <p className="min-w-0">
+                      <a
+                        className="underline underline-offset-4 hover:text-orato-green"
+                        href="https://www.orato.nl"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        www.orato.nl
+                      </a>
+                    </p>
+                  </div>
                   <div className="pt-2">
                     <a
                       className="inline-flex items-center gap-2 rounded-full border border-orato-orange/40 bg-orato-orange/10 px-4 py-2 text-sm font-semibold text-orato-dark transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-orange hover:bg-orato-orange hover:text-white"
