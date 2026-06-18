@@ -238,17 +238,20 @@ const ContactForm = () => {
           </p>
         )}
 
+        {showSuccess && (
+          <p
+            className="rounded-xl bg-orato-green px-4 py-3 text-center text-sm font-medium text-white shadow-sm"
+            role="status"
+          >
+            Dank je wel! Je bericht is verzonden.
+          </p>
+        )}
+
         <p className="pt-2 text-xs leading-relaxed text-orato-dark/70">
           Je krijgt automatisch een bevestiging van je bericht per e-mail. Ik
           gebruik je gegevens alleen om je e-mail te beantwoorden.
         </p>
       </form>
-
-      {showSuccess && (
-        <p className="pointer-events-none absolute right-8 top-8 rounded-lg bg-orato-green px-3 py-2 text-xs font-medium text-white shadow-lg">
-          Dank je wel! Je bericht is verzonden.
-        </p>
-      )}
     </div>
   );
 };

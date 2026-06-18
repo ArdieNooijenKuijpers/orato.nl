@@ -638,15 +638,18 @@ const InschrijfForm = ({
                 {submitError}
               </p>
             )}
+
+            {showSuccess && (
+              <p
+                className="rounded-xl bg-orato-green px-4 py-3 text-center text-sm font-medium text-white shadow-sm"
+                role="status"
+              >
+                Dank je wel! Je inschrijving is verzonden.
+              </p>
+            )}
           </div>
         </FormSection>
       </form>
-
-      {showSuccess && (
-        <p className="pointer-events-none absolute right-6 top-6 rounded-lg bg-orato-green px-3 py-2 text-xs font-medium text-white shadow-lg">
-          Dank je wel! Je inschrijving is verzonden.
-        </p>
-      )}
     </div>
   );
 };
