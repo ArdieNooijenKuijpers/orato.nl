@@ -98,8 +98,8 @@ const contactDetails = [
   },
   {
     label: "www.orato.nl",
-    href: "https://www.orato.nl",
-    external: true,
+    href: "/",
+    external: false,
   },
 ];
 

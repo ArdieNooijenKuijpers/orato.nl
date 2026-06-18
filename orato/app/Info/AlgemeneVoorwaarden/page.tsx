@@ -487,8 +487,8 @@ const contactDetails = [
   },
   {
     label: "www.orato.nl",
-    href: "https://www.orato.nl",
-    external: true,
+    href: "/",
+    external: false,
   },
   { label: "KvK 160 65 919" },
   { label: "Btw. Nummer NL001890491B36" },

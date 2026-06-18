@@ -288,7 +288,7 @@ export default function PresenterenPage() {
                           <h3
                             className={`${notoSerifDisplay.className} mt-4 leading-none ${
                               track.id === "coaching"
-                                ? "text-[1.8rem] md:text-[2.25rem]"
+                                ? "text-[1.5rem] md:text-[2.25rem]"
                                 : "text-4xl md:text-5xl"
                             }`}
                           >
@@ -794,18 +794,24 @@ export default function PresenterenPage() {
                   <div className="grid gap-3 pt-1 sm:grid-cols-3">
                     <Link
                       href="https://relationalpresence.eu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
                     >
                       Relational Presence
                     </Link>
                     <Link
                       href="https://www.speakingcircles.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
                     >
                       Speaking Circle®
                     </Link>
                     <Link
                       href="https://kloosterhotelzin.nl/agenda/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex min-h-14 cursor-small items-center justify-center rounded-[1.25rem] border border-white/40 bg-white px-5 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-orato-dark hover:text-white"
                     >
                       ZIN agenda

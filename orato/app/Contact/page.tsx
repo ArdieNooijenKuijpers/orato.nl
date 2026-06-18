@@ -98,9 +98,7 @@ const ContactPage = () => {
                     <p className="min-w-0">
                       <a
                         className="underline underline-offset-4 hover:text-orato-green"
-                        href="https://www.orato.nl"
-                        target="_blank"
-                        rel="noreferrer"
+                        href="/"
                       >
                         www.orato.nl
                       </a>

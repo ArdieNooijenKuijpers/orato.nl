@@ -410,12 +410,16 @@ export default function SupervisiePage() {
                     <div className="mt-6 flex flex-wrap gap-3">
                       <Link
                         href="https://associatievoorcoaching.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
                       >
                         AvC
                       </Link>
                       <Link
                         href="https://associatievoorcoaching.com/transactionele-analyse/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex cursor-small items-center rounded-full border border-orato-dark/10 bg-white px-4 py-2 text-sm font-semibold text-orato-dark transition hover:border-orato-purple hover:text-orato-purple"
                       >
                         Transactionele Analyse

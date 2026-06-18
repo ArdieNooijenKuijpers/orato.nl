@@ -383,7 +383,7 @@ const InschrijfForm = ({
           </div>
         </FormSection>
 
-        <FormSection title="Organisatie">
+        <FormSection title="Organisatie (optioneel)">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <LabelInputContainer>
               <label className="text-sm font-medium text-orato-dark" htmlFor="organisatieNaam">

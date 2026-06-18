@@ -29,7 +29,7 @@ describe("contact route smoke", () => {
       "href",
       "mailto:ardie@orato.info",
     );
-    expect(screen.getByRole("link", { name: "www.orato.nl" })).toHaveAttribute("href", "https://www.orato.nl");
+    expect(screen.getByRole("link", { name: "www.orato.nl" })).toHaveAttribute("href", "/");
     expect(screen.getByTitle("Locatie Orato in Nuenen")).toBeInTheDocument();
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });

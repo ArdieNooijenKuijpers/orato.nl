@@ -82,7 +82,7 @@ const FooterComp = () => {
     {
       name: "Orato",
       file: "Oratowhite.jpg",
-      href: "https://orato.nl",
+      href: "/",
     },
     {
       name: "RP",
@@ -200,9 +200,7 @@ const FooterComp = () => {
                   </Link>
                   <span className="text-white/50 md:mx-2">•</span>
                   <Link
-                    href="https://www.orato.nl"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/"
                     className="hover:text-orato-orange cursor-small"
                   >
                     www.orato.nl
@@ -370,8 +368,8 @@ const FooterComp = () => {
                   <Link
                     key={index}
                     href={logo.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={logo.href.startsWith("http") ? "_blank" : undefined}
+                    rel={logo.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     aria-label={`${logo.name} website`}
                     title={logo.name}
                     className="relative flex-shrink-0 rounded-xl border border-white/15 bg-white p-3 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.8)]"
