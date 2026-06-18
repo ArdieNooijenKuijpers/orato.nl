@@ -66,7 +66,7 @@ npm run build
 npm run start
 ```
 
-### 4. Lint
+### 5. Lint
 
 ```bash
 npm run lint

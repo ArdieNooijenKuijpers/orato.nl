@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import ContactForm from "./contactForm";
 
 vi.mock("next/font/google", () => ({
@@ -9,6 +9,16 @@ vi.mock("next/font/google", () => ({
 }));
 
 describe("ContactForm", () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ success: true }),
+      }),
+    );
+  });
+
   it("shows validation errors when required fields are missing", async () => {
     const user = userEvent.setup();
 
@@ -47,7 +57,7 @@ describe("ContactForm", () => {
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
     expect(
-      screen.getByText("Dank je wel! Je bericht is klaar om verzonden te worden."),
+      await screen.findByText("Dank je wel! Je bericht is verzonden."),
     ).toBeInTheDocument();
     expect((screen.getByLabelText(/^naam/i) as HTMLInputElement).value).toBe("");
     expect((screen.getByLabelText(/e-mailadres/i) as HTMLInputElement).value).toBe("");

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import InschrijfForm from "./InschrijfForm";
 import { inschrijfDataOptions } from "./inschrijfData";
 
@@ -19,6 +19,16 @@ const fillBaseRegistrationFields = async (user: ReturnType<typeof userEvent.setu
 };
 
 describe("InschrijfForm", () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ success: true }),
+      }),
+    );
+  });
+
   it("uses the initial selected date and keeps it selected after submit reset", async () => {
     const user = userEvent.setup();
     const initialSelectedDate = inschrijfDataOptions[1];
@@ -39,7 +49,7 @@ describe("InschrijfForm", () => {
 
     expect(screen.queryByText("Kies een dag.")).not.toBeInTheDocument();
     expect(
-      screen.getByText("Dank je wel! Je inschrijving is klaar om verzonden te worden."),
+      await screen.findByText("Dank je wel! Je inschrijving is verzonden."),
     ).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: initialSelectedDate })).toBeChecked();
   });
@@ -89,7 +99,7 @@ describe("InschrijfForm", () => {
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
     expect(
-      screen.getByText("Dank je wel! Je inschrijving is klaar om verzonden te worden."),
+      await screen.findByText("Dank je wel! Je inschrijving is verzonden."),
     ).toBeInTheDocument();
     expect((screen.getByPlaceholderText("Voornaam Achternaam") as HTMLInputElement).value).toBe("");
     expect((screen.getByPlaceholderText("Organisatienaam") as HTMLInputElement).value).toBe("");
@@ -120,7 +130,7 @@ describe("InschrijfForm", () => {
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
     expect(
-      screen.getByText("Dank je wel! Je inschrijving is klaar om verzonden te worden."),
+      await screen.findByText("Dank je wel! Je inschrijving is verzonden."),
     ).toBeInTheDocument();
     expect((screen.getByPlaceholderText("Voornaam Achternaam") as HTMLInputElement).value).toBe("");
     expect(
