@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendFormEmails } from "../../../lib/formEmailService";
+import { verifyTurnstileToken } from "../../../lib/turnstile";
 
 type ContactPayload = {
   naam?: unknown;
@@ -7,7 +8,7 @@ type ContactPayload = {
   telefoon?: unknown;
   organisatie?: unknown;
   bericht?: unknown;
-  captcha?: unknown;
+  turnstileToken?: unknown;
 };
 
 const stringValue = (value: unknown) =>
@@ -21,15 +22,18 @@ export const POST = async (request: Request) => {
     const telefoon = stringValue(body.telefoon);
     const organisatie = stringValue(body.organisatie);
     const bericht = stringValue(body.bericht);
-    const captcha = stringValue(body.captcha);
+    const turnstileToken = stringValue(body.turnstileToken);
 
-    if (
-      naam.length < 2 ||
-      !/^\S+@\S+\.\S+$/.test(email) ||
-      Number(captcha) !== 7
-    ) {
+    if (naam.length < 2 || !/^\S+@\S+\.\S+$/.test(email)) {
       return NextResponse.json(
         { error: "Controleer de verplichte velden en probeer opnieuw." },
+        { status: 400 },
+      );
+    }
+
+    if (!(await verifyTurnstileToken(turnstileToken, request))) {
+      return NextResponse.json(
+        { error: "De beveiligingscontrole is mislukt. Probeer het opnieuw." },
         { status: 400 },
       );
     }

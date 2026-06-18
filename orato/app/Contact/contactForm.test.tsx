@@ -8,6 +8,22 @@ vi.mock("next/font/google", () => ({
   Noto_Serif_Display: () => ({ className: "mock-noto-serif-display" }),
 }));
 
+vi.mock("../components/TurnstileWidget", async () => {
+  const React = await import("react");
+  const MockTurnstileWidget = ({
+    onVerify,
+  }: {
+    onVerify: (token: string) => void;
+  }) => {
+    React.useEffect(() => onVerify("test-token"), [onVerify]);
+    return <div aria-label="Beveiligingscontrole" />;
+  };
+
+  return {
+    default: MockTurnstileWidget,
+  };
+});
+
 describe("ContactForm", () => {
   beforeEach(() => {
     vi.stubGlobal(
@@ -28,7 +44,7 @@ describe("ContactForm", () => {
 
     expect(screen.getByText("Vul je naam in.")).toBeInTheDocument();
     expect(screen.getByText("Vul een geldig e-mailadres in.")).toBeInTheDocument();
-    expect(screen.getByText("CAPTCHA is niet correct.")).toBeInTheDocument();
+    expect(screen.queryByText("Bevestig dat je geen robot bent.")).not.toBeInTheDocument();
   });
 
   it("sanitizes the phone field while typing", async () => {
@@ -52,8 +68,6 @@ describe("ContactForm", () => {
     await user.type(screen.getByLabelText(/telefoonnummer/i), "+31 6 12345678");
     await user.type(screen.getByLabelText(/organisatie/i), "Orato");
     await user.type(screen.getByLabelText(/bericht/i), "Ik wil graag contact.");
-    await user.type(screen.getByLabelText(/captcha/i), "7");
-
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
     expect(
@@ -64,6 +78,5 @@ describe("ContactForm", () => {
     expect((screen.getByLabelText(/telefoonnummer/i) as HTMLInputElement).value).toBe("");
     expect((screen.getByLabelText(/organisatie/i) as HTMLInputElement).value).toBe("");
     expect((screen.getByLabelText(/bericht/i) as HTMLTextAreaElement).value).toBe("");
-    expect((screen.getByLabelText(/captcha/i) as HTMLInputElement).value).toBe("");
   });
 });

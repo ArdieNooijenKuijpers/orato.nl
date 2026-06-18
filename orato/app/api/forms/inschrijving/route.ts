@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { inschrijfDataOptions } from "../../../inschrijfformulier/inschrijfData";
 import { sendFormEmails } from "../../../lib/formEmailService";
+import { verifyTurnstileToken } from "../../../lib/turnstile";
 
 type RegistrationPayload = Record<string, unknown>;
 
@@ -33,12 +34,23 @@ export const POST = async (request: Request) => {
       (facturatie !== "zakelijk" || organisatieNaam.length >= 2) &&
       (factuurNaar !== "email" || /^\S+@\S+\.\S+$/.test(factuurEmail)) &&
       (factuurNaar !== "post" || factuurPostadres.length > 5) &&
-      akkoord &&
-      Number(stringValue(body.captcha)) === 13;
+      akkoord;
 
     if (!isValid) {
       return NextResponse.json(
         { error: "Controleer de verplichte velden en probeer opnieuw." },
+        { status: 400 },
+      );
+    }
+
+    if (
+      !(await verifyTurnstileToken(
+        stringValue(body.turnstileToken),
+        request,
+      ))
+    ) {
+      return NextResponse.json(
+        { error: "De beveiligingscontrole is mislukt. Probeer het opnieuw." },
         { status: 400 },
       );
     }
