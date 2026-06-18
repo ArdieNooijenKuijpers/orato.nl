@@ -29,6 +29,8 @@ const ContactForm = () => {
   const [formData, setFormData] = useState<FormState>(initialState);
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const captchaQuestion = useMemo(() => ({ left: 4, right: 3 }), []);
   const captchaResult = captchaQuestion.left + captchaQuestion.right;
@@ -44,18 +46,42 @@ const ContactForm = () => {
 
   const hasErrors = Boolean(errors.naam || errors.email || errors.captcha);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setTouched((prev) => ({ ...prev, naam: true, email: true, captcha: true }));
     setShowSuccess(false);
+    setSubmitError("");
 
-    if (hasErrors) {
+    if (hasErrors || isSubmitting) {
       return;
     }
 
-    setFormData(initialState);
-    setTouched({});
-    setShowSuccess(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/forms/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error || "Verzenden is niet gelukt.");
+      }
+
+      setFormData(initialState);
+      setTouched({});
+      setShowSuccess(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Verzenden is niet gelukt. Probeer het later opnieuw.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const updateField = (key: keyof FormState, value: string) => {
@@ -200,11 +226,20 @@ const ContactForm = () => {
 
         <button
           type="submit"
+          disabled={isSubmitting}
           className="group relative mt-2 inline-flex w-full items-center justify-center rounded-xl bg-orato-dark px-4 py-3 text-sm font-semibold text-white transition hover:bg-orato-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
         >
           <span className="absolute inset-y-0 left-0 h-full w-0 rounded-xl bg-orato-orange transition-all duration-300 group-hover:w-full" />
-          <span className="relative">VERZENDEN</span>
+          <span className="relative">
+            {isSubmitting ? "BEZIG MET VERZENDEN..." : "VERZENDEN"}
+          </span>
         </button>
+
+        {submitError && (
+          <p className="text-sm font-medium text-orato-red" role="alert">
+            {submitError}
+          </p>
+        )}
 
         <p className="pt-2 text-xs leading-relaxed text-orato-dark/70">
           Je krijgt automatisch een bevestiging van je bericht per e-mail. Ik
@@ -214,7 +249,7 @@ const ContactForm = () => {
 
       {showSuccess && (
         <p className="pointer-events-none absolute right-8 top-8 rounded-lg bg-orato-green px-3 py-2 text-xs font-medium text-white shadow-lg">
-          Dank je wel! Je bericht is klaar om verzonden te worden.
+          Dank je wel! Je bericht is verzonden.
         </p>
       )}
     </div>

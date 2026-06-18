@@ -76,6 +76,8 @@ const InschrijfForm = ({
   }));
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const captchaQuestion = useMemo(() => ({ left: 8, right: 5 }), []);
   const captchaResult = captchaQuestion.left + captchaQuestion.right;
@@ -143,7 +145,7 @@ const InschrijfForm = ({
     });
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const requiredFields: (keyof FormState)[] = [
@@ -171,17 +173,41 @@ const InschrijfForm = ({
 
     markTouched(requiredFields);
     setShowSuccess(false);
+    setSubmitError("");
 
-    if (hasErrors) {
+    if (hasErrors || isSubmitting) {
       return;
     }
 
-    setFormData({
-      ...initialState,
-      gekozenDatum: initialSelectedDate,
-    });
-    setTouched({});
-    setShowSuccess(true);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/forms/inschrijving", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error || "Verzenden is niet gelukt.");
+      }
+
+      setFormData({
+        ...initialState,
+        gekozenDatum: initialSelectedDate,
+      });
+      setTouched({});
+      setShowSuccess(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Verzenden is niet gelukt. Probeer het later opnieuw.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
@@ -593,10 +619,13 @@ const InschrijfForm = ({
           <div className="flex items-center gap-4 overflow-visible">
             <button
               type="submit"
+              disabled={isSubmitting}
               className="group relative inline-flex w-full cursor-small items-center justify-center rounded-xl bg-orato-dark px-4 py-3 text-sm font-semibold text-white transition hover:bg-orato-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
             >
               <span className="absolute inset-y-0 left-0 h-full w-0 rounded-xl bg-orato-orange transition-all duration-300 group-hover:w-full" />
-              <span className="relative">VERZENDEN</span>
+              <span className="relative">
+                {isSubmitting ? "BEZIG MET VERZENDEN..." : "VERZENDEN"}
+              </span>
             </button>
 
             <QuoteBadge
@@ -608,13 +637,18 @@ const InschrijfForm = ({
           </div>
 
           <div className="space-y-2 pt-2 text-xs leading-relaxed text-orato-dark/70">
+            {submitError && (
+              <p className="text-sm font-medium text-orato-red" role="alert">
+                {submitError}
+              </p>
+            )}
           </div>
         </FormSection>
       </form>
 
       {showSuccess && (
         <p className="pointer-events-none absolute right-6 top-6 rounded-lg bg-orato-green px-3 py-2 text-xs font-medium text-white shadow-lg">
-          Dank je wel! Je inschrijving is klaar om verzonden te worden.
+          Dank je wel! Je inschrijving is verzonden.
         </p>
       )}
     </div>
