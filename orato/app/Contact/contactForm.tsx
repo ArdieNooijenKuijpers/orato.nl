@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, InputHTMLAttributes, ReactNode, useMemo, useState } from "react";
+import { FormEvent, InputHTMLAttributes, ReactNode, useCallback, useMemo, useState } from "react";
 import { Noto_Serif_Display } from "next/font/google";
+import TurnstileWidget from "../components/TurnstileWidget";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -11,7 +12,7 @@ type FormState = {
   telefoon: string;
   organisatie: string;
   bericht: string;
-  captcha: string;
+  turnstileToken: string;
 };
 
 const initialState: FormState = {
@@ -20,7 +21,7 @@ const initialState: FormState = {
   telefoon: "",
   organisatie: "",
   bericht: "",
-  captcha: "",
+  turnstileToken: "",
 };
 
 type FieldErrors = Partial<Record<keyof FormState, string>>;
@@ -31,24 +32,28 @@ const ContactForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const captchaQuestion = useMemo(() => ({ left: 4, right: 3 }), []);
-  const captchaResult = captchaQuestion.left + captchaQuestion.right;
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
 
   const errors: FieldErrors = useMemo(
     () => ({
       naam: formData.naam.trim().length > 1 ? "" : "Vul je naam in.",
       email: /^\S+@\S+\.\S+$/.test(formData.email) ? "" : "Vul een geldig e-mailadres in.",
-      captcha: Number(formData.captcha) === captchaResult ? "" : "CAPTCHA is niet correct.",
+      turnstileToken: formData.turnstileToken ? "" : "Bevestig dat je geen robot bent.",
     }),
-    [captchaResult, formData.captcha, formData.email, formData.naam],
+    [formData.email, formData.naam, formData.turnstileToken],
   );
 
-  const hasErrors = Boolean(errors.naam || errors.email || errors.captcha);
+  const hasErrors = Boolean(errors.naam || errors.email || errors.turnstileToken);
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setFormData((prev) => ({ ...prev, turnstileToken: token }));
+  }, []);
+  const handleTurnstileExpire = useCallback(() => {
+    setTouched((prev) => ({ ...prev, turnstileToken: true }));
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setTouched((prev) => ({ ...prev, naam: true, email: true, captcha: true }));
+    setTouched((prev) => ({ ...prev, naam: true, email: true, turnstileToken: true }));
     setShowSuccess(false);
     setSubmitError("");
 
@@ -73,7 +78,9 @@ const ContactForm = () => {
       setFormData(initialState);
       setTouched({});
       setShowSuccess(true);
+      setTurnstileResetKey((key) => key + 1);
     } catch (error) {
+      setTurnstileResetKey((key) => key + 1);
       setSubmitError(
         error instanceof Error
           ? error.message
@@ -206,22 +213,12 @@ const ContactForm = () => {
         </LabelInputContainer>
 
         <LabelInputContainer>
-          <label className="text-sm font-medium text-orato-dark" htmlFor="captcha">
-            CAPTCHA: hoeveel is {captchaQuestion.left} + {captchaQuestion.right}?
-          </label>
-          <Input
-            id="captcha"
-            name="captcha"
-            inputMode="numeric"
-            placeholder="Antwoord"
-            value={formData.captcha}
-            onChange={(e) => updateField("captcha", e.target.value)}
-            onBlur={() => onFieldBlur("captcha")}
-            aria-invalid={Boolean(showError("captcha"))}
-            error={Boolean(showError("captcha"))}
-            required
+          <TurnstileWidget
+            onVerify={handleTurnstileVerify}
+            onExpire={handleTurnstileExpire}
+            resetKey={turnstileResetKey}
           />
-          <ErrorTooltip message={showError("captcha")} />
+          <ErrorTooltip message={showError("turnstileToken")} />
         </LabelInputContainer>
 
         <button

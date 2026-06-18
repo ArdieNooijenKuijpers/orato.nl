@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes, useMemo, useState } from "react";
+import { FormEvent, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes, useCallback, useMemo, useState } from "react";
 import { Noto_Serif_Display } from "next/font/google";
 import QuoteBadge from "../components/ardie/QuoteBadge";
+import TurnstileWidget from "../components/TurnstileWidget";
 import { inschrijfDataOptions } from "./inschrijfData";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
@@ -30,7 +31,7 @@ type FormState = {
   dieetwensen: string;
   opmerkingen: string;
   akkoord: boolean;
-  captcha: string;
+  turnstileToken: string;
 };
 
 const initialState: FormState = {
@@ -52,7 +53,7 @@ const initialState: FormState = {
   dieetwensen: "",
   opmerkingen: "",
   akkoord: false,
-  captcha: "",
+  turnstileToken: "",
 };
 
 type FieldErrors = Partial<Record<keyof FormState, string>>;
@@ -78,9 +79,7 @@ const InschrijfForm = ({
   const [showSuccess, setShowSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const captchaQuestion = useMemo(() => ({ left: 8, right: 5 }), []);
-  const captchaResult = captchaQuestion.left + captchaQuestion.right;
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
 
   const errors: FieldErrors = useMemo(
     () => ({
@@ -103,12 +102,10 @@ const InschrijfForm = ({
           ? ""
           : "Vul een postadres in voor de factuur.",
       akkoord: formData.akkoord ? "" : "Je moet akkoord gaan met de voorwaarden.",
-      captcha: Number(formData.captcha) === captchaResult ? "" : "CAPTCHA is niet correct.",
+      turnstileToken: formData.turnstileToken ? "" : "Bevestig dat je geen robot bent.",
     }),
     [
-      captchaResult,
       formData.akkoord,
-      formData.captcha,
       formData.email,
       formData.facturatie,
       formData.factuurEmail,
@@ -118,6 +115,7 @@ const InschrijfForm = ({
       formData.naam,
       formData.organisatieNaam,
       formData.telefoon,
+      formData.turnstileToken,
     ],
   );
 
@@ -132,8 +130,14 @@ const InschrijfForm = ({
       errors.factuurEmail ||
       errors.factuurPostadres ||
       errors.akkoord ||
-      errors.captcha,
+      errors.turnstileToken,
   );
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setFormData((prev) => ({ ...prev, turnstileToken: token }));
+  }, []);
+  const handleTurnstileExpire = useCallback(() => {
+    setTouched((prev) => ({ ...prev, turnstileToken: true }));
+  }, []);
 
   const markTouched = (fields: (keyof FormState)[]) => {
     setTouched((prev) => {
@@ -156,7 +160,7 @@ const InschrijfForm = ({
       "facturatie",
       "factuurNaar",
       "akkoord",
-      "captcha",
+      "turnstileToken",
     ];
 
     if (formData.factuurNaar === "email") {
@@ -199,7 +203,9 @@ const InschrijfForm = ({
       });
       setTouched({});
       setShowSuccess(true);
+      setTurnstileResetKey((key) => key + 1);
     } catch (error) {
+      setTurnstileResetKey((key) => key + 1);
       setSubmitError(
         error instanceof Error
           ? error.message
@@ -598,22 +604,12 @@ const InschrijfForm = ({
           </LabelInputContainer>
 
           <LabelInputContainer>
-            <label className="text-sm font-medium text-orato-dark" htmlFor="captcha">
-              CAPTCHA *: hoeveel is {captchaQuestion.left} + {captchaQuestion.right}?
-            </label>
-            <Input
-              id="captcha"
-              name="captcha"
-              inputMode="numeric"
-              placeholder="Antwoord"
-              value={formData.captcha}
-              onChange={(event) => updateField("captcha", event.target.value)}
-              onBlur={() => onFieldBlur("captcha")}
-              aria-invalid={Boolean(showError("captcha"))}
-              error={Boolean(showError("captcha"))}
-              required
+            <TurnstileWidget
+              onVerify={handleTurnstileVerify}
+              onExpire={handleTurnstileExpire}
+              resetKey={turnstileResetKey}
             />
-            <ErrorText message={showError("captcha")} />
+            <ErrorText message={showError("turnstileToken")} />
           </LabelInputContainer>
 
           <div className="flex items-center gap-4 overflow-visible">

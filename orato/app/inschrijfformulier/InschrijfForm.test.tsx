@@ -9,13 +9,28 @@ vi.mock("../components/ardie/QuoteBadge", () => ({
   default: () => <div data-testid="quote-badge" />,
 }));
 
+vi.mock("../components/TurnstileWidget", async () => {
+  const React = await import("react");
+  const MockTurnstileWidget = ({
+    onVerify,
+  }: {
+    onVerify: (token: string) => void;
+  }) => {
+    React.useEffect(() => onVerify("test-token"), [onVerify]);
+    return <div aria-label="Beveiligingscontrole" />;
+  };
+
+  return {
+    default: MockTurnstileWidget,
+  };
+});
+
 const fillBaseRegistrationFields = async (user: ReturnType<typeof userEvent.setup>) => {
   await user.click(screen.getByRole("radio", { name: inschrijfDataOptions[0] }));
   await user.type(screen.getByPlaceholderText("Voornaam Achternaam"), "Ada Lovelace");
   await user.type(screen.getByPlaceholderText("naam@voorbeeld.nl"), "ada@example.com");
   await user.type(screen.getByPlaceholderText("+31 6 12345678"), "+31 6 12345678");
   await user.click(screen.getByRole("checkbox", { name: /ik ga akkoord/i }));
-  await user.type(screen.getByPlaceholderText("Antwoord"), "13");
 };
 
 describe("InschrijfForm", () => {
@@ -44,7 +59,6 @@ describe("InschrijfForm", () => {
     await user.click(screen.getByRole("radio", { name: /e-mailadres/i }));
     await user.click(screen.getByRole("checkbox", { name: /zelfde als persoonlijke e-mailadres/i }));
     await user.click(screen.getByRole("checkbox", { name: /ik ga akkoord/i }));
-    await user.type(screen.getByPlaceholderText("Antwoord"), "13");
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
     expect(screen.queryByText("Kies een dag.")).not.toBeInTheDocument();
@@ -68,7 +82,7 @@ describe("InschrijfForm", () => {
     expect(screen.getByText("Kies zakelijk of privé.")).toBeInTheDocument();
     expect(screen.getByText("Kies waar de factuur naartoe moet.")).toBeInTheDocument();
     expect(screen.getByText("Je moet akkoord gaan met de voorwaarden.")).toBeInTheDocument();
-    expect(screen.getByText("CAPTCHA is niet correct.")).toBeInTheDocument();
+    expect(screen.queryByText("Bevestig dat je geen robot bent.")).not.toBeInTheDocument();
   });
 
   it("requires business invoicing details and can copy the personal email into the invoice email field", async () => {
@@ -104,7 +118,6 @@ describe("InschrijfForm", () => {
     expect((screen.getByPlaceholderText("Voornaam Achternaam") as HTMLInputElement).value).toBe("");
     expect((screen.getByPlaceholderText("Organisatienaam") as HTMLInputElement).value).toBe("");
     expect((screen.getByPlaceholderText("naam@voorbeeld.nl") as HTMLInputElement).value).toBe("");
-    expect((screen.getByPlaceholderText("Antwoord") as HTMLInputElement).value).toBe("");
     expect(screen.queryByLabelText(/Factuur e-mailadres/i)).toBeNull();
     expect(screen.queryByLabelText(/Factuur postadres/i)).toBeNull();
   });
