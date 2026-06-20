@@ -31,7 +31,13 @@ vi.mock("next/image", () => ({
   default: ({
     alt,
     src,
+    fill: _fill,
+    priority: _priority,
     ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement> & { src: string }) =>
+  }: React.ImgHTMLAttributes<HTMLImageElement> & {
+    src: string;
+    fill?: boolean;
+    priority?: boolean;
+  }) =>
     React.createElement("img", { ...props, alt, src }),
 }));
