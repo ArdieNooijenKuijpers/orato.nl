@@ -288,7 +288,7 @@ export default function PresenterenPage() {
                           <h3
                             className={`${notoSerifDisplay.className} mt-4 leading-none ${
                               track.id === "coaching"
-                                ? "text-[1.5rem] md:text-[2.25rem]"
+                                ? "text-[clamp(1.5rem,2.15vw,2.25rem)] tracking-[-0.025em]"
                                 : "text-4xl md:text-5xl"
                             }`}
                           >

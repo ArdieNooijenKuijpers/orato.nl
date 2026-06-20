@@ -14,6 +14,37 @@ import CompanyCircles from "./components/mainpage/CompanyCircles";
 import LandingIntro from "./components/mainpage/LandingIntro";
 const noto_Serif_Display = Noto_Serif_Display({ subsets: ["latin"] });
 
+const HeroServiceLinks = ({ className }: { className: string }) => (
+  <div className={className}>
+    <span>HET JUISTE ADRES VOOR</span>
+    <br />
+    <Link
+      href="/Onderwerpen/Coaching"
+      className="font-semibold text-inherit no-underline cursor-small"
+    >
+      COACHING
+    </Link>
+    <br />
+    <Link
+      href="/Onderwerpen/Supervisie"
+      className="text-inherit no-underline cursor-small"
+    >
+      SUPERVISIE
+    </Link>
+    <br />
+    <Link
+      href="/Onderwerpen/Presenteren"
+      className="text-inherit no-underline cursor-small"
+    >
+      PRESENTEREN
+    </Link>
+    <br />
+    <Link href="/Contact" className="text-inherit no-underline cursor-small">
+      COMMUNICEREN
+    </Link>
+  </div>
+);
+
 export const metadata: Metadata = {
   title: "Orato - Home",
   description: "Orato Coaching, Presenting and Supervision",
@@ -25,13 +56,13 @@ export default function Home() {
       <LandingIntro />
 
       {/* Page layout */}
-      <div className="flex flex-col min-h-screen static bg-orato-light">
+      <div className="relative flex min-h-screen flex-col bg-orato-light">
         {/* Main content */}
         <main className="flex-grow flex items-center justify-center overflow-x-hidden p-4">
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start text-center md:text-left">
             {/* Container for "WELKOM BIJ" and Subtext */}
             <div className="flex flex-col items-center md:items-start mt-4 md:mt-0">
-              <div className="relative flex flex-col">
+              <div className="home-hero-heading-wrap relative flex flex-col">
                 {/* WELKOM BIJ */}
                 <div
                   className={`${noto_Serif_Display.className}
@@ -42,8 +73,8 @@ export default function Home() {
                   WELKOM BIJ
                 </div>
                 {/* Subtext attached to "WELKOM BIJ" on larger screens */}
-                <div
-                  className="
+                <HeroServiceLinks
+                  className="home-hero-service-links
               hidden md:block
               absolute
               bottom-0
@@ -58,27 +89,7 @@ export default function Home() {
 
 
             "
-                >
-                  <span >
-                    HET JUISTE ADRES VOOR
-                  </span>
-                  <br />{" "}
-                  <Link href="/Onderwerpen/Coaching" className="font-semibold text-inherit no-underline cursor-small">
-                    COACHING
-                  </Link>{" "}
-                  <br />
-                  <Link href="/Onderwerpen/Supervisie" className="text-inherit no-underline cursor-small">
-                    SUPERVISIE
-                  </Link>
-                  <br />{" "}
-                  <Link href="/Onderwerpen/Presenteren" className="text-inherit no-underline cursor-small">
-                    PRESENTEREN
-                  </Link>
-                  <br />
-                  <Link href="/Contact" className="text-inherit no-underline cursor-small">
-                    COMMUNICEREN
-                  </Link>
-                </div>
+                />
               </div>
               {/*old transform for long text transform translate-y-16 translate-x-44  */}
               {/* ORATO */}

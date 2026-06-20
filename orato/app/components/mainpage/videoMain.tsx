@@ -9,7 +9,7 @@ const VideoMain = () => {
         muted
         playsInline
         preload="auto"
-        className="
+        className="home-hero-video
                 z-10
                 cursor-invert
                 cursor-big
@@ -40,7 +40,7 @@ const VideoMain = () => {
       {/* Scroll Indicator */}
       <ScrollDownIndicator
         pathId="landing-scroll-circle-path"
-        className="absolute bottom-28 left-5 md:bottom-52 md:left-auto md:right-20 lg:bottom-80 lg:translate-y-10"
+        className="home-hero-scroll absolute bottom-28 left-5 md:bottom-52 md:left-auto md:right-20 lg:bottom-80 lg:translate-y-10"
       />
     </div>
   );
