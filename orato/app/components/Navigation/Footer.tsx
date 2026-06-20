@@ -21,7 +21,7 @@ const FooterComp = () => {
     { name: 'COACHING', path: '/Onderwerpen/Coaching' },
     { name: 'SUPERVISIE', path: '/Onderwerpen/Supervisie' },
     { name: 'PRESENTEREN', path: '/Onderwerpen/Presenteren' },
-    { name: 'ARDIE', path: '/Info/Ardie' },
+    { name: 'OVER ARDIE', path: '/Info/Ardie' },
     { name: 'CONTACT', path: '/Contact' },
     { name: 'INSCHRIJFFORMULIER', path: '/inschrijfformulier' },
     { name: 'ALGEMENE VOORWAARDEN', path: '/Info/AlgemeneVoorwaarden' },

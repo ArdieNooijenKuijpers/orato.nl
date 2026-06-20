@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const expertiseBlocks = [
-  "Voor de Associatie voor Coaching (AvC) superviseer ik coaches sinds 2018. Er zijn verschillende pakketten beschikbaar om te blijven groeien in je vak, zichtbaarder te worden en je senioriteit te verdiepen. In 2024 rondde ik de 2-jarige ESIA Certified Supervisor opleiding af, gegeven door Tom Battye in samenwerking met EMCC.",
+  "Voor de Associatie voor Coaching superviseer ik coaches sinds 2018. Er zijn verschillende pakketten beschikbaar om te blijven groeien in je vak, zichtbaarder te worden en je senioriteit te verdiepen. In 2024 rondde ik de 2-jarige ESIA Certified Supervisor opleiding af, gegeven door Tom Battye in samenwerking met EMCC.",
   "Ik geef bij voorkeur individuele supervisie. In een groep mijn expert-rol inzetten doe ik het liefst als ik professionele coaches opleid, of in de vorm van begeleide intervisie.",
   "Ik ben een expert in coachen door mijn 35+ jaar werkervaring en betrokkenheid bij ons prachtige vak. Onderscheidend van andere supervisoren is mijn therapeutische ervaring als paramedicus, gesterkt door 10 jaar ervaring met het werken aan emoties, gedachtes en fysieke ervaringen, oftewel door een grondige introspectie, middels een Freudiaanse psycho-analyse, waar ik een boek over schreef.",
   "Verder kan ik je helpen bij een (herhaalde) aanvraag van registratie als gecertificeerde coach bij ICF en NOBCO/EMCC.",
@@ -400,7 +400,7 @@ export default function SupervisiePage() {
                     className="scroll-mt-28 rounded-[2rem] border border-orato-purple/15 bg-orato-purple/10 p-7 shadow-sm"
                   >
                     <h3 className="text-2xl font-semibold text-orato-dark">
-                      AvC
+                      Associatie voor Coaching (AvC)
                     </h3>
                     <div className="mt-4 space-y-4 text-base leading-7 text-orato-dark/78">
                       {trainingBlocks.map((paragraph) => (
