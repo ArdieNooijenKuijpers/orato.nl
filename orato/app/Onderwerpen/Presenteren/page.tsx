@@ -326,7 +326,7 @@ export default function PresenterenPage() {
               <Reveal delay={0.08}>
                 <div className="rounded-[2.5rem] border border-orato-dark/10 bg-white/85 p-6 shadow-sm backdrop-blur md:p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
-                    Uit welk vaatje tab ik?
+                    Uit welk vaatje tap ik?
                   </p>
                   <p className="mt-4 text-base leading-7 text-orato-dark/78">
                     Sinds 1989 geef ik presentatietrainingen namens ORATO

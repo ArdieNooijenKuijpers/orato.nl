@@ -59,18 +59,18 @@ const specialties = [
     quote: "Je hoeft je niet goed te voelen, je moet goed voelen. Léon Vasterink, psychiater",
   },
   {
+    title: "Executive Coaching",
+    text: [
+      "Meer specifiek: nadrukkelijk geen businesscoaching. Wel meesterlijke hulp bij het verder ontwikkelen van de menselijke kant van leidinggeven en nemen.",
+      "Diepgaande introspectie op identiteitsniveau om in combinatie met je zakelijke kennis en kunde te excelleren. Transformatief. Werken aan de zaak, niet in de zaak, door jezelf onder de loep te nemen, gespiegeld door mij(n kennis en kunde) als Master People Coach. Leiderschap vraagt bezieling van binnenuit.",
+    ],
+  },
+  {
     title: "Expressie Coaching",
     text: [
       "Voor als jij je wilt uiten (verbaal en non-verbaal) zoals dat past bij jou als persoon en past bij jouw verantwoordelijkheden (professioneel en privé).",
       "Aan de slag dus met de zogenaamde buitenkant, jouw persoonlijke uitstraling en manier van communiceren en met de binnenkant oftewel jouw overtuigingen en gevoelens.",
       "Dit vraagt enerzijds om innerlijk veranderwerk (transformationele coaching), door vragen te beantwoorden zoals Wie ben ik? en Hoe wil ik gekend worden? en anderzijds om moed zodat jij jezelf daadwerkelijk laat zien en horen op basis van alle do's en don'ts op het gebied van communiceren en presenteren.",
-    ],
-  },
-  {
-    title: "Executive Coaching",
-    text: [
-      "Meer specifiek: nadrukkelijk geen businesscoaching. Wel meesterlijke hulp bij het verder ontwikkelen van de menselijke kant van leidinggeven en nemen.",
-      "Diepgaande introspectie op identiteitsniveau om in combinatie met je zakelijke kennis en kunde te excelleren. Transformatief. Werken aan de zaak, niet in de zaak, door jezelf onder de loep te nemen, gespiegeld door mij(n kennis en kunde) als Master People Coach. Leiderschap vraagt bezieling van binnenuit.",
     ],
   },
   {
@@ -205,7 +205,7 @@ export default function CoachingPage() {
               <p className="mt-4 max-w-2xl text-base leading-7 text-orato-dark/72 md:text-lg">
                 Die vragen kunnen gaan over een wens, probleem, ambitie,
                 verandering, keuze etc. Mensen verander je niet, wel de manier
-                waarop je je in een situatie gedraagt, voelt en denkt. Coaching
+                waarop jij je in een situatie gedraagt, voelt en denkt. Coaching
                 door mij, gaat altijd over jou als persoon in de context van je
                 werk (of studie). Een persoonlijke aangelegenheid dus, met
                 concrete doelen en effecten.
@@ -263,21 +263,19 @@ export default function CoachingPage() {
                 </div>
               </div>
               <div className="mt-5 overflow-hidden rounded-[2rem] border border-orato-dark/10 bg-white shadow-[0_28px_80px_-45px_rgba(20,20,20,0.45)]">
-                <div className="relative">
-                  <Image
-                    src="/coaching/schilderij wolken.jpeg"
-                    alt="Wolkenlucht als beeld voor denken in mogelijkheden."
-                    width={1400}
-                    height={900}
-                    className="h-auto w-full object-cover"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex min-h-[38%] items-center justify-center bg-gradient-to-t from-white/72 via-white/30 to-transparent px-6 pb-5 pt-16 text-center backdrop-blur-[1px] md:min-h-[32%] md:items-end md:justify-start md:px-7 md:pb-6 md:text-left">
-                    <p
-                      className={`${notoSerifDisplay.className} text-lg font-semibold leading-tight text-orato-dark/88 drop-shadow-[0_1px_10px_rgba(255,255,255,0.55)] sm:text-xl md:text-2xl`}
-                    >
-                      The sky is the limit. Denken in mogelijkheden is een sociaal geschenk.
-                    </p>
-                  </div>
+                <Image
+                  src="/coaching/schilderij wolken.jpeg"
+                  alt="Wolkenlucht als beeld voor denken in mogelijkheden."
+                  width={1400}
+                  height={900}
+                  className="h-auto w-full object-cover"
+                />
+                <div className="px-6 py-6 text-center md:px-7 md:text-left">
+                  <p
+                    className={`${notoSerifDisplay.className} text-lg font-semibold leading-tight text-orato-dark/88 sm:text-xl md:text-2xl`}
+                  >
+                    The sky is the limit. Denken in mogelijkheden is een sociaal geschenk.
+                  </p>
                 </div>
               </div>
             </Reveal>
@@ -380,23 +378,24 @@ export default function CoachingPage() {
             >
               Diepgang waar nodig, praktisch waar het helpt.
             </h2>
-            <div className="mt-8 overflow-hidden rounded-[2.4rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
-              <Image
-                src="/coaching/•koen buiten cirkel 2 ERF03538_WEB.jpg"
-                alt="Ardie en Koen buiten in de tuin in een cirkel."
-                width={1800}
-                height={1013}
-                className="h-auto w-full object-cover"
-              />
-            </div>
-            <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-2">
+              <div className="overflow-hidden rounded-[2.4rem] border border-orato-dark/10 bg-white shadow-[0_30px_90px_-44px_rgba(20,20,20,0.28)]">
+                <Image
+                  src="/coaching/•koen buiten cirkel 2 ERF03538_WEB.jpg"
+                  alt="Ardie en Koen buiten in de tuin in een cirkel."
+                  width={1800}
+                  height={1013}
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  className="h-auto w-full object-contain"
+                />
+              </div>
               {specialties.map((item, index) => (
                 <Reveal
                   key={item.title}
                   delay={index * 0.06}
-                  className={index === 0 ? "lg:col-span-2" : undefined}
+                  className="h-full"
                 >
-                  <article className="relative overflow-visible rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
+                  <article className="relative h-full overflow-visible rounded-[2rem] border border-orato-dark/10 bg-white p-7 shadow-sm">
                     <div className="flex items-start gap-5">
                       <h3 className="min-w-0 flex-1 text-2xl font-semibold text-orato-dark">
                         {item.title}

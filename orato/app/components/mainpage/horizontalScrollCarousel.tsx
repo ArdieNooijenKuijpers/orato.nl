@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { Tangerine } from "next/font/google";
+import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const tangerine = Tangerine({ subsets: ["latin"], weight: "400" });
 
@@ -36,7 +37,7 @@ const HorizontalScrollCarousel = () => {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden cursor-scroll">
         <motion.div style={{ x }} className="flex">
           {cards.map((card) => (
-            <Card card={card} key={card.id} />
+            <Card card={card} key={card.id} showScrollIndicator />
           ))}
         </motion.div>
 
@@ -63,7 +64,13 @@ const VerticalScrollCarousel = () => {
   );
 };
 
-const Card = ({ card }: { card: CardType }) => {
+const Card = ({
+  card,
+  showScrollIndicator = false,
+}: {
+  card: CardType;
+  showScrollIndicator?: boolean;
+}) => {
   return (
     <div
       key={card.id}
@@ -124,6 +131,14 @@ const Card = ({ card }: { card: CardType }) => {
       >
         &nbsp;
       </div>
+
+      {showScrollIndicator ? (
+        <ScrollDownIndicator
+          pathId={`horizontal-scroll-circle-path-${card.id}`}
+          color={card.extra === "text-white" ? "white" : "black"}
+          className="pointer-events-none absolute bottom-5 right-5 z-20"
+        />
+      ) : null}
     </div>
   );
 };

@@ -124,7 +124,7 @@ const NavbarMenuRight = () => {
     { name: 'COACHING', path: '/Onderwerpen/Coaching' },
     { name: 'SUPERVISIE', path: '/Onderwerpen/Supervisie' },
     { name: 'PRESENTEREN', path: '/Onderwerpen/Presenteren' },
-    { name: 'ARDIE', path: '/Info/Ardie' },
+    { name: 'OVER ARDIE', path: '/Info/Ardie' },
   ];
 
   const normalizePath = (path: string) => path.replace(/\/$/, '');

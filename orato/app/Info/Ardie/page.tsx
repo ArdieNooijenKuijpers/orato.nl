@@ -471,7 +471,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["Kerntraject !K-2.0"],
       },
       {
-        text: "k volg mijn hart en ga namens de Associatie voor Coaching professionele coaches opleiden, geef in-company trainingen in coachen, coachend leidinggeven en acquireren en start met groepssupervisie.",
+        text: "Ik volg mijn hart en ga namens de Associatie voor Coaching professionele coaches opleiden, geef in-company trainingen in coachen, coachend leidinggeven en acquireren en start met groepssupervisie.",
         highlights: ["professionele coaches opleiden", "coaches op", "in-company trainingen", "groepssupervisie"],
       },
       {
@@ -569,7 +569,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         highlights: ["PCC assessor training"],
       },
       {
-        text: "Ik word lid van de EMCC en sta m.i.v. september 2023 2023 ook bij de European Mentoring and Coaching Council, met NOBCO als Nederlandse divisie, geregistreerd als Senior Practitioner coach.",
+        text: "Ik word lid van de EMCC en sta m.i.v. september 2023 ook bij de European Mentoring and Coaching Council, met NOBCO als Nederlandse divisie, geregistreerd als Senior Practitioner coach.",
         highlights: ["Senior Practitioner"],
       },
       {
