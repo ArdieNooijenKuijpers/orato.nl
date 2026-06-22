@@ -1085,7 +1085,7 @@ export default function PresenterenPage() {
                 href="tel:+31651088688"
                 className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full border border-orato-dark/15 bg-orato-light px-6 text-sm font-semibold uppercase tracking-[0.16em] text-orato-dark transition hover:border-orato-green hover:text-orato-green"
               >
-                Bel +31 6 51088688
+                Bel +31 6 510 88 6 88
               </Link>
             </div>
           </Reveal>
