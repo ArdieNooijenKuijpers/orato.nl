@@ -52,7 +52,7 @@ describe("presenteren route smoke", () => {
     expect(screen.getAllByRole("button", { name: /schrijf je in/i }).length).toBeGreaterThan(0);
     expect(screen.getByText("Privacyverklaring")).toHaveAttribute("href", "/Info/PrivacyVerklaring");
     expect(screen.getByText("Algemene voorwaarden")).toHaveAttribute("href", "/Info/AlgemeneVoorwaarden");
-    expect(screen.getByRole("link", { name: "Bel +31 6 51088688" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Bel +31 6 510 88 6 88" })).toHaveAttribute(
       "href",
       "tel:+31651088688",
     );
