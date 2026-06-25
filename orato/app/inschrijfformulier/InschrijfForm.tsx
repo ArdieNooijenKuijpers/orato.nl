@@ -5,7 +5,7 @@ import { FormEvent, InputHTMLAttributes, ReactNode, TextareaHTMLAttributes, useC
 import { Noto_Serif_Display } from "next/font/google";
 import QuoteBadge from "../components/ardie/QuoteBadge";
 import TurnstileWidget from "../components/TurnstileWidget";
-import { inschrijfDataOptions } from "./inschrijfData";
+import { inschrijfDataOptions, isInschrijfDateInPast } from "./inschrijfData";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -71,9 +71,12 @@ const InschrijfForm = ({
   compact = false,
   initialSelectedDate = "",
 }: InschrijfFormProps) => {
+  const initialAvailableDate = isInschrijfDateInPast(initialSelectedDate)
+    ? ""
+    : initialSelectedDate;
   const [formData, setFormData] = useState<FormState>(() => ({
     ...initialState,
-    gekozenDatum: initialSelectedDate,
+    gekozenDatum: initialAvailableDate,
   }));
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [showSuccess, setShowSuccess] = useState(false);
@@ -83,7 +86,10 @@ const InschrijfForm = ({
 
   const errors: FieldErrors = useMemo(
     () => ({
-      gekozenDatum: formData.gekozenDatum ? "" : "Kies een dag.",
+      gekozenDatum:
+        formData.gekozenDatum && !isInschrijfDateInPast(formData.gekozenDatum)
+          ? ""
+          : "Kies een beschikbare dag.",
       naam: formData.naam.trim().length > 1 ? "" : "Vul je naam in.",
       email: /^\S+@\S+\.\S+$/.test(formData.email) ? "" : "Vul een geldig e-mailadres in.",
       telefoon: formData.telefoon.trim().length >= 10 ? "" : "Vul een telefoonnummer in.",
@@ -199,7 +205,7 @@ const InschrijfForm = ({
 
       setFormData({
         ...initialState,
-        gekozenDatum: initialSelectedDate,
+        gekozenDatum: initialAvailableDate,
       });
       setTouched({});
       setShowSuccess(true);
@@ -265,17 +271,23 @@ const InschrijfForm = ({
           <fieldset className="space-y-3">
             <legend className="text-sm font-medium text-orato-dark">Kies een dag *</legend>
             <div className="grid gap-3">
-              {inschrijfDataOptions.map((option) => (
-                <ChoiceCard
-                  key={option}
-                  checked={formData.gekozenDatum === option}
-                  name="gekozenDatum"
-                  value={option}
-                  onChange={(value) => updateField("gekozenDatum", value)}
-                  onBlur={() => onFieldBlur("gekozenDatum")}
-                  label={option}
-                />
-              ))}
+              {inschrijfDataOptions.map((option) => {
+                const isPastDate = isInschrijfDateInPast(option);
+
+                return (
+                  <ChoiceCard
+                    key={option}
+                    checked={formData.gekozenDatum === option}
+                    name="gekozenDatum"
+                    value={option}
+                    onChange={(value) => updateField("gekozenDatum", value)}
+                    onBlur={() => onFieldBlur("gekozenDatum")}
+                    label={option}
+                    disabled={isPastDate}
+                    helperText={isPastDate ? "Deze dag is niet meer beschikbaar." : undefined}
+                  />
+                );
+              })}
             </div>
             <ErrorText message={showError("gekozenDatum")} />
           </fieldset>
@@ -702,23 +714,29 @@ const TextArea = ({
 
 const ChoiceCard = ({
   checked,
+  disabled = false,
   name,
   value,
   label,
+  helperText,
   onChange,
   onBlur,
 }: {
   checked: boolean;
+  disabled?: boolean;
   name: string;
   value: string;
   label: string;
+  helperText?: string;
   onChange: (value: string) => void;
   onBlur?: () => void;
 }) => {
   return (
     <label
-      className={`flex cursor-small cursor-pointer items-start gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
-        checked
+      className={`flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
+        disabled
+          ? "cursor-not-allowed border-orato-dark/10 bg-orato-dark/5 text-orato-dark/38"
+          : checked
           ? "border-orato-orange bg-orato-orange/10 text-orato-dark"
           : "border-orato-dark/15 bg-white text-orato-dark/85 hover:border-orato-orange/60"
       }`}
@@ -728,11 +746,17 @@ const ChoiceCard = ({
         name={name}
         value={value}
         checked={checked}
+        disabled={disabled}
         onChange={() => onChange(value)}
         onBlur={onBlur}
-        className="mt-1 h-4 w-4 cursor-small border-orato-dark/30 text-orato-orange focus:ring-orato-orange"
+        className="mt-1 h-4 w-4 cursor-small border-orato-dark/30 text-orato-orange focus:ring-orato-orange disabled:cursor-not-allowed disabled:opacity-45"
       />
-      <span>{label}</span>
+      <span>
+        <span>{label}</span>
+        {helperText ? (
+          <span className="mt-1 block text-xs font-medium text-orato-dark/45">{helperText}</span>
+        ) : null}
+      </span>
     </label>
   );
 };

@@ -343,7 +343,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
   {
     year: "2008-2011",
     title: "Relaties, sales en vrouwelijk ondernemerschap",
-    summary: "Mensenwerk kent allerlei uitdagingen en dus kansen om te ont-wikkelen.",
+    summary: "Mensenwerk kent allerlei uitdagingen en dus kansen om te ontwikkelen.",
     details: [
       {
         text: "Naast werkgerelateerde coachvragen word ik steeds vaker gevraagd te helpen bij problematische liefdesrelaties. Ik verdiep me in Emotionally Focused Therapy via de Houd me vast-methode.",
@@ -416,7 +416,7 @@ const timelineEntries: ArdieTimelineEntry[] = [
         text: "Dankzij het werk van Els Ruiters van Grafidi krijgt ORATO in 2015 een eigentijds logo, een nieuwe interactieve website en nieuw drukwerk.",
       },
       {
-        text: "In diezelfde periode ontwikkel en geef ik samen met Anne Vinke-van Ingen de cursus Aansprekend (s)Preken voor mensen die het woord nemen in een kerk.",
+        text: "In diezelfde periode ontwikkel en geef ik samen met Anne van Ingen de cursus Aansprekend (s)Preken voor mensen die het woord nemen in een kerk.",
         highlights: ["cursus Aansprekend (s)Preken"],
       },
     ],

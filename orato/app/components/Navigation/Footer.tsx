@@ -332,7 +332,7 @@ const FooterComp = () => {
                 </span>
                 ArtNooijen
               </Link>
-              {" | Fotografie Grafidi | Film "}
+              {" | Els Ruiters Studio Grafidi | Film "}
               <Link
                 href="https://martijnwelles.myportfolio.com/"
                 target="_blank"

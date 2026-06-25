@@ -68,7 +68,7 @@ Ardie is een supervisor die je raakt, uitdaagt en in beweging zet. Ze ziet wat i
 Welkom!
 Ben jij een coachsupervisor, paramedische therapeut of professionele coach, met een eigen bedrijf/praktijk of heb je een beroep waar coaching een wezenlijk deel van uitmaakt, heb je een erkende (coach)opleiding en (veel) ervaring, en wil jij je verder ontwikkelen, dan ontmoet ik je graag persoonlijk in het kader van supervisie/mentoring. 
 
-Ik ga ervoor! Waarvoor? Voor jou en je ont-wikkeling.
+Ik ga ervoor! Waarvoor? Voor jou en je ontwikkeling.
 
 Plus button? : naar contactformulier
 Wat mag ik voor jou betekenen? Klik hier (button)om naar het contactformulier te gaan(doorklik naar contact formulier) of bel me. (doorklik om te bellen +31-651088688)
