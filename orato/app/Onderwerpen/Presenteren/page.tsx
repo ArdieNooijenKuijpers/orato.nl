@@ -564,6 +564,8 @@ export default function PresenterenPage() {
               <Link
                 href="/supervisie/Authentiek%20presenteren%20met%20SPEAKING%20CIRCLE%C2%AE%20en%20Relational%20Presence%C2%AE%202026.pdf"
                 download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-14 cursor-small items-center justify-center rounded-full bg-orato-green px-6 text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-orato-dark"
               >
                 <Download className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -573,7 +575,7 @@ export default function PresenterenPage() {
 
             <div className="mt-6 w-full rounded-[1.8rem] border border-white/12 bg-white/6 p-5">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
-                Eerstvolgende data
+                deelname 
               </p>
               <div className="mt-4 grid gap-3">
                 {inschrijfDataOptions.map((date) => (
@@ -583,12 +585,25 @@ export default function PresenterenPage() {
                     description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
                     initialSelectedDate={date}
                     triggerClassName="group cursor-small inline-flex w-full items-center justify-between rounded-[1.15rem] border border-white/10 bg-white/6 px-4 py-3 text-left text-sm font-medium text-white/84 transition-all duration-300 hover:-translate-y-0.5 hover:border-orato-green/45 hover:bg-white/10 hover:text-white hover:shadow-[0_16px_34px_-22px_rgba(84,166,94,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orato-green/45"
+                    unavailableChildren={
+                      <>
+                        <span>
+                          <span className="block text-xs uppercase tracking-[0.16em]">
+                            Niet meer beschikbaar
+                          </span>
+                          <span className="mt-1 block">{date}</span>
+                        </span>
+                        <span className="inline-flex flex-none items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white">
+                          Verlopen
+                        </span>
+                      </>
+                    }
                   >
                     <span>
                       <span className="block text-xs uppercase tracking-[0.16em] text-orato-green">
                         Inschrijven
                       </span>
-                      <span className="mt-1 block">Voor {date}</span>
+                      <span className="mt-1 block">{date}</span>
                     </span>
                     <span className="inline-flex flex-none items-center gap-2 rounded-full border border-orato-green/35 bg-orato-green px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 group-hover:bg-white group-hover:text-orato-dark">
                       <CalendarCheck className="h-4 w-4" aria-hidden="true" />

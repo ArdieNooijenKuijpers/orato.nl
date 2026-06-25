@@ -880,7 +880,7 @@ export default function SupervisiePage() {
             <p
               className={`${tangerine.className} mt-6 text-5xl leading-none text-orato-purple md:text-7xl`}
             >
-              Ik ga ervoor! Waarvoor? Voor jou en je ont-wikkeling.
+              Ik ga ervoor! Waarvoor? Voor jou en je ontwikkeling.
             </p>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-orato-dark/75">
               Wat mag ik voor jou betekenen? Klik hier om naar het

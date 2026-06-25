@@ -5,6 +5,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import InschrijfForm from "./InschrijfForm";
+import { isInschrijfDateInPast } from "./inschrijfData";
 
 type InschrijfFormModalProps = {
   triggerLabel?: string;
@@ -12,6 +13,7 @@ type InschrijfFormModalProps = {
   title?: string;
   description?: string;
   children?: ReactNode;
+  unavailableChildren?: ReactNode;
   initialSelectedDate?: string;
 };
 
@@ -21,11 +23,13 @@ const InschrijfFormModal = ({
   title = "Inschrijfformulier",
   description = "Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’.",
   children,
+  unavailableChildren,
   initialSelectedDate,
 }: InschrijfFormModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const hasModalHistoryEntry = useRef(false);
+  const isDateUnavailable = isInschrijfDateInPast(initialSelectedDate ?? "");
 
   useEffect(() => {
     setIsMounted(true);
@@ -47,6 +51,10 @@ const InschrijfFormModal = ({
   }, []);
 
   const openModal = () => {
+    if (isDateUnavailable) {
+      return;
+    }
+
     if (!isOpen) {
       window.history.pushState(
         { ...(window.history.state ?? {}), oratoInschrijfFormModal: true },
@@ -109,13 +117,22 @@ const InschrijfFormModal = ({
     <>
       <button
         type="button"
+        disabled={isDateUnavailable}
+        aria-disabled={isDateUnavailable}
+        title={isDateUnavailable ? "Deze dag is niet meer beschikbaar." : undefined}
         onClick={openModal}
-        className={
+        className={`${
           triggerClassName ??
           "inline-flex h-11 cursor-small items-center justify-center rounded-xl bg-orato-orange px-5 text-sm font-semibold text-white transition hover:bg-orato-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-orato-orange"
-        }
+        } ${
+          isDateUnavailable
+            ? "cursor-not-allowed opacity-45 grayscale hover:translate-y-0 hover:shadow-none"
+            : ""
+        }`}
       >
-        {children ?? triggerLabel}
+        {isDateUnavailable && unavailableChildren
+          ? unavailableChildren
+          : children ?? triggerLabel}
       </button>
 
       {isMounted && isOpen

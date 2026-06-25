@@ -26,7 +26,7 @@ vi.mock("../components/TurnstileWidget", async () => {
 });
 
 const fillBaseRegistrationFields = async (user: ReturnType<typeof userEvent.setup>) => {
-  await user.click(screen.getByRole("radio", { name: inschrijfDataOptions[0] }));
+  await user.click(screen.getByRole("radio", { name: inschrijfDataOptions[1] }));
   await user.type(screen.getByPlaceholderText("Voornaam Achternaam"), "Ada Lovelace");
   await user.type(screen.getByPlaceholderText("naam@voorbeeld.nl"), "ada@example.com");
   await user.type(screen.getByPlaceholderText("+31 6 12345678"), "+31 6 12345678");
@@ -61,7 +61,7 @@ describe("InschrijfForm", () => {
     await user.click(screen.getByRole("checkbox", { name: /ik ga akkoord/i }));
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
-    expect(screen.queryByText("Kies een dag.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Kies een beschikbare dag.")).not.toBeInTheDocument();
     expect(
       await screen.findByText("Dank je wel! Je inschrijving is verzonden."),
     ).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe("InschrijfForm", () => {
 
     await user.click(screen.getByRole("button", { name: /verzenden/i }));
 
-    expect(screen.getByText("Kies een dag.")).toBeInTheDocument();
+    expect(screen.getByText("Kies een beschikbare dag.")).toBeInTheDocument();
     expect(screen.getByText("Vul je naam in.")).toBeInTheDocument();
     expect(screen.getByText("Vul een geldig e-mailadres in.")).toBeInTheDocument();
     expect(screen.getByText("Vul een telefoonnummer in.")).toBeInTheDocument();
