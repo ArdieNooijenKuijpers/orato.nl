@@ -311,7 +311,7 @@ const FooterComp = () => {
                 </span>
                 Art Nooijen
               </Link>{" "}
-              2025
+              2026
               {" | "}
               <Link
                 href="https://github.com/ArtNooijen"
