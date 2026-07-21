@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Noto_Serif_Display } from "next/font/google";
 import FooterComp from "../../components/Navigation/Footer";
+import { websiteInhoud } from "../../content/websiteInhoud";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -517,7 +518,7 @@ export default function AlgemeneVoorwaardenPage() {
 
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <a
-                    href="/downloads/Algemene%20voorwaarden%20ORATO%202025%20.pdf"
+                    href={websiteInhoud.documenten.algemeneVoorwaardenPdf}
                     download
                     className="inline-flex min-h-14 items-center justify-center rounded-full bg-orato-dark px-6 text-center text-sm font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-orato-orange"
                   >

@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import InschrijfForm from "./InschrijfForm";
-import { inschrijfDataOptions } from "./inschrijfData";
+import { inschrijfDataOptions, isInschrijfDateInPast } from "./inschrijfData";
 
 vi.mock("../components/ardie/QuoteBadge", () => ({
   default: () => <div data-testid="quote-badge" />,
@@ -26,12 +26,20 @@ vi.mock("../components/TurnstileWidget", async () => {
 });
 
 const fillBaseRegistrationFields = async (user: ReturnType<typeof userEvent.setup>) => {
-  await user.click(screen.getByRole("radio", { name: inschrijfDataOptions[1] }));
+  await user.click(screen.getByRole("radio", { name: beschikbareDatum }));
   await user.type(screen.getByPlaceholderText("Voornaam Achternaam"), "Ada Lovelace");
   await user.type(screen.getByPlaceholderText("naam@voorbeeld.nl"), "ada@example.com");
   await user.type(screen.getByPlaceholderText("+31 6 12345678"), "+31 6 12345678");
   await user.click(screen.getByRole("checkbox", { name: /ik ga akkoord/i }));
 };
+
+const beschikbareDatum = inschrijfDataOptions.find(
+  (date) => !isInschrijfDateInPast(date),
+);
+
+if (!beschikbareDatum) {
+  throw new Error("Voeg een toekomstige Speaking Circle-datum toe voordat de formulier-tests draaien.");
+}
 
 describe("InschrijfForm", () => {
   beforeEach(() => {
@@ -46,7 +54,7 @@ describe("InschrijfForm", () => {
 
   it("uses the initial selected date and keeps it selected after submit reset", async () => {
     const user = userEvent.setup();
-    const initialSelectedDate = inschrijfDataOptions[1];
+    const initialSelectedDate = beschikbareDatum;
 
     render(<InschrijfForm initialSelectedDate={initialSelectedDate} />);
 
