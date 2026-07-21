@@ -839,7 +839,7 @@ export default function PresenterenPage() {
             <div className="mt-8 grid gap-5">
               <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-white/6 shadow-sm">
                 <Image
-                  src="/presenteren/Zin naturel.jpg"
+                  src="/presenteren/Voorzijde - Def.jpg"
                   alt="Locatie ZIN in natuurlijke setting."
                   width={1800}
                   height={1300}
