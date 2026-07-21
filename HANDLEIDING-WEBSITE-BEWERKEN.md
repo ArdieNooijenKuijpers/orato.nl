@@ -129,7 +129,8 @@ Gebruik PDF voor de Speaking Circle-flyer, Algemene voorwaarden en Privacyverkla
 4. Scroll naar beneden, geef de wijziging een naam (In het bovenste inputveld onder 'commit changes').
 5. Select de optie 'select the main branche' en klik **Commit changes**.
 6. Kopieer precies de bestandsnaam, inclusief hoofdletters, spaties en `.pdf`
-7. Open `websiteInhoud.ts` en vervang alleen de tekst tussen aanhalingstekens bij `flyer`, `algemeneVoorwaardenPdf` of `privacyverklaringPdf`.
+7. Open [websiteInhoud.ts](orato/app/content/websiteInhoud.ts)
+ en vervang alleen de tekst tussen aanhalingstekens bij `flyer`, `algemeneVoorwaardenPdf` of `privacyverklaringPdf`.
 
 ### Spaties in een link: `%20`
 
