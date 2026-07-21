@@ -3,7 +3,8 @@
  *  WEBSITE-INHOUD — HIER KAN ALLES AANGEPAST WORDEN VOOR DE WEBSITE
  * ================================================================
  *
- * Lees eerst: HANDLEIDING-WEBSITE-BEWERKEN.md
+ * Lees eerst: HANDLEIDING-WEBSITE-BEWERKEN.md in de hoofdmap van de repository
+ * (dus naast de map `orato`).
  *
  * KORTE UITLEG
  * - Pas alleen tekst aan die tussen "aanhalingstekens" staat.
