@@ -157,6 +157,8 @@ Open eerst de juiste map en kies daarna **Add file** → **Upload files**:
 - [Supervisie-foto’s en flyer](https://github.com/ArdieNooijenKuijpers/orato.nl/tree/main/orato/public/supervisie)
 - [Ardie-foto’s en video’s](https://github.com/ArdieNooijenKuijpers/orato.nl/tree/main/orato/public/Ardie)
 
+**Vergeet niet de oude foto te verwijderen!**
+
 Gebruik bij voorkeur een duidelijke bestandsnaam zonder bijzondere tekens, bijvoorbeeld `Ardie-2027.jpg` of `speaking-circle-2027.pdf`.
 
 Voor een nieuw tijdvak bij Ardie upload je eerst de foto naar de Ardie-map. Daarna kopieer je in `websiteInhoud.ts` het complete blok tussen `KOPIEER VANAF HIER` en `TOT HIER KOPIËREN`. Plak het eronder en pas onder andere dit aan:
