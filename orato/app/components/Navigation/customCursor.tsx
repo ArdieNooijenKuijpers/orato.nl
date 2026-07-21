@@ -210,8 +210,8 @@ export function CustomCursor() {
         }}
         animate={{
           //here i set the sizes of the cursor
-          width: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : isShowingSectionLabel ? 84 : 40,
-          height: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : isShowingSectionLabel ? 84 : 40,
+          width: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : isShowingSectionLabel ? 84 : 30,
+          height: isShowingScrollHint ? 96 : isHoveringSmall ? 8 : isHoveringBig ? 100 : isShowingSectionLabel ? 84 : 30,
           backgroundColor: isInverting ? '#ffffff' : cursorColor,
         }}
         //here you can play with the settings of the ball and how responsive it is

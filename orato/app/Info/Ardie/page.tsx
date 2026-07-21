@@ -9,6 +9,7 @@ import QuoteBadge from "../../components/ardie/QuoteBadge";
 import RedThreadTimeline, {
   type ArdieTimelineEntry,
 } from "../../components/ardie/RedThreadTimeline";
+import { websiteInhoud } from "../../content/websiteInhoud";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400"] });
@@ -937,7 +938,12 @@ const ArdiePage = () => {
             </div>
 
             <div className="mt-14">
-              <RedThreadTimeline entries={timelineEntries} />
+              <RedThreadTimeline
+                entries={[
+                  ...timelineEntries.slice(0, -1),
+                  ...websiteInhoud.ardie.volgendeJaren,
+                ]}
+              />
             </div>
           </div>
         </section>

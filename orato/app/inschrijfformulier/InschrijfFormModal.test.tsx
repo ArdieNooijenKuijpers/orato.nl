@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import InschrijfFormModal from "./InschrijfFormModal";
+import { inschrijfDataOptions, isInschrijfDateInPast } from "./inschrijfData";
 
 vi.mock("./InschrijfForm", () => ({
   default: ({
@@ -40,13 +41,18 @@ describe("InschrijfFormModal", () => {
 
   it("opens the dialog, locks scrolling, and forwards its form configuration", async () => {
     const user = userEvent.setup();
+    const availableDate = inschrijfDataOptions.find((date) => !isInschrijfDateInPast(date));
+
+    if (!availableDate) {
+      throw new Error("Voeg een toekomstige Speaking Circle-datum toe voordat de modaltest draait.");
+    }
 
     render(
       <InschrijfFormModal
         triggerLabel="Open inschrijving"
         title="Testinschrijving"
         description="Testomschrijving"
-        initialSelectedDate="vrijdag 26 juni 2026"
+        initialSelectedDate={availableDate}
       />,
     );
 
@@ -70,7 +76,7 @@ describe("InschrijfFormModal", () => {
     );
     expect(screen.getByTestId("inschrijf-form")).toHaveAttribute(
       "data-initial-selected-date",
-      "vrijdag 26 juni 2026",
+      availableDate,
     );
     expect(document.documentElement.style.overflow).toBe("hidden");
     expect(document.body.style.overflow).toBe("hidden");

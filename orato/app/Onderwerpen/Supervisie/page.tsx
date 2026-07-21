@@ -6,6 +6,7 @@ import QuoteBadge from "../../components/ardie/QuoteBadge";
 import FooterComp from "../../components/Navigation/Footer";
 import InteractiveGlowPanel from "../../components/motion/InteractiveGlowPanel";
 import Reveal from "../../components/motion/Reveal";
+import { websiteInhoud } from "../../content/websiteInhoud";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"] });
@@ -723,7 +724,7 @@ export default function SupervisiePage() {
                   Uurtarief vanaf
                 </p>
                 <p className="mt-2 text-2xl font-semibold text-orato-dark">
-                  €185
+                  {websiteInhoud.supervisie.tarief}
                 </p>
               </div>
               <p className="relative mt-5 text-base leading-7 text-orato-dark/75">
@@ -802,17 +803,13 @@ export default function SupervisiePage() {
               <Reveal delay={0.08}>
                 <article className="mx-auto w-full max-w-4xl rounded-[2rem] border border-white/10 bg-white/10 p-7 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.45)] backdrop-blur-sm md:p-8">
                   <p className="text-lg leading-8 text-white/84">
-                    &ldquo;Ardie is een supervisor die je raakt, uitdaagt en in
-                    beweging zet. Ze ziet wat ik zelf nog niet doorheb,
-                    confronteert me zonder aarzeling, maar altijd met humor en
-                    een vleugje lerares-strengheid. Elke sessie verrast me met
-                    nieuwe inzichten en een flinke dosis energie.&rdquo;
+                    &ldquo;{websiteInhoud.supervisie.referentie.quote}&rdquo;
                   </p>
                   <p className="mt-6 text-base font-semibold text-white">
-                    Jasper Nooij
+                    {websiteInhoud.supervisie.referentie.name}
                   </p>
                   <p className="mt-1 text-sm text-white/58">
-                    Zelfstandig tenderspecialist en (team)coach, Estland
+                    {websiteInhoud.supervisie.referentie.role}
                   </p>
 
                 </article>

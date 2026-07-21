@@ -9,6 +9,7 @@ import { inschrijfDataOptions } from "../../inschrijfformulier/inschrijfData";
 import FooterComp from "../../components/Navigation/Footer";
 import Reveal from "../../components/motion/Reveal";
 import TrackTransitionIndicator from "./TrackTransitionIndicator";
+import { websiteInhoud } from "../../content/websiteInhoud";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -40,7 +41,7 @@ const presentationTracks = [
     description:
       "Voor wie gericht wil oefenen op een concrete presentatievraag, persoonlijke uitstraling, spreektechniek of impact in contact met anderen.",
     points: ["Individueel", "Praktisch", "Op maat"],
-    tariff: "Tarief vanaf €185/u",
+    tariff: `Tarief vanaf ${websiteInhoud.presenteren.eenOpEenTarief}/u`,
     tariffHref: "#presentatiecoaching-investering",
     theme:
       "border-orato-dark/10 bg-white text-orato-dark shadow-[0_24px_80px_-42px_rgba(20,20,20,0.18)]",
@@ -54,7 +55,7 @@ const presentationTracks = [
     description:
       "Voor wie minder wil presteren en meer echt aanwezig wil zijn. Je oefent in een groep met Relational Presence, veiligheid en eigenheid.",
     points: ["Groepsvorm", "Authenticiteit", "Relational Presence"],
-    tariff: "Tarief €250",
+    tariff: `Tarief ${websiteInhoud.presenteren.speakingCircle.knopTarief}`,
     tariffHref: "#speaking-circle-investering",
     theme:
       "border-white/12 bg-orato-dark text-white shadow-[0_28px_90px_-42px_rgba(0,0,0,0.5)]",
@@ -511,7 +512,7 @@ export default function PresenterenPage() {
                   Uurtarief vanaf
                 </p>
                 <p className="mt-2 text-2xl font-semibold text-orato-dark">
-                  €185
+                  {websiteInhoud.presenteren.eenOpEenTarief}
                 </p>
               </div>
               <p className="relative mt-5 text-base leading-7 text-orato-dark/75">
@@ -562,7 +563,7 @@ export default function PresenterenPage() {
             </Reveal>
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Link
-                href="/supervisie/Authentiek%20presenteren%20met%20SPEAKING%20CIRCLE%C2%AE%20en%20Relational%20Presence%C2%AE%202026.pdf"
+                href={websiteInhoud.presenteren.speakingCircle.flyer}
                 download
                 target="_blank"
                 rel="noopener noreferrer"
@@ -737,48 +738,29 @@ export default function PresenterenPage() {
                   Locatie ZIN
                 </h3>
                 <div className="mt-4 space-y-4 text-base leading-7 text-white/80">
-                  <p>
-                    Omdat mijn Speaking Circle® werk wordt georganiseerd in een
-                    zeer inspirerende omgeving, volgt hieronder extra informatie
-                    over deze bijzondere locatie te Vught waar jij als
-                    deelnemer kunt overnachten.
-                  </p>
-                  <p>
-                    ZIN is een adviserende gesprekspartner voor organisaties die
-                    met ziel en zakelijkheid willen werken. Het klooster waarin
-                    ZIN is gehuisvest, is stijlvol verbouwd en biedt ruimte aan
-                    2 tot 150 gasten. De combinatie van moderne architectuur en het behoud van de kloostertraditie levert een unieke plek op voor een bijzondere ontmoeting. 
-                  </p>
+                  {websiteInhoud.presenteren.speakingCircle.locatieTekst.map((tekst) => (
+                    <p key={tekst}>{tekst}</p>
+                  ))}
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <p className="min-w-0">
-                      Deze dag wordt in 2026 georganiseerd bij ZIN op{" "}
-                      <InschrijfFormModal
-                        title="Inschrijfformulier"
-                        description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
-                        initialSelectedDate="Dinsdag 24 maart 2026 | 9.30 - 17.30 u"
-                        triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
-                      >
-                        dinsdag 24 maart
-                      </InschrijfFormModal>
-                      ,{" "}
-                      <InschrijfFormModal
-                        title="Inschrijfformulier"
-                        description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
-                        initialSelectedDate="Vrijdag 26 juni 2026 | 9.30 - 17.30 u"
-                        triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
-                      >
-                        vrijdag 26 juni
-                      </InschrijfFormModal>{" "}
-                      en{" "}
-                      <InschrijfFormModal
-                        title="Inschrijfformulier"
-                        description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
-                        initialSelectedDate="Maandag 9 november 2026 | 9.30 - 17.30 u"
-                        triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
-                      >
-                        maandag 9 november
-                      </InschrijfFormModal>
-                      .
+                      {websiteInhoud.presenteren.speakingCircle.locatieDataIntro}{" "}
+                      {websiteInhoud.presenteren.speakingCircle.data.map((date, index, data) => (
+                        <span key={date}>
+                          {index > 0 && (index === data.length - 1 ? " en " : ", ")}
+                          <InschrijfFormModal
+                            title="Inschrijfformulier"
+                            description="Schrijf je direct in voor de dag ‘Authentiek presenteren met Relational Presence’."
+                            initialSelectedDate={date}
+                            triggerClassName="inline-flex cursor-small items-center rounded-full bg-white px-3 py-1 font-semibold text-orato-green transition hover:bg-orato-dark hover:text-white"
+                          >
+                            {date
+                              .split("|")[0]
+                              .trim()
+                              .replace(/\s+\d{4}$/, "")
+                              .toLowerCase()}
+                          </InschrijfFormModal>
+                        </span>
+                      ))}.
                     </p>
                     <InschrijfFormModal
                       title="Inschrijfformulier"
@@ -797,10 +779,10 @@ export default function PresenterenPage() {
                       Investering
                     </p>
                     <p className="mt-2 text-3xl font-semibold text-orato-dark">
-                      € 250,-
+                  {websiteInhoud.presenteren.speakingCircle.investering}
                     </p>
                     <p className="mt-3 text-sm leading-6 text-orato-dark/70">
-                      Excl. btw. / incl. lunch en video-opnames.
+                      {websiteInhoud.presenteren.speakingCircle.investeringToelichting}
                     </p>
                   </div>
                   <p className="pt-2 text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
@@ -839,7 +821,7 @@ export default function PresenterenPage() {
             <div className="mt-8 grid gap-5">
               <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-white/6 shadow-sm">
                 <Image
-                  src="/presenteren/Zin naturel.jpg"
+                  src="/presenteren/Voorzijde - Def.jpg"
                   alt="Locatie ZIN in natuurlijke setting."
                   width={1800}
                   height={1300}
@@ -1058,7 +1040,7 @@ export default function PresenterenPage() {
               Referenties
             </p>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {references.map((item, index) => (
+              {websiteInhoud.presenteren.speakingCircle.referenties.map((item, index) => (
                 <Reveal key={item.name} delay={index * 0.06} className="h-full">
                   <article
                     className="flex h-full flex-col rounded-[2rem] border border-white/12 bg-white/6 p-7"

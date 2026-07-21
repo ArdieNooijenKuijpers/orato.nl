@@ -7,6 +7,7 @@ import FooterComp from "../../components/Navigation/Footer";
 import CoachingConversationIllustration from "../../components/motion/CoachingConversationIllustration";
 import InteractiveGlowPanel from "../../components/motion/InteractiveGlowPanel";
 import Reveal from "../../components/motion/Reveal";
+import { websiteInhoud } from "../../content/websiteInhoud";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 const tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"] });
@@ -619,7 +620,7 @@ export default function CoachingPage() {
                   Uurtarief vanaf
                 </p>
                 <p className="mt-2 text-2xl font-semibold text-orato-dark">
-                  €185
+                  {websiteInhoud.coaching.tarief}
                 </p>
                 <p className="mt-3 text-sm leading-6 text-orato-dark/70">
                   Uiteraard afgestemd op het beschikbare budget.
@@ -643,7 +644,7 @@ export default function CoachingPage() {
               Ervaringen van coachees en opdrachtgevers.
             </h2>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {references.map((item, index) => (
+              {websiteInhoud.coaching.referenties.map((item, index) => (
                 <article
                   key={item.name}
                   className="rounded-[2rem] border border-white/12 bg-white/6 p-7"
