@@ -133,6 +133,7 @@ Gebruik PDF voor de Speaking Circle-flyer, Algemene voorwaarden en Privacyverkla
 
 ### Spaties in een link: `%20`
 
+Na wijzigen van pdf-document en het kopieren van de bestandsnaam: de spaties in de naam veranderen in %20
 In een link wordt elke gewone spatie geschreven als `%20`.
 
 | Bestandsnaam op GitHub | Link in `websiteInhoud.ts` |
