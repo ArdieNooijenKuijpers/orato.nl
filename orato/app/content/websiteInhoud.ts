@@ -140,7 +140,7 @@ export const websiteInhoud: {
       // bij de allerlaatste datum. De datum verschijnt automatisch ook in het
       // inschrijfformulier.
       data: [
-        "Dinsdag 24 maart 2026 | 9.30 - 17.30 u",
+        "Dinsdag 24 maart 2026 | 9.30 - 16.30 u",
         "Vrijdag 26 juni 2026 | 9.30 - 17.30 u",
         "Maandag 9 november 2026 | 9.30 - 17.30 u",
       ],
