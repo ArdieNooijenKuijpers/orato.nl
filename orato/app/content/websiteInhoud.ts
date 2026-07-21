@@ -221,21 +221,7 @@ export const websiteInhoud: {
         images: [{ src: "/Ardie/Ardie timeline new/naast 2025 boom met gekleurde bladeren.JPG", alt: "Boom met gekleurde bladeren als beeld voor doorgaan en blijven groeien.", placement: "edge", quote: "Als je goed om je heen kijkt, zie je dat alles gekleurd is." }],
         accentColor: "blue",
       },
-      {
-        year: "2026-2027",
-        title: "Doorgaan met wat ertoe doet",
-        summary: "Mijn werk is stevig geworteld, kleurrijk en blijft in beweging.",
-        details: [
-          { text: "Samen met collega’s organiseer ik de European Relational Presence Facilitator Days, dit keer in Eindhoven.", highlights: ["European Relational Presence Facilitator Days", "Eindhoven"] },
-          { text: "Ik neem nog altijd deel aan inhoudelijke cursussen, professionaliseringsdagen, intervisie en spar regelmatig met een supervisor om 'mijn zaag scherp te houden'.", highlights: ["mijn zaag scherp te houden"] },
-          { text: "Momenteel bestaat mijn werk uit (executive) coachtrajecten vanuit Orato, het opleiden van professionele coaches namens de Associatie voor Coaching en supervisie van coaches.", highlights: ["(executive) coachtrajecten", "het opleiden van professionele coaches", "supervisie van coaches"] },
-          { text: "Met als kers op de taart de dagen Authentiek Presenteren in Relational Presence die ik sinds 2003 geef bij ZIN in Vught.", highlights: ["Authentiek Presenteren in Relational Presence"] },
-          { text: "Een half jaar na elkaar overlijden mijn geliefde schoonmoeder en vader. In dankbaarheid nemen we waardig afscheid. Meer tijd is nodig om met toewijding mantelzorg te verlenen aan mijn schoonvader en moeder.", highlights: ["dankbaarheid", "mantelzorg"] },
-          { text: "In 2026 besluit ik minder dagen per week te gaan werken. De nieuwe up-to-date website voor ORATO is een feit. Dankjewel Art! Ik blijf, samen met andere vakmensen, mijn werk voor persoonlijke en professionele ontwikkeling voortzetten!" },
-        ],
-        images: [{ src: "/Ardie/Ardie timeline new/Voorzijde - Def.jpg", alt: "Boom met gekleurde bladeren als beeld voor doorgaan en blijven groeien.", placement: "edge", quote: "Als je goed om je heen kijkt, zie je dat alles gekleurd is." }],
-        accentColor: "blue",
-      },
+
       // === TOT HIER KOPIËREN (inclusief de komma hierboven) ===
 
       // Plak hier het gekopieerde stuk voor een volgend tijdvak. Upload de foto
