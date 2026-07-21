@@ -10,6 +10,7 @@ import FooterComp from "../../components/Navigation/Footer";
 import Reveal from "../../components/motion/Reveal";
 import TrackTransitionIndicator from "./TrackTransitionIndicator";
 import { websiteInhoud } from "../../content/websiteInhoud";
+import ExpandableExampleList from "../../components/ExpandableExampleList";
 
 const notoSerifDisplay = Noto_Serif_Display({ subsets: ["latin"] });
 
@@ -1013,23 +1014,8 @@ export default function PresenterenPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orato-dark/55">
               Voorbeelden van vragen
             </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {questionExamples.map((example, index) => (
-                <Reveal key={example} delay={index * 0.025}>
-                  <article
-                    className="group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orato-green/25 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)]"
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-orato-green/10 text-xs font-semibold text-orato-green transition-colors duration-300 group-hover:bg-orato-green group-hover:text-white">
-                        {index + 1}
-                      </span>
-                      <p className="text-sm leading-6 text-orato-dark/82">
-                        {example}
-                      </p>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
+            <div className="mt-8">
+              <ExpandableExampleList items={questionExamples} accent="green" />
             </div>
           </div>
         </section>

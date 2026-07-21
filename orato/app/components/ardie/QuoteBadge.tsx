@@ -7,7 +7,7 @@ type QuoteBadgeProps = {
   quote: string;
   className?: string;
   badgeClassName?: string;
-  tooltipAlign?: "center" | "right";
+  tooltipAlign?: "center" | "right" | "left";
 };
 
 export default function QuoteBadge({
@@ -20,11 +20,15 @@ export default function QuoteBadge({
   const [isVisible, setIsVisible] = useState(false);
   const pathId = `quote-circle-path-${id}`;
   const tooltipPositionClass =
-    tooltipAlign === "right"
+    tooltipAlign === "left"
+      ? "absolute bottom-[calc(100%+0.85rem)] left-0 translate-x-0 group-hover/quote:-translate-y-1"
+      : tooltipAlign === "right"
       ? "absolute bottom-[calc(100%+0.85rem)] right-0 translate-x-0 group-hover/quote:-translate-y-1"
       : "absolute bottom-[calc(100%+0.85rem)] right-0 translate-x-0 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 group-hover/quote:-translate-y-1";
   const tooltipArrowClass =
-    tooltipAlign === "right"
+    tooltipAlign === "left"
+      ? "left-8 translate-x-0"
+      : tooltipAlign === "right"
       ? "right-8 translate-x-0"
       : "right-8 translate-x-0 sm:left-1/2 sm:right-auto sm:-translate-x-1/2";
   const tooltipVisibilityClass = isVisible
