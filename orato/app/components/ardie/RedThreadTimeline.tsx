@@ -626,7 +626,9 @@ export default function RedThreadTimeline({ entries }: RedThreadTimelineProps) {
                             <QuoteBadge
                               id={`timeline-mobile-image-quote-${image.src.replace(/[^a-z0-9]/gi, "-")}`}
                               quote={image.quote}
-                              className="pointer-events-auto origin-bottom-left scale-[0.82]"
+                              className="pointer-events-auto origin-center scale-[0.82]"
+                              badgeClassName="text-orato-dark"
+                              tooltipAlign="left"
                             />
                           </div>
                         ) : null}
