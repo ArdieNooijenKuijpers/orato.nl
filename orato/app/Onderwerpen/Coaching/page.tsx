@@ -108,7 +108,7 @@ const examples = [
   "Ik heb last van alles goed willen doen.",
   "Ik moet/wil anders overkomen.",
   "Ik moet mijn grenzen (eerder) aan gaan geven.",
-  "Hoe krijg ik overzicht, meeer rust?",
+  "Hoe krijg ik overzicht, meer rust?",
   "Zal ik dit werk blijven doen of toch een andere functie?",
   "Het wordt tijd dat ik anders ga denken over mezelf en anderen!",
   "Hoe praat ik met mijn partner?",
