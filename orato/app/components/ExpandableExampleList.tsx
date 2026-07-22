@@ -16,7 +16,7 @@ const accentClasses = {
 export default function ExpandableExampleList({
   items,
   accent,
-  initiallyVisible = 10,
+  initiallyVisible = 9,
 }: ExpandableExampleListProps) {
   const [showAll, setShowAll] = useState(false);
   const hasMoreItems = items.length > initiallyVisible;
