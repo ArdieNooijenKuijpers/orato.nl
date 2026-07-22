@@ -10,7 +10,7 @@ describe("ExpandableExampleList", () => {
 
     render(<ExpandableExampleList items={items} accent="blue" />);
 
-    const button = screen.getByRole("button", { name: "Lees meer (2)" });
+    const button = screen.getByRole("button", { name: "Lees meer (3)" });
     expect(button).toHaveAttribute("aria-expanded", "false");
 
     await user.click(button);
