@@ -18,20 +18,20 @@ export default function ExpandableExampleList({
   accent,
   initiallyVisible = 10,
 }: ExpandableExampleListProps) {
-  const [showAllOnMobile, setShowAllOnMobile] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const hasMoreItems = items.length > initiallyVisible;
 
   return (
     <>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item, index) => {
-          const isHiddenOnMobile = hasMoreItems && !showAllOnMobile && index >= initiallyVisible;
+          const isHidden = hasMoreItems && !showAll && index >= initiallyVisible;
 
           return (
             <article
               key={item}
               className={`group rounded-[1.4rem] border border-orato-dark/10 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-28px_rgba(20,20,20,0.28)] ${
-                isHiddenOnMobile ? "hidden sm:block" : ""
+                isHidden ? "hidden" : ""
               }`}
             >
               <div className="flex items-start gap-3">
@@ -48,14 +48,14 @@ export default function ExpandableExampleList({
       </div>
 
       {hasMoreItems ? (
-        <div className="mt-6 flex justify-center sm:hidden">
+        <div className="mt-6 flex justify-center">
           <button
             type="button"
-            onClick={() => setShowAllOnMobile((current) => !current)}
-            aria-expanded={showAllOnMobile}
+            onClick={() => setShowAll((current) => !current)}
+            aria-expanded={showAll}
             className="inline-flex min-h-12 items-center justify-center rounded-full border border-orato-dark/15 bg-white px-5 text-sm font-semibold uppercase tracking-[0.14em] text-orato-dark transition hover:border-orato-dark hover:bg-orato-dark hover:text-white"
           >
-            {showAllOnMobile ? "Toon minder" : `Lees meer (${items.length - initiallyVisible})`}
+            {showAll ? "Toon minder" : `Lees meer (${items.length - initiallyVisible})`}
           </button>
         </div>
       ) : null}
